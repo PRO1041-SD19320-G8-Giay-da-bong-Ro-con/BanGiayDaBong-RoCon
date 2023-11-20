@@ -4,6 +4,9 @@
  */
 package com.component;
 
+import com.main.Main;
+import com.ui.PanelDanhSachSanPham;
+
 /**
  *
  * @author Thai
@@ -119,7 +122,7 @@ public class MenuPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBanHangActionPerformed
 
     private void btnQLSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLSanPhamActionPerformed
-        // TODO add your handling code here:
+        Main.changeForm(new PanelDanhSachSanPham());
     }//GEN-LAST:event_btnQLSanPhamActionPerformed
 
     private void btnQLHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHoaDonActionPerformed
