@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,6 +23,7 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
     String SELECT_ALL_SQL = "select * from Chi_Tiet_San_Pham";
     String SELECT_BY_ID_SQL = "select * from Chi_Tiet_San_Pham where MaCTSP = ?";
     String SELECT_BY_SP_SQL = "select * from Chi_Tiet_San_Pham where MaSP = ?";
+    String SELECT_So_Luong = "select soluong from Chi_Tiet_San_Pham where MaSP = ?, maMau = ? , maSize = ?";
 
     @Override
     public int insert(ChiTietSanPham entity) throws SQLException {
@@ -67,8 +70,21 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
         rs.getStatement().getConnection().close();
         return list;
     }
-    
+
     public List<ChiTietSanPham> selectBySP(String key) throws SQLException {
-        return selectBySQL(SELECT_BY_SP_SQL,key);
+        return selectBySQL(SELECT_BY_SP_SQL, key);
+    }
+
+    public ChiTietSanPham getSoLuong(String maSP, String mau, String size) {
+        try {
+            List<ChiTietSanPham> list = selectBySQL(SELECT_So_Luong, maSP, mau, size);
+            if (list.isEmpty()) {
+                return null;
+            }
+            return list.get(0);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
     }
 }

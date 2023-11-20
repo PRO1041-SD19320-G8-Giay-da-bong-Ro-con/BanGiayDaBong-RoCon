@@ -14,6 +14,7 @@ import com.dao.XuatXuDAO;
 import com.entity.ChiTietSanPham;
 import com.entity.SanPham;
 import com.main.Main;
+import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.lang.constant.DirectMethodHandleDesc;
@@ -39,8 +40,11 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
     MauSacDAO daoMS = new MauSacDAO();
     SizeDAO daoS = new SizeDAO();
     ChiTietSanPhamDAO daoCTSP = new ChiTietSanPhamDAO();
-    
+    JRadioButton rdoMau;
+    JRadioButton rdoSize;
+
     public static SanPham sanPham = null;
+
     public PanelChiTietSanPham() {
         initComponents();
         showForm();
@@ -357,33 +361,61 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
     private void showForm() {
         lblMaSP.setText(sanPham.getMaSP());
         lblTen.setText(sanPham.getTenSP());
-        lblGia.setText(sanPham.getGia()+"");
+        lblGia.setText(sanPham.getGia() + "");
         lblXuatXu.setText(daoXX.getTen(sanPham.getMaXuatXu()));
         lblChatLieu.setText(daoCL.getTen(sanPham.getMaChatLieu()));
         lblThuongHIeu.setText(daoTH.getTen(sanPham.getMaThuongHieu()));
         lblLoai.setText(daoLG.getTen(sanPham.getMaLoai()));
         try {
-            for(ChiTietSanPham ctsp : daoCTSP.selectBySP(sanPham.getMaSP())){
-                JRadioButton rdoMau = new JRadioButton(daoMS.getTen(ctsp.getMaMau()),true);
+            for (ChiTietSanPham ctsp : daoCTSP.selectBySP(sanPham.getMaSP())) {
+                rdoMau = new JRadioButton(daoMS.getTen(ctsp.getMaMau()), true);
                 buttonGroup1.add(rdoMau);
                 panelMau.add(rdoMau);
-                JRadioButton rdoSize = new JRadioButton(daoS.getTen(ctsp.getMaSize()),true);
+                rdoSize = new JRadioButton(daoS.getTen(ctsp.getMaSize()), true);
                 grSize.add(rdoSize);
                 panelSize.add(rdoSize);
+
                 rdoSize.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         showSoLuong();
                     }
                 });
-                
+                rdoMau.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        showSoLuong();
+                    }
+                });
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(PanelChiTietSanPham.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private void showSoLuong(){
+
+    private void showSoLuong() {
+        // Lấy ra JRadioButton đang được chọn từ panelSize
+        JRadioButton radioSize = null;
+        for (Component component : panelSize.getComponents()) {
+            if (component instanceof JRadioButton) {
+                JRadioButton radioButton = (JRadioButton) component;
+                if (radioButton.isSelected()) {
+                    radioSize = radioButton;
+                }
+            }
+        }
+        JRadioButton radioMau = null;
+        for (Component component : panelMau.getComponents()) {
+            if (component instanceof JRadioButton) {
+                JRadioButton radioButton = (JRadioButton) component;
+                if (radioButton.isSelected()) {
+                    radioMau = radioButton;
+                }
+            }
+        }
         
+        ChiTietSanPham ctsp = daoCTSP.getSoLuong(lblMaSP.getText(),daoMS.getMa(radioMau.getText()),daoS.getMa(radioSize.getText()));
+        lblSoLuong.setText(ctsp.getSoLuong()+"");
     }
 }
