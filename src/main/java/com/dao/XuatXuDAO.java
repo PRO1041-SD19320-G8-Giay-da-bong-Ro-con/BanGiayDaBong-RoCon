@@ -4,31 +4,32 @@
  */
 package com.dao;
 
-import com.entity.SanPham;
-import com.entity.ThuongHieu;
+import com.entity.XuatXu;
 import com.utils.JDBCHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Thai
  */
-public class ThuongHieuDAO implements DAOInterface<ThuongHieu, String> {
+public class XuatXuDAO  implements DAOInterface<XuatXu, String> {
 
-    String SELECT_NAME_BY_ID_SQL = "Select ten from Thuong_hieu where maThuongHieu = ?";
-    String SELECT_ALL_SQL = "select * from Thuong_hieu";
-    String SELECT_BY_ID_SQL = "select * from Thuong_hieu where maThuongHieu = ?";
+    String SELECT_NAME_BY_ID_SQL = "Select ten from Xuat_Xu where MaXuatXu = ?";
+    String SELECT_ALL_SQL = "select * from Xuat_Xu";
+    String SELECT_BY_ID_SQL = "select * from Xuat_Xu where MaXuatXu = ?";
 
     @Override
-    public int insert(ThuongHieu entity) throws SQLException {
+    public int insert(XuatXu entity) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public int update(ThuongHieu entity) throws SQLException {
+    public int update(XuatXu entity) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -38,13 +39,13 @@ public class ThuongHieuDAO implements DAOInterface<ThuongHieu, String> {
     }
 
     @Override
-    public List<ThuongHieu> selectAll() throws SQLException {
+    public List<XuatXu> selectAll() throws SQLException {
         return selectBySQL(SELECT_ALL_SQL);
     }
 
     @Override
-    public ThuongHieu selectByID(String key) throws SQLException {
-        List<ThuongHieu> list = selectBySQL(SELECT_BY_ID_SQL, key);
+    public XuatXu selectByID(String key) throws SQLException {
+        List<XuatXu> list = selectBySQL(SELECT_BY_ID_SQL, key);
         if (list.isEmpty()) {
             return null;
         }
@@ -52,12 +53,12 @@ public class ThuongHieuDAO implements DAOInterface<ThuongHieu, String> {
     }
 
     @Override
-    public List<ThuongHieu> selectBySQL(String sql, Object... args) throws SQLException {
-        List<ThuongHieu> list = new ArrayList<>();
+    public List<XuatXu> selectBySQL(String sql, Object... args) throws SQLException {
+        List<XuatXu> list = new ArrayList<>();
         ResultSet rs = JDBCHelper.query(sql, args);
         while (rs.next()) {
-            ThuongHieu entity = new ThuongHieu();
-            entity.setMaThuongHieu(rs.getString("MaThuongHieu"));
+            XuatXu entity = new XuatXu();
+            entity.setMaXuatXu(rs.getString("MaXuatXu"));
             entity.setTen(rs.getString("Ten"));
             list.add(entity);
         }

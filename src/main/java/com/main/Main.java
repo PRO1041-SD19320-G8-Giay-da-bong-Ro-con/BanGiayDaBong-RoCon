@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  */
 public class Main extends javax.swing.JFrame {
 
-    /**
+    /**&
      * Creates new form Main
      */
     public static JPanel panel = new JPanel(new BorderLayout());
