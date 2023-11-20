@@ -6,7 +6,9 @@ package services;
 
 import java.util.ArrayList;
 import java.util.List;
+import model.ChatLieu;
 import model.SanPham;
+import model.ThuongHieu;
 import responsitory.SanPham_Respo;
 
 /**
@@ -48,4 +50,20 @@ public class SanPham_Ser {
         return lsts;
     }
 
+    public List<SanPham> getSanPhamTheoThuongHieu(String ma) {
+        return sanPhamRepo.getSanPhamTheoThuongHieu(ma);
+    }
+    
+    public List<SanPham> getSanPhamTheoThuocTinh(SanPham sp) {
+        return sanPhamRepo.getSanPhamTheoThuocTinh(sp);
+    }
+    
+    public List<ChatLieu> getChatLieu() {
+        return sanPhamRepo.getChatLieu();
+    }
+    
+    public List<ThuongHieu> getThuongHieu() {
+        return sanPhamRepo.getThuongHieu();
+    }
+    
 }
