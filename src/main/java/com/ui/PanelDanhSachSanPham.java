@@ -188,7 +188,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-
+        showTable();
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -236,7 +236,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
 
             String key = txtSearch.getText();
             for (SanPham sp : daoSP.selectAll()) {
-                if (sp.getMaSP().toUpperCase().contains(key.toUpperCase())) {
+                if (sp.getMaSP().toUpperCase().contains(key.toUpperCase())||sp.getTenSP().toUpperCase().contains(key.toUpperCase())) {
                     model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getGia(), daoTH.getTen(sp.getMaThuongHieu())});
                 }
             }
