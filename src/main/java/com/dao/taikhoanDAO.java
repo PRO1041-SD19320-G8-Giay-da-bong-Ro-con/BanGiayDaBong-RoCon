@@ -5,6 +5,7 @@
 package com.dao;
 
 import com.ui.dangnhapJDialog;
+import com.utils.DBConnect;
 import java.sql.Connection;
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import model.taikhoan;
  *
  * @author DELL
  */
-public class taikhoanDAO {
+public class taikhoanDAO implements DAOInterface<taikhoan, String>{
 
     Connection con = null;
     ResultSet rs = null;
@@ -34,7 +35,7 @@ public class taikhoanDAO {
                 String tk = rs.getString(1);
                 String mk = rs.getString(2);
                 String ten = rs.getString(3);
-                String ngaysinh = rs.getString(4);
+                Date ngaysinh = rs.getDate(4);
                 String sdt = rs.getString(5);
                 String email = rs.getString(6);
                 String cccd = rs.getString(7);
@@ -51,11 +52,11 @@ public class taikhoanDAO {
         sql="select TaiKhoan,MatKhau,Ten,NgaySinh,SDT,Email,CCCD,ChucVu from TAI_KHOAN";
         List<taikhoan> list = new ArrayList<>();
         try {
-            con = db.DBConnect.getConnection();
+            con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {                
-                taikhoan tk = new taikhoan(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getBoolean(8));
+                taikhoan tk = new taikhoan(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getBoolean(8));
                 list.add(tk);
             }
             return list;
@@ -63,5 +64,35 @@ public class taikhoanDAO {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public int insert(taikhoan entity) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public int update(taikhoan entity) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public int delete(String key) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<taikhoan> selectAll() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public taikhoan selectByID(String key) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<taikhoan> selectBySQL(String sql, Object... args) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
