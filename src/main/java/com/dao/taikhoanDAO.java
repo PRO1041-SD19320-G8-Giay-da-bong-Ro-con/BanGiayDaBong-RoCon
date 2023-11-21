@@ -26,7 +26,7 @@ public class taikhoanDAO {
         int row = 0;
       String  sql = "select TaiKhoan,MatKhau,Ten,NgaySinh,SDT,Email,CCCD,ChucVu from TAI_KHOAN where TaiKhoan = '" + taikhoan + "' and MatKhau='" + matkhau + "'";
         try {
-           Connection con = db.DBConnect.getConnection();
+           Connection con = com.utils.DBConnect.getConnection();
           PreparedStatement  ps = con.prepareStatement(sql);
           ResultSet  rs = ps.executeQuery();
             while (rs.next()) {

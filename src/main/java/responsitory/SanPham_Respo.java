@@ -4,7 +4,7 @@
  */
 package responsitory;
 
-import db.DBConnect;
+import com.utils.DBConnect;
 import db.JDBCHelper;
 import java.sql.Array;
 import java.sql.Connection;

@@ -66,5 +66,13 @@ public class ThuongHieuDAO implements DAOInterface<ThuongHieu, String> {
         return list;
 
     }
+    
+    public String getTen(String key){
+        try {
+            return selectByID(key).getTen();
+        } catch (SQLException ex) {
+            throw new Error();
+        }
+    }
 
 }

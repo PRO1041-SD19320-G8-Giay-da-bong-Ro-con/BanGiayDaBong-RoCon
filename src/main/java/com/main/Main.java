@@ -8,6 +8,7 @@ import com.ui.PanelDanhSachSanPham;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.FlowLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -16,7 +17,7 @@ import javax.swing.JPanel;
  */
 public class Main extends javax.swing.JFrame {
 
-    /**
+    /**&
      * Creates new form Main
      */
     public static JPanel panel = new JPanel(new BorderLayout());
@@ -26,6 +27,7 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         panelMain.setLayout(new FlowLayout());
         panelMain.add(panel);
+        jLabel1.setIcon(new ImageIcon(getClass().getResource("/com/img/person.png")));
     }
     
     public static void changeForm(Component com){
@@ -46,18 +48,27 @@ public class Main extends javax.swing.JFrame {
 
         menuPanel1 = new com.component.MenuPanel();
         panelMain = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
         panelMain.setLayout(panelMainLayout);
         panelMainLayout.setHorizontalGroup(
             panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 843, Short.MAX_VALUE)
+            .addGroup(panelMainLayout.createSequentialGroup()
+                .addGap(326, 326, 326)
+                .addComponent(jLabel1)
+                .addContainerGap(480, Short.MAX_VALUE))
         );
         panelMainLayout.setVerticalGroup(
             panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelMainLayout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -71,7 +82,7 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
+            .addComponent(menuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
             .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -114,6 +125,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private com.component.MenuPanel menuPanel1;
     private javax.swing.JPanel panelMain;
     // End of variables declaration//GEN-END:variables

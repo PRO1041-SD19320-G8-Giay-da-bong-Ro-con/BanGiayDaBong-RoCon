@@ -58,6 +58,7 @@ public static taikhoan TaiKhoan;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/person.png"))); // NOI18N
         jLabel5.setText("jLabel5");
 
         jPanel1.setBackground(new java.awt.Color(102, 255, 255));

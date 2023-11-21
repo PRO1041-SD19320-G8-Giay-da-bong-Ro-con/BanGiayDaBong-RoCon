@@ -5,12 +5,16 @@
 package com.ui;
 
 import com.dao.SanPhamDAO;
+import com.dao.ThuongHieuDAO;
 import com.entity.SanPham;
+import com.main.Main;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import view.ChiTietHoaDon_JDiaLog;
 
 /**
  *
@@ -22,7 +26,8 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
      * Creates new form NewJPanel
      */
     SanPhamDAO daoSP = new SanPhamDAO();
-    
+    ThuongHieuDAO daoTH = new ThuongHieuDAO();
+
     public PanelDanhSachSanPham() {
         initComponents();
         showTable();
@@ -183,7 +188,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-
+        showTable();
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -191,7 +196,18 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
-
+        try {
+            int row = tableSanPham.getSelectedRow();
+            if (row != -1) {
+                SanPham sp = daoSP.selectByID(tableSanPham.getValueAt(row, 0).toString());
+                PanelChiTietSanPham.sanPham = sp;
+                Main.changeForm(new PanelChiTietSanPham());
+            } else {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelDanhSachSanPham.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnChiTietActionPerformed
 
 
@@ -206,7 +222,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
     private javax.swing.JTable tableSanPham;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
-    
+
     private void showTable() {
         try {
             DefaultTableModel model = (DefaultTableModel) tableSanPham.getModel();
@@ -217,11 +233,11 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             for (int i = 0; i < model.getColumnCount(); i++) {
                 column.getColumn(i).setPreferredWidth(size[i]);
             }
-            
+
             String key = txtSearch.getText();
             for (SanPham sp : daoSP.selectAll()) {
-                if (sp.getMaSP().toUpperCase().contains(key.toUpperCase())) {
-                    model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getGia(), daoSP.getThuongHieu(sp.getMaThuongHieu()).getTen()});
+                if (sp.getMaSP().toUpperCase().contains(key.toUpperCase())||sp.getTenSP().toUpperCase().contains(key.toUpperCase())) {
+                    model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getGia(), daoTH.getTen(sp.getMaThuongHieu())});
                 }
             }
         } catch (SQLException ex) {
