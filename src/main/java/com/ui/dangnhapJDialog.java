@@ -4,20 +4,36 @@
  */
 package com.ui;
 
+import com.dao.taikhoanDAO;
+import com.utils.Auth;
 import javax.swing.JOptionPane;
+import model.taikhoan;
 
 /**
  *
  * @author DELL
  */
 public class dangnhapJDialog extends javax.swing.JDialog {
-
+public static taikhoan TaiKhoan;
     /**
      * Creates new form dangnhapJDialog
      */
     public dangnhapJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
+        
+    }
+    boolean checkvalue() {
+        if (txt_taikhoan.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "tk khong dc de trong");
+            return false;
+        }
+        if (txt_matkhau.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "MK khong dc de trong");
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -35,10 +51,10 @@ public class dangnhapJDialog extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        txt_taikhoan = new javax.swing.JTextField();
+        txt_matkhau = new javax.swing.JPasswordField();
+        btn_dangnhap = new javax.swing.JButton();
+        btn_thoat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -57,9 +73,14 @@ public class dangnhapJDialog extends javax.swing.JDialog {
 
         jLabel2.setText("Mật Khẩu");
 
-        jButton1.setText("Đăng Nhập");
+        btn_dangnhap.setText("Đăng Nhập");
+        btn_dangnhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_dangnhapActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Quên Mật Khẩu");
+        btn_thoat.setText("thoát");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -77,12 +98,12 @@ public class dangnhapJDialog extends javax.swing.JDialog {
                         .addGap(345, 345, 345))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_taikhoan, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_matkhau, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_dangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(71, 71, 71))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -100,15 +121,15 @@ public class dangnhapJDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_taikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_dangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
@@ -132,6 +153,26 @@ public class dangnhapJDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_dangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangnhapActionPerformed
+        // TODO add your handling code here:
+        if (this.checkvalue()) {
+            String tk = txt_taikhoan.getText();
+            String mk = new String(txt_matkhau.getPassword());
+            if(taikhoanDAO.checkLogin(tk, mk)) {
+                JOptionPane.showMessageDialog(this, "Đăng nhập thành công ");
+                if (TaiKhoan.isChucvu()==true) {
+                    (new test()).setVisible(true);
+                } else {
+                    (new test()).setVisible(true);
+                }
+                Auth.user= TaiKhoan;
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Thất bại .........");
+            }
+        }
+    }//GEN-LAST:event_btn_dangnhapActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,15 +217,19 @@ public class dangnhapJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_dangnhap;
+    private javax.swing.JButton btn_thoat;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField txt_matkhau;
+    private javax.swing.JTextField txt_taikhoan;
     // End of variables declaration//GEN-END:variables
+
+    private void init() {
+        this.setLocationRelativeTo(null);
+    }
 }
