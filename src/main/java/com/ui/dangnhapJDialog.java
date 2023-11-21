@@ -4,17 +4,22 @@
  */
 package com.ui;
 
-import com.dao.taikhoanDAO;
+import com.dao.TaiKhoanDAO;
 import com.utils.Auth;
 import javax.swing.JOptionPane;
-import model.taikhoan;
+import com.entity.TaiKhoan;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author DELL
  */
 public class dangnhapJDialog extends javax.swing.JDialog {
-public static taikhoan TaiKhoan;
+
+    TaiKhoanDAO daoTK = new TaiKhoanDAO();
+
     /**
      * Creates new form dangnhapJDialog
      */
@@ -22,8 +27,9 @@ public static taikhoan TaiKhoan;
         super(parent, modal);
         initComponents();
         init();
-        
+
     }
+
     boolean checkvalue() {
         if (txt_taikhoan.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "tk khong dc de trong");
@@ -158,19 +164,24 @@ public static taikhoan TaiKhoan;
     private void btn_dangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangnhapActionPerformed
         // TODO add your handling code here:
         if (this.checkvalue()) {
-            String tk = txt_taikhoan.getText();
-            String mk = new String(txt_matkhau.getPassword());
-            if(taikhoanDAO.checkLogin(tk, mk)) {
-                JOptionPane.showMessageDialog(this, "Đăng nhập thành công ");
-                if (TaiKhoan.isChucvu()==true) {
-                    (new test()).setVisible(true);
+            try {
+                String tk = txt_taikhoan.getText();
+                String mk = new String(txt_matkhau.getPassword());
+                TaiKhoan taiKhoan = daoTK.selectByID(tk);
+                if ( taiKhoan != null) {
+                    if (taiKhoan.getMatkhau().equals(mk)) {
+                        JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
+                        Auth.user = taiKhoan;
+                        this.dispose();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(this, "Sai mật khẩu");
+                    }
                 } else {
-                    (new test()).setVisible(true);
+                    JOptionPane.showMessageDialog(this, "Tài khoản không tồn tại");
                 }
-                Auth.user= TaiKhoan;
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Thất bại .........");
+            } catch (SQLException ex) {
+                Logger.getLogger(dangnhapJDialog.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_btn_dangnhapActionPerformed
