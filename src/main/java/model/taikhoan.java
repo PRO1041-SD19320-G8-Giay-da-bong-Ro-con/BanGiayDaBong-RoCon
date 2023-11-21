@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author DELL
@@ -12,7 +14,7 @@ public class taikhoan {
     private String taikhoan;
     private String matkhau;
     private String ten;
-    private String ngaysinh;
+    private Date ngaysinh;
     private String sdt;
     private String email;
     private String CCCD;
@@ -21,7 +23,7 @@ public class taikhoan {
     public taikhoan() {
     }
 
-    public taikhoan(String taikhoan, String matkhau, String ten, String ngaysinh, String sdt, String email, String CCCD, boolean chucvu) {
+    public taikhoan(String taikhoan, String matkhau, String ten, Date ngaysinh, String sdt, String email, String CCCD, boolean chucvu) {
         this.taikhoan = taikhoan;
         this.matkhau = matkhau;
         this.ten = ten;
@@ -56,11 +58,11 @@ public class taikhoan {
         this.ten = ten;
     }
 
-    public String getNgaysinh() {
+    public Date getNgaysinh() {
         return ngaysinh;
     }
 
-    public void setNgaysinh(String ngaysinh) {
+    public void setNgaysinh(Date ngaysinh) {
         this.ngaysinh = ngaysinh;
     }
 
@@ -95,7 +97,7 @@ public class taikhoan {
     public void setChucvu(boolean chucvu) {
         this.chucvu = chucvu;
     }
-
     
+
     
 }
