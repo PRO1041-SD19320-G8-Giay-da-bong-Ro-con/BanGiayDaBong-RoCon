@@ -293,22 +293,26 @@
                               <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel9" linkSize="9" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                                          <Component id="jLabel15" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                                          <Component id="jLabel13" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                                          <Component id="cboMaTH" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                                          <Component id="cboMaCL" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txtMaSp" linkSize="9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel9" linkSize="9" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                                              <Component id="jLabel15" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                                              <Component id="jLabel13" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                              <Component id="cboMaTH" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                              <Component id="cboMaCL" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel12" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                                          <Component id="jLabel16" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                                          <Component id="jLabel14" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                                          <Component id="cboML" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                                          <Component id="cboMaXuatXU" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txtTenSP" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel12" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                              <Component id="jLabel16" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                                              <Component id="jLabel14" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                              <Component id="cboML" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                              <Component id="cboMaXuatXU" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -755,9 +759,7 @@
                 <Component class="javax.swing.JComboBox" name="cboLoai">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="L1"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -772,9 +774,7 @@
                 <Component class="javax.swing.JComboBox" name="cboXuatXu">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="X1"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                   <AuxValues>

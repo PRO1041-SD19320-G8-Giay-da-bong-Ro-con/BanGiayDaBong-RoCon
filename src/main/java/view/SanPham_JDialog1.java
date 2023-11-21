@@ -27,6 +27,7 @@ import model.ChatLieu;
 import model.LoaiGiay;
 import model.SanPham;
 import model.ThuongHieu;
+import model.XuatXu;
 import services.SanPham_Ser;
 
 /**
@@ -38,6 +39,8 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
     private List<SanPham> lstSP = new ArrayList<>();
     private List<ChatLieu> lstCL = new ArrayList<>();
     private List<ThuongHieu> lstTH = new ArrayList<>();
+    private List<XuatXu> lstXX = new ArrayList<>();
+    private List<LoaiGiay> lstL = new ArrayList<>();
     private DefaultTableModel tblModel = new DefaultTableModel();
     private SanPham_Ser ql = new SanPham_Ser();
     private int index = -1;
@@ -59,6 +62,8 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         loadCboGia();
         loadCboChatLieu();
         loadCboThuongHieu();
+        loadCboXuatXu();
+        loadCboLoai();
         for (ThuongHieu th : lstTH) {
             cboMaTH.addItem(th.getMaThuongHieu());
         }
@@ -115,6 +120,24 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         lstTH = ql.getThuongHieu();
         for (ThuongHieu th : lstTH) {
             cboModel.addElement(th);
+        }
+    }
+    
+    private void loadCboXuatXu(){
+        DefaultComboBoxModel cboModel = new DefaultComboBoxModel();
+        cboModel = (DefaultComboBoxModel) cboXuatXu.getModel();
+        lstXX = ql.getXuatXu();
+        for(XuatXu xx : lstXX){
+            cboModel.addElement(xx);
+        }
+    }
+    
+    private void loadCboLoai(){
+        DefaultComboBoxModel cboModel = new DefaultComboBoxModel();
+        cboModel = (DefaultComboBoxModel) cboLoai.getModel();
+        lstL = ql.getLoai();
+        for(LoaiGiay l : lstL){
+            cboModel.addElement(l);
         }
     }
     
@@ -363,21 +386,23 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboMaTH, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboMaCL, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMaSp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtMaSp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboMaTH, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboMaCL, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboML, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboMaXuatXU, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboML, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboMaXuatXU, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -563,11 +588,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
 
         jLabel8.setText("Loại: ");
 
-        cboLoai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "L1" }));
-
         jLabel21.setText("Xuất Xứ");
-
-        cboXuatXu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "X1" }));
 
         jLabel23.setText("Chất Liệu");
 

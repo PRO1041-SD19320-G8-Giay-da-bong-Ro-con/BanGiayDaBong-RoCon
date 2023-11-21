@@ -13,8 +13,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import model.ChatLieu;
+import model.LoaiGiay;
 import model.SanPham;
 import model.ThuongHieu;
+import model.XuatXu;
 
 
 /**
@@ -256,5 +258,48 @@ public class SanPham_Respo implements Giay_Interfacce<SanPham> {
         }
 
     }
+    
+    public List<XuatXu> getXuatXu() {
+        List<XuatXu> lst = new ArrayList<>();
+        ResultSet rs = null;
+        String sql = """
+                    select * from XUAT_XU
+                     """;
+        rs = JDBCHelper.excuteQuery(sql
+        );
+        try {
+            while (rs.next()) {
+
+                lst.add(new XuatXu(rs.getString(1),rs.getString(2)));
+            }
+            return lst;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
+    
+        public List<LoaiGiay> getLoai() {
+        List<LoaiGiay> lst = new ArrayList<>();
+        ResultSet rs = null;
+        String sql = """
+                    select * from LOAI_GIAY
+                     """;
+        rs = JDBCHelper.excuteQuery(sql
+        );
+        try {
+            while (rs.next()) {
+
+                lst.add(new LoaiGiay(rs.getString(1),rs.getString(2)));
+            }
+            return lst;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
+    
 
 }
