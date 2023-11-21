@@ -25,10 +25,13 @@ public class SanPham {
     private String maChatLieu;
     
     private Double gia;
+    
+    
+   
 
     public SanPham() {
     }
-
+    
     public SanPham(String maSP, String tenSP, String hinh, String maThuongHieu, String maLoai, String maXuatXu, String maChatLieu, Double gia) {
         this.maSP = maSP;
         this.tenSP = tenSP;
