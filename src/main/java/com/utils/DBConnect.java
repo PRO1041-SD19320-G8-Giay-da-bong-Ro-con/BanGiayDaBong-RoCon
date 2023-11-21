@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package db;
+package com.utils;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class DBConnect {
 
     private static final String USERNAME = "sa";
-    private static final String PASSWORD = "123456";
+    private static final String PASSWORD = "123";
     private static final String SERVER = "localhost";
     private static final String PORT = "1433";
     private static final String DATABASE_NAME = "PRO1041_G8_BanGiayDaBong_RoCon";

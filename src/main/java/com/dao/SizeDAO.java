@@ -21,7 +21,7 @@ public class SizeDAO implements DAOInterface<Size, String> {
     String SELECT_NAME_BY_ID_SQL = "Select ten from Size where maSize = ?";
     String SELECT_ALL_SQL = "select * from Size";
     String SELECT_BY_ID_SQL = "select * from Size where maSize = ?";
-    String SELECT_BY_NAME_SQL = "select masize from Size where Ten = ?";
+    String SELECT_BY_NAME_SQL = "select * from Size where Ten = ?";
 
     @Override
     public int insert(Size entity) throws SQLException {
@@ -78,7 +78,7 @@ public class SizeDAO implements DAOInterface<Size, String> {
     
     public String getMa(String key){
         try {
-            List<Size> list = selectBySQL(SELECT_NAME_BY_ID_SQL, key);
+            List<Size> list = selectBySQL(SELECT_BY_NAME_SQL, key);
             if (list.isEmpty()) {
                 return null;
             }

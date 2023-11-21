@@ -39,7 +39,24 @@ public class SanPham {
         this.maChatLieu = maChatLieu;
         this.gia = gia;
     }
+   
+    public SanPham(String maSP, String tenSP, String maThuongHieu, String maLoai, String maXuatXu, String maChatLieu, Double gia) {
+        this.maSP = maSP;
+        this.tenSP = tenSP;
+        this.maThuongHieu = maThuongHieu;
+        this.maLoai = maLoai;
+        this.maXuatXu = maXuatXu;
+        this.maChatLieu = maChatLieu;
+        this.gia = gia;
+    }
 
+    public SanPham(String maThuongHieu, String maLoai, String maXuatXu, String maChatLieu, Double gia) {
+        this.maThuongHieu = maThuongHieu;
+        this.maLoai = maLoai;
+        this.maXuatXu = maXuatXu;
+        this.maChatLieu = maChatLieu;
+        this.gia = gia;
+    }
     
 
     public String getMaSP() {

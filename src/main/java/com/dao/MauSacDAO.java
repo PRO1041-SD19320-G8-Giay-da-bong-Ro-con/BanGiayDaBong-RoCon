@@ -23,7 +23,7 @@ public class MauSacDAO  implements DAOInterface<MauSac, String> {
     String SELECT_NAME_BY_ID_SQL = "Select ten from Mau_Sac where maMau = ?";
     String SELECT_ALL_SQL = "select * from Mau_Sac";
     String SELECT_BY_ID_SQL = "select * from Mau_Sac where maMau = ?";
-    String SELECT_BY_NAME_SQL = "select maMau from Mau_Sac where Ten = ?";
+    String SELECT_BY_NAME_SQL = "select * from Mau_Sac where Ten = ?";
 
     @Override
     public int insert(MauSac entity) throws SQLException {
@@ -80,7 +80,7 @@ public class MauSacDAO  implements DAOInterface<MauSac, String> {
     
     public String getMa(String key){
         try {
-            List<MauSac> list = selectBySQL(SELECT_NAME_BY_ID_SQL, key);
+            List<MauSac> list = selectBySQL(SELECT_BY_NAME_SQL, key);
             if (list.isEmpty()) {
                 return null;
             }

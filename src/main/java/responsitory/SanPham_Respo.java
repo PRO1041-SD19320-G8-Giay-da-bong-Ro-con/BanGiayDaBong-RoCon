@@ -4,7 +4,7 @@
  */
 package responsitory;
 
-import db.DBConnect;
+import com.utils.DBConnect;
 import db.JDBCHelper;
 import java.sql.Array;
 import java.sql.Connection;
@@ -12,7 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import model.ChatLieu;
 import model.SanPham;
+import model.ThuongHieu;
 
 
 /**
@@ -163,6 +165,96 @@ public class SanPham_Respo implements Giay_Interfacce<SanPham> {
         return check > 0;
     }
 
-  
+    public List<SanPham> getSanPhamTheoThuongHieu(String ma) {
+        List<SanPham> lst = new ArrayList<>();
+        ResultSet rs = null;
+        String sql = """
+                    select * from SAN_PHAM where MaThuongHieu = ?
+                     """;
+        rs = JDBCHelper.excuteQuery(sql,
+                ma
+        );
+        try {
+            while (rs.next()) {
+
+                lst.add(new SanPham(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(7), rs.getString(6), rs.getDouble(8)));
+
+            }
+            return lst;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
+
+    public List<SanPham> getSanPhamTheoThuocTinh(SanPham sp) {
+        List<SanPham> lst = new ArrayList<>();
+        ResultSet rs = null;
+        String sql = """
+                    select MaSP, TenSP, MaThuongHieu, MaLoai, MaXuatXu, MaChatLieu, Gia from SAN_PHAM where MaThuongHieu = ? and MaLoai = ? and  MaXuatXu = ? and MaChatLieu = ? and Gia = ?
+                     """;
+        rs = JDBCHelper.excuteQuery(sql,
+                sp.getMaThuongHieu(),
+                sp.getMaLoai(),
+                sp.getMaXuatXu(),
+                sp.getMaChatLieu(),
+                sp.getGia()
+        );
+        try {
+            while (rs.next()) {
+
+                lst.add(new SanPham(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getDouble(7)));
+
+            }
+            return lst;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
+
+    public List<ChatLieu> getChatLieu() {
+        List<ChatLieu> lst = new ArrayList<>();
+        ResultSet rs = null;
+        String sql = """
+                    select * from CHAT_LIEU
+                     """;
+        rs = JDBCHelper.excuteQuery(sql
+        );
+        try {
+            while (rs.next()) {
+
+                lst.add(new ChatLieu(rs.getString(1),rs.getString(2)));
+            }
+            return lst;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
+    
+    public List<ThuongHieu> getThuongHieu() {
+        List<ThuongHieu> lst = new ArrayList<>();
+        ResultSet rs = null;
+        String sql = """
+                    select * from THUONG_HIEU
+                     """;
+        rs = JDBCHelper.excuteQuery(sql
+        );
+        try {
+            while (rs.next()) {
+
+                lst.add(new ThuongHieu(rs.getString(1),rs.getString(2)));
+            }
+            return lst;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
 
 }

@@ -371,6 +371,7 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
                 rdoMau = new JRadioButton(daoMS.getTen(ctsp.getMaMau()), true);
                 buttonGroup1.add(rdoMau);
                 panelMau.add(rdoMau);
+                
                 rdoSize = new JRadioButton(daoS.getTen(ctsp.getMaSize()), true);
                 grSize.add(rdoSize);
                 panelSize.add(rdoSize);
@@ -381,6 +382,7 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
                         showSoLuong();
                     }
                 });
+
                 rdoMau.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -389,6 +391,7 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
                 });
 
             }
+            showSoLuong();
         } catch (SQLException ex) {
             Logger.getLogger(PanelChiTietSanPham.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -414,8 +417,13 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
                 }
             }
         }
-        
-        ChiTietSanPham ctsp = daoCTSP.getSoLuong(lblMaSP.getText(),daoMS.getMa(radioMau.getText()),daoS.getMa(radioSize.getText()));
-        lblSoLuong.setText(ctsp.getSoLuong()+"");
+
+        ChiTietSanPham ctsp = daoCTSP.getSoLuong(lblMaSP.getText(), daoMS.getMa(radioMau.getText()), daoS.getMa(radioSize.getText()));
+        if(ctsp!=null){
+            lblSoLuong.setText(ctsp.getSoLuong() + "");
+        }
+        else{
+            lblSoLuong.setText("0");
+        }
     }
 }

@@ -23,7 +23,8 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
     String SELECT_ALL_SQL = "select * from Chi_Tiet_San_Pham";
     String SELECT_BY_ID_SQL = "select * from Chi_Tiet_San_Pham where MaCTSP = ?";
     String SELECT_BY_SP_SQL = "select * from Chi_Tiet_San_Pham where MaSP = ?";
-    String SELECT_So_Luong = "select soluong from Chi_Tiet_San_Pham where MaSP = ?, maMau = ? , maSize = ?";
+    String SELECT_So_Luong = "select * from Chi_Tiet_San_Pham where MaSP = ? and maMau = ? and maSize = ?";
+    String SELECT_BY_SP_Mau_SQL = "select * from Chi_Tiet_San_Pham where MaSP = ? and maMau = ?";
 
     @Override
     public int insert(ChiTietSanPham entity) throws SQLException {
@@ -64,6 +65,7 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
             entity.setMaMau(rs.getString("MaMau"));
             entity.setMaSP(rs.getString("MaSP"));
             entity.setMaSize(rs.getString("MaSize"));
+            entity.setSoLuong(rs.getInt("soLuong"));
             list.add(entity);
         }
 
@@ -74,6 +76,9 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
     public List<ChiTietSanPham> selectBySP(String key) throws SQLException {
         return selectBySQL(SELECT_BY_SP_SQL, key);
     }
+    public List<ChiTietSanPham> selectBySPMau(String maSP, String mau) throws SQLException {
+        return selectBySQL(SELECT_BY_SP_Mau_SQL, maSP,mau);
+    }
 
     public ChiTietSanPham getSoLuong(String maSP, String mau, String size) {
         try {
@@ -83,7 +88,6 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
             }
             return list.get(0);
         } catch (SQLException ex) {
-            ex.printStackTrace();
             return null;
         }
     }
