@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\admin\Desktop\BanGiayDaBong-RoCon\src\main\java\com\dao\LoaiGiayDAO.java
 C:\Users\admin\Desktop\BanGiayDaBong-RoCon\src\main\java\com\dao\ThuongHieuDAO.java
 C:\Users\admin\Desktop\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelDanhSachSanPham.java
@@ -112,3 +113,44 @@ C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon\src\main\java\com\dao\SanPhamDA
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon\src\main\java\com\entity\ThuongHieu.java
 >>>>>>> 42e59f1c4218043ac480aecaf898901777600b5b
 >>>>>>> 5792522622991823ca5dbad9b1db19334c7b4bf0
+=======
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\ui\thongkeJDialog.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\view\SanPham_JDialog.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\model\ThuongHieu.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\ui\PanelDanhSachSanPham.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\db\DBConnect.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\entity\SanPham.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\model\ChatLieu.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\model\SanPham.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\dao\ThuongHieuDAO.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\ui\dangnhapJDialog.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\view\SanPham_JDialog1.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\ui\QuanlytaikhoanJDialog.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\responsitory\Giay_Interfacce.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\dao\DAOInterface.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\db\JDBCHelper.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\view\HoaDon_JDiaLog.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\utils\Auth.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\services\SanPham_Ser.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\model\taikhoan.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\entity\ChiTietSanPham.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\dao\taikhoanDAO.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\entity\Size.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\responsitory\SanPham_Respo.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\main\Main.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\utils\JDBCHelper.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\component\MenuPanel.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\entity\XuatXu.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\ui\nhapmaDialog.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\view\ChiTietHoaDon_JDiaLog.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\dao\SanPhamDAO.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\view\NhanVien_JDiaLog.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\entity\MauSac.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\ui\nhaplaimatkhauDialog.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\ui\test.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\entity\LoaiGiay.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\entity\ThuongHieu.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\ui\quenmatkhauJDialog.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\com\ui\doimatkhauJDialog.java
+C:\Users\FPT SHOP\Desktop\DuAn1\src\main\java\view\BanHang_DiaLog.java
+>>>>>>> 2fe5e6c104877a064030fd1faf084c236a9d9ba6
