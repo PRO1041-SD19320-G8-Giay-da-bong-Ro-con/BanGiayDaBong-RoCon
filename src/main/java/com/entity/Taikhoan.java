@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package com.entity;
 
-import java.util.Date;
-
+import model.*;
+import java.sql.Date;
 
 /**
  *
  * @author DELL
  */
-public class taikhoan {
+public class Taikhoan {
     private String taikhoan;
     private String matkhau;
     private String ten;
@@ -21,10 +21,10 @@ public class taikhoan {
     private String CCCD;
     private boolean chucvu;
 
-    public taikhoan() {
+    public Taikhoan() {
     }
 
-    public taikhoan(String taikhoan, String matkhau, String ten, Date ngaysinh, String sdt, String email, String CCCD, boolean chucvu) {
+    public Taikhoan(String taikhoan, String matkhau, String ten, Date ngaysinh, String sdt, String email, String CCCD, boolean chucvu) {
         this.taikhoan = taikhoan;
         this.matkhau = matkhau;
         this.ten = ten;

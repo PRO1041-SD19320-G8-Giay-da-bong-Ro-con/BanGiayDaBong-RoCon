@@ -5,6 +5,7 @@
 package com.dao;
 
 import com.ui.dangnhapJDialog;
+import com.utils.Auth;
 import com.utils.DBConnect;
 import java.sql.Connection;
 import java.sql.*;
@@ -63,6 +64,21 @@ public class taikhoanDAO implements DAOInterface<taikhoan, String>{
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+    public int update(taikhoan tk , String taikhoan){
+        sql="update TAI_KHOAN set ten =?,NgaySinh =?,SDT=? where TAI_KHOAN =?";
+        try {
+            con = DBConnect.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setObject(1, tk.getTen());
+            ps.setObject(2, tk.getNgaysinh());
+            ps.setObject(3, tk.getSdt());
+            ps.setObject(4, taikhoan);
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
         }
     }
 

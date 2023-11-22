@@ -114,6 +114,7 @@ com\ui\doimatkhauJDialog$1$1.class
 view\BanHang_DiaLog$13.class
 responsitory\BanHang_Respo.class
 com\ui\quenmatkhauJDialog.class
+com\entity\Taikhoan.class
 view\HoaDon_JDiaLog.class
 view\SanPham_JDialog1$10.class
 com\ui\QuanlytaikhoanJDialog$1.class
