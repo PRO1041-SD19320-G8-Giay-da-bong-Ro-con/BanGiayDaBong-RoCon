@@ -5,6 +5,8 @@
 package services;
 
 import java.util.List;
+import javax.swing.text.AsyncBoxView;
+import model.ChiTietSanPham;
 import model.SanPham;
 import responsitory.BanHang_Respo;
 
@@ -15,7 +17,7 @@ import responsitory.BanHang_Respo;
 public class BanHang_Ser {
     BanHang_Respo banHangrepo = new BanHang_Respo();
     
-    public List<SanPham> getAllSanPham() {
+    public List<ChiTietSanPham> getAllSanPham() {
         return banHangrepo.getAllSanPham();
     }
 }

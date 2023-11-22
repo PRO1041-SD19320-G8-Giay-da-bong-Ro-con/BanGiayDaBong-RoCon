@@ -7,6 +7,7 @@ view\SanPham_JDialog1$2.class
 view\SanPham_JDialog1$12.class
 view\BanHang_DiaLog$2.class
 com\entity\ThuongHieu.class
+view\BanHang_DiaLog$13$1.class
 view\ChiTietHoaDon_JDiaLog.class
 view\SanPham_JDialog$11.class
 view\SanPham_JDialog$14.class
@@ -110,6 +111,7 @@ view\BanHang_DiaLog$4.class
 com\ui\PanelChiTietSanPham.class
 view\SanPham_JDialog1$7.class
 com\ui\doimatkhauJDialog$1$1.class
+view\BanHang_DiaLog$13.class
 responsitory\BanHang_Respo.class
 com\ui\quenmatkhauJDialog.class
 view\HoaDon_JDiaLog.class
@@ -127,7 +129,6 @@ view\BanHang_DiaLog.class
 com\dao\taikhoanDAO.class
 com\entity\ChiTietSanPham.class
 view\SanPham_JDialog$1.class
-view\BanHang_DiaLog$12$1.class
 com\ui\PanelChiTietSanPham$4.class
 com\ui\nhapmaDialog.class
 responsitory\Giay_Interfacce.class
