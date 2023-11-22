@@ -4,19 +4,54 @@
  */
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import model.SanPham;
+import services.BanHang_Ser;
+
 /**
  *
  * @author Admin
  */
 public class BanHang_DiaLog extends javax.swing.JDialog {
-
+    BanHang_Ser ql = new BanHang_Ser();
+    DefaultTableModel tblModelSP = new DefaultTableModel();
+    List<SanPham> lstSP = new ArrayList<>();
+    int index = -1;
     /**
      * Creates new form HoaDon_JDiaLog
      */
     public BanHang_DiaLog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
+    }
+    
+    private void init(){
         setLocationRelativeTo(null);
+        lstSP = ql.getAllSanPham();
+        loadTableSP(lstSP);
+    }
+    
+    private void loadTableSP(List<SanPham> lst) {
+        tblModelSP.setRowCount(0);
+        tblModelSP = (DefaultTableModel) tblSanPham.getModel();
+        
+        for (SanPham sp : lst) {
+            
+            tblModelSP.addRow(new Object[]{
+                sp.getMaSP(),
+                sp.getTenSP(),
+                sp.getMaSize(),
+                sp.getMaMau(),
+                sp.getMaChatLieu(),
+                sp.getMaThuongHieu(),
+                sp.getGia(),
+                sp.getSoLuong()
+            });
+        }
+        
     }
     
     

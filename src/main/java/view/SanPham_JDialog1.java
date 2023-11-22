@@ -35,7 +35,7 @@ import services.SanPham_Ser;
  * @author FPT SHOP
  */
 public class SanPham_JDialog1 extends javax.swing.JDialog {
-    
+
     private List<SanPham> lstSP = new ArrayList<>();
     private List<ChatLieu> lstCL = new ArrayList<>();
     private List<ThuongHieu> lstTH = new ArrayList<>();
@@ -54,7 +54,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         initComponents();
         init();
     }
-    
+
     private void init() {
         setLocationRelativeTo(null);
         lstSP = ql.getAllData();
@@ -64,35 +64,43 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         loadCboThuongHieu();
         loadCboXuatXu();
         loadCboLoai();
-        for (ThuongHieu th : lstTH) {
-            cboMaTH.addItem(th.getMaThuongHieu());
-        }
-       
+        loadCboThemThuongHieu();
+
     }
     
+    private void loadCboThemThuongHieu() {
+        DefaultComboBoxModel cboModel = new DefaultComboBoxModel();
+        cboModel = (DefaultComboBoxModel) cboMaTH.getModel();
+        lstTH = ql.getThuongHieu();
+        for (ThuongHieu th : lstTH) {
+            cboModel.addElement(th);
+        }
+    }
+    
+
     private void loadTable(List<SanPham> lst) {
         tblModel.setRowCount(0);
         tblModel = (DefaultTableModel) tblSP.getModel();
-        
+
         for (SanPham sp : lst) {
-            
+
             tblModel.addRow(new Object[]{
                 sp.getMaSP(),
                 sp.getTenSP(),
                 sp.getMaChatLieu(),
                 sp.getMaXuatXu(),
-                sp.getGia(),
                 sp.getMaThuongHieu(),
-                sp.getMaLoai()
+                sp.getMaLoai(),
+                sp.getGia()
             });
         }
-        
+
     }
-    
+
     private void loadCboGia() {
         DefaultComboBoxModel cboModel = new DefaultComboBoxModel();
         cboModel = (DefaultComboBoxModel) cboGia.getModel();
-        
+
         lstSP = ql.getAllData();
         Collections.sort(lstSP, Comparator.comparing(SanPham::getGia));
         Set<Double> uniqueGia = new TreeSet<>();
@@ -102,9 +110,9 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         for (Double sp : uniqueGia) {
             cboModel.addElement(sp);
         }
-        
+
     }
-    
+
     private void loadCboChatLieu() {
         DefaultComboBoxModel cboModel = new DefaultComboBoxModel();
         cboModel = (DefaultComboBoxModel) cboChatLieu.getModel();
@@ -113,7 +121,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
             cboModel.addElement(cl);
         }
     }
-    
+
     private void loadCboThuongHieu() {
         DefaultComboBoxModel cboModel = new DefaultComboBoxModel();
         cboModel = (DefaultComboBoxModel) cboThuongHieu.getModel();
@@ -122,25 +130,25 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
             cboModel.addElement(th);
         }
     }
-    
-    private void loadCboXuatXu(){
+
+    private void loadCboXuatXu() {
         DefaultComboBoxModel cboModel = new DefaultComboBoxModel();
         cboModel = (DefaultComboBoxModel) cboXuatXu.getModel();
         lstXX = ql.getXuatXu();
-        for(XuatXu xx : lstXX){
+        for (XuatXu xx : lstXX) {
             cboModel.addElement(xx);
         }
     }
-    
-    private void loadCboLoai(){
+
+    private void loadCboLoai() {
         DefaultComboBoxModel cboModel = new DefaultComboBoxModel();
         cboModel = (DefaultComboBoxModel) cboLoai.getModel();
         lstL = ql.getLoai();
-        for(LoaiGiay l : lstL){
+        for (LoaiGiay l : lstL) {
             cboModel.addElement(l);
         }
     }
-    
+
     private String choseFile(ImageIcon img, JLabel loadAnh) {
         try {
             // Tạo một đối tượng JFileChooser
@@ -164,23 +172,23 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
 
             //Lấy tên ảnh
             urlAnh = jfc.getSelectedFile().getName();
-            
+
             loadAnh.setText("");
 
             // Đặt hình ảnh đã chọn vào nhãn lblHinh để hiển thị trên giao diện
             loadAnh.setIcon(img);
-            
+
             return fileName;
-            
+
         } catch (Exception e) {
-            
+
             JOptionPane.showMessageDialog(this, "Bạn đã hủy chọn ảnh");
 
             // Trả về thông báo lỗi
             return e.getMessage();
         }
     }
-    
+
     private void updateHinh(String url) {
         ImageIcon img = new ImageIcon("src\\main\\java\\img\\" + url);
         Image im = img.getImage();
@@ -296,11 +304,11 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Mã  Sản Phẩm", "Tên Sản Phẩm", "Mã Chất Liệu", "Mã Xuất Xứ", "Giá", "Mã Thương Hiệu", "Mã Loại"
+                "Mã  Sản Phẩm", "Tên Sản Phẩm", "Chất liệu", "Xuất xứ", "Thương hiệu", "Loại", "Giá"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -322,13 +330,13 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
 
         jLabel12.setText("Tên SP");
 
-        jLabel13.setText("Mã Chất Liệu");
+        jLabel13.setText("Chất Liệu");
 
-        jLabel14.setText("Mã Xuất Xứ");
+        jLabel14.setText("Xuất Xứ");
 
-        jLabel15.setText("Mã Thương Hiệu");
+        jLabel15.setText("Thương Hiệu");
 
-        jLabel16.setText("Mã Loại ");
+        jLabel16.setText("Loại ");
 
         jLabel17.setText("Giá: ");
 
@@ -1095,7 +1103,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void cboGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboGiaActionPerformed
-        
+
         if (cboGia.getSelectedIndex() == 0) {
             lstSP = ql.getAllData();
             loadTable(lstSP);
@@ -1103,7 +1111,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         }
         Double gia = Double.parseDouble(cboGia.getSelectedItem().toString());
         lstSP = ql.getSanPhamTheoGia(String.valueOf(gia));
-        
+
         loadTable(lstSP);
 
     }//GEN-LAST:event_cboGiaActionPerformed
@@ -1126,25 +1134,25 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         }
         String thuongHieu = String.valueOf(cboThuongHieu.getSelectedItem().toString());
         lstSP = ql.getSanPhamTheoThuongHieu(thuongHieu);
-        
+
         loadTable(lstSP);
     }//GEN-LAST:event_cboThuongHieuActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        
+
         Double gia = Double.parseDouble(cboGia.getSelectedItem().toString());
         String thuongHieu = String.valueOf(cboThuongHieu.getSelectedItem().toString());
         String chatLieu = String.valueOf(cboChatLieu.getSelectedItem().toString());
         String loai = String.valueOf(cboLoai.getSelectedItem().toString());
         String xuatXu = String.valueOf(cboXuatXu.getSelectedItem().toString());
-        
+
         SanPham sp = new SanPham(thuongHieu, loai, xuatXu, chatLieu, gia);
         lstSP = ql.getSanPhamTheoThuocTinh(sp);
         if (lstSP.size() == 0) {
             loadTable(lstSP);
             return;
         }
-        
+
         loadTable(lstSP);
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -1205,7 +1213,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
             }
         });
     }
-    
+
     private SanPham readForm() {
         String maSp = txtMaSp.getText().trim();
         String tenSp = txtTenSP.getText().trim();
@@ -1229,7 +1237,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         SanPham sp = new SanPham(maSp, tenSp, hinh, maTH, maML, maXX, maCL, Double.parseDouble(gia));
         return sp;
     }
-    
+
     private void showDetail(int index) {
         SanPham sp = ql.getAllData().get(index);
         txtMaSp.setText(sp.getMaSP());
@@ -1242,7 +1250,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         cboHinh.setSelectedItem(sp.getHinh());
         tblSP.setRowSelectionInterval(index, index);
     }
-    
+
     private void clearForm() {
         txtMaSp.setText("");
         txtTenSP.setText("");
