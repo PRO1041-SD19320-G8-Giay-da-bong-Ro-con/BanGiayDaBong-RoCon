@@ -108,6 +108,7 @@ com\ui\PanelChiTietSanPham.class
 view\SanPham_JDialog1$7.class
 com\ui\doimatkhauJDialog$1$1.class
 com\ui\quenmatkhauJDialog.class
+com\entity\Taikhoan.class
 view\HoaDon_JDiaLog.class
 view\SanPham_JDialog1$10.class
 com\ui\QuanlytaikhoanJDialog$1.class

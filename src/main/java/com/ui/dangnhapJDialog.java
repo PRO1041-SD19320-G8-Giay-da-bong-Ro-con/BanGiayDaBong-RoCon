@@ -5,6 +5,7 @@
 package com.ui;
 
 import com.dao.taikhoanDAO;
+import com.main.Main;
 import com.utils.Auth;
 import javax.swing.JOptionPane;
 import model.taikhoan;
@@ -163,9 +164,9 @@ public static taikhoan TaiKhoan;
             if(taikhoanDAO.checkLogin(tk, mk)) {
                 JOptionPane.showMessageDialog(this, "Đăng nhập thành công ");
                 if (TaiKhoan.isChucvu()==true) {
-                    (new test()).setVisible(true);
+                    (new Main()).setVisible(true);
                 } else {
-                    (new test()).setVisible(true);
+                    (new Main()).setVisible(true);
                 }
                 Auth.user= TaiKhoan;
                 this.dispose();
