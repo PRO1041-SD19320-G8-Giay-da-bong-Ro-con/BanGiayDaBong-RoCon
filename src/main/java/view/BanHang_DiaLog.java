@@ -17,12 +17,14 @@ import services.BanHang_Ser;
  * @author Admin
  */
 public class BanHang_DiaLog extends javax.swing.JDialog {
+
     BanHang_Ser ql = new BanHang_Ser();
     DefaultTableModel tblModelSP = new DefaultTableModel();
     DefaultTableModel tblModelDH = new DefaultTableModel();
     List<ChiTietSanPham> lstSP = new ArrayList<>();
     List<ChiTietSanPham> lstDonHang = new ArrayList<>();
     int index = -1;
+
     /**
      * Creates new form HoaDon_JDiaLog
      */
@@ -31,20 +33,20 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
         initComponents();
         init();
     }
-    
-    private void init(){
+
+    private void init() {
         setLocationRelativeTo(null);
         lstSP = ql.getAllSanPham();
         loadTableSP(lstSP);
-        
+
     }
-    
+
     private void loadTableSP(List<ChiTietSanPham> lst) {
         tblModelSP.setRowCount(0);
         tblModelSP = (DefaultTableModel) tblSanPham.getModel();
-        
+
         for (ChiTietSanPham sp : lst) {
-            
+
             tblModelSP.addRow(new Object[]{
                 sp.getMaSP(),
                 sp.getTenSP(),
@@ -56,43 +58,49 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
                 sp.getSoLuong()
             });
         }
-        
+
     }
-    
+
     private int soLuong;
-    
-    private void loadTableDonHang(List<ChiTietSanPham> lst){
+
+    private void loadTableDonHang(List<ChiTietSanPham> lst) {
         tblModelDH.setRowCount(0);
         tblModelDH = (DefaultTableModel) tblDonHang.getModel();
         try {
             soLuong = Integer.parseInt(JOptionPane.showInputDialog(this, "Nhập số lượng sản phẩm:"));
             int hangTrongKho = Integer.parseInt(tblSanPham.getValueAt(tblSanPham.getSelectedRow(), 7).toString());
             ChiTietSanPham ctsp = new ChiTietSanPham();
-            ctsp.setSoLuong(hangTrongKho-soLuong);
-            for(ChiTietSanPham sp : lst){
-                if(soLuong > hangTrongKho){
+            ctsp.setSoLuong(hangTrongKho - soLuong);
+            for (ChiTietSanPham sp : lst) {
+                if (soLuong > hangTrongKho) {
                     JOptionPane.showMessageDialog(this, "Số lượng hàng trong kho không đủ");
                     return;
                 }
             }
-            
+            String tenSp = String.valueOf(tblSanPham.getValueAt(index, 1));
+//        int soLuong = Integer.parseInt(tblSanPham.getValueAt(index, 7).toString());
+            Double gia = Double.parseDouble(tblSanPham.getValueAt(index, 6).toString());
+            ChiTietSanPham ctsp1 = new ChiTietSanPham();
+            ctsp.setTenSP(tenSp);
+            ctsp.setSoLuong(soLuong);
+            ctsp.setGia(gia);
+            lstDonHang.add(ctsp);
             for (ChiTietSanPham sp : lst) {
-            tblModelDH.addRow(new Object[]{
-                sp.getTenSP(),
-                soLuong,
-                sp.getGia(),
-                sp.getGia()*soLuong
-            });
-        }
+                tblModelDH.addRow(new Object[]{
+                    sp.getTenSP(),
+                    soLuong,
+                    sp.getGia(),
+                    sp.getGia() * soLuong
+                });
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng số lượng");
             return;
         }
         loadTableSP(lstSP);
     }
-    
-    
-    private void clearForm(){
+
+    private void clearForm() {
         txtTenKH.setText("");
         txtSDT.setText("");
         lblTongTien.setText("0.0");
@@ -640,23 +648,15 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnXuatHoaDonActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       clearForm();
+        clearForm();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void btnThemVaoDonHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemVaoDonHangActionPerformed
-        if(tblSanPham.getSelectedRow()==-1){
+        if (tblSanPham.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm");
             return;
         }
         index = tblSanPham.getSelectedRow();
-        String tenSp = String.valueOf(tblSanPham.getValueAt(index, 1));
-//        int soLuong = Integer.parseInt(tblSanPham.getValueAt(index, 7).toString());
-        Double gia = Double.parseDouble(tblSanPham.getValueAt(index, 6).toString());
-        ChiTietSanPham ctsp = new ChiTietSanPham();
-        ctsp.setTenSP(tenSp);
-        ctsp.setSoLuong(soLuong);
-        ctsp.setGia(gia);
-        lstDonHang.add(ctsp);
         loadTableDonHang(lstDonHang);
     }//GEN-LAST:event_btnThemVaoDonHangActionPerformed
 

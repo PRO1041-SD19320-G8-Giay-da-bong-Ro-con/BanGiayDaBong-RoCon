@@ -12,7 +12,6 @@ view\ChiTietHoaDon_JDiaLog.class
 view\SanPham_JDialog$11.class
 view\SanPham_JDialog$14.class
 com\utils\JDBCHelper.class
-com\ui\QuanlytaikhoanJDialog$1$1.class
 view\BanHang_DiaLog$12.class
 model\Size.class
 view\SanPham_JDialog$6.class
@@ -40,6 +39,7 @@ view\BanHang_DiaLog$1.class
 com\utils\Auth.class
 view\HoaDon_JDiaLog$2$1.class
 view\ChiTietHoaDon_JDiaLog$2.class
+com\ui\QuanlytaikhoanJDialog$2$1.class
 view\SanPham_JDialog1$18.class
 com\ui\nhapmaDialog$1.class
 com\ui\dangnhapJDialog$1.class
@@ -139,6 +139,7 @@ view\ChiTietHoaDon_JDiaLog$2$1.class
 view\NhanVien_JDiaLog.class
 view\SanPham_JDialog1.class
 com\entity\SanPham.class
+com\ui\QuanlytaikhoanJDialog$2.class
 view\BanHang_DiaLog$3.class
 view\SanPham_JDialog$10.class
 model\MauSac.class
