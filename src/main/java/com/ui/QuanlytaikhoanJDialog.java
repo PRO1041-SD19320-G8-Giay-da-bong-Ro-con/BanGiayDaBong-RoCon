@@ -235,7 +235,7 @@ public class QuanlytaikhoanJDialog extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         taikhoan tk = this.readfrom();
-        String TaiKhoan = tk.getTaikhoan();
+        String TaiKhoan = Auth.user.getTaikhoan();
         if(DAO.update(tk, TaiKhoan)>0){
             JOptionPane.showMessageDialog(this, "update thành Công");
             showdata();
