@@ -23,15 +23,15 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         setLocationRelativeTo(null);
-        new dangnhapJDialog(this,true).setVisible(true);
+//        new dangnhapJDialog(this,true).setVisible(true);
     }
     
-    public static void changeForm(Component com){
-        panel.removeAll();
-        panel.add(com);
-        panel.repaint();
-        panel.revalidate();
-    }
+//    public static void changeForm(Component com){
+//        panel.removeAll();
+//        panel.add(com);
+//        panel.repaint();
+//        panel.revalidate();
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
