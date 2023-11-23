@@ -45,6 +45,14 @@ public class ChiTietSanPham extends SanPham{
         this.SoLuong = SoLuong;
     }
 
+    public ChiTietSanPham(String MaCTSP, String MaSize, String MaMau, int SoLuong, String maSP, String tenSP, String maThuongHieu, String maLoai, String maXuatXu, String maChatLieu, Double gia) {
+        super(maSP, tenSP, maThuongHieu, maLoai, maXuatXu, maChatLieu, gia);
+        this.MaCTSP = MaCTSP;
+        this.MaSize = MaSize;
+        this.MaMau = MaMau;
+        this.SoLuong = SoLuong;
+    }
+
         
 
     

@@ -29,6 +29,7 @@ view\SanPham_JDialog1$17.class
 model\ChiTietSanPham.class
 services\BanHang_Ser.class
 com\ui\PanelChiTietSanPham$2.class
+model\DonHang.class
 view\SanPham_JDialog1$14.class
 com\ui\PanelDanhSachSanPham$2.class
 com\ui\thongkeJDialog.class

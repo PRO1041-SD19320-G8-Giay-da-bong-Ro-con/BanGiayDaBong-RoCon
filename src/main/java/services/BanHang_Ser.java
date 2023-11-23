@@ -20,4 +20,9 @@ public class BanHang_Ser {
     public List<ChiTietSanPham> getAllSanPham() {
         return banHangrepo.getAllSanPham();
     }
+    
+    public int updateSoLuongSP(ChiTietSanPham ctsp,int soLuong){
+        return banHangrepo.updateSoLuongSP(ctsp, soLuong);
+         
+    }
 }

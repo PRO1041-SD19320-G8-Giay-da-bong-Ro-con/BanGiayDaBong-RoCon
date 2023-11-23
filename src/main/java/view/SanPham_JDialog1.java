@@ -6,6 +6,7 @@ package view;
 
 import java.awt.Image;
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -45,6 +46,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
     private SanPham_Ser ql = new SanPham_Ser();
     private int index = -1;
     String urlAnh = null;
+    DecimalFormat dfm = new DecimalFormat("#,###");
 
     /**
      * Creates new form SanPhamJDialog
@@ -91,7 +93,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
                 sp.getMaXuatXu(),
                 sp.getMaThuongHieu(),
                 sp.getMaLoai(),
-                sp.getGia()
+                dfm.format(sp.getGia())
             });
         }
 
@@ -108,7 +110,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
             uniqueGia.add(sp1.getGia());
         }
         for (Double sp : uniqueGia) {
-            cboModel.addElement(sp);
+            cboModel.addElement(dfm.format(sp));
         }
 
     }

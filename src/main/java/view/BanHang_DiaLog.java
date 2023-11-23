@@ -4,11 +4,14 @@
  */
 package view;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.ChiTietSanPham;
+import model.DonHang;
 import model.SanPham;
 import services.BanHang_Ser;
 
@@ -22,8 +25,9 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
     DefaultTableModel tblModelSP = new DefaultTableModel();
     DefaultTableModel tblModelDH = new DefaultTableModel();
     List<ChiTietSanPham> lstSP = new ArrayList<>();
-    List<ChiTietSanPham> lstDonHang = new ArrayList<>();
+    List<DonHang> lstDonHang = new ArrayList<>();
     int index = -1;
+    DecimalFormat dfm = new DecimalFormat("#,###");
 
     /**
      * Creates new form HoaDon_JDiaLog
@@ -54,7 +58,7 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
                 sp.getMaMau(),
                 sp.getMaChatLieu(),
                 sp.getMaThuongHieu(),
-                sp.getGia(),
+                dfm.format(sp.getGia()),
                 sp.getSoLuong()
             });
         }
@@ -62,41 +66,49 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
     }
 
     private int soLuong;
-
-    private void loadTableDonHang(List<ChiTietSanPham> lst) {
+    
+    
+    private void loadTableDonHang() {
         tblModelDH.setRowCount(0);
         tblModelDH = (DefaultTableModel) tblDonHang.getModel();
+        index = tblSanPham.getSelectedRow();
+        Double gia;
         try {
             soLuong = Integer.parseInt(JOptionPane.showInputDialog(this, "Nhập số lượng sản phẩm:"));
-            int hangTrongKho = Integer.parseInt(tblSanPham.getValueAt(tblSanPham.getSelectedRow(), 7).toString());
-            ChiTietSanPham ctsp = new ChiTietSanPham();
-            ctsp.setSoLuong(hangTrongKho - soLuong);
-            for (ChiTietSanPham sp : lst) {
+            int hangTrongKho = Integer.parseInt(tblSanPham.getValueAt(index, 7).toString());
+            gia = Double.parseDouble(tblSanPham.getValueAt(index, 6).toString());
+            String tenSp = String.valueOf(tblSanPham.getValueAt(index, 1));
+                
+            for(ChiTietSanPham ctsp : lstSP){
                 if (soLuong > hangTrongKho) {
                     JOptionPane.showMessageDialog(this, "Số lượng hàng trong kho không đủ");
                     return;
                 }
             }
-            String tenSp = String.valueOf(tblSanPham.getValueAt(index, 1));
+            
+            
+            DonHang dh = new DonHang(tenSp, soLuong, gia, soLuong * gia);
+            lstDonHang.add(dh);
 //        int soLuong = Integer.parseInt(tblSanPham.getValueAt(index, 7).toString());
-            Double gia = Double.parseDouble(tblSanPham.getValueAt(index, 6).toString());
-            ChiTietSanPham ctsp1 = new ChiTietSanPham();
-            ctsp.setTenSP(tenSp);
-            ctsp.setSoLuong(soLuong);
-            ctsp.setGia(gia);
-            lstDonHang.add(ctsp);
-            for (ChiTietSanPham sp : lst) {
+            for (DonHang dh1 : lstDonHang) {
                 tblModelDH.addRow(new Object[]{
-                    sp.getTenSP(),
-                    soLuong,
-                    sp.getGia(),
-                    sp.getGia() * soLuong
+                    dh1.getTenSP(),
+                    dh1.getSoLuong(),
+                    dfm.format(dh1.getGia()),
+                    dh1.getThanhTien()
                 });
             }
+//            ChiTietSanPham ctsp1 = lstSP.get(index);
+
+//            if (ql.updateSoLuongSP(ctsp1, hangTrongKho - soLuong) != 0) {
+//                JOptionPane.showMessageDialog(this, "Đã thêm vào đơn hàng");
+//            }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng số lượng");
             return;
         }
+        lstSP=ql.getAllSanPham();
         loadTableSP(lstSP);
     }
 
@@ -656,8 +668,8 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm");
             return;
         }
-        index = tblSanPham.getSelectedRow();
-        loadTableDonHang(lstDonHang);
+        
+        loadTableDonHang();
     }//GEN-LAST:event_btnThemVaoDonHangActionPerformed
 
     /**
