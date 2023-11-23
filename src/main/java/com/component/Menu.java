@@ -1,10 +1,11 @@
+package com.component;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.component;
 
-import com.main.Main;
+
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -22,7 +23,7 @@ public class Menu extends javax.swing.JPanel {
     /**
      * Creates new form Panel
      */
-    static Main main;
+//    static Main main;
 
     public Menu() {
         initComponents();
@@ -42,9 +43,9 @@ public class Menu extends javax.swing.JPanel {
         }
     }
 
-    public void setMain(Main main) {
-        this.main = main;
-    }
+//    public void setMain(Main main) {
+//        this.main = main;
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -223,19 +224,19 @@ public class Menu extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void closeMenu() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 250; i >= 0; i--) {
-                    try {
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                for (int i = 250; i >= 0; i--) {
+//                    try {
 //                        main.getMenu().setSize(i, main.getHeight());
-                        Thread.sleep(1);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        }).start();
+//                        Thread.sleep(1);
+//                    } catch (InterruptedException ex) {
+//                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                }
+//            }
+//        }).start();
     }
 
 }
