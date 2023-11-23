@@ -59,7 +59,6 @@ public static taikhoan TaiKhoan;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/person.png"))); // NOI18N
         jLabel5.setText("jLabel5");
 
         jPanel1.setBackground(new java.awt.Color(102, 255, 255));
@@ -163,11 +162,11 @@ public static taikhoan TaiKhoan;
             String mk = new String(txt_matkhau.getPassword());
             if(taikhoanDAO.checkLogin(tk, mk)) {
                 JOptionPane.showMessageDialog(this, "Đăng nhập thành công ");
-                if (TaiKhoan.isChucvu()==true) {
-                    (new Main()).setVisible(true);
-                } else {
-                    (new Main()).setVisible(true);
-                }
+//                if (TaiKhoan.isChucvu()==true) {
+//                    (new Main()).setVisible(true);
+//                } else {
+//                    (new Main()).setVisible(true);
+//                }
                 Auth.user= TaiKhoan;
                 this.dispose();
             } else {

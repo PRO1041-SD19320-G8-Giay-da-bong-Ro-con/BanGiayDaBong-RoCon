@@ -98,7 +98,9 @@ public class taikhoan {
     public void setChucvu(boolean chucvu) {
         this.chucvu = chucvu;
     }
-    
+    public Object[] data(){
+        return new Object[]{this.taikhoan,this.CCCD,this.ten,this.chucvu,this.ngaysinh,this.email,this.sdt};
+    }
 
     
 }

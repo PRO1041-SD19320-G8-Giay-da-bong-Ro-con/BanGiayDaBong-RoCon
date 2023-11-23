@@ -67,14 +67,15 @@ public class taikhoanDAO implements DAOInterface<taikhoan, String>{
         }
     }
     public int update(taikhoan tk , String taikhoan){
-        sql="update TAI_KHOAN set ten =?,NgaySinh =?,SDT=? where TAI_KHOAN =?";
+        sql="update TAI_KHOAN set ten =?,NgaySinh =?,SDT=?,Email=? where taiKhoan =?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             ps.setObject(1, tk.getTen());
             ps.setObject(2, tk.getNgaysinh());
             ps.setObject(3, tk.getSdt());
-            ps.setObject(4, taikhoan);
+            ps.setObject(4, tk.getEmail());
+            ps.setObject(5, taikhoan);
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

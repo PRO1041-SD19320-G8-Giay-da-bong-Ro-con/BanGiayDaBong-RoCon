@@ -11,7 +11,6 @@ view\ChiTietHoaDon_JDiaLog.class
 view\SanPham_JDialog$11.class
 view\SanPham_JDialog$14.class
 com\utils\JDBCHelper.class
-com\ui\QuanlytaikhoanJDialog$1$1.class
 view\BanHang_DiaLog$12.class
 model\Size.class
 view\SanPham_JDialog$6.class
@@ -24,6 +23,7 @@ view\BanHang_DiaLog$5.class
 com\ui\nhapmaDialog$1$1.class
 com\ui\dangnhapJDialog$2.class
 view\BanHang_DiaLog$8.class
+com\ui\panelQuanLyTaiKhoan.class
 view\SanPham_JDialog$9.class
 view\SanPham_JDialog1$17.class
 model\ChiTietSanPham.class
@@ -32,6 +32,7 @@ com\ui\PanelChiTietSanPham$2.class
 view\SanPham_JDialog1$14.class
 com\ui\PanelDanhSachSanPham$2.class
 com\ui\thongkeJDialog.class
+com\component\MenuPanel$8.class
 com\ui\PanelChiTietSanPham$1.class
 com\utils\DBConnect.class
 com\entity\XuatXu.class
@@ -39,6 +40,7 @@ view\BanHang_DiaLog$1.class
 com\utils\Auth.class
 view\HoaDon_JDiaLog$2$1.class
 view\ChiTietHoaDon_JDiaLog$2.class
+com\ui\QuanlytaikhoanJDialog$2$1.class
 view\SanPham_JDialog1$18.class
 com\ui\nhapmaDialog$1.class
 com\ui\dangnhapJDialog$1.class
@@ -61,6 +63,7 @@ view\SanPham_JDialog1$19.class
 com\ui\nhaplaimatkhauDialog$1$1.class
 com\entity\Size.class
 com\ui\thongkeJDialog$2.class
+com\ui\panelQuanLyTaiKhoan$1.class
 com\component\MenuPanel$1.class
 com\ui\doimatkhauJDialog.class
 com\component\MenuPanel.class
@@ -138,6 +141,7 @@ view\ChiTietHoaDon_JDiaLog$2$1.class
 view\NhanVien_JDiaLog.class
 view\SanPham_JDialog1.class
 com\entity\SanPham.class
+com\ui\QuanlytaikhoanJDialog$2.class
 view\BanHang_DiaLog$3.class
 view\SanPham_JDialog$10.class
 model\MauSac.class

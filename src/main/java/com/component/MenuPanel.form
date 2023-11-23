@@ -23,6 +23,7 @@
           <Component id="btnQLHoaDon2" alignment="0" pref="169" max="32767" attributes="0"/>
           <Component id="btnQLHoaDon3" alignment="0" pref="169" max="32767" attributes="0"/>
           <Component id="btnQLHoaDon4" alignment="0" pref="169" max="32767" attributes="0"/>
+          <Component id="btnQLTaikhoan" alignment="0" pref="169" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -37,7 +38,9 @@
               <Component id="btnQLHoaDon1" min="-2" pref="48" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnQLHoaDon3" min="-2" pref="48" max="-2" attributes="0"/>
-              <EmptySpace pref="45" max="32767" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <Component id="btnQLTaikhoan" min="-2" pref="48" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="btnQLHoaDon2" min="-2" pref="48" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnQLHoaDon4" min="-2" pref="48" max="-2" attributes="0"/>
@@ -100,6 +103,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQLHoaDon4ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnQLTaikhoan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; t&#xe0;i kho&#x1ea3;n"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQLTaikhoanActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
