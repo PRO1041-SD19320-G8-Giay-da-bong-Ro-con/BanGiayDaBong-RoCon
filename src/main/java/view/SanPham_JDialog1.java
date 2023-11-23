@@ -4,6 +4,7 @@
  */
 package view;
 
+import com.utils.XImage;
 import java.awt.Image;
 import java.io.File;
 import java.text.DecimalFormat;
@@ -44,7 +45,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
     private List<LoaiGiay> lstL = new ArrayList<>();
     private DefaultTableModel tblModel = new DefaultTableModel();
     private SanPham_Ser ql = new SanPham_Ser();
-    private int index = -1;
+    private int index ;
     String urlAnh = null;
     DecimalFormat dfm = new DecimalFormat("#,###");
 
@@ -67,9 +68,21 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         loadCboXuatXu();
         loadCboLoai();
         loadCboThemThuongHieu();
+        loadCboThemLoai();
+        cboHinh.removeAllItems();
+        for (SanPham sanPham : lstSP) {
+            cboHinh.addItem(sanPham.getHinh());
+        }
+        for (ChatLieu cl : lstCL) {
+            cboMaCL.addItem(cl.getTen());
+        }
+        if (lstSP.size() > 0) {
+            index = 0;
+            showDetail(index);
+        }
 
     }
-    
+
     private void loadCboThemThuongHieu() {
         DefaultComboBoxModel cboModel = new DefaultComboBoxModel();
         cboModel = (DefaultComboBoxModel) cboMaTH.getModel();
@@ -78,7 +91,14 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
             cboModel.addElement(th);
         }
     }
-    
+    private void loadCboThemLoai() {
+        DefaultComboBoxModel cboModel = new DefaultComboBoxModel();
+        cboModel = (DefaultComboBoxModel) cboML.getModel();
+        lstL = ql.getLoai();
+        for (LoaiGiay lg : lstL) {
+            cboModel.addElement(lg);
+        }
+    }
 
     private void loadTable(List<SanPham> lst) {
         tblModel.setRowCount(0);
@@ -93,7 +113,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
                 sp.getMaXuatXu(),
                 sp.getMaThuongHieu(),
                 sp.getMaLoai(),
-                dfm.format(sp.getGia())
+                sp.getGia()
             });
         }
 
@@ -110,7 +130,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
             uniqueGia.add(sp1.getGia());
         }
         for (Double sp : uniqueGia) {
-            cboModel.addElement(dfm.format(sp));
+            cboModel.addElement(sp);
         }
 
     }
@@ -151,54 +171,64 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         }
     }
 
-    private String choseFile(ImageIcon img, JLabel loadAnh) {
-        try {
-            // Tạo một đối tượng JFileChooser
-            JFileChooser jfc = new JFileChooser("src\\main\\java\\img\\");
-            // Tạo một bộ lọc tệp chỉ cho phép chọn các tệp hình ảnh JPEG
-            FileFilter imageFilter = new FileNameExtensionFilter(
-                    "JPEG Image", ImageIO.getReaderFileSuffixes());
-            jfc.addChoosableFileFilter(imageFilter);
+//    private String choseFile(ImageIcon img, JLabel loadAnh) {
+//        try {
+//            // Tạo một đối tượng JFileChooser
+//            JFileChooser jfc = new JFileChooser("src\\main\\java\\img\\");
+//            // Tạo một bộ lọc tệp chỉ cho phép chọn các tệp hình ảnh JPEG
+//            FileFilter imageFilter = new FileNameExtensionFilter(
+//                    "JPEG Image", ImageIO.getReaderFileSuffixes());
+//            jfc.addChoosableFileFilter(imageFilter);
+//
+//            // Hiển thị hộp thoại chọn tệp
+//            jfc.showOpenDialog(null);
+//
+//            // Lấy tệp đã chọn từ hộp thoại
+//            File file = jfc.getSelectedFile();
+//
+//            // Lấy đường dẫn của tệp đã chọn
+//            String fileName = file.getAbsolutePath();
+//
+//            // Tạo một đối tượng ImageIcon từ tệp đã chọn, và điều chỉnh kích thước hình ảnh
+//            img = new ImageIcon(new ImageIcon(fileName).getImage().getScaledInstance(lblHinh.getWidth(), lblHinh.getHeight(), Image.SCALE_SMOOTH));
+//
+//            //Lấy tên ảnh
+//            urlAnh = jfc.getSelectedFile().getName();
+//
+//            loadAnh.setText("");
+//
+//            // Đặt hình ảnh đã chọn vào nhãn lblHinh để hiển thị trên giao diện
+//            loadAnh.setIcon(img);
+//
+//            return fileName;
+//
+//        } catch (Exception e) {
+//
+//            JOptionPane.showMessageDialog(this, "Bạn đã hủy chọn ảnh");
+//
+//            // Trả về thông báo lỗi
+//            return e.getMessage();
+//        }
+//    }
+    JFileChooser fileChooser = new JFileChooser();
 
-            // Hiển thị hộp thoại chọn tệp
-            jfc.showOpenDialog(null);
-
-            // Lấy tệp đã chọn từ hộp thoại
-            File file = jfc.getSelectedFile();
-
-            // Lấy đường dẫn của tệp đã chọn
-            String fileName = file.getAbsolutePath();
-
-            // Tạo một đối tượng ImageIcon từ tệp đã chọn, và điều chỉnh kích thước hình ảnh
-            img = new ImageIcon(new ImageIcon(fileName).getImage().getScaledInstance(lblHinh.getWidth(), lblHinh.getHeight(), Image.SCALE_SMOOTH));
-
-            //Lấy tên ảnh
-            urlAnh = jfc.getSelectedFile().getName();
-
-            loadAnh.setText("");
-
-            // Đặt hình ảnh đã chọn vào nhãn lblHinh để hiển thị trên giao diện
-            loadAnh.setIcon(img);
-
-            return fileName;
-
-        } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(this, "Bạn đã hủy chọn ảnh");
-
-            // Trả về thông báo lỗi
-            return e.getMessage();
+    void chonAnh() {
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            XImage.saveImage(file);
+            ImageIcon img = XImage.readImage(file.getName());
+            lblHinh.setIcon(img);
+            lblHinh.setToolTipText(file.getName());
         }
     }
 
-    private void updateHinh(String url) {
-        ImageIcon img = new ImageIcon("src\\main\\java\\img\\" + url);
-        Image im = img.getImage();
-        ImageIcon icon = new ImageIcon(im.getScaledInstance(lblHinh.getWidth(), lblHinh.getHeight(), im.SCALE_SMOOTH));
-        lblHinh.setText("");
-        lblHinh.setIcon(icon);
-    }
-
+//    private void updateHinh(String url) {
+//        ImageIcon img = new ImageIcon("src\\main\\java\\img\\" + url);
+//        Image im = img.getImage();
+//        ImageIcon icon = new ImageIcon(im.getScaledInstance(lblHinh.getWidth(), lblHinh.getHeight(), im.SCALE_SMOOTH));
+//        lblHinh.setText("");
+//        lblHinh.setIcon(icon);
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -341,6 +371,12 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         jLabel16.setText("Loại ");
 
         jLabel17.setText("Giá: ");
+
+        cboMaTH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMaTHActionPerformed(evt);
+            }
+        });
 
         cboMaCL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -498,6 +534,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        lblHinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHinh.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -547,7 +584,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -575,6 +612,16 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton2, jButton3, jButton4, jButton5});
 
         cboHinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "hinh.png" }));
+        cboHinh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboHinhMouseClicked(evt);
+            }
+        });
+        cboHinh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboHinhActionPerformed(evt);
+            }
+        });
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(204, 255, 255)));
@@ -699,13 +746,13 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jLabel5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cboHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -961,7 +1008,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
                 .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(337, Short.MAX_VALUE))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1163,13 +1210,37 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
     }//GEN-LAST:event_cboChatLieuActionPerformed
 
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
-        ImageIcon img = new ImageIcon();
-        String anhChuyenDe = choseFile(img, lblHinh);
+//        ImageIcon img = new ImageIcon();
+//        String anhChuyenDe = choseFile(img, lblHinh);
+        chonAnh();
     }//GEN-LAST:event_lblHinhMouseClicked
 
     private void cboMaCLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMaCLActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboMaCLActionPerformed
+
+    private void cboHinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboHinhActionPerformed
+//        String ten = cboHinh.getSelectedItem() + "";
+//        loadHinh(ten);
+//        tblSP.setRowSelectionInterval(index, index);
+
+    }//GEN-LAST:event_cboHinhActionPerformed
+
+    private void cboHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboHinhMouseClicked
+
+    }//GEN-LAST:event_cboHinhMouseClicked
+
+    private void cboMaTHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMaTHActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboMaTHActionPerformed
+//    public void loadHinh(String ten) {
+//        SanPham sp = ql.getAllData().get(index);
+//        if (ten.equals("")) {
+//            lblHinh.setIcon(XImage.readImage(sp.getHinh()));
+//            lblHinh.setToolTipText(sp.getHinh());
+//        }
+//        tblSP.setRowSelectionInterval(index, index);
+//    }
 
     /**
      * @param args the command line arguments
@@ -1224,7 +1295,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         String maCL = cboMaCL.getSelectedItem() + "";
         String maXX = cboMaXuatXU.getSelectedItem() + "";
         String gia = txtGia.getText().trim();
-        String hinh = cboHinh.getSelectedItem() + "";
+        String hinh = lblHinh.getToolTipText();
         double gia1;
         if (maSp.isEmpty() || tenSp.isEmpty() || maTH.isEmpty() || maCL.isEmpty() || maML.isEmpty() || maXX.isEmpty() || gia.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Không được để trống dữ liệu ");
@@ -1251,6 +1322,10 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         txtGia.setText(sp.getGia() + "");
         cboHinh.setSelectedItem(sp.getHinh());
         tblSP.setRowSelectionInterval(index, index);
+        if (!sp.getHinh().equals("")) {
+            lblHinh.setIcon(XImage.readImage(sp.getHinh()));
+            lblHinh.setToolTipText(sp.getHinh());
+        }
     }
 
     private void clearForm() {

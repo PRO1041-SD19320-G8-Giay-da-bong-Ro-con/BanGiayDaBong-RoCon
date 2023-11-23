@@ -51,6 +51,7 @@ public class SanPham_Ser {
         }
         return lsts;
     }
+    
 
     public List<SanPham> getSanPhamTheoThuongHieu(String ma) {
         return sanPhamRepo.getSanPhamTheoThuongHieu(ma);

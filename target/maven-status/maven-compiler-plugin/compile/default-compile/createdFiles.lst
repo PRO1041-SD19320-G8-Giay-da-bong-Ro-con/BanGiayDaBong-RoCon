@@ -1,10 +1,12 @@
 view\HoaDon_JDiaLog$1.class
 com\ui\thongkeJDialog$1.class
 com\dao\ThuongHieuDAO.class
+model\LoaiGiay.class
 services\SanPham_Ser.class
 com\dao\SizeDAO.class
 view\SanPham_JDialog1$2.class
 view\SanPham_JDialog1$12.class
+view\SanPham_JDialog1$22.class
 view\BanHang_DiaLog$2.class
 com\entity\ThuongHieu.class
 view\BanHang_DiaLog$13$1.class
@@ -38,7 +40,10 @@ com\component\MenuPanel$8.class
 com\ui\PanelChiTietSanPham$1.class
 com\utils\DBConnect.class
 com\entity\XuatXu.class
+com\dao\XuatXuDAO.class
+com\entity\ChatLieu.class
 view\BanHang_DiaLog$1.class
+view\SanPham_JDialog1$23$1.class
 com\utils\Auth.class
 view\HoaDon_JDiaLog$2$1.class
 view\ChiTietHoaDon_JDiaLog$2.class
@@ -53,6 +58,7 @@ view\SanPham_JDialog$3.class
 com\entity\TaiKhoan.class
 model\XuatXu.class
 com\ui\PanelDanhSachSanPham$1.class
+com\dao\ChatLieuDAO.class
 view\SanPham_JDialog1$13.class
 model\ThuongHieu.class
 com\component\MenuPanel$7.class
@@ -66,7 +72,6 @@ com\ui\nhaplaimatkhauDialog$1$1.class
 com\entity\Size.class
 com\ui\thongkeJDialog$2.class
 com\ui\panelQuanLyTaiKhoan$1.class
-model\TaiKhoan.class
 com\component\MenuPanel$1.class
 com\ui\doimatkhauJDialog.class
 com\component\MenuPanel.class
@@ -90,6 +95,7 @@ view\BanHang_DiaLog$11.class
 responsitory\SanPham_Respo.class
 view\NhanVien_JDiaLog$1.class
 view\HoaDon_JDiaLog$2.class
+view\SanPham_JDialog1$23.class
 view\SanPham_JDialog1$3.class
 com\ui\test.class
 view\SanPham_JDialog.class
@@ -103,6 +109,7 @@ com\component\MenuPanel$6.class
 view\NhanVien_JDiaLog$1$1.class
 view\SanPham_JDialog$15.class
 view\SanPham_JDialog$20.class
+com\dao\LoaiGiayDAO.class
 com\ui\nhaplaimatkhauDialog.class
 com\ui\thongkeJDialog$2$1.class
 com\ui\quenmatkhauJDialog$1.class
@@ -116,10 +123,12 @@ view\SanPham_JDialog1$7.class
 com\ui\doimatkhauJDialog$1$1.class
 view\BanHang_DiaLog$13.class
 responsitory\BanHang_Respo.class
+com\utils\XImage.class
 com\dao\TaiKhoanDAO.class
 com\ui\quenmatkhauJDialog.class
 view\HoaDon_JDiaLog.class
 view\SanPham_JDialog1$10.class
+model\SanPham.class
 view\SanPham_JDialog1$20.class
 com\component\MenuPanel$5.class
 view\SanPham_JDialog1$8.class
@@ -131,6 +140,7 @@ view\SanPham_JDialog1$1.class
 view\BanHang_DiaLog.class
 com\entity\ChiTietSanPham.class
 view\SanPham_JDialog$1.class
+view\SanPham_JDialog1$21.class
 com\ui\PanelChiTietSanPham$4.class
 com\ui\nhapmaDialog.class
 responsitory\Giay_Interfacce.class

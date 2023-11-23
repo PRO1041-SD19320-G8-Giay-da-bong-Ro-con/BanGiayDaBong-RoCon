@@ -5,16 +5,19 @@
 package com.ui;
 
 import com.dao.TaiKhoanDAO;
-import com.entity.TaiKhoan;
+
 import com.utils.Auth;
 import javax.swing.JOptionPane;
+import com.entity.TaiKhoan;
 
 /**
  *
  * @author DELL
  */
 public class dangnhapJDialog extends javax.swing.JDialog {
-TaiKhoanDAO dao = new TaiKhoanDAO();
+
+    TaiKhoanDAO DAO = new TaiKhoanDAO();
+
     /**
      * Creates new form dangnhapJDialog
      */
@@ -22,8 +25,9 @@ TaiKhoanDAO dao = new TaiKhoanDAO();
         super(parent, modal);
         initComponents();
         init();
-        
+
     }
+
     boolean checkvalue() {
         if (txt_taikhoan.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "tk khong dc de trong");
@@ -161,25 +165,28 @@ TaiKhoanDAO dao = new TaiKhoanDAO();
     private void btn_dangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangnhapActionPerformed
         // TODO add your handling code here:
         try {
+
             if (this.checkvalue()) {
-            String tk = txt_taikhoan.getText();
-            String mk = new String(txt_matkhau.getPassword());
-            TaiKhoan tkhoan = dao.selectByID(tk);
-            if(tkhoan!=null) {
-                if(tkhoan.getMatkhau().equals(mk)){
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công ");
-                Auth.user = tkhoan;
-                this.dispose();
+
+                String tk = txt_taikhoan.getText();
+                String mk = new String(txt_matkhau.getPassword());
+                TaiKhoan taiKhoan = DAO.selectByID(tk);
+                if (taiKhoan != null) {
+                    if (taiKhoan.getMatkhau().equals(mk)) {
+                        JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
+                        Auth.user = taiKhoan;
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Sai mật khẩu");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Tài khoản không tồn tại");
                 }
-                else{
-                                    JOptionPane.showMessageDialog(this, "Sai mat khau");
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Khong thay tai khoan");
             }
-        }
         } catch (Exception e) {
         }
+
+
     }//GEN-LAST:event_btn_dangnhapActionPerformed
 
     /**
