@@ -67,13 +67,14 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         loadCboThuongHieu();
         loadCboXuatXu();
         loadCboLoai();
-        
+        loadCboThemThuongHieu();
+        loadCboThemLoai();
         cboHinh.removeAllItems();
         for (SanPham sanPham : lstSP) {
             cboHinh.addItem(sanPham.getHinh());
         }
         for (ChatLieu cl : lstCL) {
-            cboMaCL.addItem(cl.getMaChatLieu());
+            cboMaCL.addItem(cl.getTen());
         }
         if (lstSP.size() > 0) {
             index = 0;

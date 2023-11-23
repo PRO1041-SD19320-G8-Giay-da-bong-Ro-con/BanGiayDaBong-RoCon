@@ -4,18 +4,27 @@
  */
 package com.ui;
 
+<<<<<<< HEAD
+import com.dao.TaiKhoanDAO;
+=======
 import com.dao.taikhoanDAO;
 import com.main.Main;
+>>>>>>> 27f1cc0a23977e2b318ae099e1333849fa1464bd
 import com.utils.Auth;
 import javax.swing.JOptionPane;
-import model.taikhoan;
+import com.entity.TaiKhoan;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author DELL
  */
 public class dangnhapJDialog extends javax.swing.JDialog {
-public static taikhoan TaiKhoan;
+
+    TaiKhoanDAO daoTK = new TaiKhoanDAO();
+
     /**
      * Creates new form dangnhapJDialog
      */
@@ -23,8 +32,9 @@ public static taikhoan TaiKhoan;
         super(parent, modal);
         initComponents();
         init();
-        
+
     }
+
     boolean checkvalue() {
         if (txt_taikhoan.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "tk khong dc de trong");
@@ -59,7 +69,6 @@ public static taikhoan TaiKhoan;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/person.png"))); // NOI18N
         jLabel5.setText("jLabel5");
 
         jPanel1.setBackground(new java.awt.Color(102, 255, 255));
@@ -159,19 +168,40 @@ public static taikhoan TaiKhoan;
     private void btn_dangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangnhapActionPerformed
         // TODO add your handling code here:
         if (this.checkvalue()) {
+<<<<<<< HEAD
+            try {
+                String tk = txt_taikhoan.getText();
+                String mk = new String(txt_matkhau.getPassword());
+                TaiKhoan taiKhoan = daoTK.selectByID(tk);
+                if ( taiKhoan != null) {
+                    if (taiKhoan.getMatkhau().equals(mk)) {
+                        JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
+                        Auth.user = taiKhoan;
+                        this.dispose();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(this, "Sai mật khẩu");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Tài khoản không tồn tại");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(dangnhapJDialog.class.getName()).log(Level.SEVERE, null, ex);
+=======
             String tk = txt_taikhoan.getText();
             String mk = new String(txt_matkhau.getPassword());
             if(taikhoanDAO.checkLogin(tk, mk)) {
                 JOptionPane.showMessageDialog(this, "Đăng nhập thành công ");
-                if (TaiKhoan.isChucvu()==true) {
-                    (new Main()).setVisible(true);
-                } else {
-                    (new Main()).setVisible(true);
-                }
+//                if (TaiKhoan.isChucvu()==true) {
+//                    (new Main()).setVisible(true);
+//                } else {
+//                    (new Main()).setVisible(true);
+//                }
                 Auth.user= TaiKhoan;
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Thất bại .........");
+>>>>>>> 27f1cc0a23977e2b318ae099e1333849fa1464bd
             }
         }
     }//GEN-LAST:event_btn_dangnhapActionPerformed

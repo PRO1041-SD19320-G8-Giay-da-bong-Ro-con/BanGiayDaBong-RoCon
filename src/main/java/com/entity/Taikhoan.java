@@ -4,7 +4,6 @@
  */
 package com.entity;
 
-import model.*;
 import java.util.Date;
 
 /**
@@ -98,7 +97,5 @@ public class Taikhoan {
     public void setChucvu(boolean chucvu) {
         this.chucvu = chucvu;
     }
-    
-
-    
+  
 }

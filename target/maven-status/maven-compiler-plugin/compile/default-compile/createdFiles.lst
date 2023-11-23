@@ -24,6 +24,7 @@ view\BanHang_DiaLog$5.class
 com\ui\nhapmaDialog$1$1.class
 com\ui\dangnhapJDialog$2.class
 view\BanHang_DiaLog$8.class
+com\ui\panelQuanLyTaiKhoan.class
 view\SanPham_JDialog$9.class
 view\SanPham_JDialog1$17.class
 model\ChiTietSanPham.class
@@ -33,6 +34,7 @@ model\DonHang.class
 view\SanPham_JDialog1$14.class
 com\ui\PanelDanhSachSanPham$2.class
 com\ui\thongkeJDialog.class
+com\component\MenuPanel$8.class
 com\ui\PanelChiTietSanPham$1.class
 com\utils\DBConnect.class
 com\entity\XuatXu.class
@@ -63,6 +65,7 @@ view\SanPham_JDialog1$19.class
 com\ui\nhaplaimatkhauDialog$1$1.class
 com\entity\Size.class
 com\ui\thongkeJDialog$2.class
+com\ui\panelQuanLyTaiKhoan$1.class
 com\component\MenuPanel$1.class
 com\ui\doimatkhauJDialog.class
 com\component\MenuPanel.class

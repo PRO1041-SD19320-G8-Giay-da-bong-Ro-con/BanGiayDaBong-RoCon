@@ -4,14 +4,19 @@
  */
 package com.entity;
 
-import model.*;
 import java.util.Date;
+
+<<<<<<< HEAD:src/main/java/com/entity/taikhoan.java
+=======
+import java.util.Date;
+
+>>>>>>> 27f1cc0a23977e2b318ae099e1333849fa1464bd:src/main/java/model/taikhoan.java
 
 /**
  *
  * @author DELL
  */
-public class Taikhoan {
+public class TaiKhoan {
     private String taikhoan;
     private String matkhau;
     private String ten;
@@ -21,10 +26,10 @@ public class Taikhoan {
     private String CCCD;
     private boolean chucvu;
 
-    public Taikhoan() {
+    public TaiKhoan() {
     }
 
-    public Taikhoan(String taikhoan, String matkhau, String ten, Date ngaysinh, String sdt, String email, String CCCD, boolean chucvu) {
+    public TaiKhoan(String taikhoan, String matkhau, String ten, Date ngaysinh, String sdt, String email, String CCCD, boolean chucvu) {
         this.taikhoan = taikhoan;
         this.matkhau = matkhau;
         this.ten = ten;
@@ -98,7 +103,9 @@ public class Taikhoan {
     public void setChucvu(boolean chucvu) {
         this.chucvu = chucvu;
     }
-    
+    public Object[] data(){
+        return new Object[]{this.taikhoan,this.CCCD,this.ten,this.chucvu,this.ngaysinh,this.email,this.sdt};
+    }
 
     
 }

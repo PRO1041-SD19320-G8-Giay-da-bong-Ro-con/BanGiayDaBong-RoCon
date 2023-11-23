@@ -4,7 +4,7 @@
  */
 package com.utils;
 
-import model.taikhoan;
+import com.entity.TaiKhoan;
 
 /**
  *
@@ -12,7 +12,7 @@ import model.taikhoan;
  */
 public class Auth {
 
-    public static taikhoan user = null;
+    public static TaiKhoan user = null;
 
     public static void clear() {
         Auth.user = null;
