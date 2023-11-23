@@ -4,9 +4,14 @@
  */
 package view;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.ChiTietSanPham;
+import model.DonHang;
 import model.SanPham;
 import services.BanHang_Ser;
 
@@ -15,10 +20,15 @@ import services.BanHang_Ser;
  * @author Admin
  */
 public class BanHang_DiaLog extends javax.swing.JDialog {
+
     BanHang_Ser ql = new BanHang_Ser();
     DefaultTableModel tblModelSP = new DefaultTableModel();
-    List<SanPham> lstSP = new ArrayList<>();
+    DefaultTableModel tblModelDH = new DefaultTableModel();
+    List<ChiTietSanPham> lstSP = new ArrayList<>();
+    List<DonHang> lstDonHang = new ArrayList<>();
     int index = -1;
+    DecimalFormat dfm = new DecimalFormat("#,###");
+
     /**
      * Creates new form HoaDon_JDiaLog
      */
@@ -27,19 +37,20 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
         initComponents();
         init();
     }
-    
-    private void init(){
+
+    private void init() {
         setLocationRelativeTo(null);
         lstSP = ql.getAllSanPham();
         loadTableSP(lstSP);
+
     }
-    
-    private void loadTableSP(List<SanPham> lst) {
+
+    private void loadTableSP(List<ChiTietSanPham> lst) {
         tblModelSP.setRowCount(0);
         tblModelSP = (DefaultTableModel) tblSanPham.getModel();
-        
-        for (SanPham sp : lst) {
-            
+
+        for (ChiTietSanPham sp : lst) {
+
             tblModelSP.addRow(new Object[]{
                 sp.getMaSP(),
                 sp.getTenSP(),
@@ -47,15 +58,61 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
                 sp.getMaMau(),
                 sp.getMaChatLieu(),
                 sp.getMaThuongHieu(),
-                sp.getGia(),
+                dfm.format(sp.getGia()),
                 sp.getSoLuong()
             });
         }
-        
+
     }
+
+    private int soLuong;
     
     
-    private void clearForm(){
+    private void loadTableDonHang() {
+        tblModelDH.setRowCount(0);
+        tblModelDH = (DefaultTableModel) tblDonHang.getModel();
+        index = tblSanPham.getSelectedRow();
+        Double gia;
+        try {
+            soLuong = Integer.parseInt(JOptionPane.showInputDialog(this, "Nhập số lượng sản phẩm:"));
+            int hangTrongKho = Integer.parseInt(tblSanPham.getValueAt(index, 7).toString());
+            gia = Double.parseDouble(tblSanPham.getValueAt(index, 6).toString());
+            String tenSp = String.valueOf(tblSanPham.getValueAt(index, 1));
+                
+            for(ChiTietSanPham ctsp : lstSP){
+                if (soLuong > hangTrongKho) {
+                    JOptionPane.showMessageDialog(this, "Số lượng hàng trong kho không đủ");
+                    return;
+                }
+            }
+            
+            
+            DonHang dh = new DonHang(tenSp, soLuong, gia, soLuong * gia);
+            lstDonHang.add(dh);
+//        int soLuong = Integer.parseInt(tblSanPham.getValueAt(index, 7).toString());
+            for (DonHang dh1 : lstDonHang) {
+                tblModelDH.addRow(new Object[]{
+                    dh1.getTenSP(),
+                    dh1.getSoLuong(),
+                    dfm.format(dh1.getGia()),
+                    dh1.getThanhTien()
+                });
+            }
+//            ChiTietSanPham ctsp1 = lstSP.get(index);
+
+//            if (ql.updateSoLuongSP(ctsp1, hangTrongKho - soLuong) != 0) {
+//                JOptionPane.showMessageDialog(this, "Đã thêm vào đơn hàng");
+//            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng số lượng");
+            return;
+        }
+        lstSP=ql.getAllSanPham();
+        loadTableSP(lstSP);
+    }
+
+    private void clearForm() {
         txtTenKH.setText("");
         txtSDT.setText("");
         lblTongTien.setText("0.0");
@@ -88,7 +145,7 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
         jComboBox6 = new javax.swing.JComboBox<>();
         jPanelĐonHang = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblDonHang = new javax.swing.JTable();
         btnTaoHoaDon = new javax.swing.JButton();
         btnXoaKhoiDonHang = new javax.swing.JButton();
         jPanelQLHD = new javax.swing.JPanel();
@@ -161,6 +218,11 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
         }
 
         btnThemVaoDonHang.setText("Thêm vào đơn hàng");
+        btnThemVaoDonHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemVaoDonHangActionPerformed(evt);
+            }
+        });
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thương Hiệu", " " }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
@@ -220,23 +282,23 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
 
         jPanelĐonHang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ĐƠN HÀNG", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDonHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "TEN SP", "SL", "GIÁ", "KHUYẾN MÃI", "THÀNH TIỀN"
+                "TEN SP", "SL", "GIÁ", "THÀNH TIỀN"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable1);
+        jScrollPane3.setViewportView(tblDonHang);
 
         btnTaoHoaDon.setText("Tạo hóa đơn");
         btnTaoHoaDon.addActionListener(new java.awt.event.ActionListener() {
@@ -256,12 +318,11 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
         jPanelĐonHang.setLayout(jPanelĐonHangLayout);
         jPanelĐonHangLayout.setHorizontalGroup(
             jPanelĐonHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelĐonHangLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelĐonHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelĐonHangLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelĐonHangLayout.createSequentialGroup()
+                .addGroup(jPanelĐonHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                    .addGroup(jPanelĐonHangLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnXoaKhoiDonHang)
                         .addGap(18, 18, 18)
                         .addComponent(btnTaoHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -440,7 +501,7 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
                             .addGroup(jPanelQLHDLayout.createSequentialGroup()
                                 .addGap(155, 155, 155)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 31, Short.MAX_VALUE))
+                        .addGap(0, 28, Short.MAX_VALUE))
                     .addGroup(jPanelQLHDLayout.createSequentialGroup()
                         .addGroup(jPanelQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -520,8 +581,7 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
         jPanelHoaDonCho.setLayout(jPanelHoaDonChoLayout);
         jPanelHoaDonChoLayout.setHorizontalGroup(
             jPanelHoaDonChoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelHoaDonChoLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelHoaDonChoLayout.createSequentialGroup()
                 .addComponent(jScrollPane4)
                 .addContainerGap())
         );
@@ -540,18 +600,14 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jPanelSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 3, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanelĐonHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jPanelHoaDonCho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1)
+                                .addComponent(jPanelSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanelĐonHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanelHoaDonCho, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelQLHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -604,8 +660,17 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnXuatHoaDonActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       clearForm();
+        clearForm();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void btnThemVaoDonHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemVaoDonHangActionPerformed
+        if (tblSanPham.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm");
+            return;
+        }
+        
+        loadTableDonHang();
+    }//GEN-LAST:event_btnThemVaoDonHangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -687,13 +752,13 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblGiamGia;
     private javax.swing.JLabel lblTienThua;
     private javax.swing.JLabel lblTongTien;
     private javax.swing.JLabel lblTongTienDaThanhToan;
     private javax.swing.JLabel lblTongTienThanhToan;
+    private javax.swing.JTable tblDonHang;
     private javax.swing.JTable tblSanPham;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTenKH;

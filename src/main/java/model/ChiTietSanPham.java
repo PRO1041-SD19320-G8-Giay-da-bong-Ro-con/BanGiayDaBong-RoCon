@@ -10,10 +10,10 @@ import com.entity.*;
  *
  * @author Thai
  */
-public class ChiTietSanPham {
+public class ChiTietSanPham extends SanPham{
 
     private String MaCTSP;
-    private String MaSP;
+    private String MaSp;
     private String MaSize;
     private String MaMau;
     private int SoLuong;
@@ -21,14 +21,42 @@ public class ChiTietSanPham {
     public ChiTietSanPham() {
     }
 
-    public ChiTietSanPham(String MaCTSP, String MaSP, String MaSize, String MaMau, int SoLuong) {
+    public ChiTietSanPham(String MaCTSP, String MaSp, String MaSize, String MaMau, int SoLuong) {
         this.MaCTSP = MaCTSP;
-        this.MaSP = MaSP;
+        this.MaSp = MaSp;
         this.MaSize = MaSize;
         this.MaMau = MaMau;
         this.SoLuong = SoLuong;
     }
 
+    public ChiTietSanPham(String MaCTSP, String MaSp, String MaSize, String MaMau, int SoLuong, String maThuongHieu, String maLoai, String maXuatXu, String maChatLieu, Double gia) {
+        super(maThuongHieu, maLoai, maXuatXu, maChatLieu, gia);
+        this.MaCTSP = MaCTSP;
+        this.MaSp = MaSp;
+        this.MaSize = MaSize;
+        this.MaMau = MaMau;
+        this.SoLuong = SoLuong;
+    }
+
+    public ChiTietSanPham(String MaSize, String MaMau, int SoLuong, String maSP, String tenSP, String maThuongHieu, String maLoai, String maXuatXu, String maChatLieu, Double gia) {
+        super(maSP, tenSP, maThuongHieu, maLoai, maXuatXu, maChatLieu, gia);
+        this.MaSize = MaSize;
+        this.MaMau = MaMau;
+        this.SoLuong = SoLuong;
+    }
+
+    public ChiTietSanPham(String MaCTSP, String MaSize, String MaMau, int SoLuong, String maSP, String tenSP, String maThuongHieu, String maLoai, String maXuatXu, String maChatLieu, Double gia) {
+        super(maSP, tenSP, maThuongHieu, maLoai, maXuatXu, maChatLieu, gia);
+        this.MaCTSP = MaCTSP;
+        this.MaSize = MaSize;
+        this.MaMau = MaMau;
+        this.SoLuong = SoLuong;
+    }
+
+        
+
+    
+    
     public String getMaCTSP() {
         return MaCTSP;
     }
@@ -37,12 +65,12 @@ public class ChiTietSanPham {
         this.MaCTSP = MaCTSP;
     }
 
-    public String getMaSP() {
-        return MaSP;
+    public String getMaSp() {
+        return MaSp;
     }
 
-    public void setMaSP(String MaSP) {
-        this.MaSP = MaSP;
+    public void setMaSp(String MaSP) {
+        this.MaSp = MaSP;
     }
 
     public String getMaSize() {
