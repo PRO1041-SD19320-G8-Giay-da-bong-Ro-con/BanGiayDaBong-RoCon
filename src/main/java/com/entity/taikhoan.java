@@ -6,6 +6,11 @@ package com.entity;
 
 import java.util.Date;
 
+<<<<<<< HEAD:src/main/java/com/entity/taikhoan.java
+=======
+import java.util.Date;
+
+>>>>>>> 27f1cc0a23977e2b318ae099e1333849fa1464bd:src/main/java/model/taikhoan.java
 
 /**
  *
@@ -98,7 +103,9 @@ public class TaiKhoan {
     public void setChucvu(boolean chucvu) {
         this.chucvu = chucvu;
     }
-    
+    public Object[] data(){
+        return new Object[]{this.taikhoan,this.CCCD,this.ten,this.chucvu,this.ngaysinh,this.email,this.sdt};
+    }
 
     
 }

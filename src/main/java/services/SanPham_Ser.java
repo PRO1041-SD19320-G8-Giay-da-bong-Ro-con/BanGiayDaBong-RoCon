@@ -7,8 +7,10 @@ package services;
 import java.util.ArrayList;
 import java.util.List;
 import model.ChatLieu;
+import model.LoaiGiay;
 import model.SanPham;
 import model.ThuongHieu;
+import model.XuatXu;
 import responsitory.SanPham_Respo;
 
 /**
@@ -64,6 +66,14 @@ public class SanPham_Ser {
     
     public List<ThuongHieu> getThuongHieu() {
         return sanPhamRepo.getThuongHieu();
+    }
+    
+    public List<XuatXu> getXuatXu(){
+        return sanPhamRepo.getXuatXu();
+    }
+    
+    public List<LoaiGiay> getLoai() {
+        return sanPhamRepo.getLoai();
     }
     
 }

@@ -1,4 +1,4 @@
-package com.entity;
+package model;
 
 /**
  *
@@ -33,6 +33,12 @@ public class LoaiGiay {
         this.Ten = Ten;
     }
 
+    @Override
+    public String toString() {
+        return this.getTen();
+    }
+
+    
     
 
 }

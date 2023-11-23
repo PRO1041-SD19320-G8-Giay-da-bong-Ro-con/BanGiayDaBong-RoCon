@@ -25,10 +25,38 @@ public class SanPham {
     private String maChatLieu;
     
     private Double gia;
+    
+    private ChiTietSanPham ctsp;
+    
+    private String maSize;
+    
+    private String maMau;
+    
+    private int soLuong;
+
+    public SanPham(String maSP, String tenSP, String maThuongHieu, String maLoai, String maXuatXu, String maChatLieu, Double gia, String maSize, String maMau, int soLuong) {
+        this.maSP = maSP;
+        this.tenSP = tenSP;
+        this.maThuongHieu = maThuongHieu;
+        this.maLoai = maLoai;
+        this.maXuatXu = maXuatXu;
+        this.maChatLieu = maChatLieu;
+        this.gia = gia;
+        this.maSize = maSize;
+        this.maMau = maMau;
+        this.soLuong = soLuong;
+    }
+
+    
+    
+    
+    
+    
+   
 
     public SanPham() {
     }
-
+    
     public SanPham(String maSP, String tenSP, String hinh, String maThuongHieu, String maLoai, String maXuatXu, String maChatLieu, Double gia) {
         this.maSP = maSP;
         this.tenSP = tenSP;
@@ -123,6 +151,40 @@ public class SanPham {
         this.maChatLieu = maChatLieu;
     }
 
+    public ChiTietSanPham getCtsp() {
+        return ctsp;
+    }
+
+    public void setCtsp(ChiTietSanPham ctsp) {
+        this.ctsp = ctsp;
+    }
+
+    public String getMaSize() {
+        return maSize;
+    }
+
+    public void setMaSize(String maSize) {
+        this.maSize = maSize;
+    }
+
+    public String getMaMau() {
+        return maMau;
+    }
+
+    public void setMaMau(String maMau) {
+        this.maMau = maMau;
+    }
+
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    
+    
     @Override
     public String toString() {
         return String.valueOf(this.gia);

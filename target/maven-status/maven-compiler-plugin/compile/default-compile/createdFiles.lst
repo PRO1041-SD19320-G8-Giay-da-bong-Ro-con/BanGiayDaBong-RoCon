@@ -1,129 +1,149 @@
+view\HoaDon_JDiaLog$1.class
 com\ui\thongkeJDialog$1.class
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-com\ui\QuanlytaikhoanJDialog$1$1.class
-com\ui\dangnhapJDialog.class
-com\ui\nhapmaDialog$1$1.class
-com\ui\thongkeJDialog.class
-com\ui\nhapmaDialog$1.class
-com\ui\dangnhapJDialog$1.class
-com\ui\doimatkhauJDialog$1.class
-com\ui\dangnhapJDialog$1$1.class
-=======
-<<<<<<< HEAD
-com\ui\QuanlytaikhoanJDialog$1$1.class
-com\ui\dangnhapJDialog.class
-com\ui\dangnhapJDialog$2$1.class
-com\ui\nhapmaDialog$1$1.class
-com\ui\dangnhapJDialog$2.class
-com\ui\thongkeJDialog.class
-com\utils\Auth.class
-com\ui\nhapmaDialog$1.class
-com\ui\dangnhapJDialog$1.class
-com\ui\doimatkhauJDialog$1.class
->>>>>>> 5792522622991823ca5dbad9b1db19334c7b4bf0
-com\ui\nhaplaimatkhauDialog$1.class
-com\ui\nhaplaimatkhauDialog$1$1.class
-com\ui\thongkeJDialog$2.class
-com\ui\doimatkhauJDialog.class
-<<<<<<< HEAD
-=======
-com\ui\test$1.class
-model\taikhoan.class
-com\ui\test.class
-=======
-=======
->>>>>>> 2fe5e6c104877a064030fd1faf084c236a9d9ba6
->>>>>>> 9548ff8b5f2369e26d5a59026a9083fb3d7f4434
+com\dao\ThuongHieuDAO.class
+services\SanPham_Ser.class
+com\dao\SizeDAO.class
 view\SanPham_JDialog1$2.class
 view\SanPham_JDialog1$12.class
-view\SanPham_JDialog1$22.class
-com\ui\QuanlytaikhoanJDialog$1$1.class
+view\BanHang_DiaLog$2.class
+com\entity\ThuongHieu.class
+view\BanHang_DiaLog$13$1.class
+view\ChiTietHoaDon_JDiaLog.class
+view\SanPham_JDialog$11.class
+view\SanPham_JDialog$14.class
+com\utils\JDBCHelper.class
+view\BanHang_DiaLog$12.class
+model\Size.class
+view\SanPham_JDialog$6.class
+com\component\MenuPanel$2.class
+view\ChiTietHoaDon_JDiaLog$1.class
 com\ui\dangnhapJDialog.class
+com\ui\PanelChiTietSanPham$5.class
 com\ui\dangnhapJDialog$2$1.class
+view\BanHang_DiaLog$5.class
 com\ui\nhapmaDialog$1$1.class
 com\ui\dangnhapJDialog$2.class
+view\BanHang_DiaLog$8.class
+com\ui\panelQuanLyTaiKhoan.class
+view\SanPham_JDialog$9.class
 view\SanPham_JDialog1$17.class
+model\ChiTietSanPham.class
+services\BanHang_Ser.class
+com\ui\PanelChiTietSanPham$2.class
+model\DonHang.class
 view\SanPham_JDialog1$14.class
+com\ui\PanelDanhSachSanPham$2.class
 com\ui\thongkeJDialog.class
-view\SanPham_JDialog1$24.class
+com\component\MenuPanel$8.class
+com\ui\PanelChiTietSanPham$1.class
+com\utils\DBConnect.class
+com\entity\XuatXu.class
+view\BanHang_DiaLog$1.class
 com\utils\Auth.class
+view\HoaDon_JDiaLog$2$1.class
+view\ChiTietHoaDon_JDiaLog$2.class
+com\ui\QuanlytaikhoanJDialog$2$1.class
 view\SanPham_JDialog1$18.class
 com\ui\nhapmaDialog$1.class
 com\ui\dangnhapJDialog$1.class
 view\SanPham_JDialog1$4.class
+view\BanHang_DiaLog$7.class
 com\ui\doimatkhauJDialog$1.class
+view\SanPham_JDialog$19.class
+view\SanPham_JDialog$3.class
+model\XuatXu.class
+com\ui\PanelDanhSachSanPham$1.class
 view\SanPham_JDialog1$13.class
 model\ThuongHieu.class
+com\component\MenuPanel$7.class
 com\ui\nhaplaimatkhauDialog$1.class
+view\SanPham_JDialog$13.class
+view\BanHang_DiaLog$10.class
+view\SanPham_JDialog$4.class
 view\SanPham_JDialog1$5.class
 view\SanPham_JDialog1$19.class
 com\ui\nhaplaimatkhauDialog$1$1.class
+com\entity\Size.class
 com\ui\thongkeJDialog$2.class
+com\ui\panelQuanLyTaiKhoan$1.class
+com\component\MenuPanel$1.class
 com\ui\doimatkhauJDialog.class
+com\component\MenuPanel.class
 view\SanPham_JDialog1$9.class
+view\BanHang_DiaLog$6.class
 com\ui\test$1.class
+view\SanPham_JDialog$5.class
 view\SanPham_JDialog1$16.class
-view\SanPham_JDialog1$24$1.class
+com\entity\MauSac.class
 model\taikhoan.class
+db\JDBCHelper.class
+com\component\MenuPanel$3.class
+view\BanHang_DiaLog$9.class
 model\ChatLieu.class
-view\SanPham_JDialog1$23.class
+com\ui\PanelDanhSachSanPham$3.class
+com\dao\DAOInterface.class
+com\dao\SanPhamDAO.class
+com\ui\PanelChiTietSanPham$3.class
+com\main\Main$1.class
+view\SanPham_JDialog$8.class
+view\BanHang_DiaLog$11.class
+responsitory\SanPham_Respo.class
+view\NhanVien_JDiaLog$1.class
+view\HoaDon_JDiaLog$2.class
 view\SanPham_JDialog1$3.class
 com\ui\test.class
+view\SanPham_JDialog.class
 view\SanPham_JDialog1$6.class
+com\dao\ChiTietSanPhamDAO.class
+view\SanPham_JDialog$12.class
 view\SanPham_JDialog1$11.class
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 42e59f1c4218043ac480aecaf898901777600b5b
->>>>>>> 5792522622991823ca5dbad9b1db19334c7b4bf0
-=======
->>>>>>> 2fe5e6c104877a064030fd1faf084c236a9d9ba6
->>>>>>> 9548ff8b5f2369e26d5a59026a9083fb3d7f4434
+view\SanPham_JDialog$18.class
+view\SanPham_JDialog$2.class
+com\component\MenuPanel$6.class
+view\NhanVien_JDiaLog$1$1.class
+view\SanPham_JDialog$15.class
+view\SanPham_JDialog$20.class
 com\ui\nhaplaimatkhauDialog.class
 com\ui\thongkeJDialog$2$1.class
 com\ui\QuanlytaikhoanJDialog.class
 com\ui\quenmatkhauJDialog$1.class
+view\SanPham_JDialog$7.class
 com\ui\quenmatkhauJDialog$1$1.class
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-com\ui\doimatkhauJDialog$1$1.class
-com\ui\quenmatkhauJDialog.class
-com\ui\QuanlytaikhoanJDialog$1.class
-com\ui\nhapmaDialog.class
-=======
-<<<<<<< HEAD
-com\ui\doimatkhauJDialog$1$1.class
-com\ui\quenmatkhauJDialog.class
-com\ui\QuanlytaikhoanJDialog$1.class
-com\dao\taikhoanDAO.class
-com\ui\nhapmaDialog.class
-=======
-=======
->>>>>>> 2fe5e6c104877a064030fd1faf084c236a9d9ba6
->>>>>>> 9548ff8b5f2369e26d5a59026a9083fb3d7f4434
+com\main\Main.class
+view\SanPham_JDialog$16.class
+view\BanHang_DiaLog$4.class
+com\ui\PanelChiTietSanPham.class
 view\SanPham_JDialog1$7.class
 com\ui\doimatkhauJDialog$1$1.class
+view\BanHang_DiaLog$13.class
+responsitory\BanHang_Respo.class
 com\ui\quenmatkhauJDialog.class
+com\entity\Taikhoan.class
+view\HoaDon_JDiaLog.class
 view\SanPham_JDialog1$10.class
 com\ui\QuanlytaikhoanJDialog$1.class
 view\SanPham_JDialog1$20.class
+com\component\MenuPanel$5.class
 view\SanPham_JDialog1$8.class
+view\SanPham_JDialog$20$1.class
 view\SanPham_JDialog1$15.class
+com\ui\PanelDanhSachSanPham.class
+view\SanPham_JDialog$17.class
 view\SanPham_JDialog1$1.class
+view\BanHang_DiaLog.class
 com\dao\taikhoanDAO.class
-view\SanPham_JDialog1$21.class
+com\entity\ChiTietSanPham.class
+view\SanPham_JDialog$1.class
+com\ui\PanelChiTietSanPham$4.class
 com\ui\nhapmaDialog.class
+responsitory\Giay_Interfacce.class
+com\component\MenuPanel$4.class
+com\dao\MauSacDAO.class
+view\ChiTietHoaDon_JDiaLog$2$1.class
+view\NhanVien_JDiaLog.class
 view\SanPham_JDialog1.class
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 42e59f1c4218043ac480aecaf898901777600b5b
->>>>>>> 5792522622991823ca5dbad9b1db19334c7b4bf0
-=======
->>>>>>> 2fe5e6c104877a064030fd1faf084c236a9d9ba6
->>>>>>> 9548ff8b5f2369e26d5a59026a9083fb3d7f4434
+com\entity\SanPham.class
+com\ui\QuanlytaikhoanJDialog$2.class
+view\BanHang_DiaLog$3.class
+view\SanPham_JDialog$10.class
+model\MauSac.class

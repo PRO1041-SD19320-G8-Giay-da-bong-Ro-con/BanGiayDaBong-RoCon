@@ -6,6 +6,10 @@ package com.component;
 
 import com.main.Main;
 import com.ui.PanelDanhSachSanPham;
+import com.ui.QuanlytaikhoanJDialog;
+import com.ui.panelQuanLyTaiKhoan;
+import com.utils.Auth;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,6 +40,7 @@ public class MenuPanel extends javax.swing.JPanel {
         btnQLHoaDon2 = new javax.swing.JButton();
         btnQLHoaDon3 = new javax.swing.JButton();
         btnQLHoaDon4 = new javax.swing.JButton();
+        btnQLTaikhoan = new javax.swing.JButton();
 
         btnBanHang.setText("Bán hàng");
         btnBanHang.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +91,13 @@ public class MenuPanel extends javax.swing.JPanel {
             }
         });
 
+        btnQLTaikhoan.setText("Quản lý tài khoản");
+        btnQLTaikhoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLTaikhoanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,6 +109,7 @@ public class MenuPanel extends javax.swing.JPanel {
             .addComponent(btnQLHoaDon2, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
             .addComponent(btnQLHoaDon3, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
             .addComponent(btnQLHoaDon4, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+            .addComponent(btnQLTaikhoan, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +123,9 @@ public class MenuPanel extends javax.swing.JPanel {
                 .addComponent(btnQLHoaDon1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnQLHoaDon3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(btnQLTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnQLHoaDon2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnQLHoaDon4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,6 +160,10 @@ public class MenuPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnQLHoaDon4ActionPerformed
 
+    private void btnQLTaikhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLTaikhoanActionPerformed
+        Main.changeForm(new panelQuanLyTaiKhoan());
+    }//GEN-LAST:event_btnQLTaikhoanActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBanHang;
@@ -154,5 +173,6 @@ public class MenuPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnQLHoaDon3;
     private javax.swing.JButton btnQLHoaDon4;
     private javax.swing.JButton btnQLSanPham;
+    private javax.swing.JButton btnQLTaikhoan;
     // End of variables declaration//GEN-END:variables
 }
