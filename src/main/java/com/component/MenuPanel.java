@@ -6,10 +6,7 @@ package com.component;
 
 import com.main.Main;
 import com.ui.PanelDanhSachSanPham;
-import com.ui.QuanlytaikhoanJDialog;
 import com.ui.panelQuanLyTaiKhoan;
-import com.utils.Auth;
-import javax.swing.JOptionPane;
 
 /**
  *

@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author DELL
  */
-public class Taikhoan {
+public class TaiKhoan {
     private String taikhoan;
     private String matkhau;
     private String ten;
@@ -20,10 +20,10 @@ public class Taikhoan {
     private String CCCD;
     private boolean chucvu;
 
-    public Taikhoan() {
+    public TaiKhoan() {
     }
 
-    public Taikhoan(String taikhoan, String matkhau, String ten, Date ngaysinh, String sdt, String email, String CCCD, boolean chucvu) {
+    public TaiKhoan(String taikhoan, String matkhau, String ten, Date ngaysinh, String sdt, String email, String CCCD, boolean chucvu) {
         this.taikhoan = taikhoan;
         this.matkhau = matkhau;
         this.ten = ten;

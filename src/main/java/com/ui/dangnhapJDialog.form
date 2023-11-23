@@ -145,8 +145,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_taikhoan">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="admin1"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="txt_matkhau">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="adminpass"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btn_dangnhap">
           <Properties>

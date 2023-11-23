@@ -4,18 +4,17 @@
  */
 package com.ui;
 
-import com.dao.taikhoanDAO;
-import com.main.Main;
+import com.dao.TaiKhoanDAO;
+import com.entity.TaiKhoan;
 import com.utils.Auth;
 import javax.swing.JOptionPane;
-import model.taikhoan;
 
 /**
  *
  * @author DELL
  */
 public class dangnhapJDialog extends javax.swing.JDialog {
-public static taikhoan TaiKhoan;
+TaiKhoanDAO dao = new TaiKhoanDAO();
     /**
      * Creates new form dangnhapJDialog
      */
@@ -73,6 +72,10 @@ public static taikhoan TaiKhoan;
         jLabel1.setText("Tài Khoản");
 
         jLabel2.setText("Mật Khẩu");
+
+        txt_taikhoan.setText("admin1");
+
+        txt_matkhau.setText("adminpass");
 
         btn_dangnhap.setText("Đăng Nhập");
         btn_dangnhap.addActionListener(new java.awt.event.ActionListener() {
@@ -157,21 +160,25 @@ public static taikhoan TaiKhoan;
 
     private void btn_dangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangnhapActionPerformed
         // TODO add your handling code here:
-        if (this.checkvalue()) {
+        try {
+            if (this.checkvalue()) {
             String tk = txt_taikhoan.getText();
             String mk = new String(txt_matkhau.getPassword());
-            if(taikhoanDAO.checkLogin(tk, mk)) {
-                JOptionPane.showMessageDialog(this, "Đăng nhập thành công ");
-//                if (TaiKhoan.isChucvu()==true) {
-//                    (new Main()).setVisible(true);
-//                } else {
-//                    (new Main()).setVisible(true);
-//                }
-                Auth.user= TaiKhoan;
+            TaiKhoan tkhoan = dao.selectByID(tk);
+            if(tkhoan!=null) {
+                if(tkhoan.getMatkhau().equals(mk)){
+                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công ");
+                Auth.user = tkhoan;
                 this.dispose();
+                }
+                else{
+                                    JOptionPane.showMessageDialog(this, "Sai mat khau");
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Thất bại .........");
+                JOptionPane.showMessageDialog(this, "Khong thay tai khoan");
             }
+        }
+        } catch (Exception e) {
         }
     }//GEN-LAST:event_btn_dangnhapActionPerformed
 

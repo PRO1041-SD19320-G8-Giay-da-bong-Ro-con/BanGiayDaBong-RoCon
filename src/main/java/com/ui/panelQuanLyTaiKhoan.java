@@ -4,16 +4,16 @@
  */
 package com.ui;
 
-import com.dao.taikhoanDAO;
+import com.dao.TaiKhoanDAO;
+import com.entity.TaiKhoan;
 import com.utils.Auth;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import model.taikhoan;
 
 /**
  *
@@ -24,7 +24,7 @@ public class panelQuanLyTaiKhoan extends javax.swing.JPanel {
     /**
      * Creates new form panelQuanLyTaiKhoan
      */
-    taikhoanDAO DAO = new taikhoanDAO();
+    TaiKhoanDAO DAO = new TaiKhoanDAO();
     SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
     
     public panelQuanLyTaiKhoan() {
@@ -34,7 +34,7 @@ public class panelQuanLyTaiKhoan extends javax.swing.JPanel {
     }
     
     void showdata(){
-        taikhoan tk  = Auth.user;
+        TaiKhoan tk  = Auth.user;
         txt_taikhoan.setText(tk.getTaikhoan());
         txt_cccd.setText(tk.getCCCD());
         txt_hovaten.setText(tk.getTen());
@@ -43,7 +43,7 @@ public class panelQuanLyTaiKhoan extends javax.swing.JPanel {
         txt_email.setText(tk.getEmail());
         txt_sdt.setText(tk.getSdt());
     }
-    taikhoan readfrom(){
+    TaiKhoan readfrom(){
             
         try {
             String tkhoan = txt_taikhoan.getText();
@@ -54,9 +54,9 @@ public class panelQuanLyTaiKhoan extends javax.swing.JPanel {
             String sdt= txt_sdt.getText();
             String email= txt_cccd.getText();
             
-            return new taikhoan(tkhoan, Auth.user.getMatkhau(), ten, ngaySinh, sdt, email, cccd, Auth.isManager());
+            return new TaiKhoan(tkhoan, Auth.user.getMatkhau(), ten, ngaySinh, sdt, email, cccd, Auth.isManager());
         } catch (ParseException ex) {
-            Logger.getLogger(QuanlytaikhoanJDialog.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(panelQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -235,14 +235,18 @@ public class panelQuanLyTaiKhoan extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        taikhoan tk = this.readfrom();
-        String TaiKhoan = Auth.user.getTaikhoan();
-        if(DAO.update(tk, TaiKhoan)>0){
-            showdata();
-            JOptionPane.showMessageDialog(this, "update thành Công");
-        }else{
-            JOptionPane.showMessageDialog(this, "thất bại");
+        try {
+            // TODO add your handling code here:
+            TaiKhoan tk = this.readfrom();
+            if(DAO.update(tk)>0){
+                Auth.user = DAO.selectByID(txt_taikhoan.getText());
+                showdata();
+                JOptionPane.showMessageDialog(this, "update thành Công");
+            }else{
+                JOptionPane.showMessageDialog(this, "thất bại");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(panelQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

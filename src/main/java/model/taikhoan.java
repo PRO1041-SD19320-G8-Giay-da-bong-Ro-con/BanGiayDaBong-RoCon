@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author DELL
  */
-public class taikhoan {
+public class TaiKhoan {
     private String taikhoan;
     private String matkhau;
     private String ten;
@@ -21,10 +21,10 @@ public class taikhoan {
     private String CCCD;
     private boolean chucvu;
 
-    public taikhoan() {
+    public TaiKhoan() {
     }
 
-    public taikhoan(String taikhoan, String matkhau, String ten, Date ngaysinh, String sdt, String email, String CCCD, boolean chucvu) {
+    public TaiKhoan(String taikhoan, String matkhau, String ten, Date ngaysinh, String sdt, String email, String CCCD, boolean chucvu) {
         this.taikhoan = taikhoan;
         this.matkhau = matkhau;
         this.ten = ten;
@@ -98,9 +98,7 @@ public class taikhoan {
     public void setChucvu(boolean chucvu) {
         this.chucvu = chucvu;
     }
-    public Object[] data(){
-        return new Object[]{this.taikhoan,this.CCCD,this.ten,this.chucvu,this.ngaysinh,this.email,this.sdt};
-    }
+    
 
     
 }
