@@ -25,7 +25,7 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
     DefaultTableModel tblModelSP = new DefaultTableModel();
     DefaultTableModel tblModelDH = new DefaultTableModel();
     List<ChiTietSanPham> lstSP = new ArrayList<>();
-    List<DonHang> lstDonHang = new ArrayList<>();
+    List<ChiTietSanPham> lstDonHang = new ArrayList<>();
     int index = -1;
     DecimalFormat dfm = new DecimalFormat("#,###");
 
@@ -58,7 +58,7 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
                 sp.getMaMau(),
                 sp.getMaChatLieu(),
                 sp.getMaThuongHieu(),
-                dfm.format(sp.getGia()),
+                sp.getGia(),
                 sp.getSoLuong()
             });
         }
@@ -66,50 +66,115 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
     }
 
     private int soLuong;
-    
-    
+    private int hangTrongKho;
+
     private void loadTableDonHang() {
         tblModelDH.setRowCount(0);
         tblModelDH = (DefaultTableModel) tblDonHang.getModel();
         index = tblSanPham.getSelectedRow();
         Double gia;
-        try {
-            soLuong = Integer.parseInt(JOptionPane.showInputDialog(this, "Nhập số lượng sản phẩm:"));
-            int hangTrongKho = Integer.parseInt(tblSanPham.getValueAt(index, 7).toString());
-            gia = Double.parseDouble(tblSanPham.getValueAt(index, 6).toString());
-            String tenSp = String.valueOf(tblSanPham.getValueAt(index, 1));
-                
-            for(ChiTietSanPham ctsp : lstSP){
-                if (soLuong > hangTrongKho) {
-                    JOptionPane.showMessageDialog(this, "Số lượng hàng trong kho không đủ");
+        hangTrongKho = Integer.parseInt(tblSanPham.getValueAt(index, 7).toString());
+        ChiTietSanPham ctsp1 = lstSP.get(index);
+        
+        for (ChiTietSanPham dh1 : lstDonHang) {
+
+            if (dh1.getMaCTSP().equals(ctsp1.getMaCTSP())) {
+                int soLuongCu = dh1.getSoLuong();
+                int conf = JOptionPane.showConfirmDialog(this, "Sản phẩm đã có trong đơn hàng\nBạn muốn bổ sung số lượng không?");
+                if (conf == JOptionPane.YES_OPTION) {
+                    int thayDoiSoLuong = Integer.parseInt(JOptionPane.showInputDialog(this, "Nhập số lượng sản phẩm:"));
+                    if (thayDoiSoLuong < 0) {
+                        JOptionPane.showMessageDialog(this, "Số lượng sản phẩm phải lớn hơn 0");
+                        return;
+                    }
+                    if (thayDoiSoLuong > hangTrongKho) {
+                        JOptionPane.showMessageDialog(this, "Số lượng hàng trong kho không đủ");
+                        return;
+                    }
+                    lstDonHang.remove(ctsp1);
+                    ctsp1.setSoLuong(thayDoiSoLuong);
+//            DonHang dh = new DonHang(maCTSP, tenSp, soLuong, gia, thanhTien);
+                    lstDonHang.add(ctsp1);
+                    for (ChiTietSanPham dh : lstDonHang) {
+                        tblModelDH.addRow(new Object[]{
+                            dh.getTenSP(),
+                            dh.getSoLuong(),
+                            dh.getGia(),
+                            dh.getGia() * dh1.getSoLuong()
+                        });
+                    }
+                   
+                    if (ql.updateSoLuongSP(ctsp1, hangTrongKho +soLuongCu - thayDoiSoLuong) != 0) {                        
+                        JOptionPane.showMessageDialog(this, "Đã cập nhật vào đơn hàng");                        
+                    }
+                    lstSP = ql.getAllSanPham();
+                    loadTableSP(lstSP);
+                    return;
+                } else {
                     return;
                 }
             }
-            
-            
-            DonHang dh = new DonHang(tenSp, soLuong, gia, soLuong * gia);
-            lstDonHang.add(dh);
-//        int soLuong = Integer.parseInt(tblSanPham.getValueAt(index, 7).toString());
-            for (DonHang dh1 : lstDonHang) {
+        }
+        try {
+            soLuong = Integer.parseInt(JOptionPane.showInputDialog(this, "Nhập số lượng sản phẩm:"));
+
+            gia = Double.parseDouble(tblSanPham.getValueAt(index, 6).toString());
+            String tenSp = String.valueOf(tblSanPham.getValueAt(index, 1));
+            String maCTSP = ctsp1.getMaCTSP();
+            Double thanhTien = gia * soLuong;
+
+            if (soLuong > hangTrongKho) {
+                JOptionPane.showMessageDialog(this, "Số lượng hàng trong kho không đủ");
+                return;
+            }
+
+            if (soLuong < 0) {
+                JOptionPane.showMessageDialog(this, "Số lượng sản phẩm phải lớn hơn 0");
+                return;
+            }
+
+            ctsp1.setSoLuong(soLuong);
+//            DonHang dh = new DonHang(maCTSP, tenSp, soLuong, gia, thanhTien);
+            lstDonHang.add(ctsp1);
+            for (ChiTietSanPham dh1 : lstDonHang) {
                 tblModelDH.addRow(new Object[]{
                     dh1.getTenSP(),
                     dh1.getSoLuong(),
-                    dfm.format(dh1.getGia()),
-                    dh1.getThanhTien()
+                    dh1.getGia(),
+                    dh1.getGia() * dh1.getSoLuong()
                 });
             }
-//            ChiTietSanPham ctsp1 = lstSP.get(index);
 
-//            if (ql.updateSoLuongSP(ctsp1, hangTrongKho - soLuong) != 0) {
-//                JOptionPane.showMessageDialog(this, "Đã thêm vào đơn hàng");
-//            }
+            if (ql.updateSoLuongSP(ctsp1, hangTrongKho - soLuong) != 0) {
+                JOptionPane.showMessageDialog(this, "Đã thêm vào đơn hàng");
+            }
+            lstSP = ql.getAllSanPham();
+            loadTableSP(lstSP);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng số lượng");
             return;
         }
-        lstSP=ql.getAllSanPham();
-        loadTableSP(lstSP);
+    }
+
+    private void xoaKhoiDonHang() {
+
+        int hoi = JOptionPane.showConfirmDialog(this, "Xác nhận xóa sản phẩm này khỏi đơn hàng");
+        if (hoi == JOptionPane.YES_OPTION) {
+            index = tblDonHang.getSelectedRow();
+            String tenSp = tblDonHang.getValueAt(index, 0).toString();
+            Double gia = Double.parseDouble(tblDonHang.getValueAt(index, 2).toString());
+            int soluong = Integer.parseInt(tblDonHang.getValueAt(index, 1).toString());
+            Double thanhTien = gia * soluong;
+            DonHang dh = new DonHang(tenSp, soluong, gia, thanhTien);
+            lstDonHang.remove(dh);
+            loadTableDonHang();
+            ChiTietSanPham ctsp1 = lstDonHang.get(index);
+            int sl = Integer.parseInt(tblDonHang.getValueAt(tblDonHang.getSelectedRow(), 1).toString());
+            if (ql.updateSoLuongSP(ctsp1, hangTrongKho + sl) != 0) {
+                JOptionPane.showMessageDialog(this, "Đã xóa sản phẩm khỏi đơn hàng");
+            }
+        }
     }
 
     private void clearForm() {
@@ -291,7 +356,7 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, true, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -636,7 +701,16 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
 
     private void btnXoaKhoiDonHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaKhoiDonHangActionPerformed
-        // TODO add your handling code here:
+        if (lstDonHang.size() == 0) {
+            JOptionPane.showMessageDialog(this, "Đơn hàng trống");
+            return;
+        }
+
+        if (tblDonHang.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm muốn xóa khỏi đơn hàng");
+            return;
+        }
+        xoaKhoiDonHang();
     }//GEN-LAST:event_btnXoaKhoiDonHangActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
@@ -668,7 +742,7 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm");
             return;
         }
-        
+
         loadTableDonHang();
     }//GEN-LAST:event_btnThemVaoDonHangActionPerformed
 

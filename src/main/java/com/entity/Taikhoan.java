@@ -6,6 +6,9 @@ package com.entity;
 
 import java.util.Date;
 
+
+
+
 /**
  *
  * @author DELL
@@ -97,5 +100,7 @@ public class TaiKhoan {
     public void setChucvu(boolean chucvu) {
         this.chucvu = chucvu;
     }
-  
+    
+
+    
 }
