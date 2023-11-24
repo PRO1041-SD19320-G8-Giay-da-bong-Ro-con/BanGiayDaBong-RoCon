@@ -4,12 +4,15 @@
  */
 package com.main;
 
-import com.ui.PanelDanhSachSanPham;
+import com.component.Menu;
 import com.ui.dangnhapJDialog;
+import com.ui.panelQuanLyTaiKhoan;
+import com.utils.Auth;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.FlowLayout;
-import javax.swing.ImageIcon;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -18,20 +21,31 @@ import javax.swing.JPanel;
  */
 public class Main extends javax.swing.JFrame {
 
-    /**&
+    /**
+     * &
      * Creates new form Main
      */
-    public static JPanel panel = new JPanel(new BorderLayout());
+    public Menu getPanelMenu() {
+        return panelMenu;
+    }
+
+    public Main getMain() {
+        return this;
+    }
     
+    private static JPanel panel = new JPanel(new BorderLayout());
+
     public Main() {
         initComponents();
         setLocationRelativeTo(null);
-        panelMain.setLayout(new FlowLayout());
-        panelMain.add(panel);
-        new dangnhapJDialog(this,true).setVisible(true);
+        panelMenu.setMain(this);
+        new dangnhapJDialog(this, true).setVisible(true);
+        txtUser.setText(Auth.user.getTaikhoan());
+        panelTong.setLayout(new FlowLayout());
+        panelTong.add(panel);
     }
-    
-    public static void changeForm(Component com){
+
+    public static void changeForm(Component com) {
         panel.removeAll();
         panel.add(com);
         panel.repaint();
@@ -47,39 +61,98 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menuPanel1 = new com.component.MenuPanel();
-        panelMain = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        panelMenu = new com.component.Menu();
+        iconMenu = new javax.swing.JLabel();
+        panelTong = new javax.swing.JPanel();
+        panelUser = new javax.swing.JPanel();
+        txtUser = new javax.swing.JLabel();
+        iconPerson = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
-        panelMain.setLayout(panelMainLayout);
-        panelMainLayout.setHorizontalGroup(
-            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 844, Short.MAX_VALUE)
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        iconMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menu-icon-24.png"))); // NOI18N
+        iconMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                iconMenuMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelTongLayout = new javax.swing.GroupLayout(panelTong);
+        panelTong.setLayout(panelTongLayout);
+        panelTongLayout.setHorizontalGroup(
+            panelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        panelMainLayout.setVerticalGroup(
-            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 573, Short.MAX_VALUE)
+        panelTongLayout.setVerticalGroup(
+            panelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        panelUser.setOpaque(false);
+        panelUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelUserMouseClicked(evt);
+            }
+        });
+
+        txtUser.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        txtUser.setText("user");
+        panelUser.add(txtUser);
+
+        iconPerson.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconPerson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/person.png"))); // NOI18N
+        panelUser.add(iconPerson);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(panelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(iconMenu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 890, Short.MAX_VALUE)
+                        .addComponent(panelUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iconMenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(menuPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
-            .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void iconMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconMenuMousePressed
+        openMenu();
+    }//GEN-LAST:event_iconMenuMousePressed
+
+    private void panelUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelUserMouseClicked
+        changeForm(new panelQuanLyTaiKhoan());
+    }//GEN-LAST:event_panelUserMouseClicked
 
     /**
      * @param args the command line arguments
@@ -117,7 +190,28 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.component.MenuPanel menuPanel1;
-    private javax.swing.JPanel panelMain;
+    private javax.swing.JLabel iconMenu;
+    private javax.swing.JLabel iconPerson;
+    private javax.swing.JPanel jPanel1;
+    private com.component.Menu panelMenu;
+    private javax.swing.JPanel panelTong;
+    private javax.swing.JPanel panelUser;
+    private javax.swing.JLabel txtUser;
     // End of variables declaration//GEN-END:variables
+
+    private void openMenu() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i <= 250; i++) {
+                    try {
+                        panelMenu.setSize(i, getMain().getHeight());
+                        Thread.sleep(1);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }).start();
+    }
 }

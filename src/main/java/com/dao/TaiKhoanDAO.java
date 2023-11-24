@@ -4,9 +4,6 @@
  */
 package com.dao;
 
-
-import com.entity.TaiKhoan;
-import com.utils.JDBCHelper;
 import com.entity.TaiKhoan;
 import com.utils.JDBCHelper;
 import java.sql.ResultSet;
@@ -18,7 +15,7 @@ import java.util.List;
  *
  * @author Thai
  */
-public class TaiKhoanDAO implements DAOInterface<TaiKhoan, String>{
+public class TaiKhoanDAO implements DAOInterface<TaiKhoan, String> {
 
     String UPDATE_ThongTin_SQL = "UPDATE Tai_khoan SET ten = ? , ngaysinh = ?, sdt = ?, email = ? WHERE TaiKhoan = ?";
     String UPDATE_TaiKhoan_SQL = "UPDATE Tai_khoan SET matKhau = ? WHERE TaiKhoan = ?";
@@ -77,5 +74,6 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoan, String>{
         rs.getStatement().getConnection().close();
         return list;
     }
+
 
 }
