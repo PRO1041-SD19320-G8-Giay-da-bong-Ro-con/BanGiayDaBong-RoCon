@@ -2,6 +2,7 @@ package com.component;
 
 import com.main.Main;
 import com.ui.PanelDanhSachSanPham;
+import com.ui.PanelHoaDon;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -25,16 +26,16 @@ public class Menu extends javax.swing.JPanel {
      */
     Main main;
     JPanel menu;
-    
-    public void setMain(Main main){
+
+    public void setMain(Main main) {
         this.main = main;
         this.menu = main.getPanelMenu();
     }
-    
+
     public Menu() {
         initComponents();
-        JLabel[] allLabel = {DangXuat,QLHoaDon,QLKhuyenMai,QLNhanVien,QLSanPham,QLThuocTinh,ThongKe,banHang};
-        for(JLabel label : allLabel){
+        JLabel[] allLabel = {DangXuat, QLHoaDon, QLKhuyenMai, QLNhanVien, QLSanPham, QLThuocTinh, ThongKe, banHang};
+        for (JLabel label : allLabel) {
             label.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
@@ -45,7 +46,7 @@ public class Menu extends javax.swing.JPanel {
                 public void mouseExited(MouseEvent e) {
                     label.setForeground(Color.black);
                 }
-                
+
             });
         }
     }
@@ -99,6 +100,11 @@ public class Menu extends javax.swing.JPanel {
         QLHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         QLHoaDon.setText("Quản lý hóa đơn");
         QLHoaDon.setPreferredSize(new java.awt.Dimension(50, 30));
+        QLHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                QLHoaDonMouseClicked(evt);
+            }
+        });
 
         QLKhuyenMai.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         QLKhuyenMai.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -188,8 +194,12 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel1MousePressed
 
     private void QLSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QLSanPhamMouseClicked
-Main.changeForm(new PanelDanhSachSanPham());
+        Main.changeForm(new PanelDanhSachSanPham());
     }//GEN-LAST:event_QLSanPhamMouseClicked
+
+    private void QLHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QLHoaDonMouseClicked
+        Main.changeForm(new PanelHoaDon());
+    }//GEN-LAST:event_QLHoaDonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -205,11 +215,11 @@ Main.changeForm(new PanelDanhSachSanPham());
     private javax.swing.JLabel jLabel10;
     // End of variables declaration//GEN-END:variables
 
-     private void closeMenu() {
+    private void closeMenu() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for(int i = 250 ; i>=0 ; i--){
+                for (int i = 250; i >= 0; i--) {
                     try {
                         menu.setSize(i, main.getHeight());
                         Thread.sleep(1);
@@ -221,5 +231,3 @@ Main.changeForm(new PanelDanhSachSanPham());
         }).start();
     }
 }
-
-
