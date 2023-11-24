@@ -6,6 +6,7 @@ package com.ui;
 
 import com.dao.HoaDonDAO;
 import com.entity.HoaDon;
+import com.main.Main;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -188,7 +189,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnXemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemChiTietActionPerformed
-
+        xemChiTiet();
     }//GEN-LAST:event_btnXemChiTietActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -217,8 +218,19 @@ public class PanelHoaDon extends javax.swing.JPanel {
         try {
             model.setRowCount(0);
             for (HoaDon hd : daoHD.selectAll()) {
-                model.addRow(new Object[]{hd.getMaHD(),hd.getTaiKhoan(),hd.getMaKH(),hd.getThoiGianBan(),hd.getTongTienCuoi(),hd.getTrangThai()});
+                model.addRow(new Object[]{hd.getMaHD(), hd.getTaiKhoan(), hd.getMaKH(), hd.getThoiGianBan(), hd.getTongTienCuoi(), hd.getTrangThai()});
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelHoaDon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void xemChiTiet() {
+        try {
+            int row = tblHoaDon.getSelectedRow();
+            String maHD = tblHoaDon.getValueAt(row, 0).toString();
+            PanelChiTietHoaDon.hoaDon = daoHD.selectByID(maHD);
+            Main.changeForm(new PanelChiTietHoaDon());
         } catch (SQLException ex) {
             Logger.getLogger(PanelHoaDon.class.getName()).log(Level.SEVERE, null, ex);
         }

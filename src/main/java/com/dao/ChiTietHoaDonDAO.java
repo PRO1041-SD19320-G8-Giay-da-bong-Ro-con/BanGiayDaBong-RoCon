@@ -10,16 +10,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Thai
  */
-public class ChiTietHoaDonDAO implements DAOInterface<ChiTietHoaDon, String>{
+public class ChiTietHoaDonDAO implements DAOInterface<ChiTietHoaDon, String> {
 
     String SELECT_ALL_SQL = "select * from HOA_DON";
     String SELECT_BY_ID_SQL = "select * from HOA_DON where mahd = ?";
-    
+
     @Override
+
     public int insert(ChiTietHoaDon entity) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -63,5 +67,26 @@ public class ChiTietHoaDonDAO implements DAOInterface<ChiTietHoaDon, String>{
         return list;
 
     }
-    
+
+    public List<Object[]> getAllHoaDonChiTiet(String maHD) {
+        try {
+            List<Object[]> list = new ArrayList<>();
+            String sql = "{CALL GetHoaDonChiTiet(?)}";
+            String[] cols = {"MaCTSP", "TenSP", "SoLuong", "Gia"};
+            ResultSet rs = JDBCHelper.query(sql, maHD);
+            while (rs.next()) {
+                Object[] vals = new Object[cols.length];
+                for (int i = 0; i < cols.length; i++) {
+                    vals[i] = rs.getObject(cols[i]);
+                }
+                list.add(vals);
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(ChiTietHoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
 }
