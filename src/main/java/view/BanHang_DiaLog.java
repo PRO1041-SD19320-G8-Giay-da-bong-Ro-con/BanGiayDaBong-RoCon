@@ -215,6 +215,12 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
         lblTongTienDaThanhToan.setText("0.0");
         lblTienThua.setText("0.0");
     }
+    
+    private void taoHoaDon(){
+    
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

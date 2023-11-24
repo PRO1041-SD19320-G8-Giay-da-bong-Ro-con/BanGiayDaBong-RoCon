@@ -19,6 +19,7 @@ model\Size.class
 view\SanPham_JDialog$6.class
 view\ChiTietHoaDon_JDiaLog$1.class
 com\ui\dangnhapJDialog.class
+model\HoaDon.class
 com\ui\PanelChiTietSanPham$5.class
 com\ui\dangnhapJDialog$2$1.class
 view\BanHang_DiaLog$5.class
@@ -35,6 +36,7 @@ model\DonHang.class
 view\SanPham_JDialog1$14.class
 com\ui\PanelDanhSachSanPham$2.class
 com\ui\thongkeJDialog.class
+model\ChiTietHoaDon.class
 com\ui\PanelChiTietSanPham$1.class
 com\utils\DBConnect.class
 com\entity\XuatXu.class
