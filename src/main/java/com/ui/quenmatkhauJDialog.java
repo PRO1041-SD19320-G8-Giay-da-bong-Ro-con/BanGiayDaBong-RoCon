@@ -446,7 +446,6 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
                 send.sendEmail(this, taiKhoan.getEmail(), maXacNhan);
 
                 card.next(panelQuenMatKhau);
-                System.out.println(maXacNhan);
             } else {
                 JOptionPane.showMessageDialog(this, "Không tìm thấy tài khoản");
             }

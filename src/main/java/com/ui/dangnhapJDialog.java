@@ -9,6 +9,7 @@ import com.dao.TaiKhoanDAO;
 import com.utils.Auth;
 import javax.swing.JOptionPane;
 import com.entity.TaiKhoan;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -20,12 +21,13 @@ import javax.swing.KeyStroke;
  * @author DELL
  */
 public class dangnhapJDialog extends javax.swing.JDialog {
-    
+
     TaiKhoanDAO DAO = new TaiKhoanDAO();
 
     /**
      * Creates new form dangnhapJDialog
      */
+
     public dangnhapJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -36,9 +38,9 @@ public class dangnhapJDialog extends javax.swing.JDialog {
                 dangNhap();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
-        
+
     }
-    
+
     boolean checkvalue() {
         if (txt_taikhoan.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "tk khong dc de trong");
@@ -79,6 +81,11 @@ public class dangnhapJDialog extends javax.swing.JDialog {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setText("Quên Mật Khẩu");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -177,6 +184,10 @@ public class dangnhapJDialog extends javax.swing.JDialog {
         dangNhap();
     }//GEN-LAST:event_btn_dangnhapActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        quenMatKhau();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -235,12 +246,12 @@ public class dangnhapJDialog extends javax.swing.JDialog {
     private void init() {
         this.setLocationRelativeTo(null);
     }
-    
+
     private void dangNhap() {
         try {
-            
+
             if (this.checkvalue()) {
-                
+
                 String tk = txt_taikhoan.getText();
                 String mk = new String(txt_matkhau.getPassword());
                 TaiKhoan taiKhoan = DAO.selectByID(tk);
@@ -257,5 +268,9 @@ public class dangnhapJDialog extends javax.swing.JDialog {
             }
         } catch (Exception e) {
         }
+    }
+
+    private void quenMatKhau() {
+        new quenmatkhauJDialog(null, true).setVisible(true);
     }
 }
