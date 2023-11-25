@@ -9,13 +9,18 @@ import com.dao.TaiKhoanDAO;
 import com.utils.Auth;
 import javax.swing.JOptionPane;
 import com.entity.TaiKhoan;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 
 /**
  *
  * @author DELL
  */
 public class dangnhapJDialog extends javax.swing.JDialog {
-
+    
     TaiKhoanDAO DAO = new TaiKhoanDAO();
 
     /**
@@ -25,9 +30,15 @@ public class dangnhapJDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         init();
-
+        btn_dangnhap.registerKeyboardAction(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dangNhap();
+            }
+        }, KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
+        
     }
-
+    
     boolean checkvalue() {
         if (txt_taikhoan.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "tk khong dc de trong");
@@ -163,30 +174,7 @@ public class dangnhapJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_dangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangnhapActionPerformed
-        // TODO add your handling code here:
-        try {
-
-            if (this.checkvalue()) {
-
-                String tk = txt_taikhoan.getText();
-                String mk = new String(txt_matkhau.getPassword());
-                TaiKhoan taiKhoan = DAO.selectByID(tk);
-                if (taiKhoan != null) {
-                    if (taiKhoan.getMatkhau().equals(mk)) {
-                        Auth.user = taiKhoan;
-                        JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-                        this.dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Sai mật khẩu");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Tài khoản không tồn tại");
-                }
-            }
-        } catch (Exception e) {
-        }
-
-
+        dangNhap();
     }//GEN-LAST:event_btn_dangnhapActionPerformed
 
     /**
@@ -246,5 +234,28 @@ public class dangnhapJDialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
+    }
+    
+    private void dangNhap() {
+        try {
+            
+            if (this.checkvalue()) {
+                
+                String tk = txt_taikhoan.getText();
+                String mk = new String(txt_matkhau.getPassword());
+                TaiKhoan taiKhoan = DAO.selectByID(tk);
+                if (taiKhoan != null) {
+                    if (taiKhoan.getMatkhau().equals(mk)) {
+                        Auth.user = taiKhoan;
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Sai mật khẩu");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Tài khoản không tồn tại");
+                }
+            }
+        } catch (Exception e) {
+        }
     }
 }
