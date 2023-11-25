@@ -14,14 +14,13 @@ import com.dao.XuatXuDAO;
 import com.entity.ChiTietSanPham;
 import com.entity.SanPham;
 import com.main.Main;
+import com.utils.Rounding;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.lang.constant.DirectMethodHandleDesc;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 
 /**
@@ -359,7 +358,7 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
     private void showForm() {
         lblMaSP.setText(sanPham.getMaSP());
         lblTen.setText(sanPham.getTenSP());
-        lblGia.setText(sanPham.getGia() + "");
+        lblGia.setText(Rounding.round(sanPham.getGia()));
         lblXuatXu.setText(daoXX.getTen(sanPham.getMaXuatXu()));
         lblChatLieu.setText(daoCL.getTen(sanPham.getMaChatLieu()));
         lblThuongHIeu.setText(daoTH.getTen(sanPham.getMaThuongHieu()));

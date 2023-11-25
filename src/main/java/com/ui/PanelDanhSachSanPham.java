@@ -8,6 +8,7 @@ import com.dao.SanPhamDAO;
 import com.dao.ThuongHieuDAO;
 import com.entity.SanPham;
 import com.main.Main;
+import com.utils.Rounding;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -204,7 +205,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             String key = txtSearch.getText();
             for (SanPham sp : daoSP.selectAll()) {
                 if (sp.getMaSP().toUpperCase().contains(key.toUpperCase())||sp.getTenSP().toUpperCase().contains(key.toUpperCase())) {
-                    model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getGia(), daoTH.getTen(sp.getMaThuongHieu())});
+                    model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), Rounding.round(sp.getGia()), daoTH.getTen(sp.getMaThuongHieu())});
                 }
             }
         } catch (SQLException ex) {
