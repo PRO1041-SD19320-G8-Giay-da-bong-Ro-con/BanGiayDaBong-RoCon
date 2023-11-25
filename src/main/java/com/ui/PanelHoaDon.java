@@ -7,6 +7,7 @@ package com.ui;
 import com.dao.HoaDonDAO;
 import com.entity.HoaDon;
 import com.main.Main;
+import com.utils.Rounding;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -218,7 +219,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
         try {
             model.setRowCount(0);
             for (HoaDon hd : daoHD.selectAll()) {
-                model.addRow(new Object[]{hd.getMaHD(), hd.getTaiKhoan(), hd.getMaKH(), hd.getThoiGianBan(), hd.getTongTienCuoi(), hd.getTrangThai()});
+                model.addRow(new Object[]{hd.getMaHD(), hd.getTaiKhoan(), hd.getMaKH(), hd.getThoiGianBan(), Rounding.round(hd.getTongTienCuoi()), hd.getTrangThai()});
             }
         } catch (SQLException ex) {
             Logger.getLogger(PanelHoaDon.class.getName()).log(Level.SEVERE, null, ex);

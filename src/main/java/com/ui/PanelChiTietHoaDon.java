@@ -7,6 +7,7 @@ package com.ui;
 import com.dao.ChiTietHoaDonDAO;
 import com.entity.HoaDon;
 import com.main.Main;
+import com.utils.Rounding;
 import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -285,15 +286,16 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
         txtKhuyenMai.setText(hoaDon.getMaKM());
         txtTaiKhoan.setText(hoaDon.getTaiKhoan());
         txtThoiGian.setText(formater.format(hoaDon.getThoiGianBan()));
-        txtTongTienCuoi.setText(hoaDon.getTongTienCuoi() + "");
-        txtTongTienGoc.setText(hoaDon.getTongTienGoc() + "");
+        txtTongTienCuoi.setText(Rounding.round(hoaDon.getTongTienCuoi()));
+        txtTongTienGoc.setText(Rounding.round(hoaDon.getTongTienGoc()));
         txtTrangThai.setText(hoaDon.getTrangThai());
+        txtKhuyenMai.setText(hoaDon.getMaKM());
     }
 
     private void showTable() {
         model.setRowCount(0);
         for(Object[] cthd : daoCTHD.getAllHoaDonChiTiet(hoaDon.getMaHD())){
-            model.addRow(cthd);
+            model.addRow(new Object[]{cthd[0],cthd[1],cthd[2],Rounding.round(cthd[3])});
         }
     }
 }

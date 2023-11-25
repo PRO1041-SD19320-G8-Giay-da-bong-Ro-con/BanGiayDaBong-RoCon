@@ -59,7 +59,7 @@ public class HoaDonDAO implements DAOInterface<HoaDon, String> {
             entity.setTaiKhoan(rs.getString("TaiKhoan"));
             entity.setMaKH(rs.getString("MaKH"));
             entity.setTongTienGoc(rs.getDouble("TongTienGoc"));
-            entity.setMaKH(rs.getString("MaKM"));
+            entity.setMaKM(rs.getString("MaKM"));
             entity.setTongTienCuoi(rs.getDouble("TongTienCuoi"));
             entity.setThoiGianBan(rs.getDate("ThoiGianBan"));
             entity.setHinhThucThanhToan(rs.getString("HinhThucThanhToan"));
