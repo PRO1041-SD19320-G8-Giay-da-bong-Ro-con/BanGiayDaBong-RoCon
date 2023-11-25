@@ -11,12 +11,16 @@ import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.KeyStroke;
+import javax.swing.text.PasswordView;
 
 /**
  *
@@ -75,10 +79,10 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         btnXacNhanDoi = new javax.swing.JButton();
         btnHuyDoiMatKhau = new javax.swing.JButton();
-        txtMatKhauMoi = new javax.swing.JTextField();
-        txtXacNhanMatKhau = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        rdoHienMatKhau = new javax.swing.JRadioButton();
+        cbHienMatKhau = new javax.swing.JCheckBox();
+        txtXacNhanMatKhau = new javax.swing.JPasswordField();
+        txtMatKhauMoi = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -139,7 +143,7 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(panelNhapTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXacNhanTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHuyXacNhanTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -201,7 +205,7 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtXacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(panelNhapMaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXacNhanMa, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHuyXacNhanMa, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -237,25 +241,21 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
             }
         });
 
-        txtMatKhauMoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMatKhauMoi.setMargin(new java.awt.Insets(4, 6, 4, 6));
-        txtMatKhauMoi.setPreferredSize(new java.awt.Dimension(71, 30));
-
-        txtXacNhanMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtXacNhanMatKhau.setMargin(new java.awt.Insets(4, 6, 4, 6));
-        txtXacNhanMatKhau.setPreferredSize(new java.awt.Dimension(71, 30));
-
         jLabel7.setBackground(new java.awt.Color(204, 204, 204));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Xác nhận mật khẩu mới");
         jLabel7.setPreferredSize(new java.awt.Dimension(74, 12));
 
-        rdoHienMatKhau.setText("Hiện mật khẩu");
-        rdoHienMatKhau.addActionListener(new java.awt.event.ActionListener() {
+        cbHienMatKhau.setText("Hiện mật khẩu");
+        cbHienMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoHienMatKhauActionPerformed(evt);
+                cbHienMatKhauActionPerformed(evt);
             }
         });
+
+        txtXacNhanMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        txtMatKhauMoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout panelDoiMatKhauLayout = new javax.swing.GroupLayout(panelDoiMatKhau);
         panelDoiMatKhau.setLayout(panelDoiMatKhauLayout);
@@ -264,19 +264,17 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelDoiMatKhauLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(panelDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rdoHienMatKhau)
-                    .addGroup(panelDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtXacNhanMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE))
-                    .addGroup(panelDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(panelDoiMatKhauLayout.createSequentialGroup()
-                            .addComponent(btnXacNhanDoi, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnHuyDoiMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(50, 50, 50))
+                .addGroup(panelDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbHienMatKhau)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                    .addGroup(panelDoiMatKhauLayout.createSequentialGroup()
+                        .addComponent(btnXacNhanDoi, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                        .addComponent(btnHuyDoiMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtXacNhanMatKhau)
+                    .addComponent(txtMatKhauMoi))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         panelDoiMatKhauLayout.setVerticalGroup(
             panelDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,13 +284,13 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtXacNhanMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rdoHienMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtXacNhanMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbHienMatKhau)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXacNhanDoi, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -341,16 +339,22 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnHuyXacNhanMaActionPerformed
 
     private void btnXacNhanDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanDoiActionPerformed
-
+        doiMatKhau();
     }//GEN-LAST:event_btnXacNhanDoiActionPerformed
 
     private void btnHuyDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyDoiMatKhauActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnHuyDoiMatKhauActionPerformed
 
-    private void rdoHienMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoHienMatKhauActionPerformed
-
-    }//GEN-LAST:event_rdoHienMatKhauActionPerformed
+    private void cbHienMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHienMatKhauActionPerformed
+        if (cbHienMatKhau.isSelected()) {
+            txtMatKhauMoi.setEchoChar((char) 0);
+            txtXacNhanMatKhau.setEchoChar((char) 0);
+        } else {
+            txtMatKhauMoi.setEchoChar('*');
+            txtXacNhanMatKhau.setEchoChar('*');
+        }
+    }//GEN-LAST:event_cbHienMatKhauActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,6 +405,7 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnXacNhanDoi;
     private javax.swing.JButton btnXacNhanMa;
     private javax.swing.JButton btnXacNhanTaiKhoan;
+    private javax.swing.JCheckBox cbHienMatKhau;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -412,11 +417,10 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel panelNhapMa;
     private javax.swing.JPanel panelNhapTaiKhoan;
     private javax.swing.JPanel panelQuenMatKhau;
-    private javax.swing.JRadioButton rdoHienMatKhau;
-    private javax.swing.JTextField txtMatKhauMoi;
+    private javax.swing.JPasswordField txtMatKhauMoi;
     private javax.swing.JTextField txtTaiKhoan;
     private javax.swing.JTextField txtXacNhan;
-    private javax.swing.JTextField txtXacNhanMatKhau;
+    private javax.swing.JPasswordField txtXacNhanMatKhau;
     // End of variables declaration//GEN-END:variables
 
     private TaiKhoan timTaiKhoan() {
@@ -444,7 +448,7 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
                 }
 
                 send.sendEmail(this, taiKhoan.getEmail(), maXacNhan);
-
+                System.out.println(maXacNhan);
                 card.next(panelQuenMatKhau);
             } else {
                 JOptionPane.showMessageDialog(this, "Không tìm thấy tài khoản");
@@ -457,9 +461,47 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
     private void checkXacNhan() {
         if (txtXacNhan.getText().equals(maXacNhan)) {
             card.next(panelQuenMatKhau);
+        } else {
+            JOptionPane.showMessageDialog(this, "Sai mã");
         }
-        else{
-            JOptionPane.showMessageDialog(this,"Sai mã");
+    }
+
+    private boolean validateMatKhau() {
+        JPasswordField[] allPass = {txtMatKhauMoi, txtXacNhanMatKhau};
+        for (JPasswordField pass : allPass) {
+            String ps = new String(pass.getPassword());
+            if (ps.isBlank()) {
+                JOptionPane.showMessageDialog(this, "Không được để trống");
+                return false;
+            }
+        }
+        for (JPasswordField pass : allPass) {
+            String ps = new String(pass.getPassword());
+            if (ps.trim().length() < 6) {
+                JOptionPane.showMessageDialog(this, "Mật khẩu phải dài hơn 5 kí tự");
+                return false;
+            }
+        }
+        if (!Arrays.equals(allPass[0].getPassword(), allPass[1].getPassword())) {
+            JOptionPane.showMessageDialog(this, "Mật khẩu mới và mật khẩu xác nhận không trùng nhau");
+            return false;
+        }
+        return true;
+    }
+
+    private void doiMatKhau() {
+        try {
+            if (validateMatKhau()) {
+                if (daoTK.update(new String(txtMatKhauMoi.getPassword()), taiKhoan.getTaikhoan()) > 0) {
+                    this.dispose();
+                    JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Đổi mật khẩu thất bại");
+                }
+            }
+        } catch (Exception e) {
+            Logger.getLogger(quenmatkhauJDialog.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, "Đổi mật khẩu thất bại");
         }
     }
 }

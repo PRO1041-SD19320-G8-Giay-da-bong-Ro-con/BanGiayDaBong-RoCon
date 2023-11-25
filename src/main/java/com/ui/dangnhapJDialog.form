@@ -51,8 +51,17 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                  <Component id="jLabel3" min="-2" pref="227" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="cbHienMatKhau" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel1" pref="72" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="345" max="-2" attributes="0"/>
@@ -69,7 +78,7 @@
                               </Group>
                               <Component id="txt_taikhoan" alignment="0" max="32767" attributes="0"/>
                               <Component id="txt_matkhau" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <Component id="btn_dangnhap" min="-2" pref="139" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btn_thoat" min="-2" pref="139" max="-2" attributes="0"/>
@@ -78,11 +87,6 @@
                           <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" pref="227" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -99,14 +103,16 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txt_matkhau" min="-2" pref="28" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="cbHienMatKhau" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="17" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btn_dangnhap" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="btn_thoat" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="btn_dangnhap" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton2" min="-2" pref="23" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -166,6 +172,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_thoatActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="cbHienMatKhau">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Hi&#x1ec7;n m&#x1ead;t kh&#x1ea9;u"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbHienMatKhauActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -31,8 +31,8 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoan, String> {
     public int update(TaiKhoan entity) throws SQLException {
         return JDBCHelper.update(UPDATE_ThongTin_SQL, entity.getTen(), entity.getNgaysinh(), entity.getSdt(), entity.getEmail(), entity.getTaikhoan());
     }
-    public int update(String key, String taiKhoan) throws SQLException {
-        return JDBCHelper.update(UPDATE_TaiKhoan_SQL, key, taiKhoan);
+    public int update(String matKhau, String taiKhoan) throws SQLException {
+        return JDBCHelper.update(UPDATE_TaiKhoan_SQL, matKhau, taiKhoan);
     }
 
     @Override

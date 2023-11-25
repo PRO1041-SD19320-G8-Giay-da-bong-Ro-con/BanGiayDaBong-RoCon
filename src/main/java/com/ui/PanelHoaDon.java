@@ -11,6 +11,7 @@ import com.utils.Rounding;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -229,9 +230,14 @@ public class PanelHoaDon extends javax.swing.JPanel {
     private void xemChiTiet() {
         try {
             int row = tblHoaDon.getSelectedRow();
-            String maHD = tblHoaDon.getValueAt(row, 0).toString();
-            PanelChiTietHoaDon.hoaDon = daoHD.selectByID(maHD);
-            Main.changeForm(new PanelChiTietHoaDon());
+            if (row != -1) {
+                String maHD = tblHoaDon.getValueAt(row, 0).toString();
+                PanelChiTietHoaDon.hoaDon = daoHD.selectByID(maHD);
+                Main.changeForm(new PanelChiTietHoaDon());
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Vui lòng chọn");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(PanelHoaDon.class.getName()).log(Level.SEVERE, null, ex);
         }
