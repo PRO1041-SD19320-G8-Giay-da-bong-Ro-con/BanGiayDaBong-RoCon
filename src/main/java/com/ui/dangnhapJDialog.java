@@ -173,8 +173,8 @@ public class dangnhapJDialog extends javax.swing.JDialog {
                 TaiKhoan taiKhoan = DAO.selectByID(tk);
                 if (taiKhoan != null) {
                     if (taiKhoan.getMatkhau().equals(mk)) {
-                        JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
                         Auth.user = taiKhoan;
+                        JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
                         this.dispose();
                     } else {
                         JOptionPane.showMessageDialog(this, "Sai mật khẩu");

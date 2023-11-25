@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class HoaDonDAO implements DAOInterface<HoaDon, String> {
 
-    String SELECT_ALL_SQL = "select * from HOA_DON";
-    String SELECT_BY_ID_SQL = "select * from HOA_DON where mahd = ?";
+    String SELECT_ALL_SQL = "select * from vHoaDon";
+    String SELECT_BY_ID_SQL = "select * from vHoaDon where mahd = ?";
 
     @Override
     public int insert(HoaDon entity) throws SQLException {
