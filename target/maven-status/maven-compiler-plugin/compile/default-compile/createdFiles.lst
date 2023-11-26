@@ -6,13 +6,13 @@ com\dao\ThuongHieuDAO.class
 model\LoaiGiay.class
 services\SanPham_Ser.class
 com\dao\SizeDAO.class
+com\ui\dangnhapJDialog$7.class
 view\SanPham_JDialog1$2.class
 view\SanPham_JDialog1$12.class
 view\SanPham_JDialog1$22.class
 view\BanHang_DiaLog$2.class
 com\utils\SendEmail$1.class
 com\entity\ThuongHieu.class
-view\BanHang_DiaLog$13$1.class
 view\ChiTietHoaDon_JDiaLog.class
 view\SanPham_JDialog$11.class
 view\SanPham_JDialog$14.class
@@ -45,6 +45,7 @@ model\DonHang.class
 view\SanPham_JDialog1$14.class
 com\ui\PanelDanhSachSanPham$2.class
 com\ui\quenmatkhauJDialog$5.class
+com\ui\dangnhapJDialog$5.class
 com\ui\thongkeJDialog.class
 model\ChiTietHoaDon.class
 com\ui\PanelChiTietSanPham$1.class
@@ -63,11 +64,11 @@ com\ui\nhapmaDialog$1.class
 com\ui\dangnhapJDialog$1.class
 com\ui\quenmatkhauJDialog$4.class
 com\ui\quenmatkhauJDialog$9$1.class
+view\BanHang_DiaLog$14$1.class
 view\SanPham_JDialog1$4.class
 view\BanHang_DiaLog$7.class
 com\ui\PanelHoaDon$2.class
 com\ui\doimatkhauJDialog$1.class
-.netbeans_automatic_build
 view\SanPham_JDialog$19.class
 view\SanPham_JDialog$3.class
 com\entity\ChiTietHoaDon.class
@@ -76,6 +77,7 @@ model\XuatXu.class
 com\ui\PanelDanhSachSanPham$1.class
 com\dao\ChatLieuDAO.class
 view\SanPham_JDialog1$13.class
+com\ui\dangnhapJDialog$6.class
 model\ThuongHieu.class
 com\component\Menu$1.class
 com\main\Main$4.class
@@ -94,7 +96,6 @@ com\ui\panelQuanLyTaiKhoan$1.class
 com\ui\doimatkhauJDialog.class
 view\SanPham_JDialog1$9.class
 view\BanHang_DiaLog$6.class
-com\ui\test$1.class
 view\SanPham_JDialog$5.class
 view\SanPham_JDialog1$16.class
 com\entity\MauSac.class
@@ -115,14 +116,12 @@ view\SanPham_JDialog$8.class
 view\BanHang_DiaLog$11.class
 responsitory\SanPham_Respo.class
 com\ui\PanelChiTietHoaDon$1.class
-com\ui\dangnhapJDialog$4$1.class
 com\ui\PanelChiTietHoaDon.class
 com\ui\PanelHoaDon.class
 view\NhanVien_JDiaLog$1.class
 view\HoaDon_JDiaLog$2.class
 view\SanPham_JDialog1$23.class
 view\SanPham_JDialog1$3.class
-com\ui\test.class
 view\SanPham_JDialog.class
 view\SanPham_JDialog1$6.class
 com\dao\ChiTietSanPhamDAO.class
@@ -163,6 +162,7 @@ view\SanPham_JDialog1$15.class
 com\ui\PanelDanhSachSanPham.class
 view\SanPham_JDialog$17.class
 view\SanPham_JDialog1$1.class
+view\BanHang_DiaLog$14.class
 view\BanHang_DiaLog.class
 com\entity\ChiTietSanPham.class
 view\SanPham_JDialog$1.class
