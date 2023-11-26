@@ -19,6 +19,7 @@ public class HoaDonDAO implements DAOInterface<HoaDon, String> {
 
     String SELECT_ALL_SQL = "select * from vHoaDon";
     String SELECT_BY_ID_SQL = "select * from vHoaDon where mahd = ?";
+    String LOC = "select * from vHoaDon where ";
 
     @Override
     public int insert(HoaDon entity) throws SQLException {
@@ -69,6 +70,10 @@ public class HoaDonDAO implements DAOInterface<HoaDon, String> {
         rs.getStatement().getConnection().close();
         return list;
 
+    }
+    
+    public List<HoaDon> Loc(String loc) throws SQLException {
+        return selectBySQL(LOC+loc);
     }
 
 }

@@ -7,8 +7,10 @@ package com.ui;
 import com.dao.HoaDonDAO;
 import com.entity.HoaDon;
 import com.main.Main;
+import com.utils.FormatDate;
 import com.utils.Rounding;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -29,7 +31,11 @@ public class PanelHoaDon extends javax.swing.JPanel {
     public PanelHoaDon() {
         initComponents();
         model = (DefaultTableModel) tblHoaDon.getModel();
-        showHoaDon();
+        try {
+            showHoaDon(daoHD.selectAll());
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelHoaDon.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -53,7 +59,8 @@ public class PanelHoaDon extends javax.swing.JPanel {
         cbThang = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         cbNam = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        cbTinhTrang = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
         jPanelHoaDon.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "HÓA ĐƠN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
@@ -88,19 +95,36 @@ public class PanelHoaDon extends javax.swing.JPanel {
         jLabel1.setText("Ngày");
 
         cbNgay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "none", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cbNgay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbNgayActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Tháng");
 
         cbThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "none", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        cbThang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbThangActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Năm");
 
         cbNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "none", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000" }));
-
-        jButton1.setText("Tìm kiếm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cbNam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cbNamActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Tình trạng");
+
+        cbTinhTrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "none", "Đã thanh toán", "Chưa thanh toán" }));
+        cbTinhTrang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTinhTrangActionPerformed(evt);
             }
         });
 
@@ -111,21 +135,23 @@ public class PanelHoaDon extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addGap(96, 96, 96)
+                .addGap(53, 53, 53)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95)
+                .addGap(54, 54, 54)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbTinhTrang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,7 +165,9 @@ public class PanelHoaDon extends javax.swing.JPanel {
                     .addComponent(cbThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(cbNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(cbTinhTrang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -159,9 +187,9 @@ public class PanelHoaDon extends javax.swing.JPanel {
         jPanelHoaDonLayout.setVerticalGroup(
             jPanelHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelHoaDonLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnXemChiTiet))
         );
@@ -194,9 +222,21 @@ public class PanelHoaDon extends javax.swing.JPanel {
         xemChiTiet();
     }//GEN-LAST:event_btnXemChiTietActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void cbNgayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNgayActionPerformed
+        locHoaDon();
+    }//GEN-LAST:event_cbNgayActionPerformed
+
+    private void cbThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbThangActionPerformed
+        locHoaDon();
+    }//GEN-LAST:event_cbThangActionPerformed
+
+    private void cbNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNamActionPerformed
+        locHoaDon();
+    }//GEN-LAST:event_cbNamActionPerformed
+
+    private void cbTinhTrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTinhTrangActionPerformed
+        locHoaDon();
+    }//GEN-LAST:event_cbTinhTrangActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -204,11 +244,12 @@ public class PanelHoaDon extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbNam;
     private javax.swing.JComboBox<String> cbNgay;
     private javax.swing.JComboBox<String> cbThang;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> cbTinhTrang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelHoaDon;
@@ -216,14 +257,14 @@ public class PanelHoaDon extends javax.swing.JPanel {
     private javax.swing.JTable tblHoaDon;
     // End of variables declaration//GEN-END:variables
 
-    private void showHoaDon() {
+    private void showHoaDon(List<HoaDon> list) {
         try {
             model.setRowCount(0);
-            for (HoaDon hd : daoHD.selectAll()) {
-                model.addRow(new Object[]{hd.getMaHD(), hd.getTaiKhoan(), hd.getMaKH(), hd.getThoiGianBan(), Rounding.round(hd.getTongTienCuoi()), hd.getTrangThai()});
+            for (HoaDon hd : list) {
+                model.addRow(new Object[]{hd.getMaHD(), hd.getTaiKhoan(), hd.getMaKH(), FormatDate.toString(hd.getThoiGianBan()), Rounding.round(hd.getTongTienCuoi()), hd.getTrangThai()});
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(PanelHoaDon.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(PanelHoaDon.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -234,12 +275,53 @@ public class PanelHoaDon extends javax.swing.JPanel {
                 String maHD = tblHoaDon.getValueAt(row, 0).toString();
                 PanelChiTietHoaDon.hoaDon = daoHD.selectByID(maHD);
                 Main.changeForm(new PanelChiTietHoaDon());
-            }
-            else{
-                JOptionPane.showMessageDialog(this,"Vui lòng chọn");
+            } else {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn");
             }
         } catch (SQLException ex) {
             Logger.getLogger(PanelHoaDon.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void locHoaDon() {
+        try {
+            String ngay = cbNgay.getSelectedItem().toString();
+            String thang = cbThang.getSelectedItem().toString();
+            String nam = cbNam.getSelectedItem().toString();
+            String trangThai = cbTinhTrang.getSelectedItem().toString();
+            if (checkNone(ngay, thang, nam, trangThai)) {
+                showHoaDon(daoHD.selectAll());
+            } else {
+                String loc = "";
+                if (!ngay.equals("none")) {
+                    loc += " day(ThoiGianBan) = " + ngay + " .";
+                }
+                if (!thang.equals("none")) {
+                    loc += " month(ThoiGianBan) = " + thang + " .";
+                }
+                if (!nam.equals("none")) {
+                    loc += " year(ThoiGianBan) = " + nam + " .";
+                }
+                if (!trangThai.equals("none")) {
+                    loc += " TrangThai = " + (trangThai.equals("Đã thanh toán") ? "1" : "0");
+                }
+                if (loc.endsWith(".")) {
+                    loc = loc.substring(0, loc.length() - 1);
+                }
+                loc = loc.replace(".", "and");
+                showHoaDon(daoHD.Loc(loc));
+            }
+        } catch (Exception e) {
+            System.out.println("Lỗi lọc");
+        }
+    }
+
+    private boolean checkNone(String... args) {
+        for (String txt : args) {
+            if (!txt.equals("none")) {
+                return false;
+            }
+        }
+        return true;
     }
 }
