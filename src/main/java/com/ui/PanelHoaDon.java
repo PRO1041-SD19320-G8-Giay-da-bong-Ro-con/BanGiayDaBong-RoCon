@@ -70,7 +70,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
 
             },
             new String [] {
-                "MA HD", "TEN NV", "TEN KH", "Ngày tạo", "Tổng tiền", "Trạng thái"
+                "MA HD", "Ngày tạo", "TEN NV", "TEN KH", "Tổng tiền", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -261,7 +261,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
         try {
             model.setRowCount(0);
             for (HoaDon hd : list) {
-                model.addRow(new Object[]{hd.getMaHD(), hd.getTaiKhoan(), hd.getMaKH(), FormatDate.toString(hd.getThoiGianBan()), Rounding.round(hd.getTongTienCuoi()), hd.getTrangThai()});
+                model.addRow(new Object[]{hd.getMaHD(), FormatDate.toString(hd.getThoiGianBan()), hd.getTaiKhoan(), hd.getMaKH(), Rounding.round(hd.getTongTienCuoi()), hd.getTrangThai()});
             }
         } catch (Exception e) {
             Logger.getLogger(PanelHoaDon.class.getName()).log(Level.SEVERE, null, e);

@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class HoaDonDAO implements DAOInterface<HoaDon, String> {
 
-    String SELECT_ALL_SQL = "select * from vHoaDon";
+    String SELECT_ALL_SQL = "select * from vHoaDon order by thoiGianBan desc";
     String SELECT_BY_ID_SQL = "select * from vHoaDon where mahd = ?";
     String LOC = "select * from vHoaDon where ";
 
@@ -73,7 +73,7 @@ public class HoaDonDAO implements DAOInterface<HoaDon, String> {
     }
     
     public List<HoaDon> Loc(String loc) throws SQLException {
-        return selectBySQL(LOC+loc);
+        return selectBySQL(LOC+loc+" order by thoiGianBan desc");
     }
 
 }

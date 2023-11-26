@@ -79,7 +79,6 @@ public class ChiTietHoaDonDAO implements DAOInterface<ChiTietHoaDon, String> {
                 for (int i = 0; i < cols.length; i++) {
                     vals[i] = rs.getObject(cols[i]);
                 }
-                System.out.println(vals.toString());
                 list.add(vals);
             }
             rs.getStatement().getConnection().close();
