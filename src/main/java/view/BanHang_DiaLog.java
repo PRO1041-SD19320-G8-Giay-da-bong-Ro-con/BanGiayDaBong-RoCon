@@ -297,6 +297,10 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        txtMaNV = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        txtMaHD = new javax.swing.JTextField();
         jPanelHoaDonCho = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -616,6 +620,10 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
 
         jLabel16.setText("VND");
 
+        jLabel21.setText("Mã NV");
+
+        jLabel22.setText("Mã HD");
+
         javax.swing.GroupLayout jPanelQLHDLayout = new javax.swing.GroupLayout(jPanelQLHD);
         jPanelQLHD.setLayout(jPanelQLHDLayout);
         jPanelQLHDLayout.setHorizontalGroup(
@@ -629,6 +637,14 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
             .addGroup(jPanelQLHDLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanelQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelQLHDLayout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addGap(123, 123, 123)
+                        .addComponent(txtMaHD))
+                    .addGroup(jPanelQLHDLayout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addGap(123, 123, 123)
+                        .addComponent(txtMaNV))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelQLHDLayout.createSequentialGroup()
                         .addGroup(jPanelQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -678,7 +694,15 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
         jPanelQLHDLayout.setVerticalGroup(
             jPanelQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelQLHDLayout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addGroup(jPanelQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(txtMaHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -941,6 +965,8 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -964,6 +990,8 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
     private javax.swing.JLabel lblTongTienThanhToan;
     private javax.swing.JTable tblDonHang;
     private javax.swing.JTable tblSanPham;
+    private javax.swing.JTextField txtMaHD;
+    private javax.swing.JTextField txtMaNV;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTenKH;
     private javax.swing.JTextField txtTienKhachChuyenKhoan;
