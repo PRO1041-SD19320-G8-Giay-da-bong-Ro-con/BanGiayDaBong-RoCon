@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import model.ChiTietSanPham;
+import model.HoaDon;
 import model.SanPham;
 
 /**
@@ -62,6 +63,29 @@ public class BanHang_Respo {
                 ctsp.getMaCTSP()
         );
          
+    }
+    
+    public int taoHoaDon(HoaDon hd){
+        String sql = """
+                     INSERT INTO [dbo].[HOA_DON]
+                                ([MaHD]
+                                ,[TaiKhoan]
+                                ,[MaKH]
+                                ,[MaKM]
+                                ,[ThoiGianBan]
+                                ,[HinhThucThanhToan]
+                                ,[TrangThai])
+                          VALUES
+                                (?,?,?,?,?,?,?)
+                     """;
+        return db.JDBCHelper.excuteUpdate(sql,
+                                          hd.getMaHD(),
+                                          hd.getTaiKhoan(),
+                                          hd.getMaKH(),
+                                          hd.getMaKM(),
+                                          hd.getThoiGianBan(),
+                                          hd.getHinhThucThanhToan(),
+                                          hd.isTrangThai());
     }
     
     
