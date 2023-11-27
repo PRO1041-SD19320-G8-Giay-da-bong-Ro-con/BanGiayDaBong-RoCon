@@ -101,6 +101,11 @@ public class TaiKhoan {
         this.chucvu = chucvu;
     }
     
-
+    public String chucVu(){
+        if(isChucvu()){
+            return "Admin";
+        }
+        return "Nhân viên";
+    }
     
 }
