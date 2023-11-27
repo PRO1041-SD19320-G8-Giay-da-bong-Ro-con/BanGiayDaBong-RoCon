@@ -351,8 +351,6 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
     private javax.swing.JPanel panelChiTietSanPham;
     private javax.swing.JPanel panelMau;
     private javax.swing.JPanel panelSize;
-    private javax.swing.JPanel panelTong;
-    private javax.swing.JPanel panelTong1;
     // End of variables declaration//GEN-END:variables
 
     private void showForm() {
