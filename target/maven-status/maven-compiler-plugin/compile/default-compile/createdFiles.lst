@@ -35,7 +35,6 @@ com\ui\quenmatkhauJDialog$4.class
 com\ui\quenmatkhauJDialog$9$1.class
 com\ui\doimatkhauJDialog$1.class
 view\BanHang_DiaLog$16.class
-.netbeans_automatic_build
 view\SanPham_JDialog$19.class
 view\SanPham_JDialog$3.class
 com\entity\ChiTietHoaDon.class
@@ -65,6 +64,7 @@ view\NhanVien_JDiaLog$1.class
 view\SanPham_JDialog1$23.class
 view\SanPham_JDialog1$3.class
 view\BanHang_DiaLog$18$1.class
+com\ui\dangnhapJDialog$8.class
 com\dao\ChiTietSanPhamDAO.class
 view\SanPham_JDialog$18.class
 view\SanPham_JDialog$15.class
