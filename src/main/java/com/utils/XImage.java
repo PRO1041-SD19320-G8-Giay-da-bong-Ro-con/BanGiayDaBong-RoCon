@@ -20,7 +20,7 @@ import javax.swing.ImageIcon;
 public class XImage {
 
     public static Image getAppIcon() {
-        URL url = XImage.class.getResource("/edu/poly/icon/fpt.png");
+        URL url = XImage.class.getResource("/main/java/img/logo.png");
         return new ImageIcon(url).getImage();
     }
 

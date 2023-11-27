@@ -8,6 +8,7 @@ import com.component.Menu;
 import com.ui.dangnhapJDialog;
 import com.ui.panelQuanLyTaiKhoan;
 import com.utils.Auth;
+import com.utils.XImage;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.FlowLayout;
@@ -43,6 +44,7 @@ public class Main extends javax.swing.JFrame {
         txtUser.setText(Auth.user.getTaikhoan());
         panelTong.setLayout(new FlowLayout());
         panelTong.add(panel);
+         setIconImage(XImage.getAppIcon());
     }
 
     public static void changeForm(Component com) {
