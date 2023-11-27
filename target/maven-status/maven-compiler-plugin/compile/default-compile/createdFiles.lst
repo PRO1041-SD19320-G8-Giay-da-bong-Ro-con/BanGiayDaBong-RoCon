@@ -35,6 +35,7 @@ com\ui\quenmatkhauJDialog$4.class
 com\ui\quenmatkhauJDialog$9$1.class
 com\ui\doimatkhauJDialog$1.class
 view\BanHang_DiaLog$16.class
+.netbeans_automatic_build
 view\SanPham_JDialog$19.class
 view\SanPham_JDialog$3.class
 com\entity\ChiTietHoaDon.class
@@ -49,6 +50,7 @@ view\BanHang_DiaLog$10.class
 view\SanPham_JDialog$4.class
 com\dao\HoaDonDAO.class
 com\ui\doimatkhauJDialog.class
+com\utils\FormatDate.class
 view\SanPham_JDialog$5.class
 view\SanPham_JDialog1$16.class
 com\ui\PanelHoaDon$1.class
@@ -148,6 +150,7 @@ com\entity\MauSac.class
 com\ui\quenmatkhauJDialog$3.class
 com\ui\dangnhapJDialog$3.class
 db\JDBCHelper.class
+com\ui\PanelHoaDon$4.class
 model\ChatLieu.class
 com\ui\PanelDanhSachSanPham$3.class
 com\dao\DAOInterface.class
@@ -164,6 +167,7 @@ view\SanPham_JDialog1$11.class
 view\SanPham_JDialog$2.class
 view\NhanVien_JDiaLog$1$1.class
 com\ui\nhaplaimatkhauDialog.class
+com\ui\PanelHoaDon$6.class
 com\ui\quenmatkhauJDialog$1.class
 com\main\Main.class
 view\BanHang_DiaLog$4.class
@@ -177,6 +181,7 @@ view\SanPham_JDialog1$8.class
 view\SanPham_JDialog$20$1.class
 view\BanHang_DiaLog.class
 com\entity\ChiTietSanPham.class
+com\ui\PanelHoaDon$5.class
 view\SanPham_JDialog$1.class
 com\ui\PanelChiTietSanPham$4.class
 com\ui\nhapmaDialog.class
