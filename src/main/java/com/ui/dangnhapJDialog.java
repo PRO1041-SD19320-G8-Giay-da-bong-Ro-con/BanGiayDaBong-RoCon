@@ -130,6 +130,7 @@ public class dangnhapJDialog extends javax.swing.JDialog {
             }
         });
 
+        btn_thoat.setIcon(new javax.swing.ImageIcon("C:\\Users\\FPT SHOP\\Desktop\\DuAn1\\BanGiayDaBong-RoCon\\src\\main\\java\\icon\\exit2.png")); // NOI18N
         btn_thoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_thoatActionPerformed(evt);

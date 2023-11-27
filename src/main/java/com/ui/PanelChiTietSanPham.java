@@ -286,7 +286,7 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
                                     .addComponent(jLabel9)
                                     .addComponent(lblXuatXu)))
                             .addComponent(lblHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                         .addGroup(panelChiTietSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnXoa)
                             .addComponent(btnSua))
@@ -351,8 +351,6 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
     private javax.swing.JPanel panelChiTietSanPham;
     private javax.swing.JPanel panelMau;
     private javax.swing.JPanel panelSize;
-    private javax.swing.JPanel panelTong;
-    private javax.swing.JPanel panelTong1;
     // End of variables declaration//GEN-END:variables
 
     private void showForm() {

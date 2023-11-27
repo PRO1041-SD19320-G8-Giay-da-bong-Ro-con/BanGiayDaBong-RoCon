@@ -217,6 +217,11 @@
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_thoat">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\FPT SHOP\Desktop\DuAn1\BanGiayDaBong-RoCon\src\main\java\icon\exit2.png"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_thoatActionPerformed"/>
           </Events>
