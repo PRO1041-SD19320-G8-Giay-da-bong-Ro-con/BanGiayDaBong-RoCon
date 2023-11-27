@@ -26,6 +26,7 @@ import com.entity.MauSac;
 import com.entity.Size;
 import com.utils.XImage;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -57,10 +58,14 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
 
     public PanelChiTietSanPham() {
         initComponents();
+        lblHinhAnh.setSize(new Dimension(250, 300));
+        lblHinhAnh.repaint();
+        lblHinhAnh.revalidate();
         showForm();
         FlowLayout flow = new FlowLayout(FlowLayout.LEADING, 20, 15);
         panelMau.setLayout(flow);
         panelSize.setLayout(flow);
+
     }
 
     /**
@@ -201,7 +206,7 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(72, 72, 72))
                     .addGroup(panelChiTietSanPhamLayout.createSequentialGroup()
-                        .addComponent(lblHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(panelChiTietSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelChiTietSanPhamLayout.createSequentialGroup()
@@ -263,7 +268,7 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
                     .addComponent(btnThoatChiTiet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(panelChiTietSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelChiTietSanPhamLayout.createSequentialGroup()
                         .addGroup(panelChiTietSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblMaSP)
@@ -443,10 +448,11 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
 
     private void showAnh() {
         try {
+            lblHinhAnh.setText("");
             lblHinhAnh.setIcon(XImage.resize(new ImageIcon(getClass().getResource("/img/" + sanPham.getHinh()).getPath()), lblHinhAnh));
         } catch (Exception e) {
-//            lblHinhAnh.setIcon(null);
-            System.out.println(e);
+            lblHinhAnh.setIcon(null);
+            lblHinhAnh.setText("none");
         }
     }
 }

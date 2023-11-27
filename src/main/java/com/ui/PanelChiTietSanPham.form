@@ -53,7 +53,7 @@
                           <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="lblHinhAnh" min="-2" pref="230" max="-2" attributes="0"/>
+                          <Component id="lblHinhAnh" min="-2" pref="250" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -136,7 +136,7 @@
                   </Group>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblHinhAnh" alignment="0" min="-2" pref="259" max="-2" attributes="0"/>
+                      <Component id="lblHinhAnh" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblMaSP" alignment="3" min="-2" max="-2" attributes="0"/>

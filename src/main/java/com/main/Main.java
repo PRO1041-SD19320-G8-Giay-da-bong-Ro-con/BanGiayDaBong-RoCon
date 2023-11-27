@@ -58,15 +58,15 @@ public class Main extends javax.swing.JFrame {
             changeForm(new PanelChiTietSanPham());
         } catch (Exception e) {
         }
-
     }
 
     public static void changeForm(Component com) {
+        com.setSize(new Dimension(panel.getSize()));
         panel.removeAll();
         panel.add(com);
-        com.setPreferredSize(new Dimension(panel.getSize()));
         panel.repaint();
         panel.revalidate();
+//        com.setVisible(true);
     }
 
     /**
@@ -109,11 +109,6 @@ public class Main extends javax.swing.JFrame {
         );
 
         panelUser.setOpaque(false);
-        panelUser.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panelUserMouseClicked(evt);
-            }
-        });
 
         txtUser.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         txtUser.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -168,10 +163,6 @@ public class Main extends javax.swing.JFrame {
     private void iconMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconMenuMousePressed
         openMenu();
     }//GEN-LAST:event_iconMenuMousePressed
-
-    private void panelUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelUserMouseClicked
-
-    }//GEN-LAST:event_panelUserMouseClicked
 
     /**
      * @param args the command line arguments
