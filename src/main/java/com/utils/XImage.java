@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -42,5 +43,11 @@ public class XImage {
      public static ImageIcon readImage(String nameFile) {
          File path = new File("src\\main\\java\\img\\",nameFile);
          return new ImageIcon(path.getAbsolutePath());
+     }
+     
+     public static ImageIcon resize(ImageIcon imgIcon, JLabel lbl){
+         Image img = imgIcon.getImage();
+         Image reImg = img.getScaledInstance(lbl.getWidth(),lbl.getHeight(), Image.SCALE_SMOOTH);
+         return new ImageIcon(reImg);
      }
 }

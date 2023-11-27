@@ -80,15 +80,15 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
         return selectBySQL(SELECT_BY_SP_Mau_SQL, maSP,mau);
     }
 
-    public ChiTietSanPham getSoLuong(String maSP, String mau, String size) {
+    public int getSoLuong(String maSP, String mau, String size) {
         try {
             List<ChiTietSanPham> list = selectBySQL(SELECT_So_Luong, maSP, mau, size);
             if (list.isEmpty()) {
-                return null;
+                return 0;
             }
-            return list.get(0);
+            return list.get(0).getSoLuong();
         } catch (SQLException ex) {
-            return null;
+            throw new Error("\n getSoLuong() ChiTietSanPhamDAO\n"+ex);
         }
     }
 }

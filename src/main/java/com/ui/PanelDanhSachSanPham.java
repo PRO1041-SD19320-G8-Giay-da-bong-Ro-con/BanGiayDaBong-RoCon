@@ -165,18 +165,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
-        try {
-            int row = tableSanPham.getSelectedRow();
-            if (row != -1) {
-                SanPham sp = daoSP.selectByID(tableSanPham.getValueAt(row, 0).toString());
-                PanelChiTietSanPham.sanPham = sp;
-                Main.changeForm(new PanelChiTietSanPham());
-            } else {
-                JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(PanelDanhSachSanPham.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        xemChiTiet();
     }//GEN-LAST:event_btnChiTietActionPerformed
 
 
@@ -204,7 +193,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
 
             String key = txtSearch.getText();
             for (SanPham sp : daoSP.selectAll()) {
-                if (sp.getMaSP().toUpperCase().contains(key.toUpperCase())||sp.getTenSP().toUpperCase().contains(key.toUpperCase())) {
+                if (sp.getMaSP().toUpperCase().contains(key.toUpperCase()) || sp.getTenSP().toUpperCase().contains(key.toUpperCase())) {
                     model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), Rounding.round(sp.getGia()), daoTH.getTen(sp.getMaThuongHieu())});
                 }
             }
@@ -212,5 +201,20 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             Logger.getLogger(PanelDanhSachSanPham.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    private void xemChiTiet() {
+        try {
+            int row = tableSanPham.getSelectedRow();
+            if (row != -1) {
+                SanPham sp = daoSP.selectByID(tableSanPham.getValueAt(row, 0).toString());
+                PanelChiTietSanPham.sanPham = sp;
+                Main.changeForm(new PanelChiTietSanPham());
+            } else {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelDanhSachSanPham.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
