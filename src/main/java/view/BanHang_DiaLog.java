@@ -46,11 +46,11 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         init();
-        if (lstDonHang.size() != 0) {
-            this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-            JOptionPane.showMessageDialog(this, "Bạn cần xử lý đơn hàng trước khi kết thúc chương trình");
-            return;
-        }
+//        if (lstDonHang.size() != 0) {
+//            this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+//            JOptionPane.showMessageDialog(this, "Bạn cần xử lý đơn hàng trước khi kết thúc chương trình");
+//            return;
+//        }
     }
 
     private void init() {
@@ -312,7 +312,9 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
     }
 
     private void taoHoaDon() {
-
+        lstDonHang.clear();
+        tblModelDH.setRowCount(0);
+        tblModelDH = (DefaultTableModel) tblDonHang.getModel();
     }
 
     /**
@@ -921,25 +923,11 @@ public class BanHang_DiaLog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTaoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonActionPerformed
-        if (lstDonHang.size() == 0) {
-            JOptionPane.showMessageDialog(this, "Đơn hàng trống");
-            return;
-        }
-        Double tongTien = 0.0;
-        for (int i = 0; i < tblDonHang.getRowCount(); i++) {
-            Double gia = Double.parseDouble(tblDonHang.getValueAt(i, 3).toString());
-            tongTien += gia;
-            lblTongTien.setText(tongTien + "");
-            lblTongTienThanhToan.setText(tongTien - Double.parseDouble(lblGiamGia.getText()) + "");
-        }
-        lstDonHang.clear();
-        tblModelDH.setRowCount(0);
-        tblModelDH = (DefaultTableModel) tblDonHang.getModel();
+        taoHoaDon();
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
 
     private void btnXoaKhoiDonHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaKhoiDonHangActionPerformed
-
-        xoaKhoiDonHang();
+       xoaKhoiDonHang();
     }//GEN-LAST:event_btnXoaKhoiDonHangActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
