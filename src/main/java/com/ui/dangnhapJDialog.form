@@ -48,7 +48,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\FPT SHOP\Desktop\DuAn1\BanGiayDaBong-RoCon\src\main\java\img\logo.png"/>
+          <Image iconType="3" name="/img/logo.png"/>
         </Property>
       </Properties>
     </Component>
@@ -205,9 +205,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\FPT SHOP\Desktop\DuAn1\BanGiayDaBong-RoCon\src\main\java\icon\g2.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng Nh&#x1ead;p"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -220,11 +217,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_thoat">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\FPT SHOP\Desktop\DuAn1\BanGiayDaBong-RoCon\src\main\java\icon\exit2.png"/>
-            </Property>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_thoatActionPerformed"/>
           </Events>

@@ -78,7 +78,7 @@
         <Component class="javax.swing.JLabel" name="iconMenu">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/menu-icon-24.png"/>
+              <Image iconType="3" name="/icon/iconMenu.png"/>
             </Property>
           </Properties>
           <Events>
@@ -122,7 +122,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/person.png"/>
+                  <Image iconType="3" name="/icon/person.png"/>
                 </Property>
               </Properties>
             </Component>

@@ -44,7 +44,7 @@ public class Main extends javax.swing.JFrame {
         txtUser.setText(Auth.user.getTaikhoan());
         panelTong.setLayout(new FlowLayout());
         panelTong.add(panel);
-         setIconImage(XImage.getAppIcon());
+//         setIconImage(XImage.getAppIcon());
     }
 
     public static void changeForm(Component com) {
@@ -75,7 +75,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        iconMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menu-icon-24.png"))); // NOI18N
+        iconMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconMenu.png"))); // NOI18N
         iconMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 iconMenuMousePressed(evt);
@@ -105,7 +105,7 @@ public class Main extends javax.swing.JFrame {
         panelUser.add(txtUser);
 
         iconPerson.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        iconPerson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/person.png"))); // NOI18N
+        iconPerson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/person.png"))); // NOI18N
         panelUser.add(iconPerson);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

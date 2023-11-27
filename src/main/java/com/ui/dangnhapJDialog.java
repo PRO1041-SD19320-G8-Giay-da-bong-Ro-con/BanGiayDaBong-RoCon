@@ -33,7 +33,7 @@ public class dangnhapJDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         init();
-        setIconImage(XImage.getAppIcon());
+//        setIconImage(XImage.getAppIcon());
         btn_dangnhap.registerKeyboardAction(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -87,7 +87,7 @@ public class dangnhapJDialog extends javax.swing.JDialog {
         setTitle("Đăng Nhập");
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\FPT SHOP\\Desktop\\DuAn1\\BanGiayDaBong-RoCon\\src\\main\\java\\img\\logo.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -122,7 +122,6 @@ public class dangnhapJDialog extends javax.swing.JDialog {
         txt_matkhau.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
 
         btn_dangnhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_dangnhap.setIcon(new javax.swing.ImageIcon("C:\\Users\\FPT SHOP\\Desktop\\DuAn1\\BanGiayDaBong-RoCon\\src\\main\\java\\icon\\g2.png")); // NOI18N
         btn_dangnhap.setText("Đăng Nhập");
         btn_dangnhap.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         btn_dangnhap.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +130,6 @@ public class dangnhapJDialog extends javax.swing.JDialog {
             }
         });
 
-        btn_thoat.setIcon(new javax.swing.ImageIcon("C:\\Users\\FPT SHOP\\Desktop\\DuAn1\\BanGiayDaBong-RoCon\\src\\main\\java\\icon\\exit2.png")); // NOI18N
         btn_thoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_thoatActionPerformed(evt);
