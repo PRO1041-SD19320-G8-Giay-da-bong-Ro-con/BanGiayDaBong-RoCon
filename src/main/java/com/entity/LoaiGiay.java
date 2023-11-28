@@ -8,26 +8,21 @@ package com.entity;
  *
  * @author Thai
  */
-public class Size extends ThuocTinh{
+public class LoaiGiay extends ThuocTinh{
 
-    private String MaSize;
+    private String MaLoai;
     private String Ten;
 
-    public Size() {
-    }
-
-    public Size(String MaSize, String Ten) {
-        this.MaSize = MaSize;
-        this.Ten = Ten;
+    public LoaiGiay() {
     }
 
     @Override
     public String getMa() {
-        return MaSize;
+        return MaLoai;
     }
 
-    public void setMaSize(String MaSize) {
-        this.MaSize = MaSize;
+    public void setMaLoai(String MaLoai) {
+        this.MaLoai = MaLoai;
     }
 
     @Override
@@ -38,7 +33,5 @@ public class Size extends ThuocTinh{
     public void setTen(String Ten) {
         this.Ten = Ten;
     }
-
-
 
 }

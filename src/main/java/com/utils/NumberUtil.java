@@ -10,12 +10,16 @@ import java.text.DecimalFormat;
  *
  * @author Thai
  */
-public class Rounding {
+public class NumberUtil {
 
     static DecimalFormat df = new DecimalFormat("###,###");
 
     public static String round(Object number) {
         long str = Math.round((double)number);
         return df.format(str).replace(',', '.');
+    }
+    
+    public static boolean isNAN(String str){
+        return !str.matches("[0-9]+");
     }
 }

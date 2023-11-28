@@ -32,13 +32,13 @@ public class XImage {
         return new ImageIcon(XImage.class.getResource("/img/" + name).getPath());
     }
 
-    public static boolean saveImage(File file) {
+    public static boolean saveImage(File from) {
         try {
-            File to = new File(XImage.class.getResource("/img/" + file.getName()).getPath());
+            File to = new File(XImage.class.getResource("/img/").getPath()+from.getName());
             if (to.getParentFile().exists()) {
                 to.getParentFile().mkdir();
             }
-            Files.copy(file.toPath(), to.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(from.toPath(), to.toPath(), StandardCopyOption.REPLACE_EXISTING);
             return true;
         } catch (Exception e) {
             Logger.getLogger(XImage.class.getName()).log(Level.SEVERE, null, e);

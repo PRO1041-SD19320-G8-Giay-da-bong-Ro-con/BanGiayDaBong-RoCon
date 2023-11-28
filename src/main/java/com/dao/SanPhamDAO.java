@@ -22,6 +22,7 @@ public class SanPhamDAO implements DAOInterface<SanPham, String> {
 
     String SELECT_ALL_SQL = "select * from San_Pham ";
     String SELECT_BY_ID_SQL = "select * from San_Pham where masp = ?";
+    String UPDATE_TRANG_THAI = "Update San_Pham Set TrangThai = ? where MaSP = ?";
 
     @Override
     public int insert(SanPham entity) throws SQLException {
@@ -42,9 +43,9 @@ public class SanPhamDAO implements DAOInterface<SanPham, String> {
     public List<SanPham> selectAll() throws SQLException {
         return selectBySQL(SELECT_ALL_SQL);
     }
-    
+
     public List<SanPham> selectAll(String... sql) throws SQLException {
-        return selectBySQL(SELECT_ALL_SQL+sql[0]);
+        return selectBySQL(SELECT_ALL_SQL + sql[0]);
     }
 
     @Override
@@ -78,12 +79,21 @@ public class SanPhamDAO implements DAOInterface<SanPham, String> {
         return list;
 
     }
-    
-    public ThuongHieu getThuongHieu (String id){
+
+    public ThuongHieu getThuongHieu(String id) {
         try {
             return new ThuongHieuDAO().selectByID(id);
         } catch (SQLException ex) {
             throw new Error();
+        }
+    }
+
+    public SanPham setTrangThai(SanPham sp) {
+        try {
+            JDBCHelper.update(UPDATE_TRANG_THAI, sp.isTrangThai()?"0":"1", sp.getMaSP());
+            return selectByID(sp.getMaSP());
+        } catch (SQLException ex) {
+            throw new Error("\nLỗi setTrangThai() SanPhamDAO.class\n" + ex);
         }
     }
 }

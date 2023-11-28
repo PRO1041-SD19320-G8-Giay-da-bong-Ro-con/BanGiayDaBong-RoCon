@@ -8,7 +8,7 @@ package com.entity;
  *
  * @author Thai
  */
-public class XuatXu {
+public class XuatXu extends ThuocTinh{
 
     private String MaXuatXu;
     private String Ten;
@@ -21,7 +21,8 @@ public class XuatXu {
         this.Ten = Ten;
     }
 
-    public String getMaXuatXu() {
+    @Override
+    public String getMa() {
         return MaXuatXu;
     }
 
@@ -29,6 +30,7 @@ public class XuatXu {
         this.MaXuatXu = MaXuatXu;
     }
 
+    @Override
     public String getTen() {
         return Ten;
     }

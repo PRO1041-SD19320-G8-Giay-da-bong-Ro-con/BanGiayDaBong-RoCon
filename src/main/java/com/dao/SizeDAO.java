@@ -83,7 +83,7 @@ public class SizeDAO implements DAOInterface<Size, String> {
             if (list.isEmpty()) {
                 return null;
             }
-            return list.get(0).getMaSize();
+            return list.get(0).getMa();
         } catch (SQLException ex) {
             throw new Error();
         }

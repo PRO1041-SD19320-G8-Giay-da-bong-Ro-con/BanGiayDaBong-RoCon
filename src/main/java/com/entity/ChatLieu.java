@@ -4,7 +4,7 @@ package com.entity;
  *
  * @author Thai
  */
-public class ChatLieu {
+public class ChatLieu extends ThuocTinh{
 
     private String MaChatLieu;
     private String Ten;
@@ -17,7 +17,8 @@ public class ChatLieu {
         this.Ten = Ten;
     }
 
-    public String getMaChatLieu() {
+    @Override
+    public String getMa() {
         return MaChatLieu;
     }
 
@@ -25,6 +26,7 @@ public class ChatLieu {
         this.MaChatLieu = MaChatLieu;
     }
 
+    @Override
     public String getTen() {
         return Ten;
     }
@@ -32,7 +34,5 @@ public class ChatLieu {
     public void setTen(String Ten) {
         this.Ten = Ten;
     }
-
-    
 
 }

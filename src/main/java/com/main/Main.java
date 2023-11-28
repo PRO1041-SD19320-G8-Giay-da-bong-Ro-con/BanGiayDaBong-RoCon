@@ -7,6 +7,7 @@ package com.main;
 import com.component.Menu;
 import com.ui.PanelChiTietSanPham;
 import com.ui.PanelDanhSachSanPham;
+import com.ui.PanelThemSanPham;
 import com.ui.dangnhapJDialog;
 import com.ui.panelQuanLyTaiKhoan;
 import com.utils.Auth;
@@ -46,15 +47,15 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         panelMenu.setMain(this);
-        new dangnhapJDialog(this, true).setVisible(true);
-        txtUser.setText(Auth.user.getTaikhoan());
+//        new dangnhapJDialog(this, true).setVisible(true);
+//        txtUser.setText(Auth.user.getTaikhoan());
         panelTong.setLayout(new FlowLayout());
         panelTong.add(panel);
         setupPanelPerson();
         
         panel.setSize(panelTong.getSize());
         try {
-            changeForm(new PanelDanhSachSanPham());
+            changeForm(new PanelThemSanPham());
         } catch (Exception e) {
         }
     }

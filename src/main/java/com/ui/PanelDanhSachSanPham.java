@@ -8,7 +8,7 @@ import com.dao.SanPhamDAO;
 import com.dao.ThuongHieuDAO;
 import com.entity.SanPham;
 import com.main.Main;
-import com.utils.Rounding;
+import com.utils.NumberUtil;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -196,7 +196,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-
+        Main.changeForm(new PanelThemSanPham());
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
@@ -245,7 +245,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             String key = txtSearch.getText();
             for (SanPham sp : daoSP.selectAll(checkTinhTrang())) {
                 if (sp.getMaSP().toUpperCase().contains(key.toUpperCase()) || sp.getTenSP().toUpperCase().contains(key.toUpperCase())) {
-                    model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), Rounding.round(sp.getGia()), daoTH.getTen(sp.getMaThuongHieu())});
+                    model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), NumberUtil.round(sp.getGia()), daoTH.getTen(sp.getMaThuongHieu()),sp.getTrangThai()});
                 }
             }
         } catch (SQLException ex) {
