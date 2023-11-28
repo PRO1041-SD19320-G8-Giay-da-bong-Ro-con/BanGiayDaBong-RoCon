@@ -45,8 +45,8 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         panelMenu.setMain(this);
-//        new dangnhapJDialog(this, true).setVisible(true);
-//        txtUser.setText(Auth.user.getTaikhoan());
+        new dangnhapJDialog(this, true).setVisible(true);
+        txtUser.setText(Auth.user.getTaikhoan());
         panelTong.setLayout(new FlowLayout());
         panelTong.add(panel);
         setupPanelPerson();

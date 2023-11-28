@@ -12,6 +12,7 @@ com\component\Menu.class
 com\utils\SendEmail.class
 view\ChiTietHoaDon_JDiaLog$1.class
 model\HoaDon.class
+com\ui\Paneldoimatkhau$1.class
 view\BanHang_DiaLog$5.class
 view\BanHang_DiaLog$15.class
 com\ui\dangnhapJDialog$2.class
@@ -26,6 +27,7 @@ com\ui\quenmatkhauJDialog$5.class
 com\ui\PanelChiTietSanPham$1.class
 com\utils\DBConnect.class
 com\dao\XuatXuDAO.class
+com\ui\panelQuanLyTaiKhoan$2.class
 com\utils\Auth.class
 view\ChiTietHoaDon_JDiaLog$2.class
 view\SanPham_JDialog1$18.class
@@ -49,11 +51,13 @@ view\BanHang_DiaLog$10.class
 view\SanPham_JDialog$4.class
 com\dao\HoaDonDAO.class
 com\ui\doimatkhauJDialog.class
+com\ui\Paneldoimatkhau$5.class
 com\utils\FormatDate.class
 view\SanPham_JDialog$5.class
 view\SanPham_JDialog1$16.class
 com\ui\PanelHoaDon$1.class
 view\BanHang_DiaLog$9.class
+com\ui\Paneldoimatkhau$2.class
 com\ui\quenmatkhauJDialog$6.class
 com\ui\quenmatkhauJDialog$9.class
 view\SanPham_JDialog$8.class
@@ -64,7 +68,6 @@ view\NhanVien_JDiaLog$1.class
 view\SanPham_JDialog1$23.class
 view\SanPham_JDialog1$3.class
 view\BanHang_DiaLog$18$1.class
-com\ui\dangnhapJDialog$8.class
 com\dao\ChiTietSanPhamDAO.class
 view\SanPham_JDialog$18.class
 view\SanPham_JDialog$15.class
@@ -92,6 +95,7 @@ com\ui\quenmatkhauJDialog$7.class
 view\SanPham_JDialog1$21.class
 responsitory\Giay_Interfacce.class
 view\ChiTietHoaDon_JDiaLog$2$1.class
+com\ui\Paneldoimatkhau$3.class
 com\entity\SanPham.class
 model\MauSac.class
 view\BanHang_DiaLog$18.class
@@ -107,6 +111,7 @@ view\SanPham_JDialog$11.class
 com\ui\dangnhapJDialog$4.class
 view\BanHang_DiaLog$12.class
 model\Size.class
+com\ui\Paneldoimatkhau$4.class
 com\ui\quenmatkhauJDialog$2.class
 view\SanPham_JDialog$6.class
 com\ui\dangnhapJDialog.class
@@ -157,6 +162,7 @@ com\dao\DAOInterface.class
 com\dao\SanPhamDAO.class
 com\ui\PanelChiTietSanPham$3.class
 com\main\Main$1.class
+com\ui\Paneldoimatkhau.class
 responsitory\SanPham_Respo.class
 com\ui\PanelChiTietHoaDon$1.class
 view\HoaDon_JDiaLog$2.class
