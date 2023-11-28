@@ -44,7 +44,7 @@ public class Main extends javax.swing.JFrame {
         txtUser.setText(Auth.user.getTaikhoan());
         panelTong.setLayout(new FlowLayout());
         panelTong.add(panel);
-         setIconImage(XImage.getAppIcon());
+//         setIconImage(XImage.getAppIcon());
     }
 
     public static void changeForm(Component com) {

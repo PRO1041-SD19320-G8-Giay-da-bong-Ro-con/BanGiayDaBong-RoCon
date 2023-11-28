@@ -19,10 +19,10 @@ import javax.swing.ImageIcon;
  */
 public class XImage {
 
-    public static Image getAppIcon() {
-        URL url = XImage.class.getResource("/main/java/img/logo.png");
-        return new ImageIcon(url).getImage();
-    }
+//    public static Image getAppIcon() {
+//        URL url = XImage.class.getResource("/main/java/img/logo.png");
+//        return new ImageIcon(url).getImage();
+//    }
 
     public static boolean saveImage(File src) {
         File fl = new File("src\\main\\java\\img\\", src.getName());
