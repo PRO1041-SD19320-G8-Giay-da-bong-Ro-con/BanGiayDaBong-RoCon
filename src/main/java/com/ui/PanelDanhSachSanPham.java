@@ -8,7 +8,7 @@ import com.dao.SanPhamDAO;
 import com.dao.ThuongHieuDAO;
 import com.entity.SanPham;
 import com.main.Main;
-import com.utils.NumberUtil;
+import com.utils.TextUtil;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -245,7 +245,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             String key = txtSearch.getText();
             for (SanPham sp : daoSP.selectAll(checkTinhTrang())) {
                 if (sp.getMaSP().toUpperCase().contains(key.toUpperCase()) || sp.getTenSP().toUpperCase().contains(key.toUpperCase())) {
-                    model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), NumberUtil.round(sp.getGia()), daoTH.getTen(sp.getMaThuongHieu()),sp.getTrangThai()});
+                    model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), TextUtil.round(sp.getGia()), daoTH.getTen(sp.getMaThuongHieu()),sp.getTrangThai()});
                 }
             }
         } catch (SQLException ex) {

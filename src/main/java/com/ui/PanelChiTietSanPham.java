@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 import javax.swing.JRadioButton;
 import com.entity.MauSac;
 import com.entity.Size;
-import com.utils.NumberUtil;
+import com.utils.TextUtil;
 import com.utils.XImage;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -395,7 +395,7 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
     private void showForm() {
         lblMaSP.setText(sanPham.getMaSP());
         lblTen.setText(sanPham.getTenSP());
-        lblGia.setText(NumberUtil.round(sanPham.getGia()) + " VNĐ");
+        lblGia.setText(TextUtil.round(sanPham.getGia()) + " VNĐ");
         lblXuatXu.setText(daoXX.getTen(sanPham.getMaXuatXu()));
         lblChatLieu.setText(daoCL.getTen(sanPham.getMaChatLieu()));
         lblThuongHIeu.setText(daoTH.getTen(sanPham.getMaThuongHieu()));

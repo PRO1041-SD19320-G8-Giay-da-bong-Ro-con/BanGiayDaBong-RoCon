@@ -8,7 +8,7 @@ import com.dao.HoaDonDAO;
 import com.entity.HoaDon;
 import com.main.Main;
 import com.utils.FormatDate;
-import com.utils.NumberUtil;
+import com.utils.TextUtil;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -262,7 +262,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
         try {
             model.setRowCount(0);
             for (HoaDon hd : list) {
-                model.addRow(new Object[]{hd.getMaHD(), FormatDate.toString(hd.getThoiGianBan()), hd.getTaiKhoan(), hd.getMaKH(), NumberUtil.round(hd.getTongTienCuoi()), hd.getTrangThai()});
+                model.addRow(new Object[]{hd.getMaHD(), FormatDate.toString(hd.getThoiGianBan()), hd.getTaiKhoan(), hd.getMaKH(), TextUtil.round(hd.getTongTienCuoi()), hd.getTrangThai()});
             }
         } catch (Exception e) {
             Logger.getLogger(PanelHoaDon.class.getName()).log(Level.SEVERE, null, e);

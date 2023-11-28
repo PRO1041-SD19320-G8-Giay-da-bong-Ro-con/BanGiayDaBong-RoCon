@@ -8,7 +8,7 @@ import com.dao.ChiTietHoaDonDAO;
 import com.dao.KhuyenMaiDAO;
 import com.entity.HoaDon;
 import com.main.Main;
-import com.utils.NumberUtil;
+import com.utils.TextUtil;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
@@ -296,8 +296,8 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
         txtKhuyenMai.setText(daoKM.getDetailKhuyenMai(hoaDon.getMaKM()));
         txtTaiKhoan.setText(hoaDon.getTaiKhoan());
         txtThoiGian.setText(formater.format(hoaDon.getThoiGianBan()));
-        txtTongTienCuoi.setText(NumberUtil.round(hoaDon.getTongTienCuoi()));
-        txtTongTienGoc.setText(NumberUtil.round(hoaDon.getTongTienGoc()));
+        txtTongTienCuoi.setText(TextUtil.round(hoaDon.getTongTienCuoi()));
+        txtTongTienGoc.setText(TextUtil.round(hoaDon.getTongTienGoc()));
         txtTrangThai.setText(hoaDon.getTrangThai());
         if (hoaDon.isTrangThai()) {
             txtTrangThai.setForeground(new Color(0,204,51));
@@ -309,7 +309,7 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
     private void showTable() {
         model.setRowCount(0);
         for (Object[] cthd : daoCTHD.getAllHoaDonChiTiet(hoaDon.getMaHD())) {
-            model.addRow(new Object[]{cthd[0], cthd[1], cthd[2], NumberUtil.round(cthd[3])});
+            model.addRow(new Object[]{cthd[0], cthd[1], cthd[2], TextUtil.round(cthd[3])});
         }
     }
 }
