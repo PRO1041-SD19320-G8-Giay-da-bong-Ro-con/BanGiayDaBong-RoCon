@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class SanPhamDAO implements DAOInterface<SanPham, String> {
 
-    String SELECT_ALL_SQL = "select * from San_Pham";
+    String SELECT_ALL_SQL = "select * from San_Pham ";
     String SELECT_BY_ID_SQL = "select * from San_Pham where masp = ?";
 
     @Override
@@ -41,6 +41,10 @@ public class SanPhamDAO implements DAOInterface<SanPham, String> {
     @Override
     public List<SanPham> selectAll() throws SQLException {
         return selectBySQL(SELECT_ALL_SQL);
+    }
+    
+    public List<SanPham> selectAll(String... sql) throws SQLException {
+        return selectBySQL(SELECT_ALL_SQL+sql[0]);
     }
 
     @Override
