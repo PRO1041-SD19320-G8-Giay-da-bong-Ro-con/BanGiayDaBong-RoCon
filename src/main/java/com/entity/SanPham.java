@@ -18,19 +18,9 @@ public class SanPham {
     private String MaChatLieu;
     private String MaXuatXu;
     private double Gia;
+    private boolean TrangThai;
 
     public SanPham() {
-    }
-
-    public SanPham(String MaSP, String TenSP, String Hinh, String MaThuongHieu, String MaLoai, String MaChatLieu, String MaXuatXu, double Gia) {
-        this.MaSP = MaSP;
-        this.TenSP = TenSP;
-        this.Hinh = Hinh;
-        this.MaThuongHieu = MaThuongHieu;
-        this.MaLoai = MaLoai;
-        this.MaChatLieu = MaChatLieu;
-        this.MaXuatXu = MaXuatXu;
-        this.Gia = Gia;
     }
 
     public String getMaSP() {
@@ -95,6 +85,14 @@ public class SanPham {
 
     public void setGia(double Gia) {
         this.Gia = Gia;
+    }
+
+    public boolean isTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(boolean TrangThai) {
+        this.TrangThai = TrangThai;
     }
 
 }

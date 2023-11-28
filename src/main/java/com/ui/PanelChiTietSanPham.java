@@ -11,14 +11,10 @@ import com.dao.MauSacDAO;
 import com.dao.SizeDAO;
 import com.dao.ThuongHieuDAO;
 import com.dao.XuatXuDAO;
-import com.entity.ChiTietSanPham;
 import com.entity.SanPham;
 import com.main.Main;
 import com.utils.Rounding;
 import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JRadioButton;
@@ -30,9 +26,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Enumeration;
-import javax.swing.AbstractButton;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
@@ -449,7 +442,7 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
     private void showAnh() {
         try {
             lblHinhAnh.setText("");
-            lblHinhAnh.setIcon(XImage.resize(new ImageIcon(getClass().getResource("/img/" + sanPham.getHinh()).getPath()), lblHinhAnh));
+            lblHinhAnh.setIcon(XImage.resize(XImage.readImg(sanPham.getHinh()), lblHinhAnh));
         } catch (Exception e) {
             lblHinhAnh.setIcon(null);
             lblHinhAnh.setText("none");

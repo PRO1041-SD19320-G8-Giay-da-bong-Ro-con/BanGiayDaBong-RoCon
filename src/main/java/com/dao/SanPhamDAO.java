@@ -66,6 +66,7 @@ public class SanPhamDAO implements DAOInterface<SanPham, String> {
             entity.setMaChatLieu(rs.getString("MaChatLieu"));
             entity.setMaLoai(rs.getString("MaLoai"));
             entity.setGia(rs.getDouble("Gia"));
+            entity.setTrangThai(rs.getBoolean("TrangThai"));
             list.add(entity);
         }
 
