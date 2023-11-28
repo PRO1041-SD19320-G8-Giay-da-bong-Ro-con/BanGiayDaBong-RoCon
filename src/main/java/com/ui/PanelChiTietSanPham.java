@@ -442,7 +442,7 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
     private void showAnh() {
         try {
             lblHinhAnh.setText("");
-            lblHinhAnh.setIcon(XImage.resize(XImage.readImg(sanPham.getHinh()), lblHinhAnh));
+            lblHinhAnh.setIcon(XImage.resize(XImage.readImage(sanPham.getHinh()), lblHinhAnh));
         } catch (Exception e) {
             lblHinhAnh.setIcon(null);
             lblHinhAnh.setText("none");

@@ -55,7 +55,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
         tableSanPham = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbTinhTrang = new javax.swing.JComboBox<>();
         btnThem = new javax.swing.JButton();
         btnChiTiet = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -86,9 +86,14 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Đang bán", "Ngừng bán", " " }));
-        jComboBox1.setBorder(null);
+        cbTinhTrang.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cbTinhTrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang bán", "Ngừng bán", "Tất cả" }));
+        cbTinhTrang.setBorder(null);
+        cbTinhTrang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTinhTrangActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -98,7 +103,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbTinhTrang, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -106,7 +111,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbTinhTrang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -197,11 +202,15 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
         xemChiTiet();
     }//GEN-LAST:event_btnChiTietActionPerformed
 
+    private void cbTinhTrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTinhTrangActionPerformed
+        checkTinhTrang();
+    }//GEN-LAST:event_cbTinhTrangActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChiTiet;
     private javax.swing.JButton btnThem;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbTinhTrang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
@@ -246,6 +255,20 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             }
         } catch (SQLException ex) {
             Logger.getLogger(PanelDanhSachSanPham.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void checkTinhTrang() {
+        String tinhTrang = (String) cbTinhTrang.getSelectedItem();
+        switch (tinhTrang) {
+            case "Đang bán":
+//                showTable("Where tinhTrang ");
+                break;
+            case "Ngừng bán":
+                
+                break;
+            default:
+                showTable();
         }
     }
 }

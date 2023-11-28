@@ -28,7 +28,7 @@ public class XImage {
         return new ImageIcon(img.getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH));
     }
 
-    public static ImageIcon readImg(String name) {
+    public static ImageIcon readImage(String name) {
         return new ImageIcon(XImage.class.getResource("/img/" + name).getPath());
     }
 
