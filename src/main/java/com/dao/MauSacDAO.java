@@ -18,12 +18,13 @@ import java.util.logging.Logger;
  *
  * @author Thai
  */
-public class MauSacDAO  implements DAOInterface<MauSac, String> {
+public class MauSacDAO implements DAOInterface<MauSac, String> {
 
     String SELECT_NAME_BY_ID_SQL = "Select ten from Mau_Sac where maMau = ?";
     String SELECT_ALL_SQL = "select * from Mau_Sac";
     String SELECT_BY_ID_SQL = "select * from Mau_Sac where maMau = ?";
     String SELECT_BY_NAME_SQL = "select * from Mau_Sac where Ten = ?";
+    String SELECT_ALL_BY_MASP = "select distinct ms.* from MAU_SAC ms join CHI_TIET_SAN_PHAM ctsp on ctsp.MaMau = ms.MaMau where MaSP = ?";
 
     @Override
     public int insert(MauSac entity) throws SQLException {
@@ -69,16 +70,24 @@ public class MauSacDAO  implements DAOInterface<MauSac, String> {
         return list;
 
     }
-    
-    public String getTen(String key){
+
+    public List<MauSac> getDistinctMauByMaSP(String MaSP) {
+        try {
+            return selectBySQL(SELECT_ALL_BY_MASP,MaSP);
+        } catch (SQLException ex) {
+            throw new Error(ex);
+        }
+    }
+
+    public String getTen(String key) {
         try {
             return selectByID(key).getTen();
         } catch (SQLException ex) {
             throw new Error();
         }
     }
-    
-    public String getMa(String key){
+
+    public String getMa(String key) {
         try {
             List<MauSac> list = selectBySQL(SELECT_BY_NAME_SQL, key);
             if (list.isEmpty()) {

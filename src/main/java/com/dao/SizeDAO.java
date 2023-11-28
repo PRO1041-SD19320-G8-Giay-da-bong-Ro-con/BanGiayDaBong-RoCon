@@ -22,6 +22,7 @@ public class SizeDAO implements DAOInterface<Size, String> {
     String SELECT_ALL_SQL = "select * from Size";
     String SELECT_BY_ID_SQL = "select * from Size where maSize = ?";
     String SELECT_BY_NAME_SQL = "select * from Size where Ten = ?";
+    String SELECT_ALL_BY_MASP = "select distinct s.* from SIZE s join CHI_TIET_SAN_PHAM ctsp on ctsp.MaSize = s.MaSize where MaSP = ? order by s.ten asc";
 
     @Override
     public int insert(Size entity) throws SQLException {
@@ -85,6 +86,14 @@ public class SizeDAO implements DAOInterface<Size, String> {
             return list.get(0).getMaSize();
         } catch (SQLException ex) {
             throw new Error();
+        }
+    }
+    
+    public List<Size> getDistinctMauByMaSP(String MaSP) {
+        try {
+            return selectBySQL(SELECT_ALL_BY_MASP,MaSP);
+        } catch (SQLException ex) {
+            throw new Error(ex);
         }
     }
 

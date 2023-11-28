@@ -5,10 +5,16 @@
 package com.dao;
 
 import com.entity.TaiKhoan;
+import com.ui.dangnhapJDialog;
+import com.utils.DBConnect;
 import com.utils.JDBCHelper;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -74,6 +80,43 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoan, String> {
         rs.getStatement().getConnection().close();
         return list;
     }
+    public static boolean checkLogin(String username, String password) {
+        int row = 0;
+        try {
+            Connection con = DBConnect.getConnection();
+            Statement stm = con.createStatement();
+            String sql = "select TaiKhoan,MatKhau,Ten,NgaySinh,SDT,Email,CCCD,ChucVu from TAI_KHOAN where TaiKhoan = '"+username+"' and MatKhau='"+ password+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            while(rs.next()){
+                row = 1;
+                String tk = rs.getString(1);
+                String mk = rs.getString(2);
+                String ten = rs.getString(3);
+                Date ngaysinh = rs.getDate(4);
+                String sdt = rs.getString(5);
+                String email = rs.getString(6);
+                String cccd = rs.getString(7);
+                boolean chucvu = rs.getBoolean(8);
+                dangnhapJDialog.taikhoan = new TaiKhoan(tk, mk, ten, ngaysinh, sdt, email, cccd, chucvu);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
 
+        return (row>0);
+    }
+    public int updatemk(TaiKhoan tk, String taikhoan){
+       String sql="update TAI_KHOAN set MatKhau=? where TaiKhoan=?";
+        try {
+           Connection con = DBConnect.getConnection();
+            PreparedStatement  ps = con.prepareStatement(sql);          
+            ps.setObject(1, tk.getMatkhau());                      
+            ps.setObject(2, taikhoan);
+            return  ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 
 }

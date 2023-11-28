@@ -216,7 +216,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             XImage.saveImage(file);
-            ImageIcon img = XImage.readImage(file.getName());
+            ImageIcon img = XImage.readImg(file.getName());
             lblHinh.setIcon(img);
             lblHinh.setToolTipText(file.getName());
         }
@@ -1323,7 +1323,7 @@ public class SanPham_JDialog1 extends javax.swing.JDialog {
         cboHinh.setSelectedItem(sp.getHinh());
         tblSP.setRowSelectionInterval(index, index);
         if (!sp.getHinh().equals("")) {
-            lblHinh.setIcon(XImage.readImage(sp.getHinh()));
+            lblHinh.setIcon(XImage.readImg(sp.getHinh()));
             lblHinh.setToolTipText(sp.getHinh());
         }
     }
