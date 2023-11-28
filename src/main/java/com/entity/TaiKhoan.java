@@ -100,7 +100,14 @@ public class TaiKhoan {
     public void setChucvu(boolean chucvu) {
         this.chucvu = chucvu;
     }
-    
+    public String chucvuhienthi() {
+        if (chucvu == true) {
+            return "Quản Lý";
+        } else {
+            return "Nhân Viên";
+        }
+
+    }
     public String chucVu(){
         if(isChucvu()){
             return "Admin";

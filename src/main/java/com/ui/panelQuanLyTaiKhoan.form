@@ -78,9 +78,9 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" pref="250" max="-2" attributes="0"/>
+                          <Component id="tbn_doimatkhau" min="-2" pref="250" max="-2" attributes="0"/>
                           <EmptySpace pref="216" max="32767" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="250" max="-2" attributes="0"/>
+                          <Component id="btn_suathongtin" min="-2" pref="250" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -135,8 +135,8 @@
                   </Group>
                   <EmptySpace pref="111" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="btn_suathongtin" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="tbn_doimatkhau" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
               </Group>
@@ -303,7 +303,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btn_suathongtin">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="25" style="1"/>
@@ -314,10 +314,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_suathongtinActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="tbn_doimatkhau">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="25" style="1"/>
@@ -327,6 +327,9 @@
               <Dimension value="[120, 30]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tbn_doimatkhauActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

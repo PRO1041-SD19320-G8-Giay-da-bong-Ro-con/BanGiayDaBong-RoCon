@@ -6,9 +6,10 @@ package com.ui;
 
 import com.dao.TaiKhoanDAO;
 import com.entity.TaiKhoan;
+import com.main.Main;
 import com.utils.Auth;
+import com.utils.FormatDate;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -25,40 +26,76 @@ public class panelQuanLyTaiKhoan extends javax.swing.JPanel {
      * Creates new form panelQuanLyTaiKhoan
      */
     TaiKhoanDAO DAO = new TaiKhoanDAO();
-    SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
+    
     
     public panelQuanLyTaiKhoan() {
         initComponents();
         
         showdata();
     }
-    
-    void showdata(){
-        TaiKhoan tk  = Auth.user;
+    boolean checkdata() {
+
+        if (txt_hovaten.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "tên không được để trống !!!");
+            return false;
+        }
+        if (txt_hovaten.getText().length() < 5 || txt_hovaten.getText().length() > 20) {
+            JOptionPane.showMessageDialog(this, "Tên phải từ 5 đến 20 ký tự");
+            return false;
+        }
+        if (!txt_hovaten.getText().matches("[A-Za-z ]+")) {
+            JOptionPane.showMessageDialog(this, "tên không được chứa số và chứa ký đặc biệt");
+            return false;
+        }
+
+        if (txt_sdt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "SDT không được để trống !!");
+            return false;
+        }
+        if (txt_sdt.getText().length() != 12) {
+            JOptionPane.showMessageDialog(this, "SDT phải là 12 số");
+            return false;
+        }
+        if(!txt_sdt.getText().matches("[0-9]+") ){
+            JOptionPane.showMessageDialog(this, "sdt phải là số");
+            return false;
+        }
+        if (txt_email.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Email không được để trống !!");
+            return false;
+        }
+        if (txt_email.getText().length() < 10 || txt_email.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Email phải từ 10 đến 50 ký tự");
+            return false;
+        }
+        if (!txt_email.getText().matches(".*[@].*")) {
+            JOptionPane.showMessageDialog(this, "Email phải chứa @");
+            return false;
+        }
+
+        return true;
+    }
+    void showdata() {
+        
+        TaiKhoan tk = Auth.user;
         txt_taikhoan.setText(tk.getTaikhoan());
         txt_cccd.setText(tk.getCCCD());
         txt_hovaten.setText(tk.getTen());
-        txt_chucvu.setText(tk.chucVu());
-        txt_ngaysinh.setText(tk.getNgaysinh()+"");
+        txt_chucvu.setText(tk.chucvuhienthi() + "");
+        txt_ngaysinh.setText(FormatDate.toString(tk.getNgaysinh()));
         txt_email.setText(tk.getEmail());
         txt_sdt.setText(tk.getSdt());
     }
-    TaiKhoan readfrom(){
-            
-        try {
-            String tkhoan = txt_taikhoan.getText();
-            String cccd =txt_cccd.getText();
-            String ten = txt_hovaten.getText();
-            String chucvu = txt_chucvu.getText();
-            Date ngaySinh = formater.parse(txt_ngaysinh.getText());
-            String sdt= txt_sdt.getText();
-            String email= txt_cccd.getText();
-            
-            return new TaiKhoan(tkhoan, Auth.user.getMatkhau(), ten, ngaySinh, sdt, email, cccd, Auth.isManager());
-        } catch (ParseException ex) {
-            Logger.getLogger(panelQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
+    TaiKhoan readfrom() {
+
+        String tkhoan = txt_taikhoan.getText();
+        String cccd = txt_cccd.getText();
+        String ten = txt_hovaten.getText();
+        String chucvu = txt_chucvu.getText();
+        Date ngaySinh = FormatDate.toDate(txt_ngaysinh.getText());
+        String sdt = txt_sdt.getText();
+        String email = txt_email.getText();
+        return new TaiKhoan(tkhoan, Auth.user.getMatkhau(), ten, ngaySinh, sdt, email, cccd, Auth.isManager());
     }
 
     /**
@@ -86,8 +123,8 @@ public class panelQuanLyTaiKhoan extends javax.swing.JPanel {
         txt_cccd = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txt_chucvu = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_suathongtin = new javax.swing.JButton();
+        tbn_doimatkhau = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -147,18 +184,23 @@ public class panelQuanLyTaiKhoan extends javax.swing.JPanel {
         txt_chucvu.setMargin(new java.awt.Insets(1, 10, 1, 10));
         txt_chucvu.setPreferredSize(new java.awt.Dimension(64, 50));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
-        jButton1.setText("Sửa thông tin");
-        jButton1.setPreferredSize(new java.awt.Dimension(120, 30));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_suathongtin.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        btn_suathongtin.setText("Sửa thông tin");
+        btn_suathongtin.setPreferredSize(new java.awt.Dimension(120, 30));
+        btn_suathongtin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_suathongtinActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
-        jButton2.setText("Đổi mật khẩu");
-        jButton2.setPreferredSize(new java.awt.Dimension(120, 30));
+        tbn_doimatkhau.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        tbn_doimatkhau.setText("Đổi mật khẩu");
+        tbn_doimatkhau.setPreferredSize(new java.awt.Dimension(120, 30));
+        tbn_doimatkhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbn_doimatkhauActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -195,9 +237,9 @@ public class panelQuanLyTaiKhoan extends javax.swing.JPanel {
                         .addGap(18, 18, 18))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tbn_doimatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_suathongtin, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(138, 138, 138))))
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -238,8 +280,8 @@ public class panelQuanLyTaiKhoan extends javax.swing.JPanel {
                             .addComponent(jLabel5))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_suathongtin, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tbn_doimatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(96, 96, 96))
         );
 
@@ -258,26 +300,31 @@ public class panelQuanLyTaiKhoan extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            // TODO add your handling code here:
-            TaiKhoan tk = this.readfrom();
-            if(DAO.update(tk)>0){
-                Auth.user = DAO.selectByID(txt_taikhoan.getText());
-                showdata();
-                JOptionPane.showMessageDialog(this, "update thành Công");
-            }else{
-                JOptionPane.showMessageDialog(this, "thất bại");
+    private void btn_suathongtinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suathongtinActionPerformed
+        if (checkdata()) {
+            try {
+                // TODO add your handling code here:
+                TaiKhoan tk = this.readfrom();
+                if (DAO.update(tk) > 0) {
+                    Auth.user = DAO.selectByID(txt_taikhoan.getText());
+                    showdata();
+                    JOptionPane.showMessageDialog(this, "update thành Công");
+                } else {
+                    JOptionPane.showMessageDialog(this, "thất bại");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(panelQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(panelQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_suathongtinActionPerformed
+
+    private void tbn_doimatkhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbn_doimatkhauActionPerformed
+        Main.changeForm(new Paneldoimatkhau());
+    }//GEN-LAST:event_tbn_doimatkhauActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_suathongtin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -287,6 +334,7 @@ public class panelQuanLyTaiKhoan extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton tbn_doimatkhau;
     private javax.swing.JTextField txt_cccd;
     private javax.swing.JTextField txt_chucvu;
     private javax.swing.JTextField txt_email;

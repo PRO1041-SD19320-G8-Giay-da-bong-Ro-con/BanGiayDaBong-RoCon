@@ -35,7 +35,7 @@ import javax.swing.border.LineBorder;
  * @author DELL
  */
 public class dangnhapJDialog extends javax.swing.JDialog {
-
+    public static TaiKhoan taikhoan;
     TaiKhoanDAO DAO = new TaiKhoanDAO();
 
     /**
