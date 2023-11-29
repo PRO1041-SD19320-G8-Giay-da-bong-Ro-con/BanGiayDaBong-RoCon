@@ -59,7 +59,7 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
         btnAdd = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCTKM = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -131,6 +131,7 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
 
+        btnAdd.setBackground(new java.awt.Color(255, 204, 51));
         btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAdd.setText("Thêm");
         btnAdd.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -141,6 +142,7 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
             }
         });
 
+        btnNew.setBackground(new java.awt.Color(255, 204, 51));
         btnNew.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnNew.setText("Thêm Mới");
         btnNew.addActionListener(new java.awt.event.ActionListener() {
@@ -158,11 +160,12 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setText("Sửa");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSua.setBackground(new java.awt.Color(255, 204, 0));
+        btnSua.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSuaActionPerformed(evt);
             }
         });
 
@@ -176,12 +179,12 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
                     .addComponent(btnNew, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                        .addComponent(btnSua, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
                     .addComponent(jButton8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(14, 14, 14))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAdd, btnNew, jButton2});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAdd, btnNew, btnSua});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,13 +194,13 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addComponent(btnAdd)
                 .addGap(33, 33, 33)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAdd, btnNew, jButton2});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAdd, btnNew, btnSua});
 
         tblCTKM.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -439,14 +442,14 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
         Main.changeForm(new PanelQuanLyKhuyenMai());
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         int hoi = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn Sửa khuyến mãi ");
         if (hoi == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(this, ser.updateKM(readForm()));
             lstKM = ser.getAll();
             showData(lstKM);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     private void rdoPhanTramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoPhanTramActionPerformed
         // TODO add your handling code here:
@@ -496,8 +499,8 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnNew;
+    private javax.swing.JButton btnSua;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -584,7 +587,7 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
             FormatDate.toDate(ngayKT);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, " Sai định dạng ngày");
+            JOptionPane.showMessageDialog(this, " Sai định dạng năm sinh");
             return null;
         }
         float gia;

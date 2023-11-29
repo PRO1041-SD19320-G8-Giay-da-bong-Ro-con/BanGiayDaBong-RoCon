@@ -134,7 +134,7 @@ public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Tìm Khuyến Mãi: ");
 
-        btnTim.setBackground(new java.awt.Color(204, 255, 255));
+        btnTim.setBackground(new java.awt.Color(255, 204, 51));
         btnTim.setText("Tìm Kiếm");
         btnTim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,6 +166,7 @@ public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
+        btnCTKM.setBackground(new java.awt.Color(255, 204, 51));
         btnCTKM.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCTKM.setText("Xem Chi Tiết Khuyến Mãi");
         btnCTKM.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), javax.swing.BorderFactory.createEtchedBorder()));
