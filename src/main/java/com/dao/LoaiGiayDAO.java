@@ -10,6 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.entity.LoaiGiay;
+import com.entity.ThuongHieu;
+import com.utils.DBConnect;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -79,6 +83,27 @@ public class LoaiGiayDAO  implements DAOInterface<LoaiGiay, String> {
             return JDBCHelper.value(TEN_TO_MA, ten).toString();
         } catch (SQLException ex) {
             throw new Error();
+        }
+    }
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    String sql = null;
+    public List<LoaiGiay> getALL(){
+        sql="select * from LOAI_GIAY";
+        List<LoaiGiay> list = new ArrayList<>();
+        try {
+            con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                LoaiGiay th = new LoaiGiay(rs.getString(1), rs.getString(2));
+                list.add(th);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

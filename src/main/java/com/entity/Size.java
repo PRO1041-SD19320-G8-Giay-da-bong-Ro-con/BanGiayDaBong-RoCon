@@ -38,7 +38,9 @@ public class Size extends ThuocTinh{
     public void setTen(String Ten) {
         this.Ten = Ten;
     }
-
+    public Object[] todatarowSiZe(){
+        return  new Object[]{this.MaSize,this.Ten};
+    }
 
 
 }

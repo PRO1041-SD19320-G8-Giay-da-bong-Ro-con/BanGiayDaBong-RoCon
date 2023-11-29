@@ -12,10 +12,15 @@ public class LoaiGiay extends ThuocTinh{
 
     private String MaLoai;
     private String Ten;
-
+    
     public LoaiGiay() {
     }
 
+    public LoaiGiay(String MaLoai, String Ten) {
+        this.MaLoai = MaLoai;
+        this.Ten = Ten;
+    }
+    
     @Override
     public String getMa() {
         return MaLoai;
@@ -33,5 +38,7 @@ public class LoaiGiay extends ThuocTinh{
     public void setTen(String Ten) {
         this.Ten = Ten;
     }
-
+    public Object[] todatarowLoaiGiay(){
+        return new Object[]{this.MaLoai,this.Ten};
+    }
 }

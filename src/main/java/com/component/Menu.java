@@ -5,6 +5,7 @@ import com.ui.PanelDanhSachSanPham;
 import com.ui.PanelHoaDon;
 import com.ui.PanelQuanLyKhuyenMai;
 import com.ui.PanelQuanLyNhanVien;
+import com.ui.PanelQuanLyThuocTinh;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -124,6 +125,11 @@ public class Menu extends javax.swing.JPanel {
         QLThuocTinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         QLThuocTinh.setText("Quản lý thuộc tính");
         QLThuocTinh.setPreferredSize(new java.awt.Dimension(50, 30));
+        QLThuocTinh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                QLThuocTinhMouseClicked(evt);
+            }
+        });
 
         DangXuat.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         DangXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -225,6 +231,10 @@ public class Menu extends javax.swing.JPanel {
     private void QLKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QLKhuyenMaiMouseClicked
        Main.changeForm(new PanelQuanLyKhuyenMai());
     }//GEN-LAST:event_QLKhuyenMaiMouseClicked
+
+    private void QLThuocTinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QLThuocTinhMouseClicked
+        Main.changeForm(new PanelQuanLyThuocTinh());
+    }//GEN-LAST:event_QLThuocTinhMouseClicked
 
 
 

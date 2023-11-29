@@ -38,7 +38,9 @@ public class MauSac extends ThuocTinh{
     public void setTen(String Ten) {
         this.Ten = Ten;
     }
-
+    public Object[] todatarowMauSac(){
+        return new Object[]{this.MaMauSac,this.Ten};
+    }
 
 
 }

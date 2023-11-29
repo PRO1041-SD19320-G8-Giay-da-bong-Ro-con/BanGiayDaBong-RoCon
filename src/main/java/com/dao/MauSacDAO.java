@@ -6,7 +6,11 @@ package com.dao;
 
 import com.entity.MauSac;
 import com.entity.ThuongHieu;
+import com.entity.XuatXu;
+import com.utils.DBConnect;
 import com.utils.JDBCHelper;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -98,5 +102,25 @@ public class MauSacDAO implements DAOInterface<MauSac, String> {
             throw new Error();
         }
     }
-
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    String sql = null;
+    public List<MauSac> getALL(){
+        sql="select * from Mau_Sac";
+        List<MauSac> list = new ArrayList<>();
+        try {
+            con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                MauSac th = new MauSac(rs.getString(1), rs.getString(2));
+                list.add(th);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

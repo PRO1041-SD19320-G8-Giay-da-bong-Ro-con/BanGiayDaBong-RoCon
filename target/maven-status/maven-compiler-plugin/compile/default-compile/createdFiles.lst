@@ -1,4 +1,5 @@
 com\ui\PanelQuanLyNhanVien$1.class
+com\ui\PanelQuanLyThuocTinh$2.class
 model\LoaiGiay.class
 services\SanPham_Ser.class
 com\ui\Panelthemnhanvien$1.class
@@ -10,6 +11,7 @@ com\entity\ThuongHieu.class
 view\ChiTietHoaDon_JDiaLog.class
 view\SanPham_JDialog$14.class
 com\utils\JDBCHelper.class
+com\component\Menu$8.class
 com\component\Menu.class
 com\utils\SendEmail.class
 view\ChiTietHoaDon_JDiaLog$1.class
@@ -56,6 +58,7 @@ com\component\Menu$1.class
 com\main\Main$4.class
 com\ui\nhaplaimatkhauDialog$1.class
 com\ui\PanelThemSanPham$3.class
+com\ui\PanelQuanLyThuocTinh.class
 view\SanPham_JDialog$13.class
 com\component\Menu$7.class
 view\BanHang_DiaLog$10.class
@@ -216,6 +219,7 @@ responsitory\SanPham_Respo.class
 view\ChiTietKhuyenMai$1.class
 com\ui\PanelChiTietHoaDon$1.class
 com\ui\PanelQuanLyNhanVien$2.class
+com\ui\PanelQuanLyThuocTinh$3.class
 com\ui\Panelthemnhanvien.class
 view\HoaDon_JDiaLog$2.class
 com\component\Menu$6.class
@@ -247,6 +251,7 @@ model\SanPham.class
 view\ChiTietKhuyenMai$11.class
 view\SanPham_JDialog1$8.class
 view\SanPham_JDialog$20$1.class
+com\ui\PanelQuanLyThuocTinh$1.class
 view\BanHang_DiaLog.class
 com\entity\ChiTietSanPham.class
 com\ui\PanelDanhSachSanPham$4.class

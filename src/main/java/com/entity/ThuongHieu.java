@@ -38,5 +38,7 @@ public class ThuongHieu extends ThuocTinh {
     public void setTen(String Ten) {
         this.Ten = Ten;
     }    
-
+    public Object[] todatarowThuongHieu(){
+        return new Object[]{this.MaThuongHieu,this.Ten};
+    }
 }

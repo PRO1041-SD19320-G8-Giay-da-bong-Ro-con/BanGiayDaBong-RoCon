@@ -38,5 +38,7 @@ public class XuatXu extends ThuocTinh{
     public void setTen(String Ten) {
         this.Ten = Ten;
     }
-
+    public Object[] todatarowXuatXu(){
+        return new Object[]{this.MaXuatXu,this.Ten};
+    }
 }

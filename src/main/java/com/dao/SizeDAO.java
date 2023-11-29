@@ -4,9 +4,13 @@
  */
 package com.dao;
 
+import com.entity.MauSac;
 import com.entity.Size;
 import com.entity.ThuongHieu;
+import com.utils.DBConnect;
 import com.utils.JDBCHelper;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -94,6 +98,27 @@ public class SizeDAO implements DAOInterface<Size, String> {
             return selectBySQL(SELECT_ALL_BY_MASP,MaSP);
         } catch (SQLException ex) {
             throw new Error(ex);
+        }
+    }
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    String sql = null;
+    public List<Size> getALL(){
+        sql="select * from Size";
+        List<Size> list = new ArrayList<>();
+        try {
+            con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                Size th = new Size(rs.getString(1), rs.getString(2));
+                list.add(th);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

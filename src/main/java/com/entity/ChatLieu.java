@@ -34,5 +34,7 @@ public class ChatLieu extends ThuocTinh{
     public void setTen(String Ten) {
         this.Ten = Ten;
     }
-
+    public Object[] todatarowChatLieu(){
+        return new Object[]{this.MaChatLieu,this.Ten};
+    }
 }
