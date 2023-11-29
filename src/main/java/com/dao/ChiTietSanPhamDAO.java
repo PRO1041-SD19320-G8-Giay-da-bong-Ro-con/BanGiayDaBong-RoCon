@@ -20,6 +20,7 @@ import java.util.logging.Logger;
  */
 public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
 
+    String INSERT_SQL = "INSERT INTO Chi_Tiet_San_Pham (MaCTSP,MaSP,MaSize,MaMau,SoLuong) VALUES(?,?,?,?,?)";
     String SELECT_ALL_SQL = "select * from Chi_Tiet_San_Pham";
     String SELECT_BY_ID_SQL = "select * from Chi_Tiet_San_Pham where MaCTSP = ?";
     String SELECT_BY_SP_SQL = "select * from Chi_Tiet_San_Pham where MaSP = ?";
@@ -28,7 +29,7 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
 
     @Override
     public int insert(ChiTietSanPham entity) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return JDBCHelper.update(INSERT_SQL, entity.getMaCTSP(), entity.getMaSP(), entity.getMaSize(), entity.getMaMau(), entity.getSoLuong());
     }
 
     @Override
@@ -76,8 +77,9 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
     public List<ChiTietSanPham> selectBySP(String key) throws SQLException {
         return selectBySQL(SELECT_BY_SP_SQL, key);
     }
+
     public List<ChiTietSanPham> selectBySPMau(String maSP, String mau) throws SQLException {
-        return selectBySQL(SELECT_BY_SP_Mau_SQL, maSP,mau);
+        return selectBySQL(SELECT_BY_SP_Mau_SQL, maSP, mau);
     }
 
     public int getSoLuong(String maSP, String mau, String size) {
@@ -88,7 +90,7 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
             }
             return list.get(0).getSoLuong();
         } catch (SQLException ex) {
-            throw new Error("\n getSoLuong() ChiTietSanPhamDAO\n"+ex);
+            throw new Error("\n getSoLuong() ChiTietSanPhamDAO\n" + ex);
         }
     }
 }

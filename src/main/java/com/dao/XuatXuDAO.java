@@ -22,6 +22,7 @@ public class XuatXuDAO  implements DAOInterface<XuatXu, String> {
     String SELECT_NAME_BY_ID_SQL = "Select ten from Xuat_Xu where MaXuatXu = ?";
     String SELECT_ALL_SQL = "select * from Xuat_Xu";
     String SELECT_BY_ID_SQL = "select * from Xuat_Xu where MaXuatXu = ?";
+    String TEN_TO_MA = "Select MaXuatXu from Xuat_Xu where ten = ?";
 
     @Override
     public int insert(XuatXu entity) throws SQLException {
@@ -71,6 +72,14 @@ public class XuatXuDAO  implements DAOInterface<XuatXu, String> {
     public String getTen(String key){
         try {
             return selectByID(key).getTen();
+        } catch (SQLException ex) {
+            throw new Error();
+        }
+    }
+    
+    public String getMa(String ten){
+        try {
+            return JDBCHelper.value(TEN_TO_MA, ten).toString();
         } catch (SQLException ex) {
             throw new Error();
         }

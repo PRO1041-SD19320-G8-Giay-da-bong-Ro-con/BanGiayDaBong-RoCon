@@ -20,6 +20,7 @@ public class LoaiGiayDAO  implements DAOInterface<LoaiGiay, String> {
     String SELECT_NAME_BY_ID_SQL = "Select ten from LOAI_GIAY where maLoai = ?";
     String SELECT_ALL_SQL = "select * from LOAI_GIAY";
     String SELECT_BY_ID_SQL = "select * from LOAI_GIAY where maLoai = ?";
+    String TEN_TO_MA = "Select maLoai from LOAI_GIAY where ten = ?";
 
     @Override
     public int insert(LoaiGiay entity) throws SQLException {
@@ -72,5 +73,12 @@ public class LoaiGiayDAO  implements DAOInterface<LoaiGiay, String> {
             throw new Error();
         }
     }
-
+    
+    public String getMa(String ten){
+        try {
+            return JDBCHelper.value(TEN_TO_MA, ten).toString();
+        } catch (SQLException ex) {
+            throw new Error();
+        }
+    }
 }

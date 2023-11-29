@@ -21,6 +21,7 @@ public class ThuongHieuDAO implements DAOInterface<ThuongHieu, String> {
     String SELECT_NAME_BY_ID_SQL = "Select ten from Thuong_hieu where maThuongHieu = ?";
     String SELECT_ALL_SQL = "select * from Thuong_hieu";
     String SELECT_BY_ID_SQL = "select * from Thuong_hieu where maThuongHieu = ?";
+    String TEN_TO_MA = "Select maThuongHieu from Thuong_hieu where ten = ?";
 
     @Override
     public int insert(ThuongHieu entity) throws SQLException {
@@ -70,6 +71,13 @@ public class ThuongHieuDAO implements DAOInterface<ThuongHieu, String> {
     public String getTen(String key){
         try {
             return selectByID(key).getTen();
+        } catch (SQLException ex) {
+            throw new Error();
+        }
+    }
+    public String getMa(String ten){
+        try {
+            return JDBCHelper.value(TEN_TO_MA, ten).toString();
         } catch (SQLException ex) {
             throw new Error();
         }
