@@ -4,6 +4,7 @@
  */
 package com.entity;
 
+import com.utils.FormatDate;
 import java.util.Date;
 
 
@@ -114,5 +115,7 @@ public class TaiKhoan {
         }
         return "Nhân viên";
     }
-    
+    public Object[] todatarow(){
+        return new Object[]{this.taikhoan,this.ten,FormatDate.toString(this.ngaysinh),this.sdt,chucvuhienthi()};
+    }
 }
