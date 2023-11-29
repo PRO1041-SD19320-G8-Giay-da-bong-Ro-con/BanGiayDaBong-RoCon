@@ -20,6 +20,10 @@ public class KhachHangService {
         return repo.getAll();
     }
 
+    public KhachHang getOne(String ma) {
+        return repo.getOne(ma);
+    }
+
     public String addKH(KhachHang kh) {
         return (kh != null && repo.add(kh) ? "Thêm khách hàng thành công" : "Thêm khách hàng thất bại");
     }
