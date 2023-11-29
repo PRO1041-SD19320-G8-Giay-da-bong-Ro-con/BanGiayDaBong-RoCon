@@ -5,14 +5,11 @@
 package com.dao;
 
 import com.entity.ChiTietSanPham;
-import com.entity.ThuongHieu;
 import com.utils.JDBCHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -21,6 +18,7 @@ import java.util.logging.Logger;
 public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
 
     String INSERT_SQL = "INSERT INTO Chi_Tiet_San_Pham (MaCTSP,MaSP,MaSize,MaMau,SoLuong) VALUES(?,?,?,?,?)";
+    String UPDATE_SQL = "UPDATE Chi_Tiet_San_Pham SET MaSize = ?, MaMau = ?, SoLuong = ? WHERE MaCTSP = ?";
     String SELECT_ALL_SQL = "select * from Chi_Tiet_San_Pham";
     String SELECT_BY_ID_SQL = "select * from Chi_Tiet_San_Pham where MaCTSP = ?";
     String SELECT_BY_SP_SQL = "select * from Chi_Tiet_San_Pham where MaSP = ?";
@@ -34,7 +32,7 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
 
     @Override
     public int update(ChiTietSanPham entity) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return JDBCHelper.update(UPDATE_SQL, entity.getMaSize(), entity.getMaMau(), entity.getSoLuong(),entity.getMaCTSP());
     }
 
     @Override
@@ -92,5 +90,14 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
         } catch (SQLException ex) {
             throw new Error("\n getSoLuong() ChiTietSanPhamDAO\n" + ex);
         }
+    }
+
+    public int luu(ChiTietSanPham entity) throws SQLException {
+        for (ChiTietSanPham ctsp : selectAll()) {
+            if (ctsp.getMaCTSP().equalsIgnoreCase(entity.getMaCTSP())) {
+                return update(entity);
+            }
+        }
+        return insert(entity);
     }
 }

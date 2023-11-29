@@ -266,7 +266,7 @@ public class PanelSuaSanPham extends javax.swing.JPanel {
         panelSize.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnLuu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnLuu.setText("Sửa");
+        btnLuu.setText("Lưu");
         btnLuu.setEnabled(false);
         btnLuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -563,7 +563,7 @@ public class PanelSuaSanPham extends javax.swing.JPanel {
     }
 
     private void themSanPham() {
-        model.setRowCount(0);
+        showTable();
         if (validateThongTin() && validateThuocTinh()) {
             if (checkTen()) {
                 for (int mau = 0; mau < listMau.size(); mau++) {
@@ -571,7 +571,9 @@ public class PanelSuaSanPham extends javax.swing.JPanel {
                         String maCT = txtMaSP.getText() + "_" + daoMS.getMa(listMau.get(mau)) + "_" + daoS.getMa(listSize.get(size));
                         String maMau = daoMS.getMa(listMau.get(mau));
                         String maSize = daoS.getMa(listSize.get(size));
-                        model.addRow(new Object[]{maCT, maMau, maSize, 0});
+                        if(checkTrungTable(maCT)){
+                            model.addRow(new Object[]{maCT, maMau, maSize, 0});
+                        }
                     }
                 }
             } else {
@@ -579,6 +581,18 @@ public class PanelSuaSanPham extends javax.swing.JPanel {
             }
         }
         checkTable();
+    }
+    
+    private boolean checkTrungTable(String maCT){
+        try {
+            if(daoCTSP.selectByID(maCT)==null){
+                return true;
+            }
+            return false;
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelSuaSanPham.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
 
     private boolean validateThongTin() {
@@ -655,9 +669,7 @@ public class PanelSuaSanPham extends javax.swing.JPanel {
             btnLuu.setEnabled(false);
             return false;
         }
-
         return true;
-
     }
 
     private void luu() {
@@ -672,7 +684,7 @@ public class PanelSuaSanPham extends javax.swing.JPanel {
                 sp.setMaChatLieu(daoCL.getMa(cbbChatLieu.getSelectedItem().toString()));
                 sp.setMaXuatXu(daoXX.getMa(cbbXuatXu.getSelectedItem().toString()));
                 sp.setGia(Integer.valueOf(txtGia.getText()));
-                if (daoSP.insert(sp) > 0) {
+                if (daoSP.update(sp) > 0) {
                     luuChiTietSanPham();
                 }
             }
@@ -711,11 +723,13 @@ public class PanelSuaSanPham extends javax.swing.JPanel {
                 ctsp.setMaMau(tableChiTietSanPham.getValueAt(i, 1).toString());
                 ctsp.setMaSize(tableChiTietSanPham.getValueAt(i, 2).toString());
                 ctsp.setSoLuong(Integer.valueOf(tableChiTietSanPham.getValueAt(i, 3).toString()));
-                if (daoCTSP.insert(ctsp) > 0) {
+                if (daoCTSP.luu(ctsp) > 0) {
                     success++;
                 }
             }
             if (rowCount == success) {
+                PanelChiTietSanPham.sanPham = daoSP.selectByID(sanPham.getMaSP());
+                Main.changeForm(new PanelChiTietSanPham());
                 JOptionPane.showMessageDialog(this, "Lưu thành công");
             } else {
                 JOptionPane.showMessageDialog(this, "Lưu thất bại");
