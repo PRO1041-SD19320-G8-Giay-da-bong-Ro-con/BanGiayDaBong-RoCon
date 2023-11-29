@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.dao;
-
+import java.sql.*;
 import com.entity.TaiKhoan;
 import com.ui.dangnhapJDialog;
 import com.utils.DBConnect;
@@ -27,7 +27,11 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoan, String> {
     String UPDATE_TaiKhoan_SQL = "UPDATE Tai_khoan SET matKhau = ? WHERE TaiKhoan = ?";
     String SELECT_ALL_SQL = "select * from Tai_khoan";
     String SELECT_BY_ID_SQL = "select * from Tai_khoan where taiKhoan = ?";
-
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    String sql = null;
+    
     @Override
     public int insert(TaiKhoan entity) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -113,6 +117,54 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoan, String> {
             ps.setObject(1, tk.getMatkhau());                      
             ps.setObject(2, taikhoan);
             return  ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    public List<TaiKhoan> getall(){
+        sql="select TaiKhoan,MatKhau,Ten,NgaySinh,SDT,Email,CCCD,ChucVu from TAI_KHOAN";
+        List<TaiKhoan> list = new ArrayList<>();
+        try {
+            con = DBConnect.getConnection();
+            ps = con.prepareStatement(sql);
+            rs =ps.executeQuery();
+            while (rs.next()) {                
+                TaiKhoan tk = new TaiKhoan(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getBoolean(8));
+                list.add(tk);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public int add(TaiKhoan tk){
+        sql="insert into TAI_KHOAN (TaiKhoan,MatKhau,Ten,NgaySinh,SDT,Email,CCCD,ChucVu) values(?,?,?,?,?,?,?,?)";
+        try {
+            con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            ps.setObject(1, tk.getTaikhoan());
+            ps.setObject(2, tk.getMatkhau());
+            ps.setObject(3, tk.getTen());
+            ps.setObject(4, tk.getNgaysinh());
+            ps.setObject(5, tk.getSdt());
+            ps.setObject(6, tk.getEmail());
+            ps.setObject(7, tk.getCCCD());
+            ps.setObject(8, tk.isChucvu());
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    public int xoa(String taikhoan){
+        sql="delete from TAI_KHOAN where TaiKhoan =?";
+        try {
+           con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            ps.setObject(1, taikhoan);
+            return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
             return 0;

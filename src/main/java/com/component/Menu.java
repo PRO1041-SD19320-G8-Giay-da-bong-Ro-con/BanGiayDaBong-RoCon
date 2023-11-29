@@ -3,6 +3,7 @@ package com.component;
 import com.main.Main;
 import com.ui.PanelDanhSachSanPham;
 import com.ui.PanelHoaDon;
+import com.ui.PanelQuanLyNhanVien;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -132,6 +133,11 @@ public class Menu extends javax.swing.JPanel {
         QLNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         QLNhanVien.setText("Quản lý nhân viên");
         QLNhanVien.setPreferredSize(new java.awt.Dimension(50, 30));
+        QLNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                QLNhanVienMouseClicked(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -205,6 +211,10 @@ public class Menu extends javax.swing.JPanel {
     private void QLHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QLHoaDonMouseClicked
         Main.changeForm(new PanelHoaDon());
     }//GEN-LAST:event_QLHoaDonMouseClicked
+
+    private void QLNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QLNhanVienMouseClicked
+       Main.changeForm(new PanelQuanLyNhanVien());
+    }//GEN-LAST:event_QLNhanVienMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

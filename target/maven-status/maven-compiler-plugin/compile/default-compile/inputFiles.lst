@@ -4,6 +4,7 @@ D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\view\SanPham_JDialog.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\panelQuanLyTaiKhoan.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\model\HoaDon.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\entity\MauSac.java
+D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\Panelthemnhanvien.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\model\LoaiGiay.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\entity\TaiKhoan.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\view\HoaDon_JDiaLog.java
@@ -52,6 +53,7 @@ D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\dao\XuatXuDAO.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\entity\HoaDon.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\services\BanHang_Ser.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\utils\Rounding.java
+D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelQuanLyNhanVien.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\model\Size.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\dao\DAOInterface.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelChiTietSanPham.java
