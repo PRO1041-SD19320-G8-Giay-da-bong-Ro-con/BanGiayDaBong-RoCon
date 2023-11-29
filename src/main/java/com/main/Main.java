@@ -54,10 +54,10 @@ public class Main extends javax.swing.JFrame {
         setupPanelPerson();
         
         panel.setSize(panelTong.getSize());
-//        try {
-//            changeForm(new PanelThemSanPham());
-//        } catch (Exception e) {
-//        }
+        try {
+            changeForm(new PanelDanhSachSanPham());
+        } catch (Exception e) {
+        }
     }
 
     public static void changeForm(Component com) {
