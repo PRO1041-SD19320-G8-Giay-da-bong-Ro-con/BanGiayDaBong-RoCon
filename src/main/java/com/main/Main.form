@@ -45,13 +45,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Component id="panelMenu" min="-2" pref="0" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="panelTong" alignment="1" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="panelTong" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="iconMenu" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="1000" max="32767" attributes="0"/>
+                          <EmptySpace pref="957" max="32767" attributes="0"/>
                           <Component id="panelUser" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -59,26 +60,24 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="panelMenu" alignment="0" pref="779" max="32767" attributes="0"/>
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="panelUser" min="-2" max="-2" attributes="0"/>
-                      <Component id="iconMenu" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="iconMenu" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="panelTong" max="32767" attributes="0"/>
               </Group>
+              <Component id="panelMenu" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="com.component.Menu" name="panelMenu">
-        </Component>
         <Component class="javax.swing.JLabel" name="iconMenu">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/menu-icon-24.png"/>
+              <Image iconType="3" name="/icon/iconMenu.png"/>
             </Property>
           </Properties>
           <Events>
@@ -95,7 +94,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="721" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -104,17 +103,15 @@
           <Properties>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelUserMouseClicked"/>
-          </Events>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="txtUser">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="15" style="1"/>
+                  <Font name="Segoe UI" size="20" style="1"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="11"/>
                 <Property name="text" type="java.lang.String" value="user"/>
               </Properties>
             </Component>
@@ -122,12 +119,14 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/person.png"/>
+                  <Image iconType="3" name="/icon/person.png"/>
                 </Property>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
+        <Component class="com.component.Menu" name="panelMenu">
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

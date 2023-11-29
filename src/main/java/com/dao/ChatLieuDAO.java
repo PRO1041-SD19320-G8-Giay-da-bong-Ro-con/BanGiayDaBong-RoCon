@@ -4,8 +4,13 @@
  */
 package com.dao;
 
+import com.entity.ChatLieu;
+import com.entity.LoaiGiay;
 import com.entity.ThuongHieu;
+import com.utils.DBConnect;
 import com.utils.JDBCHelper;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,6 +25,7 @@ public class ChatLieuDAO  implements DAOInterface<ThuongHieu, String> {
     String SELECT_NAME_BY_ID_SQL = "Select ten from Chat_lieu where maChatLieu = ?";
     String SELECT_ALL_SQL = "select * from Chat_lieu";
     String SELECT_BY_ID_SQL = "select * from Chat_lieu where maChatLieu = ?";
+    String TEN_TO_MA = "Select maChatLieu from Chat_lieu where ten = ?";
 
     @Override
     public int insert(ThuongHieu entity) throws SQLException {
@@ -71,6 +77,35 @@ public class ChatLieuDAO  implements DAOInterface<ThuongHieu, String> {
             return selectByID(key).getTen();
         } catch (SQLException ex) {
             throw new Error();
+        }
+    }
+    
+    public String getMa(String ten){
+        try {
+            return JDBCHelper.value(TEN_TO_MA, ten).toString();
+        } catch (SQLException ex) {
+            throw new Error();
+        }
+    }
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    String sql = null;
+    public List<ChatLieu> getALL(){
+        sql="select * from Chat_lieu";
+        List<ChatLieu> list = new ArrayList<>();
+        try {
+            con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                ChatLieu th = new ChatLieu(rs.getString(1), rs.getString(2));
+                list.add(th);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

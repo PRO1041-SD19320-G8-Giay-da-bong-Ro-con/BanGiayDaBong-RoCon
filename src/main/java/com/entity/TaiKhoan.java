@@ -4,6 +4,7 @@
  */
 package com.entity;
 
+import com.utils.FormatDate;
 import java.util.Date;
 
 
@@ -100,7 +101,21 @@ public class TaiKhoan {
     public void setChucvu(boolean chucvu) {
         this.chucvu = chucvu;
     }
-    
+    public String chucvuhienthi() {
+        if (chucvu == true) {
+            return "Quản Lý";
+        } else {
+            return "Nhân Viên";
+        }
 
-    
+    }
+    public String chucVu(){
+        if(isChucvu()){
+            return "Admin";
+        }
+        return "Nhân viên";
+    }
+    public Object[] todatarow(){
+        return new Object[]{this.taikhoan,this.ten,FormatDate.toString(this.ngaysinh),this.sdt,chucvuhienthi()};
+    }
 }

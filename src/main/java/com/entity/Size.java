@@ -8,7 +8,7 @@ package com.entity;
  *
  * @author Thai
  */
-public class Size {
+public class Size extends ThuocTinh{
 
     private String MaSize;
     private String Ten;
@@ -21,7 +21,8 @@ public class Size {
         this.Ten = Ten;
     }
 
-    public String getMaSize() {
+    @Override
+    public String getMa() {
         return MaSize;
     }
 
@@ -29,6 +30,7 @@ public class Size {
         this.MaSize = MaSize;
     }
 
+    @Override
     public String getTen() {
         return Ten;
     }
@@ -36,7 +38,9 @@ public class Size {
     public void setTen(String Ten) {
         this.Ten = Ten;
     }
-
+    public Object[] todatarowSiZe(){
+        return  new Object[]{this.MaSize,this.Ten};
+    }
 
 
 }

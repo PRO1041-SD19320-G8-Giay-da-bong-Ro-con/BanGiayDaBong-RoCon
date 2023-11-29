@@ -6,7 +6,11 @@ package com.dao;
 
 import com.entity.MauSac;
 import com.entity.ThuongHieu;
+import com.entity.XuatXu;
+import com.utils.DBConnect;
 import com.utils.JDBCHelper;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,12 +22,13 @@ import java.util.logging.Logger;
  *
  * @author Thai
  */
-public class MauSacDAO  implements DAOInterface<MauSac, String> {
+public class MauSacDAO implements DAOInterface<MauSac, String> {
 
     String SELECT_NAME_BY_ID_SQL = "Select ten from Mau_Sac where maMau = ?";
     String SELECT_ALL_SQL = "select * from Mau_Sac";
     String SELECT_BY_ID_SQL = "select * from Mau_Sac where maMau = ?";
     String SELECT_BY_NAME_SQL = "select * from Mau_Sac where Ten = ?";
+    String SELECT_ALL_BY_MASP = "select distinct ms.* from MAU_SAC ms join CHI_TIET_SAN_PHAM ctsp on ctsp.MaMau = ms.MaMau where MaSP = ?";
 
     @Override
     public int insert(MauSac entity) throws SQLException {
@@ -69,25 +74,53 @@ public class MauSacDAO  implements DAOInterface<MauSac, String> {
         return list;
 
     }
-    
-    public String getTen(String key){
+
+    public List<MauSac> getDistinctMauByMaSP(String MaSP) {
+        try {
+            return selectBySQL(SELECT_ALL_BY_MASP,MaSP);
+        } catch (SQLException ex) {
+            throw new Error(ex);
+        }
+    }
+
+    public String getTen(String key) {
         try {
             return selectByID(key).getTen();
         } catch (SQLException ex) {
             throw new Error();
         }
     }
-    
-    public String getMa(String key){
+
+    public String getMa(String key) {
         try {
             List<MauSac> list = selectBySQL(SELECT_BY_NAME_SQL, key);
             if (list.isEmpty()) {
                 return null;
             }
-            return list.get(0).getMaMauSac();
+            return list.get(0).getMa();
         } catch (SQLException ex) {
             throw new Error();
         }
     }
-
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    String sql = null;
+    public List<MauSac> getALL(){
+        sql="select * from Mau_Sac";
+        List<MauSac> list = new ArrayList<>();
+        try {
+            con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                MauSac th = new MauSac(rs.getString(1), rs.getString(2));
+                list.add(th);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
