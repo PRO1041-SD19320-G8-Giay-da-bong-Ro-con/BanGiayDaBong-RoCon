@@ -81,6 +81,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblHoaDon.setRowHeight(30);
         jScrollPane1.setViewportView(tblHoaDon);
 
         btnXemChiTiet.setText("Xem chi tiết hóa đơn");

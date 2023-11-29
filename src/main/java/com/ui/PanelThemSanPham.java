@@ -22,6 +22,7 @@ import com.entity.SanPham;
 import com.entity.Size;
 import com.entity.ThuongHieu;
 import com.entity.XuatXu;
+import com.main.Main;
 import com.utils.TextUtil;
 import com.utils.XImage;
 import java.awt.Color;
@@ -762,6 +763,7 @@ public class PanelThemSanPham extends javax.swing.JPanel {
                 }
             }
             if (rowCount == success) {
+                Main.changeForm(new PanelDanhSachSanPham());
                 JOptionPane.showMessageDialog(this, "Lưu thành công");
             } else {
                 JOptionPane.showMessageDialog(this, "Lưu thất bại");
