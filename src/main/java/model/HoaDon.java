@@ -44,6 +44,15 @@ public class HoaDon {
         this.trangThai = trangThai;
     }
 
+    public HoaDon(String maHD, Date thoiGianBan, String taiKhoan, String maKH) {
+        this.maHD = maHD;
+        this.taiKhoan = taiKhoan;
+        this.maKH = maKH;
+        this.thoiGianBan = thoiGianBan;
+    }
+    
+    
+
     public String getMaHD() {
         return maHD;
     }
