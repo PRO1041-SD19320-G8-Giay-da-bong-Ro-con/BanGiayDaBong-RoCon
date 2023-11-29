@@ -351,7 +351,7 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThoatChiTietActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-
+        Main.changeForm(new PanelSuaSanPham(sanPham,this));
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangThaiActionPerformed
