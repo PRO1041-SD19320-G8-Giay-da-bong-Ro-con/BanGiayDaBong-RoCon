@@ -89,23 +89,6 @@ public class ThuongHieuDAO implements DAOInterface<ThuongHieu, String> {
             throw new Error();
         }
     }
-    public List<ThuongHieu> getALL(){
-        sql="select * from Thuong_hieu";
-        List<ThuongHieu> list = new ArrayList<>();
-        try {
-            con = DBConnect.getConnection();
-            ps= con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {                
-                ThuongHieu th = new ThuongHieu(rs.getString(1), rs.getString(2));
-                list.add(th);
-            }
-            return list;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
     public int add(ThuongHieu th){
         sql="insert into THUONG_HIEU (MaThuongHieu,Ten) values(?,?)";
         try {

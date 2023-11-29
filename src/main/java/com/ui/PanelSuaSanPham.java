@@ -235,7 +235,7 @@ public class PanelSuaSanPham extends javax.swing.JPanel {
         jLabel10.setToolTipText("");
 
         btnThem.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnThem.setText("Thêm sản phẩm");
+        btnThem.setText("Thêm chi tiết sản phẩm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);

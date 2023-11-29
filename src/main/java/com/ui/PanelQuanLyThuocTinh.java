@@ -5,17 +5,14 @@
 package com.ui;
 
 import com.dao.ChatLieuDAO;
+import com.dao.DAOInterface;
 import com.dao.LoaiGiayDAO;
 import com.dao.MauSacDAO;
 import com.dao.SizeDAO;
 import com.dao.ThuongHieuDAO;
 import com.dao.XuatXuDAO;
-import com.entity.ChatLieu;
-import com.entity.LoaiGiay;
-import com.entity.MauSac;
-import com.entity.Size;
+import com.entity.ThuocTinh;
 import com.entity.ThuongHieu;
-import com.entity.XuatXu;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,74 +21,39 @@ import javax.swing.table.DefaultTableModel;
  * @author DELL
  */
 public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
-    DefaultTableModel model = new DefaultTableModel();
+
+    DefaultTableModel model = null;
+    
     int index = -1;
     int tt = 0;
+    
     ThuongHieuDAO thuonghieuDAO = new ThuongHieuDAO();
     LoaiGiayDAO loaigiayDAO = new LoaiGiayDAO();
-    ChatLieuDAO chatlieuDAO= new ChatLieuDAO();
+    ChatLieuDAO chatlieuDAO = new ChatLieuDAO();
     XuatXuDAO xuatxuDAO = new XuatXuDAO();
     MauSacDAO mausacDAO = new MauSacDAO();
     SizeDAO sizeDAO = new SizeDAO();
+
     /**
      * Creates new form PanelQuanLyThuocTinh
      */
     public PanelQuanLyThuocTinh() {
         initComponents();
-//        filltbaleThuongHieu(thuonghieuDAO.getALL());
-//        filltbaleLoaiGiay(loaigiayDAO.getALL());
-    }   
-    void filltbaleThuongHieu(List<ThuongHieu> list){
         model = (DefaultTableModel) tbl_thuoctinh.getModel();
-        model.setRowCount(0);
-        for (ThuongHieu x : list) {
-            model.addRow(x.todatarowThuongHieu());
+        Cbox_thuoctinhItemStateChanged(null);
+    }
+
+    private <E extends ThuocTinh> void filltable(DAOInterface dao, E entity) {
+        try {
+            model.setRowCount(0);
+            List<E> list = dao.selectAll();
+            for (E e : list) {
+                model.addRow(new Object[]{e.getMa(), e.getTen()});
+            }
+        } catch (Exception e) {
         }
     }
-    void filltbaleLoaiGiay(List<LoaiGiay> list){
-        model = (DefaultTableModel) tbl_thuoctinh.getModel();
-        model.setRowCount(0);
-        for (LoaiGiay x : list) {
-            model.addRow(x.todatarowLoaiGiay());
-        }
-    }
-    void filltbaleChatLieu(List<ChatLieu> list){
-        model = (DefaultTableModel) tbl_thuoctinh.getModel();
-        model.setRowCount(0);
-        for (ChatLieu x : list) {
-            model.addRow(x.todatarowChatLieu());
-        }
-    }
-    void filltbaleXuatXu(List<XuatXu> list){
-        model = (DefaultTableModel) tbl_thuoctinh.getModel();
-        model.setRowCount(0);
-        for (XuatXu x : list) {
-            model.addRow(x.todatarowXuatXu());
-        }
-    }
-    void filltbaleMauSac(List<MauSac> list){
-        model = (DefaultTableModel) tbl_thuoctinh.getModel();
-        model.setRowCount(0);
-        for (MauSac x : list) {
-            model.addRow(x.todatarowMauSac());
-        }
-    }
-    void filltbaleSIZE(List<Size> list){
-        model = (DefaultTableModel) tbl_thuoctinh.getModel();
-        model.setRowCount(0);
-        for (Size x : list) {
-            model.addRow(x.todatarowSiZe());
-        }
-    }
-//    void showdata(int index){
-//        
-//        ThuongHieu th = thuonghieuDAO.getALL().get(index);
-//        LoaiGiay lg = loaigiayDAO.getALL().get(index);
-//        txt_ma.setText(th.getMa());
-//        txt_ten.setText(th.getTen());
-//        txt_ma.setText(lg.getMa());
-//        txt_ten.setText(lg.getTen());
-//    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -231,19 +193,24 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
 
     private void Cbox_thuoctinhItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Cbox_thuoctinhItemStateChanged
         // TODO add your handling code here:
-        
         switch (Cbox_thuoctinh.getSelectedIndex()) {
-            case 0 -> filltbaleThuongHieu(thuonghieuDAO.getALL());
-            case 1 -> filltbaleLoaiGiay(loaigiayDAO.getALL());
-            case 2 -> filltbaleChatLieu(chatlieuDAO.getALL());
-            case 3 -> filltbaleXuatXu(xuatxuDAO.getALL());
-            case 4 -> filltbaleMauSac(mausacDAO.getALL());
-            default -> filltbaleSIZE(sizeDAO.getALL());
+            case 0 ->
+                filltable(thuonghieuDAO,new ThuongHieu());
+            case 1 ->
+                filltable(loaigiayDAO,new ThuongHieu());
+            case 2 ->
+                filltable(chatlieuDAO,new ThuongHieu());
+            case 3 ->
+                filltable(xuatxuDAO,new ThuongHieu());
+            case 4 ->
+                filltable(mausacDAO,new ThuongHieu());
+            default ->
+                filltable(sizeDAO,new ThuongHieu());
         }
     }//GEN-LAST:event_Cbox_thuoctinhItemStateChanged
 
     private void tbl_thuoctinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_thuoctinhMouseClicked
-        // TODO add your handling code here:
+////         TODO add your handling code here:
 //        int index = tbl_thuoctinh.getSelectedRow();
 //        showdata(index);
     }//GEN-LAST:event_tbl_thuoctinhMouseClicked
