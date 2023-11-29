@@ -95,4 +95,8 @@ public class SanPham {
         this.TrangThai = TrangThai;
     }
 
+    public String getTrangThai() {
+        return TrangThai?"Đang bán":"Ngừng bán";
+    }
+
 }

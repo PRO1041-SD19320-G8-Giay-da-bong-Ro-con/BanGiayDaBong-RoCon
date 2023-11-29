@@ -20,6 +20,7 @@ public class ChatLieuDAO  implements DAOInterface<ThuongHieu, String> {
     String SELECT_NAME_BY_ID_SQL = "Select ten from Chat_lieu where maChatLieu = ?";
     String SELECT_ALL_SQL = "select * from Chat_lieu";
     String SELECT_BY_ID_SQL = "select * from Chat_lieu where maChatLieu = ?";
+    String TEN_TO_MA = "Select maChatLieu from Chat_lieu where ten = ?";
 
     @Override
     public int insert(ThuongHieu entity) throws SQLException {
@@ -69,6 +70,14 @@ public class ChatLieuDAO  implements DAOInterface<ThuongHieu, String> {
     public String getTen(String key){
         try {
             return selectByID(key).getTen();
+        } catch (SQLException ex) {
+            throw new Error();
+        }
+    }
+    
+    public String getMa(String ten){
+        try {
+            return JDBCHelper.value(TEN_TO_MA, ten).toString();
         } catch (SQLException ex) {
             throw new Error();
         }

@@ -4,30 +4,31 @@
  */
 package com.dao;
 
-import com.entity.ThuongHieu;
 import com.utils.JDBCHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import com.entity.LoaiGiay;
 
 /**
  *
  * @author Thai
  */
-public class LoaiGiayDAO  implements DAOInterface<ThuongHieu, String> {
+public class LoaiGiayDAO  implements DAOInterface<LoaiGiay, String> {
 
     String SELECT_NAME_BY_ID_SQL = "Select ten from LOAI_GIAY where maLoai = ?";
     String SELECT_ALL_SQL = "select * from LOAI_GIAY";
     String SELECT_BY_ID_SQL = "select * from LOAI_GIAY where maLoai = ?";
+    String TEN_TO_MA = "Select maLoai from LOAI_GIAY where ten = ?";
 
     @Override
-    public int insert(ThuongHieu entity) throws SQLException {
+    public int insert(LoaiGiay entity) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public int update(ThuongHieu entity) throws SQLException {
+    public int update(LoaiGiay entity) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -37,13 +38,13 @@ public class LoaiGiayDAO  implements DAOInterface<ThuongHieu, String> {
     }
 
     @Override
-    public List<ThuongHieu> selectAll() throws SQLException {
+    public List<LoaiGiay> selectAll() throws SQLException {
         return selectBySQL(SELECT_ALL_SQL);
     }
 
     @Override
-    public ThuongHieu selectByID(String key) throws SQLException {
-        List<ThuongHieu> list = selectBySQL(SELECT_BY_ID_SQL, key);
+    public LoaiGiay selectByID(String key) throws SQLException {
+        List<LoaiGiay> list = selectBySQL(SELECT_BY_ID_SQL, key);
         if (list.isEmpty()) {
             return null;
         }
@@ -51,12 +52,12 @@ public class LoaiGiayDAO  implements DAOInterface<ThuongHieu, String> {
     }
 
     @Override
-    public List<ThuongHieu> selectBySQL(String sql, Object... args) throws SQLException {
-        List<ThuongHieu> list = new ArrayList<>();
+    public List<LoaiGiay> selectBySQL(String sql, Object... args) throws SQLException {
+        List<LoaiGiay> list = new ArrayList<>();
         ResultSet rs = JDBCHelper.query(sql, args);
         while (rs.next()) {
-            ThuongHieu entity = new ThuongHieu();
-            entity.setMaThuongHieu(rs.getString("maLoai"));
+            LoaiGiay entity = new LoaiGiay();
+            entity.setMaLoai(rs.getString("maLoai"));
             entity.setTen(rs.getString("Ten"));
             list.add(entity);
         }
@@ -65,7 +66,6 @@ public class LoaiGiayDAO  implements DAOInterface<ThuongHieu, String> {
         return list;
 
     }
-    
     public String getTen(String key){
         try {
             return selectByID(key).getTen();
@@ -73,5 +73,12 @@ public class LoaiGiayDAO  implements DAOInterface<ThuongHieu, String> {
             throw new Error();
         }
     }
-
+    
+    public String getMa(String ten){
+        try {
+            return JDBCHelper.value(TEN_TO_MA, ten).toString();
+        } catch (SQLException ex) {
+            throw new Error();
+        }
+    }
 }

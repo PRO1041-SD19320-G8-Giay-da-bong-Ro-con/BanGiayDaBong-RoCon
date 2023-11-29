@@ -6,7 +6,7 @@ package com.dao;
 
 import com.entity.KhuyenMai;
 import com.utils.JDBCHelper;
-import com.utils.Rounding;
+import com.utils.TextUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -77,7 +77,7 @@ public class KhuyenMaiDAO implements DAOInterface<KhuyenMai, String> {
             if (km.isLoaiKM()) {
                 detail += km.getGiamGia() + "%";
             } else {
-                detail +=Rounding.round(km.getGiamGia());
+                detail +=TextUtil.round(km.getGiamGia());
             }
 
             detail += ")";

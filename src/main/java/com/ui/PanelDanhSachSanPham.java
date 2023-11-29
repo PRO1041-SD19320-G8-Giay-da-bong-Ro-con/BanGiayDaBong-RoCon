@@ -8,21 +8,15 @@ import com.dao.SanPhamDAO;
 import com.dao.ThuongHieuDAO;
 import com.entity.SanPham;
 import com.main.Main;
-import com.utils.Rounding;
-import java.awt.Color;
-import java.awt.Component;
+import com.utils.TextUtil;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.BorderFactory;
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
-import view.ChiTietHoaDon_JDiaLog;
 
 /**
  *
@@ -55,7 +49,8 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
         tableSanPham = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbTrangThai = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
         btnChiTiet = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -86,9 +81,17 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Đang bán", "Ngừng bán", " " }));
-        jComboBox1.setBorder(null);
+        cbTrangThai.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cbTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang bán", "Ngừng bán", "Tất cả" }));
+        cbTrangThai.setBorder(null);
+        cbTrangThai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTrangThaiActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Trạng thái");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -96,9 +99,11 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -106,7 +111,8 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -190,19 +196,24 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-
+        Main.changeForm(new PanelThemSanPham());
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
         xemChiTiet();
     }//GEN-LAST:event_btnChiTietActionPerformed
 
+    private void cbTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTrangThaiActionPerformed
+        showTable();
+    }//GEN-LAST:event_cbTrangThaiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChiTiet;
     private javax.swing.JButton btnThem;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbTrangThai;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -214,18 +225,27 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
     private void showTable() {
         try {
             DefaultTableModel model = (DefaultTableModel) tableSanPham.getModel();
-            model.setColumnIdentifiers(new String[]{"Mã", "Tên món", "Giá", "Thương hiệu"});
+            ArrayList<String> header = new ArrayList<>();
+            header.addAll(Arrays.asList(new String[]{"Mã", "Tên món", "Giá", "Thương hiệu"}));
+            int[] size = {100, 400, 130, 130};
+            boolean trangThai = ((String) cbTrangThai.getSelectedItem()).equalsIgnoreCase("Tất cả");
+            if (trangThai) {
+                header.add("Trạng thái");
+                size = new int[]{100, 320, 130, 130,80};
+            }
+            Object[] str = header.toArray();
+
+            model.setColumnIdentifiers(str);
             model.setRowCount(0);
             TableColumnModel column = tableSanPham.getColumnModel();
-            int[] size = {100, 400, 130, 130};
             for (int i = 0; i < model.getColumnCount(); i++) {
                 column.getColumn(i).setPreferredWidth(size[i]);
             }
 
             String key = txtSearch.getText();
-            for (SanPham sp : daoSP.selectAll()) {
+            for (SanPham sp : daoSP.selectAll(checkTinhTrang())) {
                 if (sp.getMaSP().toUpperCase().contains(key.toUpperCase()) || sp.getTenSP().toUpperCase().contains(key.toUpperCase())) {
-                    model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), Rounding.round(sp.getGia()), daoTH.getTen(sp.getMaThuongHieu())});
+                    model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), TextUtil.round(sp.getGia()), daoTH.getTen(sp.getMaThuongHieu()),sp.getTrangThai()});
                 }
             }
         } catch (SQLException ex) {
@@ -247,5 +267,19 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(PanelDanhSachSanPham.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private String checkTinhTrang() {
+        String trangThai = (String) cbTrangThai.getSelectedItem();
+        String sql = "";
+        switch (trangThai) {
+            case "Đang bán":
+                sql = "Where TrangThai = 1";
+                break;
+            case "Ngừng bán":
+                sql = "Where TrangThai = 0";
+                break;
+        }
+        return sql;
     }
 }

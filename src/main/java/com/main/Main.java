@@ -6,6 +6,8 @@ package com.main;
 
 import com.component.Menu;
 import com.ui.PanelChiTietSanPham;
+import com.ui.PanelDanhSachSanPham;
+import com.ui.PanelThemSanPham;
 import com.ui.dangnhapJDialog;
 import com.ui.panelQuanLyTaiKhoan;
 import com.utils.Auth;
@@ -51,11 +53,9 @@ public class Main extends javax.swing.JFrame {
         panelTong.add(panel);
         setupPanelPerson();
         
-        panel.setBackground(Color.red);
         panel.setSize(panelTong.getSize());
         try {
-            PanelChiTietSanPham.sanPham = new com.dao.SanPhamDAO().selectByID("SP1");
-            changeForm(new PanelChiTietSanPham());
+            changeForm(new PanelThemSanPham());
         } catch (Exception e) {
         }
     }

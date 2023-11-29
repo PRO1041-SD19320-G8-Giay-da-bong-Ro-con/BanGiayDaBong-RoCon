@@ -8,7 +8,7 @@ package com.entity;
  *
  * @author Thai
  */
-public class MauSac {
+public class MauSac extends ThuocTinh{
 
     private String MaMauSac;
     private String Ten;
@@ -21,7 +21,8 @@ public class MauSac {
         this.Ten = Ten;
     }
 
-    public String getMaMauSac() {
+    @Override
+    public String getMa() {
         return MaMauSac;
     }
 
@@ -29,6 +30,7 @@ public class MauSac {
         this.MaMauSac = MaMauSac;
     }
 
+    @Override
     public String getTen() {
         return Ten;
     }

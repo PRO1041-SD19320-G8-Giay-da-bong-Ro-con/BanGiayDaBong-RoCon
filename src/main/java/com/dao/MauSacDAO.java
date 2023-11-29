@@ -93,7 +93,7 @@ public class MauSacDAO implements DAOInterface<MauSac, String> {
             if (list.isEmpty()) {
                 return null;
             }
-            return list.get(0).getMaMauSac();
+            return list.get(0).getMa();
         } catch (SQLException ex) {
             throw new Error();
         }

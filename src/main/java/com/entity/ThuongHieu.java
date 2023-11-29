@@ -8,20 +8,21 @@ package com.entity;
  *
  * @author Thai
  */
-public class ThuongHieu {
+public class ThuongHieu extends ThuocTinh {
 
     private String MaThuongHieu;
     private String Ten;
 
     public ThuongHieu() {
     }
-    
+
     public ThuongHieu(String MaThuongHieu, String Ten) {
         this.MaThuongHieu = MaThuongHieu;
         this.Ten = Ten;
     }
 
-    public String getMaThuongHieu() {
+    @Override
+    public String getMa() {
         return MaThuongHieu;
     }
 
@@ -29,12 +30,13 @@ public class ThuongHieu {
         this.MaThuongHieu = MaThuongHieu;
     }
 
+    @Override
     public String getTen() {
         return Ten;
     }
 
     public void setTen(String Ten) {
         this.Ten = Ten;
-    }
+    }    
 
 }

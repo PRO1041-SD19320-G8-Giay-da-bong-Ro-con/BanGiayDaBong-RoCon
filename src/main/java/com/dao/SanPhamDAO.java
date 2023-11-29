@@ -20,12 +20,14 @@ import java.util.logging.Logger;
  */
 public class SanPhamDAO implements DAOInterface<SanPham, String> {
 
-    String SELECT_ALL_SQL = "select * from San_Pham";
+    String INSERT_SQL = "INSERT INTO SAN_PHAM (MaSP,TenSP,Hinh,MaThuongHieu,MaLoai,MaChatLieu,MaXuatXu,Gia,TrangThai) VALUES(?,?,?,?,?,?,?,?,?)";
+    String SELECT_ALL_SQL = "select * from San_Pham ";
     String SELECT_BY_ID_SQL = "select * from San_Pham where masp = ?";
+    String UPDATE_TRANG_THAI = "Update San_Pham Set TrangThai = ? where MaSP = ?";
 
     @Override
     public int insert(SanPham entity) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return JDBCHelper.update(INSERT_SQL, entity.getMaSP(), entity.getTenSP(), entity.getHinh(), entity.getMaThuongHieu(), entity.getMaLoai(), entity.getMaChatLieu(), entity.getMaXuatXu(), entity.getGia(), "1");
     }
 
     @Override
@@ -41,6 +43,10 @@ public class SanPhamDAO implements DAOInterface<SanPham, String> {
     @Override
     public List<SanPham> selectAll() throws SQLException {
         return selectBySQL(SELECT_ALL_SQL);
+    }
+
+    public List<SanPham> selectAll(String... sql) throws SQLException {
+        return selectBySQL(SELECT_ALL_SQL + sql[0]);
     }
 
     @Override
@@ -74,12 +80,22 @@ public class SanPhamDAO implements DAOInterface<SanPham, String> {
         return list;
 
     }
-    
-    public ThuongHieu getThuongHieu (String id){
+
+    public ThuongHieu getThuongHieu(String id) {
         try {
             return new ThuongHieuDAO().selectByID(id);
         } catch (SQLException ex) {
             throw new Error();
         }
     }
+
+    public SanPham setTrangThai(SanPham sp) {
+        try {
+            JDBCHelper.update(UPDATE_TRANG_THAI, sp.isTrangThai() ? "0" : "1", sp.getMaSP());
+            return selectByID(sp.getMaSP());
+        } catch (SQLException ex) {
+            throw new Error("\nLỗi setTrangThai() SanPhamDAO.class\n" + ex);
+        }
+    }
+
 }
