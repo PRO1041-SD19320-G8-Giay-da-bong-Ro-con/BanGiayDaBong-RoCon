@@ -2,6 +2,7 @@ com\ui\PanelQuanLyNhanVien$1.class
 model\LoaiGiay.class
 services\SanPham_Ser.class
 com\dao\SizeDAO.class
+com\ui\PanelThongKe.class
 com\ui\dangnhapJDialog$7.class
 com\ui\PanelSuaSanPham$7.class
 view\SanPham_JDialog1$2.class
@@ -239,6 +240,7 @@ com\dao\ThuongHieuDAO.class
 com\ui\PanelQLKhachHang$3.class
 com\ui\PanelChiTietKhuyenMai$12.class
 com\utils\SendEmail$1.class
+com\ui\PanelThongKe$1.class
 com\ui\Paneldoimatkhau$4.class
 view\ChiTietKhuyenMai$8.class
 com\ui\quenmatkhauJDialog$2.class
@@ -261,6 +263,7 @@ view\ChiTietKhuyenMai$13.class
 com\ui\PanelChiTietKhuyenMai$5.class
 view\SanPham_JDialog1$4.class
 com\ui\PanelQuanLyKhuyenMai$3.class
+com\ui\PanelQuanLyThuocTinh$4.class
 com\ui\PanelQuanLyKhuyenMai$2.class
 view\KhuyenMaiJDialog.class
 com\ui\PanelChiTietKhuyenMai$6.class
@@ -268,6 +271,7 @@ view\BanHang_DiaLog$17.class
 view\KhuyenMaiJDialog$1.class
 com\ui\PanelDanhSachSanPham$1.class
 services\KhuyenMaiService.class
+com\ui\PanelQuanLyThuocTinh$5.class
 view\SanPham_JDialog1$5.class
 com\ui\nhaplaimatkhauDialog$1$1.class
 com\ui\PanelQLKhachHang$4.class

@@ -1,5 +1,6 @@
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\dao\ChiTietSanPhamDAO.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelThemSanPham.java
+D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\responsitory\KhachHangRepository.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelChiTietHoaDon.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\view\SanPham_JDialog.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\responsitory\KhuyenMaiRepository.java
@@ -11,6 +12,8 @@ D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\Panelthemnhanvien.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\model\LoaiGiay.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\entity\TaiKhoan.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\view\HoaDon_JDiaLog.java
+D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelQLKhachHang.java
+D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelChiTietKhachHang.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\model\ChiTietSanPham.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\model\SanPham.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelHoaDon.java
@@ -25,11 +28,14 @@ D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\main\Main.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\model\ThuongHieu.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\view\BanHang_DiaLog.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\thongkeJDialog.java
+D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelQuanLyThuocTinh.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\model\ChiTietHoaDon.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\services\KhuyenMaiService.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\entity\SanPham.java
+D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\model\KhachHang.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\dao\TaiKhoanDAO.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\services\SanPham_Ser.java
+D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelSuaSanPham.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\entity\ChatLieu.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\responsitory\SanPham_Respo.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\dao\MauSacDAO.java
@@ -47,6 +53,7 @@ D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\model\XuatXu.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\dao\HoaDonDAO.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\dao\SizeDAO.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelDanhSachSanPham.java
+D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelThemKhachHang.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\dangnhapJDialog.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\dao\ChatLieuDAO.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\dao\ChiTietHoaDonDAO.java
@@ -64,13 +71,17 @@ D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\model\Size.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\model\KhuyenMai.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\dao\DAOInterface.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelChiTietSanPham.java
+D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelThongKe.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\entity\ChiTietHoaDon.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\utils\DBConnect.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\utils\XImage.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\component\Menu.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\dao\KhuyenMaiDAO.java
+D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelLichSuMuaHang.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\utils\Auth.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\utils\FormatDate.java
+D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelChiTietKhuyenMai.java
+D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\services\KhachHangService.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\entity\LoaiGiay.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\entity\ThuocTinh.java
 D:\DUAN1\BanGiayDaBong-RoCon\src\main\java\com\ui\quenmatkhauJDialog.java

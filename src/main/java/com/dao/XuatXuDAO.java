@@ -109,5 +109,32 @@ public class XuatXuDAO  implements DAOInterface<XuatXu, String> {
             return null;
         }
     }
+    public int add(XuatXu th){
+        sql="insert into Xuat_Xu (MaXuatXu,Ten) values(?,?)";
+        try {
+           con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            ps.setObject(1, th.getMa());
+            ps.setObject(2, th.getTen());
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    public int updatee(XuatXu th,String ma){
+        sql="update Xuat_Xu set MaXuatXu= ?,Ten=? where MaXuatXu =?";
+        try {
+           con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            ps.setObject(1, th.getMa());
+            ps.setObject(2, th.getTen());
+            ps.setObject(3, ma);
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 
 }

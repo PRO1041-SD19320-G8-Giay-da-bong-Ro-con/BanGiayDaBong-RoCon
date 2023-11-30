@@ -123,4 +123,31 @@ public class MauSacDAO implements DAOInterface<MauSac, String> {
             return null;
         }
     }
+    public int add(MauSac th){
+        sql="insert into Mau_Sac (maMau,Ten) values(?,?)";
+        try {
+           con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            ps.setObject(1, th.getMa());
+            ps.setObject(2, th.getTen());
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    public int updatee(MauSac th,String ma){
+        sql="update Mau_Sac set maMau= ?,Ten=? where maMau =?";
+        try {
+           con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            ps.setObject(1, th.getMa());
+            ps.setObject(2, th.getTen());
+            ps.setObject(3, ma);
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }
