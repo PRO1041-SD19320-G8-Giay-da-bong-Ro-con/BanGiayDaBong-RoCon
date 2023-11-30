@@ -247,11 +247,13 @@ view\SanPham_JDialog1$23$1.class
 com\ui\PanelChiTietKhuyenMai$5.class
 view\SanPham_JDialog1$4.class
 com\ui\PanelQuanLyKhuyenMai$3.class
+com\ui\PanelQuanLyThuocTinh$4.class
 com\ui\PanelQuanLyKhuyenMai$2.class
 com\ui\PanelChiTietKhuyenMai$6.class
 view\BanHang_DiaLog$17.class
 com\ui\PanelDanhSachSanPham$1.class
 services\KhuyenMaiService.class
+com\ui\PanelQuanLyThuocTinh$5.class
 view\SanPham_JDialog1$5.class
 com\ui\nhaplaimatkhauDialog$1$1.class
 com\ui\PanelQLKhachHang$4.class

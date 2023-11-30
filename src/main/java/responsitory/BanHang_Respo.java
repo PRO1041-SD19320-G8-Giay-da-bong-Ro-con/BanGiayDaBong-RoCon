@@ -344,7 +344,7 @@ public class BanHang_Respo {
         public String getmaTheotenNV(String tennv) {
         ResultSet rs = null;
         String manv = null;
-        String sql = "select taikhoan from tai_khoan where ten=? ";
+        String sql = "select taikhoan from tai_khoan where MaNV=? ";
         try {
             rs = JDBCHelper.excuteQuery(sql, tennv);
             while (rs.next()) {
