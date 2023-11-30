@@ -173,6 +173,11 @@ public class PanelBanHang extends javax.swing.JPanel {
                 btnThemVaoDonHangMouseClicked(evt);
             }
         });
+        btnThemVaoDonHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemVaoDonHangActionPerformed(evt);
+            }
+        });
 
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -338,6 +343,11 @@ public class PanelBanHang extends javax.swing.JPanel {
 
         btnThanhToan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnThanhToan.setText("Thanh toán");
+        btnThanhToan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThanhToanMouseClicked(evt);
+            }
+        });
 
         jLabel11.setText("VND");
 
@@ -358,6 +368,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             }
         });
 
+        btnTaoHoaDon.setBackground(new java.awt.Color(153, 255, 255));
         btnTaoHoaDon.setText("Tạo hóa đơn");
         btnTaoHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -532,7 +543,11 @@ public class PanelBanHang extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemVaoDonHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemVaoDonHangMouseClicked
-        addSanPham();
+        try {
+            addSanPham();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"Vui lòng tạo hóa đơn");
+        }
     }//GEN-LAST:event_btnThemVaoDonHangMouseClicked
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
@@ -585,6 +600,14 @@ public class PanelBanHang extends javax.swing.JPanel {
             lblTienThua.setText(TextUtil.round((tongTien - tienKhach)));
         }
     }//GEN-LAST:event_txtTienMatKhachTraKeyReleased
+
+    private void btnThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanMouseClicked
+        thanhToan();
+    }//GEN-LAST:event_btnThanhToanMouseClicked
+
+    private void btnThemVaoDonHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemVaoDonHangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThemVaoDonHangActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -862,6 +885,26 @@ public class PanelBanHang extends javax.swing.JPanel {
                 showTableDonHang();
             } else {
                 JOptionPane.showMessageDialog(this, "Sửa thất bại");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void thanhToan() {
+        try {
+            HoaDon hoaDon = new HoaDon();
+            hoaDon.setMaHD(txtMaHD.getText());
+            hoaDon.setTaiKhoan(txtMaNV.getText());
+//        hoaDon.getMaKH()
+            KhuyenMai km = daoKM.selectByID((String) cboKhuyenMai.getSelectedItem());
+            if(km!=null){
+                hoaDon.setMaKM(km.getMaKM());
+            }
+//        hoaDon.setTrangThai(false);
+            hoaDon.setTrangThai(true);
+            if(daoHD.update(hoaDon)>0){
+                JOptionPane.showMessageDialog(this,"Thanh toán thành công");
             }
         } catch (SQLException ex) {
             Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
