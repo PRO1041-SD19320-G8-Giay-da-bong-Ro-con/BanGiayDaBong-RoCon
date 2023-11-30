@@ -108,5 +108,31 @@ public class ChatLieuDAO  implements DAOInterface<ThuongHieu, String> {
             return null;
         }
     }
-
+    public int add(ChatLieu th){
+        sql="insert into Chat_lieu (maChatLieu,Ten) values(?,?)";
+        try {
+           con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            ps.setObject(1, th.getMa());
+            ps.setObject(2, th.getTen());
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    public int updatee(ChatLieu th,String ma){
+        sql="update Chat_lieu set maChatLieu= ?,Ten=? where maChatLieu =?";
+        try {
+           con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            ps.setObject(1, th.getMa());
+            ps.setObject(2, th.getTen());
+            ps.setObject(3, ma);
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

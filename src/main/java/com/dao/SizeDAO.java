@@ -121,5 +121,31 @@ public class SizeDAO implements DAOInterface<Size, String> {
             return null;
         }
     }
-
+    public int add(Size th){
+        sql="insert into Size (maSize,Ten) values(?,?)";
+        try {
+           con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            ps.setObject(1, th.getMa());
+            ps.setObject(2, th.getTen());
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    public int updatee(Size th,String ma){
+        sql="update Size set maSize= ?,Ten=? where maSize =?";
+        try {
+           con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            ps.setObject(1, th.getMa());
+            ps.setObject(2, th.getTen());
+            ps.setObject(3, ma);
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

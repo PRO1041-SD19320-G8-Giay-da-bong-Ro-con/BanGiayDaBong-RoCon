@@ -106,4 +106,31 @@ public class LoaiGiayDAO  implements DAOInterface<LoaiGiay, String> {
             return null;
         }
     }
+    public int add(LoaiGiay th){
+        sql="insert into LOAI_GIAY (maloai,Ten) values(?,?)";
+        try {
+           con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            ps.setObject(1, th.getMa());
+            ps.setObject(2, th.getTen());
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    public int updatee(LoaiGiay th,String ma){
+        sql="update LOAI_GIAY set maloai= ?,Ten=? where maloai =?";
+        try {
+           con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            ps.setObject(1, th.getMa());
+            ps.setObject(2, th.getTen());
+            ps.setObject(3, ma);
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

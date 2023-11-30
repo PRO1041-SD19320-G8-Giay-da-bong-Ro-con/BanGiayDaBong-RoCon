@@ -6,6 +6,7 @@ package com.dao;
 
 import com.entity.SanPham;
 import com.entity.ThuongHieu;
+import com.entity.XuatXu;
 import com.utils.DBConnect;
 import com.utils.JDBCHelper;
 import java.sql.Connection;
@@ -89,6 +90,23 @@ public class ThuongHieuDAO implements DAOInterface<ThuongHieu, String> {
             throw new Error();
         }
     }
+    public List<ThuongHieu> getALL(){
+        sql="select * from THUONG_HIEU";
+        List<ThuongHieu> list = new ArrayList<>();
+        try {
+            con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                ThuongHieu th = new ThuongHieu(rs.getString(1), rs.getString(2));
+                list.add(th);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     public int add(ThuongHieu th){
         sql="insert into THUONG_HIEU (MaThuongHieu,Ten) values(?,?)";
         try {
@@ -100,6 +118,38 @@ public class ThuongHieuDAO implements DAOInterface<ThuongHieu, String> {
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
+        }
+    }
+    public int updatee(ThuongHieu th,String ma){
+        sql="update THUONG_HIEU set MaThuongHieu= ?,Ten=? where MaThuongHieu =?";
+        try {
+           con = DBConnect.getConnection();
+            ps= con.prepareStatement(sql);
+            ps.setObject(1, th.getMa());
+            ps.setObject(2, th.getTen());
+            ps.setObject(3, ma);
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    public ThuongHieu getma(String ma){
+        //truyen tham so la khoa chinh
+        ThuongHieu sv = null;
+        sql="select MaThuongHieu,Ten from THUONG_HIEU where MaThuongHieu=?";
+        try {
+           con = DBConnect.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setObject(1, ma);//? số thứ nhất
+            rs=ps.executeQuery();
+            while(rs.next()){
+               sv= new ThuongHieu(rs.getString(1),rs.getString(2));
+            }
+            return sv;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
