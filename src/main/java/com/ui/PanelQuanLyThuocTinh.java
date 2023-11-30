@@ -386,7 +386,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "thêm Thành Công");
                         filltable(thuonghieuDAO, new ThuongHieu());
                     } else {
-                        JOptionPane.showMessageDialog(this, "thêm Thât");
+                        JOptionPane.showMessageDialog(this, "trùng tên");
                     }
                 }
             } catch (SQLException ex) {
@@ -406,7 +406,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "thêm Thành Công");
                         filltable(loaigiayDAO, new ThuongHieu());
                     } else {
-                        JOptionPane.showMessageDialog(this, "thêm Thât");
+                        JOptionPane.showMessageDialog(this, "trùng tên");
                     }
                 }
             } catch (SQLException ex) {
@@ -427,7 +427,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "thêm Thành Công");
                         filltable(chatlieuDAO, new ThuongHieu());
                     } else {
-                        JOptionPane.showMessageDialog(this, "thêm Thât");
+                        JOptionPane.showMessageDialog(this, "trùng tên");
                     }
                 }
             } catch (SQLException ex) {
@@ -448,7 +448,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "thêm Thành Công");
                         filltable(xuatxuDAO, new ThuongHieu());
                     } else {
-                        JOptionPane.showMessageDialog(this, "thêm Thât");
+                        JOptionPane.showMessageDialog(this, "trùng tên");
                     }
                 }
             } catch (SQLException ex) {
@@ -469,7 +469,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "thêm Thành Công");
                         filltable(mausacDAO, new ThuongHieu());
                     } else {
-                        JOptionPane.showMessageDialog(this, "thêm Thât");
+                        JOptionPane.showMessageDialog(this, "trùng tên");
                     }
                 }
             } catch (SQLException ex) {
@@ -490,7 +490,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "thêm Thành Công");
                         filltable(sizeDAO, new ThuongHieu());
                     } else {
-                        JOptionPane.showMessageDialog(this, "thêm Thât");
+                        JOptionPane.showMessageDialog(this, "trùng tên");
                     }
                 }
             } catch (SQLException ex) {

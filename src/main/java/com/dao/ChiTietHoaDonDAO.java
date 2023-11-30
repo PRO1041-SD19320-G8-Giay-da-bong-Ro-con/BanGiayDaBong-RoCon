@@ -19,23 +19,26 @@ import java.util.logging.Logger;
  */
 public class ChiTietHoaDonDAO implements DAOInterface<ChiTietHoaDon, String> {
 
+    String INSERT_SQL = "INSERT INTO Chi_Tiet_HOA_DON (MaHD,MaCTSP,SoLuong) VALUES(?,?,?)";
+    String UPDATE_SQL = "UPDATE Chi_Tiet_HOA_DON SET SoLuong = ? WHERE MACTSP = ?";
     String SELECT_ALL_SQL = "select * from HOA_DON";
     String SELECT_BY_ID_SQL = "select * from HOA_DON where mahd = ?";
+    String DELETE_SQL = "DELETE FROM Chi_Tiet_HOA_DON WHERE MACTSP = ?";
 
     @Override
 
     public int insert(ChiTietHoaDon entity) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return JDBCHelper.update(INSERT_SQL, entity.getMaHD(), entity.getMaCTSP(), entity.getSoLuong());
     }
 
     @Override
     public int update(ChiTietHoaDon entity) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return JDBCHelper.update(UPDATE_SQL, entity.getSoLuong(),entity.getMaCTSP());
     }
 
     @Override
     public int delete(String key) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return JDBCHelper.update(DELETE_SQL, key);
     }
 
     @Override
@@ -74,6 +77,28 @@ public class ChiTietHoaDonDAO implements DAOInterface<ChiTietHoaDon, String> {
             String sql = "{CALL GetHoaDonChiTiet(?)}";
             String[] cols = {"MaCTSP", "TenSP", "SoLuong", "Gia"};
             ResultSet rs = JDBCHelper.query(sql, maHD);
+            while (rs.next()) {
+                Object[] vals = new Object[cols.length];
+                for (int i = 0; i < cols.length; i++) {
+                    vals[i] = rs.getObject(cols[i]);
+                    System.out.println("Hello");
+                }
+                list.add(vals);
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(ChiTietHoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public List<Object[]> getAllHoaDon(String maHD) {
+        try {
+            List<Object[]> list = new ArrayList<>();
+            String sql = "select * from vHoaDonChiTiet where maHD = '" + maHD + "'";
+            String[] cols = {"MaCTSP", "TenSP", "SoLuong", "Gia"};
+            ResultSet rs = JDBCHelper.query(sql);
             while (rs.next()) {
                 Object[] vals = new Object[cols.length];
                 for (int i = 0; i < cols.length; i++) {

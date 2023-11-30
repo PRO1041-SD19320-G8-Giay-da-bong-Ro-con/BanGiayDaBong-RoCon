@@ -17,18 +17,20 @@ import java.util.List;
  */
 public class HoaDonDAO implements DAOInterface<HoaDon, String> {
 
+    String INSERT_SQL = "INSERT INTO HOA_DON (MaHD,TAIKHOAN,MaKH,MaKM,THOIGIANBAN,TRANGTHAI) VALUES(?,?,?,?,getDate(),?)";
+    String UPDATE_SQL = "UPDATE HOA_DON SET MaKM = ?, THOIGIANBAN = getdate(), TRANGTHAI = 1 WHERE MaHD = ?";
     String SELECT_ALL_SQL = "select * from vHoaDon order by thoiGianBan desc";
     String SELECT_BY_ID_SQL = "select * from vHoaDon where mahd = ?";
     String LOC = "select * from vHoaDon";
 
     @Override
     public int insert(HoaDon entity) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return JDBCHelper.update(INSERT_SQL, entity.getMaHD(), entity.getTaiKhoan(), entity.getMaKH(), entity.getMaKM(), "0");
     }
 
     @Override
     public int update(HoaDon entity) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return JDBCHelper.update(UPDATE_SQL,  entity.getMaKM(), entity.getMaHD());
     }
 
     @Override
@@ -63,7 +65,6 @@ public class HoaDonDAO implements DAOInterface<HoaDon, String> {
             entity.setMaKM(rs.getString("MaKM"));
             entity.setTongTienCuoi(rs.getDouble("TongTienCuoi"));
             entity.setThoiGianBan(rs.getDate("ThoiGianBan"));
-            entity.setHinhThucThanhToan(rs.getString("HinhThucThanhToan"));
             entity.setTrangThai(rs.getBoolean("TrangThai"));
             list.add(entity);
         }
@@ -71,9 +72,9 @@ public class HoaDonDAO implements DAOInterface<HoaDon, String> {
         return list;
 
     }
-    
+
     public List<HoaDon> selectAll(String loc) throws SQLException {
-        return selectBySQL(LOC+loc+" order by thoiGianBan desc");
+        return selectBySQL(LOC + loc + " order by thoiGianBan desc");
     }
 
 }
