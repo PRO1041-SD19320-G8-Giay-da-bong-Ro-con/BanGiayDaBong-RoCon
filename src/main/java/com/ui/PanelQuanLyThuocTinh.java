@@ -11,9 +11,18 @@ import com.dao.MauSacDAO;
 import com.dao.SizeDAO;
 import com.dao.ThuongHieuDAO;
 import com.dao.XuatXuDAO;
+import com.entity.ChatLieu;
+import com.entity.LoaiGiay;
+import com.entity.MauSac;
+import com.entity.Size;
 import com.entity.ThuocTinh;
 import com.entity.ThuongHieu;
+import com.entity.XuatXu;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,10 +32,10 @@ import javax.swing.table.DefaultTableModel;
 public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
 
     DefaultTableModel model = null;
-    
+
     int index = -1;
     int tt = 0;
-    
+
     ThuongHieuDAO thuonghieuDAO = new ThuongHieuDAO();
     LoaiGiayDAO loaigiayDAO = new LoaiGiayDAO();
     ChatLieuDAO chatlieuDAO = new ChatLieuDAO();
@@ -54,6 +63,90 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
         }
     }
 
+    void showdata1(int index) {
+        ThuongHieu th = thuonghieuDAO.getALL().get(index);
+        txt_ma.setText(th.getMa());
+        txt_ten.setText(th.getTen());
+    }
+
+    void showdata2(int index) {
+        LoaiGiay lg = loaigiayDAO.getALL().get(index);
+        txt_ma.setText(lg.getMa());
+        txt_ten.setText(lg.getTen());
+    }
+
+    void showdata3(int index) {
+        ChatLieu lg = chatlieuDAO.getALL().get(index);
+        txt_ma.setText(lg.getMa());
+        txt_ten.setText(lg.getTen());
+    }
+
+    void showdata4(int index) {
+        XuatXu lg = xuatxuDAO.getALL().get(index);
+        txt_ma.setText(lg.getMa());
+        txt_ten.setText(lg.getTen());
+    }
+
+    void showdata5(int index) {
+        MauSac lg = mausacDAO.getALL().get(index);
+        txt_ma.setText(lg.getMa());
+        txt_ten.setText(lg.getTen());
+    }
+
+    void showdata6(int index) {
+        Size lg = sizeDAO.getALL().get(index);
+        txt_ma.setText(lg.getMa());
+        txt_ten.setText(lg.getTen());
+    }
+
+    ThuongHieu readfrom1() {
+        String ma = txt_ma.getText();
+        String ten = txt_ten.getText();
+        return new ThuongHieu(ma, ten);
+    }
+
+    LoaiGiay readfrom2() {
+        String ma = txt_ma.getText();
+        String ten = txt_ten.getText();
+        return new LoaiGiay(ma, ten);
+    }
+
+    ChatLieu readfrom3() {
+        String ma = txt_ma.getText();
+        String ten = txt_ten.getText();
+        return new ChatLieu(ma, ten);
+    }
+
+    XuatXu readfrom4() {
+        String ma = txt_ma.getText();
+        String ten = txt_ten.getText();
+        return new XuatXu(ma, ten);
+    }
+
+    MauSac readfrom5() {
+        String ma = txt_ma.getText();
+        String ten = txt_ten.getText();
+        return new MauSac(ma, ten);
+    }
+
+    Size readfrom6() {
+        String ma = txt_ma.getText();
+        String ten = txt_ten.getText();
+        return new Size(ma, ten);
+    }
+
+    boolean checkdata() {
+        if (txt_ma.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Mã không được để trống");
+            return false;
+        }
+        if (txt_ten.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Tên không được để trống");
+            return false;
+        }
+        return true;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,12 +165,13 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
         txt_ma = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txt_ten = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_add = new javax.swing.JButton();
+        btn_sua = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Quản Lý Thuộc Tính");
 
+        tbl_thuoctinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tbl_thuoctinh.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -104,6 +198,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbl_thuoctinh);
 
+        Cbox_thuoctinh.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Cbox_thuoctinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thương Hiệu", "Loại Giày", "Chất Liệu", "Xuất Xứ", "Màu Sắc", "Size" }));
         Cbox_thuoctinh.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -119,7 +214,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cbox_thuoctinh, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Cbox_thuoctinh, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -132,13 +227,27 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Mã :");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Tên :");
 
-        jButton1.setText("Thêm Thuộc Tính");
+        btn_add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_add.setText("Thêm Thuộc Tính");
+        btn_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Sửa Thuộc Tính");
+        btn_sua.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_sua.setText("Sửa Thuộc Tính");
+        btn_sua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_suaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -148,10 +257,10 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt_ma)
@@ -159,8 +268,8 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE))))
+                            .addComponent(btn_sua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_add, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE))))
                 .addGap(0, 41, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
@@ -176,17 +285,18 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_ma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txt_ten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_ma, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_ten, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_sua, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34))))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -195,31 +305,299 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
         // TODO add your handling code here:
         switch (Cbox_thuoctinh.getSelectedIndex()) {
             case 0 ->
-                filltable(thuonghieuDAO,new ThuongHieu());
+                filltable(thuonghieuDAO, new ThuongHieu());
             case 1 ->
-                filltable(loaigiayDAO,new ThuongHieu());
+                filltable(loaigiayDAO, new ThuongHieu());
             case 2 ->
-                filltable(chatlieuDAO,new ThuongHieu());
+                filltable(chatlieuDAO, new ThuongHieu());
             case 3 ->
-                filltable(xuatxuDAO,new ThuongHieu());
+                filltable(xuatxuDAO, new ThuongHieu());
             case 4 ->
-                filltable(mausacDAO,new ThuongHieu());
+                filltable(mausacDAO, new ThuongHieu());
             default ->
-                filltable(sizeDAO,new ThuongHieu());
+                filltable(sizeDAO, new ThuongHieu());
         }
     }//GEN-LAST:event_Cbox_thuoctinhItemStateChanged
 
     private void tbl_thuoctinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_thuoctinhMouseClicked
-////         TODO add your handling code here:
-//        int index = tbl_thuoctinh.getSelectedRow();
-//        showdata(index);
+//         TODO add your handling code here:
+        index = tbl_thuoctinh.getSelectedRow();
+        switch (Cbox_thuoctinh.getSelectedIndex()) {
+            case 0 ->
+                showdata1(index);
+            case 1 ->
+                showdata2(index);
+            case 2 ->
+                showdata3(index);
+            case 3 ->
+                showdata4(index);
+            case 4 ->
+                showdata5(index);
+            default ->
+                showdata6(index);
+        }
+
     }//GEN-LAST:event_tbl_thuoctinhMouseClicked
 
+    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
 
+        switch (Cbox_thuoctinh.getSelectedIndex()) {
+            case 0 ->
+                add1();
+            case 1 ->
+                add2();
+            case 2 ->
+                add3();
+            case 3 ->
+                add4();
+            case 4 ->
+                add5();
+            default ->
+                add6();
+        }
+
+    }//GEN-LAST:event_btn_addActionPerformed
+
+    private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
+        // TODO add your handling code here:
+        switch (Cbox_thuoctinh.getSelectedIndex()) {
+            case 0 ->
+                update1();
+            case 1 ->
+                update2();
+            case 2 ->
+                update3();
+            case 3 ->
+                update4();
+            case 4 ->
+                update5();
+            default ->
+                update6();
+        }
+    }//GEN-LAST:event_btn_suaActionPerformed
+    void add1() {
+        if (checkdata()) {
+            ThuongHieu th = this.readfrom1();
+            try {
+                if (thuonghieuDAO.selectByID(th.getMa()) != null) {
+                    JOptionPane.showMessageDialog(this, "mã trùng không thêm dc");
+                } else {
+                    if (thuonghieuDAO.add(th) > 0) {
+                        JOptionPane.showMessageDialog(this, "thêm Thành Công");
+                        filltable(thuonghieuDAO, new ThuongHieu());
+                    } else {
+                        JOptionPane.showMessageDialog(this, "thêm Thât");
+                    }
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelQuanLyThuocTinh.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    void add2() {
+        if (checkdata()) {
+            LoaiGiay th = this.readfrom2();
+            try {
+                if (loaigiayDAO.selectByID(th.getMa()) != null) {
+                    JOptionPane.showMessageDialog(this, "mã trùng không thêm dc");
+                } else {
+                    if (loaigiayDAO.add(th) > 0) {
+                        JOptionPane.showMessageDialog(this, "thêm Thành Công");
+                        filltable(loaigiayDAO, new ThuongHieu());
+                    } else {
+                        JOptionPane.showMessageDialog(this, "thêm Thât");
+                    }
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelQuanLyThuocTinh.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+
+    void add3() {
+        if (checkdata()) {
+            ChatLieu th = this.readfrom3();
+            try {
+                if (chatlieuDAO.selectByID(th.getMa()) != null) {
+                    JOptionPane.showMessageDialog(this, "mã trùng không thêm dc");
+                } else {
+                    if (chatlieuDAO.add(th) > 0) {
+                        JOptionPane.showMessageDialog(this, "thêm Thành Công");
+                        filltable(chatlieuDAO, new ThuongHieu());
+                    } else {
+                        JOptionPane.showMessageDialog(this, "thêm Thât");
+                    }
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelQuanLyThuocTinh.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+
+    void add4() {
+        if (checkdata()) {
+            XuatXu th = this.readfrom4();
+            try {
+                if (xuatxuDAO.selectByID(th.getMa()) != null) {
+                    JOptionPane.showMessageDialog(this, "mã trùng không thêm dc");
+                } else {
+                    if (xuatxuDAO.add(th) > 0) {
+                        JOptionPane.showMessageDialog(this, "thêm Thành Công");
+                        filltable(xuatxuDAO, new ThuongHieu());
+                    } else {
+                        JOptionPane.showMessageDialog(this, "thêm Thât");
+                    }
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelQuanLyThuocTinh.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+
+    void add5() {
+        if (checkdata()) {
+            MauSac th = this.readfrom5();
+            try {
+                if (mausacDAO.selectByID(th.getMa()) != null) {
+                    JOptionPane.showMessageDialog(this, "mã trùng không thêm dc");
+                } else {
+                    if (mausacDAO.add(th) > 0) {
+                        JOptionPane.showMessageDialog(this, "thêm Thành Công");
+                        filltable(mausacDAO, new ThuongHieu());
+                    } else {
+                        JOptionPane.showMessageDialog(this, "thêm Thât");
+                    }
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelQuanLyThuocTinh.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+
+    void add6() {
+        if (checkdata()) {
+            Size th = this.readfrom6();
+            try {
+                if (sizeDAO.selectByID(th.getMa()) != null) {
+                    JOptionPane.showMessageDialog(this, "mã trùng không thêm dc");
+                } else {
+                    if (sizeDAO.add(th) > 0) {
+                        JOptionPane.showMessageDialog(this, "thêm Thành Công");
+                        filltable(sizeDAO, new ThuongHieu());
+                    } else {
+                        JOptionPane.showMessageDialog(this, "thêm Thât");
+                    }
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelQuanLyThuocTinh.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    void update1() {
+        index = tbl_thuoctinh.getSelectedRow();
+        if (index < 0) {
+            JOptionPane.showMessageDialog(this, "bạn cần chọn dòng để sửa");
+        } else {
+            if (checkdata()) {
+                String ma = tbl_thuoctinh.getValueAt(index, 0).toString();
+                ThuongHieu th = this.readfrom1();
+                if (thuonghieuDAO.updatee(th, ma) > 0) {
+                    JOptionPane.showMessageDialog(this, "Sửa Thành Công");
+                    filltable(thuonghieuDAO, new ThuongHieu());
+                }
+            }
+        }
+    }
+
+    void update2() {
+        index = tbl_thuoctinh.getSelectedRow();
+        if (index < 0) {
+            JOptionPane.showMessageDialog(this, "bạn cần chọn dòng để sửa");
+        } else {
+            if (checkdata()) {
+                String ma = tbl_thuoctinh.getValueAt(index, 0).toString();
+                LoaiGiay th = this.readfrom2();
+                if (loaigiayDAO.updatee(th, ma) > 0) {
+                    JOptionPane.showMessageDialog(this, "Sửa Thành Công");
+                    filltable(loaigiayDAO, new ThuongHieu());
+                }
+            }
+        }
+    }
+
+    void update3() {
+        index = tbl_thuoctinh.getSelectedRow();
+        if (index < 0) {
+            JOptionPane.showMessageDialog(this, "bạn cần chọn dòng để sửa");
+        } else {
+            if (checkdata()) {
+                String ma = tbl_thuoctinh.getValueAt(index, 0).toString();
+                ChatLieu th = this.readfrom3();
+                if (chatlieuDAO.updatee(th, ma) > 0) {
+                    JOptionPane.showMessageDialog(this, "Sửa Thành Công");
+                    filltable(chatlieuDAO, new ThuongHieu());
+                }
+            }
+        }
+    }
+
+    void update4() {
+        index = tbl_thuoctinh.getSelectedRow();
+        if (index < 0) {
+            JOptionPane.showMessageDialog(this, "bạn cần chọn dòng để sửa");
+        } else {
+            if (checkdata()) {
+                String ma = tbl_thuoctinh.getValueAt(index, 0).toString();
+                XuatXu th = this.readfrom4();
+                if (xuatxuDAO.updatee(th, ma) > 0) {
+                    JOptionPane.showMessageDialog(this, "Sửa Thành Công");
+                    filltable(xuatxuDAO, new ThuongHieu());
+                }
+            }
+        }
+    }
+
+    void update5() {
+        index = tbl_thuoctinh.getSelectedRow();
+        if (index < 0) {
+            JOptionPane.showMessageDialog(this, "bạn cần chọn dòng để sửa");
+        } else {
+            if (checkdata()) {
+                String ma = tbl_thuoctinh.getValueAt(index, 0).toString();
+                MauSac th = this.readfrom5();
+                if (mausacDAO.updatee(th, ma) > 0) {
+                    JOptionPane.showMessageDialog(this, "Sửa Thành Công");
+                    filltable(mausacDAO, new ThuongHieu());
+                }
+            }
+        }
+    }
+
+    void update6() {
+        index = tbl_thuoctinh.getSelectedRow();
+        if (index < 0) {
+            JOptionPane.showMessageDialog(this, "bạn cần chọn dòng để sửa");
+        } else {
+            if (checkdata()) {
+                String ma = tbl_thuoctinh.getValueAt(index, 0).toString();
+                Size th = this.readfrom6();
+                if (sizeDAO.updatee(th, ma) > 0) {
+                    JOptionPane.showMessageDialog(this, "Sửa Thành Công");
+                    filltable(sizeDAO, new ThuongHieu());
+                }
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Cbox_thuoctinh;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_add;
+    private javax.swing.JButton btn_sua;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
