@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.KhachHang;
+import com.entity.KhachHang;
 import services.KhachHangService;
 
 /**
@@ -26,6 +26,10 @@ public class PanelQLKhachHang extends javax.swing.JPanel {
     private DefaultTableModel model = new DefaultTableModel();
     private KhachHangService ser = new KhachHangService();
     int id;
+
+    public String getMaKH() {
+        return this.txtMa.getText();
+    }
 
     public PanelQLKhachHang() {
         initComponents();
@@ -236,8 +240,8 @@ public class PanelQLKhachHang extends javax.swing.JPanel {
         });
         tblKH.setRowHeight(30);
         tblKH.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblKHMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblKHMousePressed(evt);
             }
         });
         jScrollPane2.setViewportView(tblKH);
@@ -301,11 +305,6 @@ public class PanelQLKhachHang extends javax.swing.JPanel {
         Main.changeForm(new PanelLichSuMuaHang());
     }//GEN-LAST:event_btnThoatActionPerformed
 
-    private void tblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKHMouseClicked
-        id = tblKH.getSelectedRow();
-        showForm();
-    }//GEN-LAST:event_tblKHMouseClicked
-
     private void btnThem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem1ActionPerformed
         int hoi = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn sửa thêm khách hàng ");
         if (hoi == JOptionPane.YES_OPTION) {
@@ -314,6 +313,11 @@ public class PanelQLKhachHang extends javax.swing.JPanel {
             showData(lstKH);
         }
     }//GEN-LAST:event_btnThem1ActionPerformed
+
+    private void tblKHMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKHMousePressed
+        id = tblKH.getSelectedRow();
+        showForm();
+    }//GEN-LAST:event_tblKHMousePressed
     private void showData(List<KhachHang> lstKH) {
         model.setRowCount(0);
         for (KhachHang khachHang : lstKH) {
