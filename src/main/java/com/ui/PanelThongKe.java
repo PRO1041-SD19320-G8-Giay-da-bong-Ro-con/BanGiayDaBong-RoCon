@@ -4,17 +4,50 @@
  */
 package com.ui;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import model.ChiTietSanPham;
+import services.ThongKe_Ser;
+
 /**
  *
  * @author Thai
  */
 public class PanelThongKe extends javax.swing.JPanel {
-
+    ThongKe_Ser ql = new ThongKe_Ser();
     /**
      * Creates new form PanelThongKe
      */
     public PanelThongKe() {
         initComponents();
+        loadDoanhThu();
+        loadSanPhamSapHet();
+    }
+    
+    private void loadDoanhThu(){
+        DefaultTableModel tblModelDT = (DefaultTableModel) tblDoanhThu.getModel();
+        tblModelDT.setRowCount(0);
+        List<Object[]> lst = ql.getDoanhThu();
+        for(Object[] ob : lst){
+            tblModelDT.addRow(ob);
+        }
+        
+    }
+    
+    private void loadSanPhamSapHet(){
+        DefaultTableModel tblModelSP = (DefaultTableModel) tblHangSapHet.getModel();
+        tblModelSP.setRowCount(0);
+        List<ChiTietSanPham> lst = ql.getAllSanPhamSapHet();
+        for(ChiTietSanPham ctsp : lst){
+            tblModelSP.addRow(new Object[]{
+                ctsp.getMaCTSP(),
+                ctsp.getMaSp(),
+                ctsp.getTenSP(),
+                ctsp.getMaMau(),
+                ctsp.getMaSize(),
+                ctsp.getSoLuong()
+            });
+        }
     }
 
     /**
@@ -29,33 +62,30 @@ public class PanelThongKe extends javax.swing.JPanel {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblDoanhThu = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblHangSapHet = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Tháng / Năm", "Tổng Tiền"
+                "Tháng", "Năm", "Tổng Tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblDoanhThu);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Doanh thu");
@@ -83,18 +113,23 @@ public class PanelThongKe extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Doanh Thu", jPanel1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblHangSapHet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Mã chi tiết", "Mã sản phẩm", "Tên", "Màu", "Size", "Số lượng"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblHangSapHet);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("Hàng sắp hết");
@@ -143,7 +178,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tblDoanhThu;
+    private javax.swing.JTable tblHangSapHet;
     // End of variables declaration//GEN-END:variables
 }

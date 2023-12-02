@@ -8,6 +8,7 @@ import com.ui.PanelQLKhachHang;
 import com.ui.PanelQuanLyKhuyenMai;
 import com.ui.PanelQuanLyNhanVien;
 import com.ui.PanelQuanLyThuocTinh;
+import com.ui.PanelThongKe;
 import com.ui.dangnhapJDialog;
 import com.utils.Auth;
 import java.awt.Color;
@@ -155,6 +156,11 @@ public class Menu extends javax.swing.JPanel {
         ThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ThongKe.setText("Thống kê");
         ThongKe.setPreferredSize(new java.awt.Dimension(50, 30));
+        ThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ThongKeMouseClicked(evt);
+            }
+        });
 
         QLNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         QLNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -279,6 +285,10 @@ public class Menu extends javax.swing.JPanel {
         Auth.clear();
         new dangnhapJDialog(main, true).setVisible(true);
     }//GEN-LAST:event_DangXuatMouseClicked
+
+    private void ThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThongKeMouseClicked
+        Main.changeForm(new PanelThongKe());
+    }//GEN-LAST:event_ThongKeMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
