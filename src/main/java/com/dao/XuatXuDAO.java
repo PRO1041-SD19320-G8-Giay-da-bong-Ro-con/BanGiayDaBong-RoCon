@@ -26,6 +26,7 @@ public class XuatXuDAO  implements DAOInterface<XuatXu, String> {
     String SELECT_NAME_BY_ID_SQL = "Select ten from Xuat_Xu where MaXuatXu = ?";
     String SELECT_ALL_SQL = "select * from Xuat_Xu";
     String SELECT_BY_ID_SQL = "select * from Xuat_Xu where MaXuatXu = ?";
+    String SELECT_BY_NAME_SQL = "select * from Xuat_Xu where ten = ?";
     String TEN_TO_MA = "Select MaXuatXu from Xuat_Xu where ten = ?";
 
     @Override
@@ -51,6 +52,13 @@ public class XuatXuDAO  implements DAOInterface<XuatXu, String> {
     @Override
     public XuatXu selectByID(String key) throws SQLException {
         List<XuatXu> list = selectBySQL(SELECT_BY_ID_SQL, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
+    public XuatXu selectByTEN(String key) throws SQLException {
+        List<XuatXu> list = selectBySQL(SELECT_BY_NAME_SQL, key);
         if (list.isEmpty()) {
             return null;
         }
