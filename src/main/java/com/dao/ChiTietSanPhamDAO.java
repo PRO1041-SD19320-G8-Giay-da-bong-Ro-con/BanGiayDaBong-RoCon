@@ -104,7 +104,7 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
     }
 
     public List<Object[]> getAllSanPhamChiTiet(String[] cols) throws SQLException {
-        String sql = "Select * from vThongTinSanPham";
+        String sql = "Select * from vThongTinSanPham where soLuong > 0";
         return getListObject(sql,cols);
     }
     

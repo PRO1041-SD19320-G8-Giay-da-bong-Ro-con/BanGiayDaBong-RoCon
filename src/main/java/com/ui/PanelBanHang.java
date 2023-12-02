@@ -792,7 +792,7 @@ public class PanelBanHang extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Thêm thất bại");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Vui lòng tạo hóa đơn");
         }
     }
 
