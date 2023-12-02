@@ -165,6 +165,7 @@ public class PanelBanHang extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblSanPham.setRowHeight(30);
         jScrollPane2.setViewportView(tblSanPham);
 
         btnThemVaoDonHang.setText("Thêm vào đơn hàng");
