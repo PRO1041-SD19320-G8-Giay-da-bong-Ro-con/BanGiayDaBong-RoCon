@@ -8,6 +8,9 @@ import com.dao.TaiKhoanDAO;
 import com.entity.TaiKhoan;
 import com.main.Main;
 import com.utils.FormatDate;
+import com.utils.TextUtil;
+import static java.lang.String.format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +23,7 @@ public class Panelthemnhanvien extends javax.swing.JPanel {
     TaiKhoanDAO DAO = new TaiKhoanDAO();
     DefaultTableModel model = new DefaultTableModel();
     int index = -1;
+    SimpleDateFormat format  = new SimpleDateFormat("dd/MM/yyyy");
     /**
      * Creates new form Panelthemnhanvien
      */
@@ -66,16 +70,21 @@ public class Panelthemnhanvien extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Tên phải từ 5 đến 20 ký tự");
             return false;
         }
-        if (!txt_hovaten.getText().matches("[A-Za-z ]+")) {
+        if (!TextUtil.isName(txt_hovaten.getText())) {
             JOptionPane.showMessageDialog(this, "tên không được chứa số và chứa ký đặc biệt");
             return false;
         }
-
+        try {
+            Date ngaysinh = format.parse(txt_ngaysinh.getText());
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ngày sinh phải đúng from dd/MM/yyyy");
+        }
         if (txt_sdt.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "SDT không được để trống !!");
             return false;
         }
-        if (txt_sdt.getText().length() != 12) {
+        if (txt_sdt.getText().length() != 10) {
             JOptionPane.showMessageDialog(this, "SDT phải là 12 số");
             return false;
         }
@@ -146,7 +155,6 @@ public class Panelthemnhanvien extends javax.swing.JPanel {
         radio_nhanvien = new javax.swing.JRadioButton();
         btn_them = new javax.swing.JButton();
         cbHienMatKhau = new javax.swing.JCheckBox();
-        cbHienMatKhau1 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
 
         jLabel2.setText("Tài Khoản");
@@ -185,13 +193,6 @@ public class Panelthemnhanvien extends javax.swing.JPanel {
             }
         });
 
-        cbHienMatKhau1.setText("Hiện mật khẩu");
-        cbHienMatKhau1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbHienMatKhau1ActionPerformed(evt);
-            }
-        });
-
         jButton1.setText("Quay Lại");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,10 +228,7 @@ public class Panelthemnhanvien extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbHienMatKhau))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txt_matkhau2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbHienMatKhau1))
+                    .addComponent(txt_matkhau2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,7 +261,6 @@ public class Panelthemnhanvien extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_matkhau2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbHienMatKhau1)
                     .addComponent(txt_hovaten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -308,7 +305,7 @@ public class Panelthemnhanvien extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -326,18 +323,12 @@ public class Panelthemnhanvien extends javax.swing.JPanel {
     private void cbHienMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHienMatKhauActionPerformed
         if (cbHienMatKhau.isSelected()) {
             txt_matkhau.setEchoChar((char) 0);
-        } else {
-            txt_matkhau.setEchoChar('*');
-        }
-    }//GEN-LAST:event_cbHienMatKhauActionPerformed
-
-    private void cbHienMatKhau1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHienMatKhau1ActionPerformed
-        if (cbHienMatKhau1.isSelected()) {
             txt_matkhau2.setEchoChar((char) 0);
         } else {
+            txt_matkhau.setEchoChar('*');
             txt_matkhau2.setEchoChar('*');
         }
-    }//GEN-LAST:event_cbHienMatKhau1ActionPerformed
+    }//GEN-LAST:event_cbHienMatKhauActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Main.changeForm(new PanelQuanLyNhanVien());
@@ -347,7 +338,6 @@ public class Panelthemnhanvien extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_them;
     private javax.swing.JCheckBox cbHienMatKhau;
-    private javax.swing.JCheckBox cbHienMatKhau1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
