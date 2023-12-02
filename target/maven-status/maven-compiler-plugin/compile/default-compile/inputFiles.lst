@@ -6,6 +6,7 @@ C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\j
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelQLKhachHang.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\responsitory\BanHang_Respo.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\view\SanPham_JDialog1.java
+C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelBanHang.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\dao\MauSacDAO.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\entity\LoaiGiay.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\responsitory\SanPham_Respo.java
@@ -63,6 +64,7 @@ C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\j
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\services\KhuyenMaiService.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\view\HoaDon_JDiaLog.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelQuanLyThuocTinh.java
+C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\services\ThongKe_Ser.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\panelQuanLyTaiKhoan.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\services\SanPham_Ser.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\responsitory\KhachHangRepository.java
@@ -73,6 +75,7 @@ C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\j
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\model\KhachHang.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\model\XuatXu.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\model\HoaDon.java
+C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\responsitory\ThongKe_Repo.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\model\KhuyenMai.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\view\NhanVien_JDiaLog.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\dao\SizeDAO.java
