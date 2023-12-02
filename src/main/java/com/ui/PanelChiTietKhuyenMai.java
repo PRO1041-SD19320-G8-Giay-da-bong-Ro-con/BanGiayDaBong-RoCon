@@ -252,6 +252,7 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
         });
 
         buttonGroup1.add(rdoTheoTien);
+        rdoTheoTien.setSelected(true);
         rdoTheoTien.setText("Theo tiền");
         rdoTheoTien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
