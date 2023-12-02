@@ -83,7 +83,7 @@ public class KhuyenMaiDAO implements DAOInterface<KhuyenMai, String> {
             detail += ")";
             return detail;
         } catch (Exception e) {
-            throw new Error("\nError getDetailKhuyenMai() from KhuyenMaiDAO\n" + e);
+            return "Không áp dụng";
         }
     }
 

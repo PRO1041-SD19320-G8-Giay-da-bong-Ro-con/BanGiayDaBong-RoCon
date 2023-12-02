@@ -5,7 +5,7 @@
 package services;
 
 import java.util.List;
-import model.KhachHang;
+import com.entity.KhachHang;
 import responsitory.KhachHangRepository;
 
 /**

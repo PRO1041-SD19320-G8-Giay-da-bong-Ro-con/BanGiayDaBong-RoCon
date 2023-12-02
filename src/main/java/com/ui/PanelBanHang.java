@@ -8,6 +8,7 @@ import com.dao.ChatLieuDAO;
 import com.dao.ChiTietHoaDonDAO;
 import com.dao.ChiTietSanPhamDAO;
 import com.dao.HoaDonDAO;
+import com.dao.KhachHangDAO;
 import com.dao.KhuyenMaiDAO;
 import com.dao.LoaiGiayDAO;
 import com.dao.MauSacDAO;
@@ -49,6 +50,7 @@ public class PanelBanHang extends javax.swing.JPanel {
     HoaDonDAO daoHD = new HoaDonDAO();
     ChiTietHoaDonDAO daoCTHD = new ChiTietHoaDonDAO();
     KhuyenMaiDAO daoKM = new KhuyenMaiDAO();
+    KhachHangDAO daoKH = new KhachHangDAO();
 
     DefaultTableModel modelSP = null;
     DefaultTableModel modelDH = null;
@@ -138,8 +140,9 @@ public class PanelBanHang extends javax.swing.JPanel {
         txtMaHD = new javax.swing.JTextField();
         cboKhuyenMai = new javax.swing.JComboBox<>();
         btnTaoHoaDon = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnChonKhachHang = new javax.swing.JButton();
         lblGiamGia = new javax.swing.JLabel();
+        lblKhachHang = new javax.swing.JLabel();
         jPanelHoaDonCho = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -377,7 +380,12 @@ public class PanelBanHang extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Chọn khách hàng");
+        btnChonKhachHang.setText("Chọn khách hàng");
+        btnChonKhachHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChonKhachHangActionPerformed(evt);
+            }
+        });
 
         lblGiamGia.setText("Giảm giá");
 
@@ -412,13 +420,16 @@ public class PanelBanHang extends javax.swing.JPanel {
                                         .addComponent(txtMaHD, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                                         .addComponent(btnTaoHoaDon))
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanelQLHDLayout.createSequentialGroup()
                                         .addGap(177, 177, 177)
                                         .addGroup(jPanelQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel11)
                                             .addComponent(lblGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelQLHDLayout.createSequentialGroup()
+                                        .addComponent(lblKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnChonKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanelQLHDLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGroup(jPanelQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -450,7 +461,8 @@ public class PanelBanHang extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jButton1))
+                    .addComponent(btnChonKhachHang)
+                    .addComponent(lblKhachHang))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -547,7 +559,7 @@ public class PanelBanHang extends javax.swing.JPanel {
         try {
             addSanPham();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Vui lòng tạo hóa đơn");
+            JOptionPane.showMessageDialog(this, "Vui lòng tạo hóa đơn");
         }
     }//GEN-LAST:event_btnThemVaoDonHangMouseClicked
 
@@ -603,22 +615,33 @@ public class PanelBanHang extends javax.swing.JPanel {
     }//GEN-LAST:event_txtTienMatKhachTraKeyReleased
 
     private void btnThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanMouseClicked
-        thanhToan();
+        if(checkTableDonHang()){
+            thanhToan();
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Không có sản phẩm trong đơn hàng");
+        }
     }//GEN-LAST:event_btnThanhToanMouseClicked
 
     private void btnThemVaoDonHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemVaoDonHangActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThemVaoDonHangActionPerformed
 
+    private void btnChonKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonKhachHangActionPerformed
+        DialogKhachHang dkh = new DialogKhachHang(null, true);
+        dkh.setVisible(true);
+        lblKhachHang.setText(dkh.maKH);
+    }//GEN-LAST:event_btnChonKhachHangActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChonKhachHang;
     private javax.swing.JButton btnTaoHoaDon;
     private javax.swing.JButton btnThanhToan;
     private javax.swing.JButton btnThemVaoDonHang;
     private javax.swing.JButton btnXoaKhoiDonHang;
     private javax.swing.JButton btnXoaKhoiDonHang1;
     private javax.swing.JComboBox<String> cboKhuyenMai;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -642,6 +665,7 @@ public class PanelBanHang extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblGiamGia;
+    private javax.swing.JLabel lblKhachHang;
     private javax.swing.JLabel lblTienThua;
     private javax.swing.JLabel lblTongTien;
     private javax.swing.JLabel lblTongTienThanhToan;
@@ -792,7 +816,7 @@ public class PanelBanHang extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Thêm thất bại");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Vui lòng tạo hóa đơn");
         }
     }
 
@@ -897,18 +921,21 @@ public class PanelBanHang extends javax.swing.JPanel {
             HoaDon hoaDon = new HoaDon();
             hoaDon.setMaHD(txtMaHD.getText());
             hoaDon.setTaiKhoan(txtMaNV.getText());
-//        hoaDon.getMaKH()
+            hoaDon.setMaKH(lblKhachHang.getText());
             KhuyenMai km = daoKM.selectByID((String) cboKhuyenMai.getSelectedItem());
-            if(km!=null){
+            if (km != null) {
                 hoaDon.setMaKM(km.getMaKM());
             }
-//        hoaDon.setTrangThai(false);
             hoaDon.setTrangThai(true);
-            if(daoHD.update(hoaDon)>0){
-                JOptionPane.showMessageDialog(this,"Thanh toán thành công");
+            if (daoHD.update(hoaDon) > 0) {
+                JOptionPane.showMessageDialog(this, "Thanh toán thành công");
             }
         } catch (SQLException ex) {
             Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private boolean checkTableDonHang() {
+        return tblDonHang.getRowCount()>0;
     }
 }

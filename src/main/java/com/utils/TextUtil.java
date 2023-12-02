@@ -22,4 +22,8 @@ public class TextUtil {
     public static boolean isNAN(String str) {
         return !str.matches("[0-9]+");
     }
+    
+    public static boolean isName(String str){
+        return str.toUpperCase().matches("[A-ZẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴ ]+");
+    }
 }

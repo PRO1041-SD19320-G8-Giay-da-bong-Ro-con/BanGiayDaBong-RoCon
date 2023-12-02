@@ -94,11 +94,11 @@ public class PanelSuaSanPham extends javax.swing.JPanel {
         model.setRowCount(0);
         model.setColumnIdentifiers(new String[]{"Mã chi tiết", "Mã màu", "Mã size", "Số lượng"});
 
-        checkAnh();
         showComboBox();
         showCheckBox();
         showForm();
         showTable();
+        checkAnh();
 
         FlowLayout flow = new FlowLayout(FlowLayout.LEADING, 15, 20);
         panelMau.setLayout(flow);
@@ -512,6 +512,7 @@ public class PanelSuaSanPham extends javax.swing.JPanel {
             return false;
         } else {
             btnAnh.setText("Bỏ ảnh");
+            lblHinhAnh.setBorder(new LineBorder(Color.GREEN, 3));
             return true;
         }
     }

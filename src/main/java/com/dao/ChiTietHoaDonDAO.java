@@ -74,14 +74,13 @@ public class ChiTietHoaDonDAO implements DAOInterface<ChiTietHoaDon, String> {
     public List<Object[]> getAllHoaDonChiTiet(String maHD) {
         try {
             List<Object[]> list = new ArrayList<>();
-            String sql = "{CALL GetHoaDonChiTiet(?)}";
+            String sql = "select * from vHoaDonChiTiet where maHD = ?";
             String[] cols = {"MaCTSP", "TenSP", "SoLuong", "Gia"};
             ResultSet rs = JDBCHelper.query(sql, maHD);
             while (rs.next()) {
                 Object[] vals = new Object[cols.length];
                 for (int i = 0; i < cols.length; i++) {
                     vals[i] = rs.getObject(cols[i]);
-                    System.out.println("Hello");
                 }
                 list.add(vals);
             }

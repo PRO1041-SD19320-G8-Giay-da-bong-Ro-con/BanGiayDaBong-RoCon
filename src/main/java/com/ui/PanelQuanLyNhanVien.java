@@ -20,7 +20,7 @@ import javax.mail.internet.MailDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-
+import com.utils.TextUtil;
 /**
  *
  * @author DELL
@@ -97,7 +97,7 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Tên phải từ 5 đến 20 ký tự");
             return false;
         }
-        if (!txt_hovaten.getText().matches("[A-Za-z ]+")) {
+        if(!TextUtil.isName(txt_hovaten.getText())){
             JOptionPane.showMessageDialog(this, "tên không được chứa số và chứa ký đặc biệt");
             return false;
         }
