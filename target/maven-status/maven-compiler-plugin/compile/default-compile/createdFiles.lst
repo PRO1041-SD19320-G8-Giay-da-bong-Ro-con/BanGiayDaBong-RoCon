@@ -152,7 +152,6 @@ com\ui\PanelQuanLyKhuyenMai$2.class
 model\XuatXu.class
 com\ui\PanelChiTietKhuyenMai$6.class
 com\ui\PanelDanhSachSanPham$1.class
-com\ui\Panelthemnhanvien$4.class
 com\dao\ChatLieuDAO.class
 services\KhuyenMaiService.class
 model\ThuongHieu.class

@@ -38,6 +38,16 @@ public class TaiKhoan {
         this.chucvu = chucvu;
     }
 
+    public TaiKhoan(String taikhoan, String ten, Date ngaysinh, String sdt, String email, String CCCD, boolean chucvu) {
+        this.taikhoan = taikhoan;
+        this.ten = ten;
+        this.ngaysinh = ngaysinh;
+        this.sdt = sdt;
+        this.email = email;
+        this.CCCD = CCCD;
+        this.chucvu = chucvu;
+    }
+
     public String getTaikhoan() {
         return taikhoan;
     }

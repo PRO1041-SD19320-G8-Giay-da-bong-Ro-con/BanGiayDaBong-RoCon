@@ -11,10 +11,12 @@ import com.main.Main;
 import com.utils.Auth;
 import com.utils.FormatDate;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.internet.MailDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -28,7 +30,8 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
     TaiKhoanDAO DAO = new TaiKhoanDAO();
     DefaultTableModel model = new DefaultTableModel();
     int index = -1;
-
+    SimpleDateFormat format  = new SimpleDateFormat("dd/MM/yyyy");
+    
     /**
      * Creates new form PanelQuanLyNhanVien
      */
@@ -48,7 +51,7 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
     void showdata(int index) {
         TaiKhoan tk = DAO.getall().get(index);
         txt_taikhoan.setText(tk.getTaikhoan());
-        txt_matkhau.setText(tk.getMatkhau());
+        
         txt_hovaten.setText(tk.getTen());
         txt_ngaysinh.setText(FormatDate.toString(tk.getNgaysinh()));
         txt_sdt.setText(tk.getSdt());
@@ -64,7 +67,7 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
     TaiKhoan readfrom() {
 
         String tkhoan = txt_taikhoan.getText();
-        String matkhau = txt_matkhau.getText();
+        
         String cccd = txt_cccd.getText();
         String ten = txt_hovaten.getText();
         Date ngaySinh = FormatDate.toDate(txt_ngaysinh.getText());
@@ -76,18 +79,16 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
         } else {
             chucvu = false;
         }
-        return new TaiKhoan(tkhoan, matkhau, ten, ngaySinh, sdt, email, cccd, chucvu);
+        return new TaiKhoan(tkhoan, ten, ngaySinh, sdt, email, cccd, chucvu);
     }
 
     boolean checkdata() {
+        format.setLenient(false);
         if (txt_taikhoan.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Tài Khoản Không được để Trống");
             return false;
         }
-        if (txt_matkhau.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Mật Khẩu Không được để Trống");
-            return false;
-        }
+        
         if (txt_hovaten.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "tên không được để trống !!!");
             return false;
@@ -100,13 +101,18 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "tên không được chứa số và chứa ký đặc biệt");
             return false;
         }
-
+        try {
+            Date ngaysinh = format.parse(txt_ngaysinh.getText());
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ngày sinh phải đúng from dd/MM/yyyy");
+        }
         if (txt_sdt.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "SDT không được để trống !!");
             return false;
         }
-        if (txt_sdt.getText().length() != 12) {
-            JOptionPane.showMessageDialog(this, "SDT phải là 12 số");
+        if (txt_sdt.getText().length() != 10) {
+            JOptionPane.showMessageDialog(this, "SDT phải là 10 số nguyên");
             return false;
         }
         if (!txt_sdt.getText().matches("[0-9]+")) {
@@ -130,7 +136,7 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
             return false;
         }
         if (txt_cccd.getText().length() != 12) {
-            JOptionPane.showMessageDialog(this, "CCCD phải là 12 số");
+            JOptionPane.showMessageDialog(this, "CCCD phải là 12 số nguyên");
             return false;
         }
         if (!txt_cccd.getText().matches("[0-9]+")) {
@@ -176,8 +182,6 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
         txt_cccd = new javax.swing.JTextField();
         rdo_quanly = new javax.swing.JRadioButton();
         rdo_nhanvien = new javax.swing.JRadioButton();
-        jLabel9 = new javax.swing.JLabel();
-        txt_matkhau = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txt_timkiem = new javax.swing.JTextField();
 
@@ -243,10 +247,6 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
         buttonGroup1.add(rdo_nhanvien);
         rdo_nhanvien.setText("Nhân Viên");
 
-        jLabel9.setText("Mật Khẩu");
-
-        txt_matkhau.setEditable(false);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -275,9 +275,7 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(rdo_quanly)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(rdo_nhanvien))
-                    .addComponent(jLabel9)
-                    .addComponent(txt_matkhau))
+                        .addComponent(rdo_nhanvien)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -293,31 +291,27 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_taikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_hovaten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_hovaten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(txt_ngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(txt_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_cccd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_cccd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -399,6 +393,7 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "thất Bại r lượm ơi");
             }
         }
+        
     }//GEN-LAST:event_btn_suaActionPerformed
     private void showTable() {
 
@@ -436,7 +431,6 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton rdo_nhanvien;
@@ -445,7 +439,6 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.JTextField txt_cccd;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_hovaten;
-    private javax.swing.JTextField txt_matkhau;
     private javax.swing.JTextField txt_ngaysinh;
     private javax.swing.JTextField txt_sdt;
     private javax.swing.JTextField txt_taikhoan;

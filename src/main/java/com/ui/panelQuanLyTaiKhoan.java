@@ -26,7 +26,7 @@ public class panelQuanLyTaiKhoan extends javax.swing.JPanel {
      * Creates new form panelQuanLyTaiKhoan
      */
     TaiKhoanDAO DAO = new TaiKhoanDAO();
-    
+    SimpleDateFormat format  = new SimpleDateFormat("dd/MM/yyyy");
     
     public panelQuanLyTaiKhoan() {
         initComponents();
@@ -47,7 +47,12 @@ public class panelQuanLyTaiKhoan extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "tên không được chứa số và chứa ký đặc biệt");
             return false;
         }
-
+        try {
+            Date ngaysinh = format.parse(txt_ngaysinh.getText());
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ngày sinh phải đúng from dd/MM/yyyy");
+        }
         if (txt_sdt.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "SDT không được để trống !!");
             return false;
