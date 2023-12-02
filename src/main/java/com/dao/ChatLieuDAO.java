@@ -25,6 +25,7 @@ public class ChatLieuDAO  implements DAOInterface<ThuongHieu, String> {
     String SELECT_NAME_BY_ID_SQL = "Select ten from Chat_lieu where maChatLieu = ?";
     String SELECT_ALL_SQL = "select * from Chat_lieu";
     String SELECT_BY_ID_SQL = "select * from Chat_lieu where maChatLieu = ?";
+    String SELECT_BY_NAME_SQL = "select * from Chat_lieu where ten = ?";
     String TEN_TO_MA = "Select maChatLieu from Chat_lieu where ten = ?";
 
     @Override
@@ -55,7 +56,13 @@ public class ChatLieuDAO  implements DAOInterface<ThuongHieu, String> {
         }
         return list.get(0);
     }
-
+    public ThuongHieu selectByTEN(String key) throws SQLException {
+        List<ThuongHieu> list = selectBySQL(SELECT_BY_NAME_SQL, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
     @Override
     public List<ThuongHieu> selectBySQL(String sql, Object... args) throws SQLException {
         List<ThuongHieu> list = new ArrayList<>();

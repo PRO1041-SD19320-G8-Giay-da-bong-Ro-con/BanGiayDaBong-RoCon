@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,7 +34,7 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
 
     @Override
     public int update(ChiTietSanPham entity) throws SQLException {
-        return JDBCHelper.update(UPDATE_SQL, entity.getMaSize(), entity.getMaMau(), entity.getSoLuong(),entity.getMaCTSP());
+        return JDBCHelper.update(UPDATE_SQL, entity.getMaSize(), entity.getMaMau(), entity.getSoLuong(), entity.getMaCTSP());
     }
 
     @Override
@@ -99,5 +101,29 @@ public class ChiTietSanPhamDAO implements DAOInterface<ChiTietSanPham, String> {
             }
         }
         return insert(entity);
+    }
+
+    public List<Object[]> getAllSanPhamChiTiet(String[] cols) throws SQLException {
+        String sql = "Select * from vThongTinSanPham";
+        return getListObject(sql,cols);
+    }
+    
+        public Object[] getSanPhamChiTiet(String id , String[] cols) throws SQLException {
+        String sql = "Select * from vThongTinSanPham where mactsp = '"+id+"'";
+        return getListObject(sql,cols).get(0);
+    }
+
+    public List<Object[]> getListObject(String sql, String[] cols, String... args) throws SQLException {
+        List<Object[]> list = new ArrayList<>();
+        ResultSet rs = JDBCHelper.query(sql, args);
+        while (rs.next()) {
+            Object[] vals = new Object[cols.length];
+            for (int i = 0; i < cols.length; i++) {
+                vals[i] = rs.getObject(cols[i]);
+            }
+            list.add(vals);
+        }
+        rs.getStatement().getConnection().close();
+        return list;
     }
 }

@@ -19,7 +19,6 @@ public class HoaDon {
     private String MaKM;
     private double TongTienCuoi;
     private Date ThoiGianBan;
-    private String HinhThucThanhToan;
     private boolean TrangThai;
 
     public HoaDon() {
@@ -81,13 +80,7 @@ public class HoaDon {
         this.ThoiGianBan = ThoiGianBan;
     }
 
-    public String getHinhThucThanhToan() {
-        return HinhThucThanhToan;
-    }
 
-    public void setHinhThucThanhToan(String HinhThucThanhToan) {
-        this.HinhThucThanhToan = HinhThucThanhToan;
-    }
 
     public boolean isTrangThai() {
         return TrangThai;

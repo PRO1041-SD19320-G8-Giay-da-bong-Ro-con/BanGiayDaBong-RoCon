@@ -122,6 +122,25 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoan, String> {
             return 0;
         }
     }
+    public int updatee(TaiKhoan tk, String taikhoan){
+       String sql="update TAI_KHOAN set TaiKhoan=?,Ten=?,NgaySinh=?,SDT=?,Email=?,CCCD=?,ChucVu=? where TaiKhoan=?";
+        try {
+           Connection con = DBConnect.getConnection();
+            PreparedStatement  ps = con.prepareStatement(sql);          
+            ps.setObject(1, tk.getTaikhoan());
+            ps.setObject(2, tk.getTen());
+            ps.setObject(3, tk.getNgaysinh());
+            ps.setObject(4, tk.getSdt());
+            ps.setObject(5, tk.getEmail());
+            ps.setObject(6, tk.getCCCD());
+            ps.setObject(7, tk.isChucvu());
+            ps.setObject(8, taikhoan);
+            return  ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
     public List<TaiKhoan> getall(){
         sql="select TaiKhoan,MatKhau,Ten,NgaySinh,SDT,Email,CCCD,ChucVu from TAI_KHOAN";
         List<TaiKhoan> list = new ArrayList<>();

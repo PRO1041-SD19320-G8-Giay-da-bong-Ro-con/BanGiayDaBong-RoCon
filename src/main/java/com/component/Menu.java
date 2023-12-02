@@ -1,12 +1,15 @@
 package com.component;
 
 import com.main.Main;
+import com.ui.PanelBanHang;
 import com.ui.PanelDanhSachSanPham;
 import com.ui.PanelHoaDon;
 import com.ui.PanelQLKhachHang;
 import com.ui.PanelQuanLyKhuyenMai;
 import com.ui.PanelQuanLyNhanVien;
 import com.ui.PanelQuanLyThuocTinh;
+import com.ui.dangnhapJDialog;
+import com.utils.Auth;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -79,7 +82,7 @@ public class Menu extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         QLKhachHang = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/x.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,6 +95,11 @@ public class Menu extends javax.swing.JPanel {
         banHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         banHang.setText("Bán hàng");
         banHang.setPreferredSize(new java.awt.Dimension(50, 30));
+        banHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                banHangMouseClicked(evt);
+            }
+        });
 
         QLSanPham.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         QLSanPham.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -137,6 +145,11 @@ public class Menu extends javax.swing.JPanel {
         DangXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         DangXuat.setText("Đăng xuất");
         DangXuat.setPreferredSize(new java.awt.Dimension(50, 30));
+        DangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DangXuatMouseClicked(evt);
+            }
+        });
 
         ThongKe.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         ThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -153,9 +166,10 @@ public class Menu extends javax.swing.JPanel {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Rô con");
+        jLabel10.setText("Giày đá bóng Rô con");
         jLabel10.setPreferredSize(new java.awt.Dimension(50, 30));
 
         QLKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -203,7 +217,7 @@ public class Menu extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(41, 41, 41)
                 .addComponent(banHang, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(QLSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,7 +229,7 @@ public class Menu extends javax.swing.JPanel {
                 .addComponent(QLThuocTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(QLKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addComponent(ThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(QLNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,11 +255,11 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_QLHoaDonMouseClicked
 
     private void QLNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QLNhanVienMouseClicked
-       Main.changeForm(new PanelQuanLyNhanVien());
+        Main.changeForm(new PanelQuanLyNhanVien());
     }//GEN-LAST:event_QLNhanVienMouseClicked
 
     private void QLKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QLKhuyenMaiMouseClicked
-       Main.changeForm(new PanelQuanLyKhuyenMai());
+        Main.changeForm(new PanelQuanLyKhuyenMai());
     }//GEN-LAST:event_QLKhuyenMaiMouseClicked
 
 
@@ -254,10 +268,17 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_QLThuocTinhMouseClicked
 
     private void QLKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QLKhachHangMouseClicked
-          Main.changeForm(new PanelQLKhachHang());
+        Main.changeForm(new PanelQLKhachHang());
     }//GEN-LAST:event_QLKhachHangMouseClicked
 
+    private void banHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_banHangMouseClicked
+        Main.changeForm(new PanelBanHang());
+    }//GEN-LAST:event_banHangMouseClicked
 
+    private void DangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DangXuatMouseClicked
+        Auth.clear();
+        new dangnhapJDialog(main, true).setVisible(true);
+    }//GEN-LAST:event_DangXuatMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

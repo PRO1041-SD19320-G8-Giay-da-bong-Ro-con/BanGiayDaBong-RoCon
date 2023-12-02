@@ -11,25 +11,11 @@ import java.sql.*;
  * @author Thai
  */
 public class JDBCHelper {
-
-    private static String server = "localhost";
-    private static String user = "sa";
-    private static String pass = "123";
-    private static String port = "1433";
-    private static String db = "PRO1041_G8_BanGiayDaBong_RoCon";
-    private static String URL = "jdbc:sqlserver://" + server + ":" + port + ";databaseName=" + db + ";encrypt=true;trustServerCertificate=true;";
+    
     private static Connection conn = null;
 
-    static {
-        try {
-            conn = DriverManager.getConnection(URL, user, pass);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public static PreparedStatement getStmt(String sql, Object... args) throws SQLException {
-        conn = DriverManager.getConnection(URL, user, pass);
+        conn = DBConnect.getConnection();
         PreparedStatement stmt;
         if (sql.trim().startsWith("{")) {
             stmt = conn.prepareCall(sql);

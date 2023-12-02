@@ -8,7 +8,7 @@ package com.entity;
  *
  * @author Thai
  */
-public class ThuocTinh {
+public abstract class ThuocTinh {
 
     public String getTen() {
         return "";

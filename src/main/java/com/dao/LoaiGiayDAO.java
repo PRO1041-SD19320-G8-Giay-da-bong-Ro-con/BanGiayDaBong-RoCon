@@ -24,6 +24,7 @@ public class LoaiGiayDAO  implements DAOInterface<LoaiGiay, String> {
     String SELECT_NAME_BY_ID_SQL = "Select ten from LOAI_GIAY where maLoai = ?";
     String SELECT_ALL_SQL = "select * from LOAI_GIAY";
     String SELECT_BY_ID_SQL = "select * from LOAI_GIAY where maLoai = ?";
+    String SELECT_BY_NAME_SQL = "select * from LOAI_GIAY where ten = ?";
     String TEN_TO_MA = "Select maLoai from LOAI_GIAY where ten = ?";
 
     @Override
@@ -54,7 +55,13 @@ public class LoaiGiayDAO  implements DAOInterface<LoaiGiay, String> {
         }
         return list.get(0);
     }
-
+    public LoaiGiay selectByTEN(String key) throws SQLException {
+        List<LoaiGiay> list = selectBySQL(SELECT_BY_NAME_SQL, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
     @Override
     public List<LoaiGiay> selectBySQL(String sql, Object... args) throws SQLException {
         List<LoaiGiay> list = new ArrayList<>();

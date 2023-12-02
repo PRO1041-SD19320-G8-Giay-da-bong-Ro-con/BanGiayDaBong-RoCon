@@ -40,7 +40,6 @@ public class DBConnect {
                 connectStringBuilder.append("encrypt=true;trustServerCertificate=true;");
             }
             CONNECT_STRING = connectStringBuilder.toString();
-            System.out.println("Connect String có dạng: " + CONNECT_STRING);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -54,13 +53,5 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-        Connection conn = getConnection();
-        DatabaseMetaData dbmt = conn.getMetaData();
-        System.out.println(dbmt.getDriverName());
-        System.out.println(dbmt.getDatabaseProductName());
-        System.out.println(dbmt.getDatabaseProductVersion());
     }
 }

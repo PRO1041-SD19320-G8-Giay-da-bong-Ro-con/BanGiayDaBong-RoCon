@@ -381,34 +381,37 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
             try {
                 if (thuonghieuDAO.selectByID(th.getMa()) != null) {
                     JOptionPane.showMessageDialog(this, "mã trùng không thêm dc");
-                } else {
-                    if (thuonghieuDAO.add(th) > 0) {
-                        JOptionPane.showMessageDialog(this, "thêm Thành Công");
-                        filltable(thuonghieuDAO, new ThuongHieu());
-                    } else {
-                        JOptionPane.showMessageDialog(this, "trùng tên");
-                    }
+                } else if (thuonghieuDAO.selectByTEN(th.getTen()) != null) {
+                    JOptionPane.showMessageDialog(this, "trùng tên");
+                } else if (thuonghieuDAO.add(th) > 0) {
+                    JOptionPane.showMessageDialog(this, "thêm Thành Công");
+                    filltable(thuonghieuDAO, new ThuongHieu());
+                }else{
+                    JOptionPane.showMessageDialog(this, "thất Bại");
                 }
+
             } catch (SQLException ex) {
                 Logger.getLogger(PanelQuanLyThuocTinh.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
 
+    }
+ 
     void add2() {
         if (checkdata()) {
             LoaiGiay th = this.readfrom2();
             try {
                 if (loaigiayDAO.selectByID(th.getMa()) != null) {
                     JOptionPane.showMessageDialog(this, "mã trùng không thêm dc");
-                } else {
-                    if (loaigiayDAO.add(th) > 0) {
-                        JOptionPane.showMessageDialog(this, "thêm Thành Công");
-                        filltable(loaigiayDAO, new ThuongHieu());
-                    } else {
-                        JOptionPane.showMessageDialog(this, "trùng tên");
-                    }
+                } else if (loaigiayDAO.selectByTEN(th.getTen()) != null) {
+                    JOptionPane.showMessageDialog(this, "trùng tên");
+                } else if (loaigiayDAO.add(th) > 0) {
+                    JOptionPane.showMessageDialog(this, "thêm Thành Công");
+                    filltable(loaigiayDAO, new ThuongHieu());
+                }else{
+                    JOptionPane.showMessageDialog(this, "thất Bại");
                 }
+
             } catch (SQLException ex) {
                 Logger.getLogger(PanelQuanLyThuocTinh.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -422,18 +425,19 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
             try {
                 if (chatlieuDAO.selectByID(th.getMa()) != null) {
                     JOptionPane.showMessageDialog(this, "mã trùng không thêm dc");
-                } else {
-                    if (chatlieuDAO.add(th) > 0) {
-                        JOptionPane.showMessageDialog(this, "thêm Thành Công");
-                        filltable(chatlieuDAO, new ThuongHieu());
-                    } else {
-                        JOptionPane.showMessageDialog(this, "trùng tên");
-                    }
+                } else if (chatlieuDAO.selectByTEN(th.getTen()) != null) {
+                    JOptionPane.showMessageDialog(this, "trùng tên");
+                } else if (chatlieuDAO.add(th) > 0) {
+                    JOptionPane.showMessageDialog(this, "thêm Thành Công");
+                    filltable(chatlieuDAO, new ThuongHieu());
+                }else{
+                    JOptionPane.showMessageDialog(this, "thất Bại");
                 }
+
             } catch (SQLException ex) {
                 Logger.getLogger(PanelQuanLyThuocTinh.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        }    
 
     }
 
@@ -443,18 +447,20 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
             try {
                 if (xuatxuDAO.selectByID(th.getMa()) != null) {
                     JOptionPane.showMessageDialog(this, "mã trùng không thêm dc");
-                } else {
-                    if (xuatxuDAO.add(th) > 0) {
-                        JOptionPane.showMessageDialog(this, "thêm Thành Công");
-                        filltable(xuatxuDAO, new ThuongHieu());
-                    } else {
-                        JOptionPane.showMessageDialog(this, "trùng tên");
-                    }
+                } else if (xuatxuDAO.selectByTEN(th.getTen()) != null) {
+                    JOptionPane.showMessageDialog(this, "trùng tên");
+                } else if (xuatxuDAO.add(th) > 0) {
+                    JOptionPane.showMessageDialog(this, "thêm Thành Công");
+                    filltable(xuatxuDAO, new ThuongHieu());
+                }else{
+                    JOptionPane.showMessageDialog(this, "thất Bại");
                 }
+
             } catch (SQLException ex) {
                 Logger.getLogger(PanelQuanLyThuocTinh.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
 
     }
 
@@ -464,14 +470,15 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
             try {
                 if (mausacDAO.selectByID(th.getMa()) != null) {
                     JOptionPane.showMessageDialog(this, "mã trùng không thêm dc");
-                } else {
-                    if (mausacDAO.add(th) > 0) {
-                        JOptionPane.showMessageDialog(this, "thêm Thành Công");
-                        filltable(mausacDAO, new ThuongHieu());
-                    } else {
-                        JOptionPane.showMessageDialog(this, "trùng tên");
-                    }
+                } else if (mausacDAO.selectByTEN(th.getTen()) != null) {
+                    JOptionPane.showMessageDialog(this, "trùng tên");
+                } else if (mausacDAO.add(th) > 0) {
+                    JOptionPane.showMessageDialog(this, "thêm Thành Công");
+                    filltable(mausacDAO, new ThuongHieu());
+                }else{
+                    JOptionPane.showMessageDialog(this, "thất Bại");
                 }
+
             } catch (SQLException ex) {
                 Logger.getLogger(PanelQuanLyThuocTinh.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -485,14 +492,15 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
             try {
                 if (sizeDAO.selectByID(th.getMa()) != null) {
                     JOptionPane.showMessageDialog(this, "mã trùng không thêm dc");
-                } else {
-                    if (sizeDAO.add(th) > 0) {
-                        JOptionPane.showMessageDialog(this, "thêm Thành Công");
-                        filltable(sizeDAO, new ThuongHieu());
-                    } else {
-                        JOptionPane.showMessageDialog(this, "trùng tên");
-                    }
+                } else if (sizeDAO.selectByTEN(th.getTen()) != null) {
+                    JOptionPane.showMessageDialog(this, "trùng tên");
+                } else if (sizeDAO.add(th) > 0) {
+                    JOptionPane.showMessageDialog(this, "thêm Thành Công");
+                    filltable(sizeDAO, new ThuongHieu());
+                }else{
+                    JOptionPane.showMessageDialog(this, "thất Bại");
                 }
+
             } catch (SQLException ex) {
                 Logger.getLogger(PanelQuanLyThuocTinh.class.getName()).log(Level.SEVERE, null, ex);
             }
