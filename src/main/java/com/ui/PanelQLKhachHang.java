@@ -285,6 +285,12 @@ public class PanelQLKhachHang extends javax.swing.JPanel {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         int hoi = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn thêm khách hàng ");
         if (hoi == JOptionPane.YES_OPTION) {
+            for (KhachHang kh : lstKH) {
+                if (kh.getMaKH().equalsIgnoreCase(txtMa.getText()) || kh.getSdt().equalsIgnoreCase(txtSDT.getText())) {
+                    JOptionPane.showMessageDialog(this, "Mã khách hàng hoặc SDT đã tồn tại");
+                    return;
+                }
+            }
             JOptionPane.showMessageDialog(this, ser.addKH(readForm()));
             lstKH = ser.getAll();
             showData(lstKH);

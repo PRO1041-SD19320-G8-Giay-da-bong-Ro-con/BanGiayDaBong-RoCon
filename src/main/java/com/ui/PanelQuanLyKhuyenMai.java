@@ -31,7 +31,7 @@ public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
     }
 
     void init() {
-        lstKM = ser.getAll();
+        lstKM = ser.locData();
         model = (DefaultTableModel) tblKM.getModel();
         showData(lstKM);
         if (lstKM.size() > 0) {
@@ -307,6 +307,7 @@ public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
 
     private void showData(List<KhuyenMai> lstKM) {
         model.setRowCount(0);
+
         for (KhuyenMai km : lstKM) {
             model.addRow(new Object[]{
                 km.getMaKM(),
