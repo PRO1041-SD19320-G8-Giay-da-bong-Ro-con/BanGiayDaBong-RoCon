@@ -26,6 +26,7 @@ public class ThuongHieuDAO implements DAOInterface<ThuongHieu, String> {
     String SELECT_NAME_BY_ID_SQL = "Select ten from Thuong_hieu where maThuongHieu = ?";
     String SELECT_ALL_SQL = "select * from Thuong_hieu";
     String SELECT_BY_ID_SQL = "select * from Thuong_hieu where maThuongHieu = ?";
+    String SELECT_BY_NAME_SQL = "select * from Thuong_hieu where ten = ?";
     String TEN_TO_MA = "Select maThuongHieu from Thuong_hieu where ten = ?";
     Connection con = null;
     PreparedStatement ps = null;
@@ -59,7 +60,13 @@ public class ThuongHieuDAO implements DAOInterface<ThuongHieu, String> {
         }
         return list.get(0);
     }
-
+    public ThuongHieu selectByTEN(String key) throws SQLException {
+        List<ThuongHieu> list = selectBySQL(SELECT_BY_NAME_SQL, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
     @Override
     public List<ThuongHieu> selectBySQL(String sql, Object... args) throws SQLException {
         List<ThuongHieu> list = new ArrayList<>();

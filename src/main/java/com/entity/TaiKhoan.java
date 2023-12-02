@@ -116,6 +116,6 @@ public class TaiKhoan {
         return "Nhân viên";
     }
     public Object[] todatarow(){
-        return new Object[]{this.taikhoan,this.ten,FormatDate.toString(this.ngaysinh),this.sdt,chucvuhienthi()};
+        return new Object[]{this.taikhoan,this.ten,FormatDate.toString(this.ngaysinh),this.sdt,this.email,this.CCCD,chucvuhienthi()};
     }
 }

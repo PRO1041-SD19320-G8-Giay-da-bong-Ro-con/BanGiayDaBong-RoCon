@@ -58,7 +58,13 @@ public class MauSacDAO implements DAOInterface<MauSac, String> {
         }
         return list.get(0);
     }
-
+    public MauSac selectByTEN(String key) throws SQLException {
+        List<MauSac> list = selectBySQL(SELECT_BY_NAME_SQL, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
     @Override
     public List<MauSac> selectBySQL(String sql, Object... args) throws SQLException {
         List<MauSac> list = new ArrayList<>();

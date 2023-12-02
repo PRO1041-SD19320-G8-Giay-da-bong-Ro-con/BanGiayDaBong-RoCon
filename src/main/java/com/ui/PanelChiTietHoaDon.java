@@ -308,7 +308,7 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
 
     private void showTable() {
         model.setRowCount(0);
-        for (Object[] cthd : daoCTHD.getAllHoaDon(hoaDon.getMaHD())) {
+        for (Object[] cthd : daoCTHD.getAllHoaDonChiTiet(hoaDon.getMaHD())) {
             model.addRow(new Object[]{cthd[0], cthd[1], cthd[2], TextUtil.round(cthd[3])});
         }
     }

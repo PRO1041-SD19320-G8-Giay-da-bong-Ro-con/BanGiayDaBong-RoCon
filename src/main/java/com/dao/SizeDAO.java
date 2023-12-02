@@ -55,8 +55,14 @@ public class SizeDAO implements DAOInterface<Size, String> {
             return null;
         }
         return list.get(0);
+    }   
+    public Size selectByTEN(String key) throws SQLException {
+        List<Size> list = selectBySQL(SELECT_BY_NAME_SQL, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
     }
-
     @Override
     public List<Size> selectBySQL(String sql, Object... args) throws SQLException {
         List<Size> list = new ArrayList<>();

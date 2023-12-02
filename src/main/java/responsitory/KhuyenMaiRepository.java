@@ -33,6 +33,22 @@ public class KhuyenMaiRepository {
         }
         return lst;
     }
+    public List<KhuyenMai> locData() {
+        List<KhuyenMai> lst = new ArrayList<>();
+        String sql = """
+                     SELECT * FROM KHUYEN_MAI
+                     WHERE GETDATE() BETWEEN ThoiGianBatDau AND ThoiGianKetThuc;
+                     """;
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
+        try {
+            while (rs.next()) {
+                lst.add(new KhuyenMai(rs.getString(1), rs.getString(2), rs.getString(3), rs.getBoolean(4), rs.getFloat(5), rs.getDate(6), rs.getDate(7)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lst;
+    }
 
     public KhuyenMai getOne(String ma) {
         List<KhuyenMai> lst = new ArrayList<>();

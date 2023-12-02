@@ -23,6 +23,9 @@ public class KhuyenMaiService {
     public List<KhuyenMai> getAll() {
         return repo.getAll();
     }
+    public List<KhuyenMai> locData() {
+        return repo.locData();
+    }
 
     public String addKM(KhuyenMai km) {
         return (km != null && repo.add(km) ? "Thêm khuyến mãi thành công" : "Thêm khuyến mãi thất bại");
@@ -44,6 +47,16 @@ public class KhuyenMaiService {
         List<KhuyenMai> lsts = new ArrayList<>();
 
         for (KhuyenMai km : repo.getAll()) {
+            if (km.getMaKM().toUpperCase().contains(key.toUpperCase()) || km.getTenKM().toUpperCase().contains(key.toUpperCase())) {
+                lsts.add(km);
+            }
+        }
+        return lsts;
+    }
+    public List<KhuyenMai> timSPLoc(String key) {
+        List<KhuyenMai> lsts = new ArrayList<>();
+
+        for (KhuyenMai km : repo.locData()) {
             if (km.getMaKM().toUpperCase().contains(key.toUpperCase()) || km.getTenKM().toUpperCase().contains(key.toUpperCase())) {
                 lsts.add(km);
             }
