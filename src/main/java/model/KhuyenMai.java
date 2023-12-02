@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 /**
  *
@@ -92,6 +94,21 @@ public class KhuyenMai {
 
     public void setNgayKetThuc(Date ngayKetThuc) {
         this.ngayKetThuc = ngayKetThuc;
+    }
+    public String trangThai(String ngayBatDauStr, String ngayKetThucStr) {
+        LocalDate ngayHienTai = LocalDate.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate ngayBatDau = LocalDate.parse(ngayBatDauStr, formatter);
+        LocalDate ngayKetThuc = LocalDate.parse(ngayKetThucStr, formatter);
+
+        if (ngayHienTai.isBefore(ngayBatDau)) {
+            return "Chưa bắt đầu";
+        } else if (ngayHienTai.isAfter(ngayKetThuc)) {
+            return "Đã kết thúc";
+        } else {
+            return "Đang khuyến mãi";
+        }
     }
 
     @Override
