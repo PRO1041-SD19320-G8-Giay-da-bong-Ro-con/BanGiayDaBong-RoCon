@@ -156,6 +156,10 @@ com\ui\PanelQuanLyKhuyenMai$2.class
 model\XuatXu.class
 com\ui\PanelChiTietKhuyenMai$6.class
 com\ui\PanelDanhSachSanPham$1.class
+<<<<<<< HEAD
+=======
+com\ui\Panelthemnhanvien$4.class
+>>>>>>> ff2da325fdf42465d6493cb558a74f8bcf368d23
 com\dao\ChatLieuDAO.class
 services\KhuyenMaiService.class
 model\ThuongHieu.class
@@ -198,6 +202,10 @@ com\ui\PanelThemSanPham$8.class
 com\ui\PanelQLKhachHang$2.class
 com\component\Menu$12.class
 com\ui\PanelChiTietKhuyenMai$4.class
+<<<<<<< HEAD
+=======
+com\ui\PanelQuanLyNhanVien$5.class
+>>>>>>> ff2da325fdf42465d6493cb558a74f8bcf368d23
 com\ui\PanelSuaSanPham$6.class
 com\ui\PanelLichSuMuaHang$2.class
 com\ui\PanelChiTietKhuyenMai$16.class
@@ -224,6 +232,10 @@ com\ui\PanelSuaSanPham$5.class
 com\ui\PanelBanHang$4.class
 com\ui\PanelQuanLyThuocTinh$1.class
 com\entity\ChiTietSanPham.class
+<<<<<<< HEAD
+=======
+com\ui\PanelDanhSachSanPham$4.class
+>>>>>>> ff2da325fdf42465d6493cb558a74f8bcf368d23
 com\ui\PanelHoaDon$5.class
 com\ui\PanelQuanLyKhuyenMai$5.class
 com\ui\PanelThemSanPham$7.class
