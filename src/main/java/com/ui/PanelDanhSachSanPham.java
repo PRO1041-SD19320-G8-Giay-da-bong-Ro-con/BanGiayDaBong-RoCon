@@ -8,6 +8,7 @@ import com.dao.SanPhamDAO;
 import com.dao.ThuongHieuDAO;
 import com.entity.SanPham;
 import com.main.Main;
+import com.utils.Auth;
 import com.utils.TextUtil;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -201,7 +202,11 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        Main.changeForm(new PanelThemSanPham());
+        if (Auth.isManager()) {
+            Main.changeForm(new PanelThemSanPham());
+        } else {
+            JOptionPane.showMessageDialog(this, "Nhân viên không được sử dụng chức năng này");
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
@@ -236,7 +241,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             boolean trangThai = ((String) cbTrangThai.getSelectedItem()).equalsIgnoreCase("Tất cả");
             if (trangThai) {
                 header.add("Trạng thái");
-                size = new int[]{100, 320, 130, 130,80};
+                size = new int[]{100, 320, 130, 130, 80};
             }
             Object[] str = header.toArray();
 
@@ -250,7 +255,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             String key = txtSearch.getText();
             for (SanPham sp : daoSP.selectAll(checkTinhTrang())) {
                 if (sp.getMaSP().toUpperCase().contains(key.toUpperCase()) || sp.getTenSP().toUpperCase().contains(key.toUpperCase())) {
-                    model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), TextUtil.round(sp.getGia()), daoTH.getTen(sp.getMaThuongHieu()),sp.getTrangThai()});
+                    model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), TextUtil.round(sp.getGia()), daoTH.getTen(sp.getMaThuongHieu()), sp.getTrangThai()});
                 }
             }
         } catch (SQLException ex) {
