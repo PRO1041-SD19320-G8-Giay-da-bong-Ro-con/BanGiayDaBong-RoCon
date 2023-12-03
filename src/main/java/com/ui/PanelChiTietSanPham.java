@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 import javax.swing.JRadioButton;
 import com.entity.MauSac;
 import com.entity.Size;
+import com.utils.Auth;
 import com.utils.TextUtil;
 import com.utils.XImage;
 import java.awt.Color;
@@ -27,6 +28,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -351,11 +353,15 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThoatChiTietActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        Main.changeForm(new PanelSuaSanPham(sanPham,this));
+        Main.changeForm(new PanelSuaSanPham(sanPham, this));
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangThaiActionPerformed
-        setTrangThai();
+        if (Auth.isManager()) {
+            setTrangThai();
+        } else {
+            JOptionPane.showMessageDialog(this, "Nhân viên không được sử dụng chức năng này");
+        }
     }//GEN-LAST:event_btnTrangThaiActionPerformed
 
 

@@ -18,6 +18,7 @@ import com.entity.Size;
 import com.entity.ThuocTinh;
 import com.entity.ThuongHieu;
 import com.entity.XuatXu;
+import com.utils.Auth;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -345,38 +346,45 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
 
-        switch (Cbox_thuoctinh.getSelectedIndex()) {
-            case 0 ->
-                add1();
-            case 1 ->
-                add2();
-            case 2 ->
-                add3();
-            case 3 ->
-                add4();
-            case 4 ->
-                add5();
-            default ->
-                add6();
+        if (Auth.isManager()) {
+            switch (Cbox_thuoctinh.getSelectedIndex()) {
+                case 0 ->
+                    add1();
+                case 1 ->
+                    add2();
+                case 2 ->
+                    add3();
+                case 3 ->
+                    add4();
+                case 4 ->
+                    add5();
+                default ->
+                    add6();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Nhân viên không được sử dụng chức năng này");
         }
 
     }//GEN-LAST:event_btn_addActionPerformed
 
     private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
-        // TODO add your handling code here:
-        switch (Cbox_thuoctinh.getSelectedIndex()) {
-            case 0 ->
-                update1();
-            case 1 ->
-                update2();
-            case 2 ->
-                update3();
-            case 3 ->
-                update4();
-            case 4 ->
-                update5();
-            default ->
-                update6();
+        if (Auth.isManager()) {
+            switch (Cbox_thuoctinh.getSelectedIndex()) {
+                case 0 ->
+                    update1();
+                case 1 ->
+                    update2();
+                case 2 ->
+                    update3();
+                case 3 ->
+                    update4();
+                case 4 ->
+                    update5();
+                default ->
+                    update6();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Nhân viên không được sử dụng chức năng này");
         }
     }//GEN-LAST:event_btn_suaActionPerformed
     void add1() {
@@ -390,7 +398,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                 } else if (thuonghieuDAO.add(th) > 0) {
                     JOptionPane.showMessageDialog(this, "thêm Thành Công");
                     filltable(thuonghieuDAO, new ThuongHieu());
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(this, "thất Bại");
                 }
 
@@ -400,7 +408,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
         }
 
     }
- 
+
     void add2() {
         if (checkdata()) {
             LoaiGiay th = this.readfrom2();
@@ -412,7 +420,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                 } else if (loaigiayDAO.add(th) > 0) {
                     JOptionPane.showMessageDialog(this, "thêm Thành Công");
                     filltable(loaigiayDAO, new ThuongHieu());
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(this, "thất Bại");
                 }
 
@@ -434,14 +442,14 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                 } else if (chatlieuDAO.add(th) > 0) {
                     JOptionPane.showMessageDialog(this, "thêm Thành Công");
                     filltable(chatlieuDAO, new ThuongHieu());
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(this, "thất Bại");
                 }
 
             } catch (SQLException ex) {
                 Logger.getLogger(PanelQuanLyThuocTinh.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }    
+        }
 
     }
 
@@ -456,7 +464,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                 } else if (xuatxuDAO.add(th) > 0) {
                     JOptionPane.showMessageDialog(this, "thêm Thành Công");
                     filltable(xuatxuDAO, new ThuongHieu());
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(this, "thất Bại");
                 }
 
@@ -464,7 +472,6 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                 Logger.getLogger(PanelQuanLyThuocTinh.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
 
     }
 
@@ -479,7 +486,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                 } else if (mausacDAO.add(th) > 0) {
                     JOptionPane.showMessageDialog(this, "thêm Thành Công");
                     filltable(mausacDAO, new ThuongHieu());
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(this, "thất Bại");
                 }
 
@@ -501,7 +508,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                 } else if (sizeDAO.add(th) > 0) {
                     JOptionPane.showMessageDialog(this, "thêm Thành Công");
                     filltable(sizeDAO, new ThuongHieu());
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(this, "thất Bại");
                 }
 

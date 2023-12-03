@@ -17,6 +17,7 @@ import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /*
@@ -261,7 +262,12 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_QLHoaDonMouseClicked
 
     private void QLNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QLNhanVienMouseClicked
+        if(Auth.isManager()){
         Main.changeForm(new PanelQuanLyNhanVien());
+        }
+        else{
+            JOptionPane.showMessageDialog(main, "Nhân viên không được sử dụng chức năng này");
+        }
     }//GEN-LAST:event_QLNhanVienMouseClicked
 
     private void QLKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QLKhuyenMaiMouseClicked
@@ -288,7 +294,12 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_DangXuatMouseClicked
 
     private void ThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThongKeMouseClicked
-        Main.changeForm(new PanelThongKe());
+        if(Auth.isManager()){
+            Main.changeForm(new PanelThongKe());
+        }
+        else{
+            JOptionPane.showMessageDialog(main, "Nhân viên không được sử dụng chức năng này");
+        }
     }//GEN-LAST:event_ThongKeMouseClicked
 
 

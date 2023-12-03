@@ -5,8 +5,10 @@
 package com.ui;
 
 import com.main.Main;
+import com.utils.Auth;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.KhuyenMai;
 import services.KhuyenMaiService;
@@ -276,7 +278,11 @@ public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTimActionPerformed
 
     private void btnCTKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCTKMActionPerformed
-        Main.changeForm(new PanelChiTietKhuyenMai());
+        if (Auth.isManager()) {
+            Main.changeForm(new PanelChiTietKhuyenMai());
+        } else {
+            JOptionPane.showMessageDialog(this, "Nhân viên không được sử dụng chức năng này");
+        }
     }//GEN-LAST:event_btnCTKMActionPerformed
 
     private void tblKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKMMouseClicked
