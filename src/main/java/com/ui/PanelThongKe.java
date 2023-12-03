@@ -37,16 +37,9 @@ public class PanelThongKe extends javax.swing.JPanel {
     private void loadSanPhamSapHet(){
         DefaultTableModel tblModelSP = (DefaultTableModel) tblHangSapHet.getModel();
         tblModelSP.setRowCount(0);
-        List<ChiTietSanPham> lst = ql.getAllSanPhamSapHet();
-        for(ChiTietSanPham ctsp : lst){
-            tblModelSP.addRow(new Object[]{
-                ctsp.getMaCTSP(),
-                ctsp.getMaSp(),
-                ctsp.getTenSP(),
-                ctsp.getMaMau(),
-                ctsp.getMaSize(),
-                ctsp.getSoLuong()
-            });
+        List<Object[]> lst = ql.getAllSanPhamSapHet();
+        for(Object[] hang : lst){
+            tblModelSP.addRow(hang);
         }
     }
 
@@ -74,11 +67,11 @@ public class PanelThongKe extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Tháng", "Năm", "Tổng Tiền"
+                "Tháng / Năm", "Tổng Doanh Thu"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

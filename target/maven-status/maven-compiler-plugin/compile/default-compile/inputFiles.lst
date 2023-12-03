@@ -1,11 +1,8 @@
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\component\Menu.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\dao\HoaDonDAO.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\responsitory\Giay_Interfacce.java
-C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\view\ChiTietKhuyenMai.java
-C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\view\KhuyenMaiJDialog.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelQLKhachHang.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\responsitory\BanHang_Respo.java
-C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\view\SanPham_JDialog1.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelBanHang.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\dao\MauSacDAO.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\entity\LoaiGiay.java
@@ -14,7 +11,6 @@ C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\j
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\nhapmaDialog.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelDanhSachSanPham.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelThemSanPham.java
-C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\view\BanHang_DiaLog.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\dao\ChatLieuDAO.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\entity\ThuocTinh.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\nhaplaimatkhauDialog.java
@@ -43,7 +39,6 @@ C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\j
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\entity\HoaDon.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\entity\Size.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\quenmatkhauJDialog.java
-C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\view\ChiTietHoaDon_JDiaLog.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\main\Main.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelQuanLyNhanVien.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\entity\KhuyenMai.java
@@ -62,7 +57,6 @@ C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\j
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\entity\ChiTietHoaDon.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelChiTietKhachHang.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\services\KhuyenMaiService.java
-C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\view\HoaDon_JDiaLog.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelQuanLyThuocTinh.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\services\ThongKe_Ser.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\panelQuanLyTaiKhoan.java
@@ -77,7 +71,6 @@ C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\j
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\model\HoaDon.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\responsitory\ThongKe_Repo.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\model\KhuyenMai.java
-C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\view\NhanVien_JDiaLog.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\dao\SizeDAO.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\db\JDBCHelper.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\model\MauSac.java
@@ -88,6 +81,5 @@ C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\j
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\entity\ChatLieu.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\ui\PanelThongKe.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\dao\XuatXuDAO.java
-C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\view\SanPham_JDialog.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\com\entity\ThuongHieu.java
 C:\Users\Admin\Desktop\DuAn1\BanGiayDaBong-RoCon1\BanGiayDaBong-RoCon\src\main\java\services\BanHang_Ser.java

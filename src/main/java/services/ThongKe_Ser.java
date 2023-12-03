@@ -19,7 +19,7 @@ public class ThongKe_Ser {
         return tkRepo.getDoanhThu();
     }
     
-    public List<ChiTietSanPham> getAllSanPhamSapHet() {
+    public List<Object[]> getAllSanPhamSapHet() {
         return tkRepo.getAllSanPhamSapHet();
     }
     
