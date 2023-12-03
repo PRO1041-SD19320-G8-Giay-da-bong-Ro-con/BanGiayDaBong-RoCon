@@ -23,6 +23,7 @@ public class HoaDonDAO implements DAOInterface<HoaDon, String> {
     String SELECT_BY_ID_SQL = "select * from vHoaDon where mahd = ?";
     String SELECT_BY_KH_SQL = "select * from vHoaDon where maKH = ? order by thoiGianBan desc";
     String LOC = "select * from vHoaDon";
+    String SELECT_HOA_DON_CHO = "select * from vHoaDon where trangThai = 0 order by thoiGianBan desc";
 
     @Override
     public int insert(HoaDon entity) throws SQLException {
@@ -80,6 +81,10 @@ public class HoaDonDAO implements DAOInterface<HoaDon, String> {
     
     public List<HoaDon> selectLichSu(String maKH) throws SQLException {
          return selectBySQL(SELECT_BY_KH_SQL, maKH);
+    }
+    
+    public List<HoaDon> selectHoaDonCho() throws SQLException {
+         return selectBySQL(SELECT_HOA_DON_CHO);
     }
 
 }
