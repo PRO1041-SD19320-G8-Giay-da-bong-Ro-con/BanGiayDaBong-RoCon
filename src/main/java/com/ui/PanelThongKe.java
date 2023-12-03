@@ -4,6 +4,7 @@
  */
 package com.ui;
 
+import com.utils.TextUtil;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.ChiTietSanPham;
@@ -29,7 +30,7 @@ public class PanelThongKe extends javax.swing.JPanel {
         tblModelDT.setRowCount(0);
         List<Object[]> lst = ql.getDoanhThu();
         for(Object[] ob : lst){
-            tblModelDT.addRow(ob);
+            tblModelDT.addRow(new Object[]{ob[0],TextUtil.round(ob[1])});
         }
         
     }
