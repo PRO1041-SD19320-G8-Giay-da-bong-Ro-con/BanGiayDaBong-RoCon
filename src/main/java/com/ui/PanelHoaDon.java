@@ -10,6 +10,8 @@ import com.main.Main;
 import com.utils.FormatDate;
 import com.utils.TextUtil;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +37,10 @@ public class PanelHoaDon extends javax.swing.JPanel {
             showHoaDon(daoHD.selectAll());
         } catch (SQLException ex) {
             Logger.getLogger(PanelHoaDon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        for(int i = 2000 ; i <= Calendar.getInstance().get(Calendar.YEAR) ; i++){
+            cbNam.addItem(i+"");
         }
     }
 
@@ -70,7 +76,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
 
             },
             new String [] {
-                "MA HD", "Ngày tạo", "TEN NV", "TEN KH", "Tổng tiền", "Trạng thái"
+                "MA HD", "Ngày tạo", "Nhân viên", "Mã khách hàng", "Tổng tiền", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {

@@ -288,6 +288,7 @@ public class Menu extends javax.swing.JPanel {
 
     private void ThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThongKeMouseClicked
         Main.changeForm(new PanelThongKe());
+        System.out.println("hello");
     }//GEN-LAST:event_ThongKeMouseClicked
 
 

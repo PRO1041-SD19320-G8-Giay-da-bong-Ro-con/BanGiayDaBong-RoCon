@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.KhachHang;
+import com.entity.KhachHang;
 import services.KhachHangService;
 
 /**

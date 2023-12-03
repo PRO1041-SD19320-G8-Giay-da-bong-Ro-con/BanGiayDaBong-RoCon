@@ -24,6 +24,7 @@ public class ChiTietHoaDonDAO implements DAOInterface<ChiTietHoaDon, String> {
     String SELECT_ALL_SQL = "select * from HOA_DON";
     String SELECT_BY_ID_SQL = "select * from HOA_DON where mahd = ?";
     String DELETE_SQL = "DELETE FROM Chi_Tiet_HOA_DON WHERE MACTSP = ?";
+    String GET_TONG_TIEN = "select tongTien from vGetTongTien where maHD = ?";
 
     @Override
 
@@ -74,14 +75,13 @@ public class ChiTietHoaDonDAO implements DAOInterface<ChiTietHoaDon, String> {
     public List<Object[]> getAllHoaDonChiTiet(String maHD) {
         try {
             List<Object[]> list = new ArrayList<>();
-            String sql = "{CALL GetHoaDonChiTiet(?)}";
+            String sql = "select * from vHoaDonChiTiet where maHD = ?";
             String[] cols = {"MaCTSP", "TenSP", "SoLuong", "Gia"};
             ResultSet rs = JDBCHelper.query(sql, maHD);
             while (rs.next()) {
                 Object[] vals = new Object[cols.length];
                 for (int i = 0; i < cols.length; i++) {
                     vals[i] = rs.getObject(cols[i]);
-                    System.out.println("Hello");
                 }
                 list.add(vals);
             }
@@ -113,5 +113,12 @@ public class ChiTietHoaDonDAO implements DAOInterface<ChiTietHoaDon, String> {
             return null;
         }
     }
-
+    
+    public Double getTongTien(String maHD){
+        try {
+            return (double)(JDBCHelper.value(GET_TONG_TIEN, maHD));
+        } catch (Exception e) {
+            return 0d;
+        }
+    }
 }

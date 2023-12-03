@@ -7,7 +7,7 @@ package services;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.KhachHang;
+import com.entity.KhachHang;
 import model.KhuyenMai;
 import model.SanPham;
 import responsitory.KhuyenMaiRepository;

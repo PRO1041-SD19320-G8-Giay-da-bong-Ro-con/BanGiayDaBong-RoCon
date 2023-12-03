@@ -8,7 +8,7 @@ import db.JDBCHelper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import model.KhachHang;
+import com.entity.KhachHang;
 
 /**
  *
