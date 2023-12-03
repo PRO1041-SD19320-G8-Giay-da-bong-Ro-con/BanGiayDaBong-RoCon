@@ -204,6 +204,7 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tbl_qlnv.setRowHeight(30);
         tbl_qlnv.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_qlnvMouseClicked(evt);

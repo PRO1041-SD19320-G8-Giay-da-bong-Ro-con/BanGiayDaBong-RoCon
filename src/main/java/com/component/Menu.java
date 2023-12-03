@@ -10,6 +10,7 @@ import com.ui.PanelQuanLyNhanVien;
 import com.ui.PanelQuanLyThuocTinh;
 import com.ui.PanelThongKe;
 import com.ui.DialogDangNhap;
+import com.ui.PanelChiTietKhuyenMai;
 import com.utils.Auth;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
@@ -271,7 +272,7 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_QLNhanVienMouseClicked
 
     private void QLKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QLKhuyenMaiMouseClicked
-        Main.changeForm(new PanelQuanLyKhuyenMai());
+        Main.changeForm(new PanelChiTietKhuyenMai());
     }//GEN-LAST:event_QLKhuyenMaiMouseClicked
 
 

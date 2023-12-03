@@ -79,6 +79,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblDoanhThu.setRowHeight(30);
         jScrollPane2.setViewportView(tblDoanhThu);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N

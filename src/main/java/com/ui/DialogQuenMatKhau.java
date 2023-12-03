@@ -88,9 +88,11 @@ public class DialogQuenMatKhau extends javax.swing.JDialog {
 
         panelQuenMatKhau.setLayout(new java.awt.CardLayout());
 
+        panelNhapTaiKhoan.setBackground(new java.awt.Color(204, 204, 255));
         panelNhapTaiKhoan.setPreferredSize(new java.awt.Dimension(493, 254));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Quên Mật Khẩu");
 
@@ -98,6 +100,7 @@ public class DialogQuenMatKhau extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Tài khoản");
 
+        btnXacNhanTaiKhoan.setBackground(new java.awt.Color(255, 204, 0));
         btnXacNhanTaiKhoan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnXacNhanTaiKhoan.setText("Xác Nhận");
         btnXacNhanTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +109,7 @@ public class DialogQuenMatKhau extends javax.swing.JDialog {
             }
         });
 
+        btnHuyXacNhanTaiKhoan.setBackground(new java.awt.Color(255, 204, 0));
         btnHuyXacNhanTaiKhoan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnHuyXacNhanTaiKhoan.setText("Hủy");
         btnHuyXacNhanTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
@@ -115,6 +119,7 @@ public class DialogQuenMatKhau extends javax.swing.JDialog {
         });
 
         txtTaiKhoan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtTaiKhoan.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtTaiKhoan.setMargin(new java.awt.Insets(4, 6, 4, 6));
         txtTaiKhoan.setPreferredSize(new java.awt.Dimension(71, 40));
 
@@ -137,9 +142,9 @@ public class DialogQuenMatKhau extends javax.swing.JDialog {
         panelNhapTaiKhoanLayout.setVerticalGroup(
             panelNhapTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelNhapTaiKhoanLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

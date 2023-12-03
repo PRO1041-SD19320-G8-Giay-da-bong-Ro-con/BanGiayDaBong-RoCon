@@ -184,6 +184,7 @@ public class PanelQuanLyTaiKhoan extends javax.swing.JPanel {
         txt_chucvu.setMargin(new java.awt.Insets(1, 10, 1, 10));
         txt_chucvu.setPreferredSize(new java.awt.Dimension(64, 50));
 
+        btn_suathongtin.setBackground(new java.awt.Color(255, 204, 0));
         btn_suathongtin.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         btn_suathongtin.setText("Sửa thông tin");
         btn_suathongtin.setPreferredSize(new java.awt.Dimension(120, 30));
@@ -193,6 +194,7 @@ public class PanelQuanLyTaiKhoan extends javax.swing.JPanel {
             }
         });
 
+        tbn_doimatkhau.setBackground(new java.awt.Color(255, 204, 0));
         tbn_doimatkhau.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         tbn_doimatkhau.setText("Đổi mật khẩu");
         tbn_doimatkhau.setPreferredSize(new java.awt.Dimension(120, 30));

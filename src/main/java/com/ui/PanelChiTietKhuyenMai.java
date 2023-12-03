@@ -14,6 +14,8 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import com.entity.KhachHang;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import model.KhuyenMai;
 import services.KhuyenMaiService;
 
@@ -59,7 +61,6 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         btnAdd = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCTKM = new javax.swing.JTable();
@@ -152,15 +153,6 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(153, 255, 153));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton8.setText("Quay Lại");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-
         btnSua.setBackground(new java.awt.Color(255, 204, 0));
         btnSua.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSua.setText("Sửa");
@@ -176,12 +168,11 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 26, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnNew, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                        .addComponent(btnSua, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
-                    .addComponent(jButton8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnSua, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)))
                 .addGap(14, 14, 14))
         );
 
@@ -192,13 +183,11 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(btnAdd)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAdd, btnNew, btnSua});
@@ -229,7 +218,7 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText(" Chi Tiết Khuyến Mãi");
+        jLabel1.setText("Quản Lý Khuyến Mãi");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -448,10 +437,6 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnNewActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        Main.changeForm(new PanelQuanLyKhuyenMai());
-    }//GEN-LAST:event_jButton8ActionPerformed
-
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         int hoi = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn Sửa khuyến mãi ");
         if (hoi == JOptionPane.YES_OPTION) {
@@ -511,7 +496,6 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnSua;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
@@ -612,9 +596,28 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, " giảm giá là một số ");
             return null;
         }
+        String format = "dd/MM/yyyy";
+        if (!isStartDateBeforeEndDate(ngayBD, ngayKT, format)) {
+            JOptionPane.showMessageDialog(this, "Ngày bắt đầu phải  lớn hơn ngày kết thúc");
+            return null;
+        }
 
         KhuyenMai km = new KhuyenMai(maKM, tenKM, noiDung, loaiKM, gia, FormatDate.toDate(ngayBD), FormatDate.toDate(ngayKT));
         return km;
+    }
+
+    public static boolean isStartDateBeforeEndDate(String startDateStr, String endDateStr, String format) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+            LocalDate startDate = LocalDate.parse(startDateStr, formatter);
+            LocalDate endDate = LocalDate.parse(endDateStr, formatter);
+
+            // Kiểm tra xem ngày bắt đầu có lớn hơn ngày kết thúc hay không
+            return startDate.isBefore(endDate);
+        } catch (Exception e) {
+            // Xảy ra lỗi khi parse ngày
+            return false;
+        }
     }
 
 }
