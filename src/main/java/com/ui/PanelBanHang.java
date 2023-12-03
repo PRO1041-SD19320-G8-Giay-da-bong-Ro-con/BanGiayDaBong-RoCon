@@ -176,6 +176,8 @@ public class PanelBanHang extends javax.swing.JPanel {
         tblSanPham.setRowHeight(30);
         jScrollPane2.setViewportView(tblSanPham);
 
+        btnThemVaoDonHang.setBackground(new java.awt.Color(255, 204, 0));
+        btnThemVaoDonHang.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnThemVaoDonHang.setText("Thêm vào đơn hàng");
         btnThemVaoDonHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -240,6 +242,8 @@ public class PanelBanHang extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tblDonHang);
 
+        btnXoaKhoiDonHang.setBackground(new java.awt.Color(255, 204, 0));
+        btnXoaKhoiDonHang.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnXoaKhoiDonHang.setText("Xóa khỏi đơn hàng");
         btnXoaKhoiDonHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,6 +251,8 @@ public class PanelBanHang extends javax.swing.JPanel {
             }
         });
 
+        btnXoaKhoiDonHang1.setBackground(new java.awt.Color(255, 204, 0));
+        btnXoaKhoiDonHang1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnXoaKhoiDonHang1.setText("Sửa số lượng");
         btnXoaKhoiDonHang1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,8 +296,10 @@ public class PanelBanHang extends javax.swing.JPanel {
 
         jLabel6.setText("Khuyến mãi");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Tổng tiền cần thanh toán: ");
 
+        lblTongTienThanhToan.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTongTienThanhToan.setText("0.0");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "THANH TOÁN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
@@ -349,6 +357,7 @@ public class PanelBanHang extends javax.swing.JPanel {
                 .addGap(17, 17, 17))
         );
 
+        btnThanhToan.setBackground(new java.awt.Color(255, 204, 0));
         btnThanhToan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnThanhToan.setText("Thanh toán");
         btnThanhToan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -359,6 +368,7 @@ public class PanelBanHang extends javax.swing.JPanel {
 
         jLabel11.setText("VND");
 
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel16.setText("VND");
 
         jLabel21.setText("Mã nhân viên");
@@ -369,6 +379,7 @@ public class PanelBanHang extends javax.swing.JPanel {
 
         txtMaHD.setEnabled(false);
 
+        cboKhuyenMai.setBackground(new java.awt.Color(255, 204, 0));
         cboKhuyenMai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboKhuyenMai.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -389,6 +400,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             }
         });
 
+        btnChonKhachHang.setBackground(new java.awt.Color(255, 204, 0));
         btnChonKhachHang.setText("Chọn khách hàng");
         btnChonKhachHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,6 +408,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             }
         });
 
+        lblGiamGia.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblGiamGia.setText("Giảm giá");
 
         javax.swing.GroupLayout jPanelQLHDLayout = new javax.swing.GroupLayout(jPanelQLHD);
@@ -484,7 +497,7 @@ public class PanelBanHang extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(lblTongTienThanhToan)
                     .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -516,6 +529,8 @@ public class PanelBanHang extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(tblHoaDonCho);
 
+        btnXoaKhoiDonHang2.setBackground(new java.awt.Color(255, 204, 0));
+        btnXoaKhoiDonHang2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnXoaKhoiDonHang2.setText("Chọn hóa đơn chờ");
         btnXoaKhoiDonHang2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

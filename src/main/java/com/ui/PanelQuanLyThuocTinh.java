@@ -192,6 +192,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tbl_thuoctinh.setRowHeight(30);
         tbl_thuoctinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_thuoctinhMouseClicked(evt);
@@ -223,8 +224,8 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(Cbox_thuoctinh, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(Cbox_thuoctinh, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -235,6 +236,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Tên :");
 
+        btn_add.setBackground(new java.awt.Color(255, 204, 0));
         btn_add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Add-icon.png"))); // NOI18N
         btn_add.setText("Thêm Thuộc Tính");
@@ -244,6 +246,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
             }
         });
 
+        btn_sua.setBackground(new java.awt.Color(255, 204, 0));
         btn_sua.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_sua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/ct3.png"))); // NOI18N
         btn_sua.setText("Sửa Thuộc Tính");
@@ -257,10 +260,6 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,6 +279,10 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                             .addComponent(btn_sua)
                             .addComponent(btn_add))
                         .addGap(69, 69, 69))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(358, 358, 358))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

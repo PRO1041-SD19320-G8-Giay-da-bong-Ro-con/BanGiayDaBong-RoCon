@@ -8,6 +8,7 @@ package services;
 import java.util.ArrayList;
 import java.util.List;
 import com.entity.KhachHang;
+import com.utils.FormatDate;
 import model.KhuyenMai;
 import model.SanPham;
 import responsitory.KhuyenMaiRepository;
@@ -63,6 +64,16 @@ public class KhuyenMaiService {
         }
         return lsts;
     }
+//    public List<KhuyenMai> locSP(String key) {
+//        List<KhuyenMai> lsts = new ArrayList<>();
+//
+//        for (KhuyenMai km : repo.getAll()) {
+//            if () {
+//                lsts.add(km);
+//            }
+//        }
+//        return lsts;
+//    }
    
 
 }

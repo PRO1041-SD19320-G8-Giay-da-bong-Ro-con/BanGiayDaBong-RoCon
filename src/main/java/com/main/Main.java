@@ -88,6 +88,7 @@ public class Main extends javax.swing.JFrame {
         panelMenu = new com.component.Menu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Giầy đá bóng Rô Con ");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -97,6 +98,8 @@ public class Main extends javax.swing.JFrame {
                 iconMenuMousePressed(evt);
             }
         });
+
+        panelTong.setToolTipText("");
 
         javax.swing.GroupLayout panelTongLayout = new javax.swing.GroupLayout(panelTong);
         panelTong.setLayout(panelTongLayout);

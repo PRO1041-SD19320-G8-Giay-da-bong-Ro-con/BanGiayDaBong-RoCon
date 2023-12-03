@@ -39,17 +39,9 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="168" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
-                  <Component id="btn_them" min="-2" pref="175" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
-              </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel10" min="-2" pref="70" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel2" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
@@ -75,14 +67,22 @@
                                   <Component id="cbHienMatKhau1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="txt_sdt" alignment="0" min="-2" pref="413" max="-2" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
                               <Component id="txt_cccd" alignment="0" min="-2" pref="413" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                              <Component id="jLabel7" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="btn_them" min="-2" pref="175" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                                  <Component id="jButton1" min="-2" pref="168" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="radio_quanly" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
+                              <Component id="radio_quanly" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="radio_nhanvien" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -150,12 +150,12 @@
                       <Component id="radio_quanly" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="radio_nhanvien" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btn_them" pref="43" max="32767" attributes="0"/>
-                      <Component id="jButton1" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" pref="21" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btn_them" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="jButton1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="19" max="32767" attributes="0"/>
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -216,7 +216,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Sdt"/>
+            <Property name="text" type="java.lang.String" value="S&#x1ed1; &#x110;i&#x1ec7;n Tho&#x1ea1;i"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_sdt">
@@ -246,7 +246,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Chucvu"/>
+            <Property name="text" type="java.lang.String" value="Ch&#x1ee9;c V&#x1ee5;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radio_quanly">
@@ -304,7 +304,7 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="cc" red="ff" type="rgb"/>
+              <Color blue="0" green="ff" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>

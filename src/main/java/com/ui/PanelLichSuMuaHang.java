@@ -78,6 +78,7 @@ public class PanelLichSuMuaHang extends javax.swing.JPanel {
         tblLichSu.setRowHeight(30);
         jScrollPane2.setViewportView(tblLichSu);
 
+        btnXemChiTiet.setBackground(new java.awt.Color(255, 204, 0));
         btnXemChiTiet.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnXemChiTiet.setText("Xem chi tiết");
         btnXemChiTiet.addActionListener(new java.awt.event.ActionListener() {
@@ -113,8 +114,8 @@ public class PanelLichSuMuaHang extends javax.swing.JPanel {
                     .addComponent(btnThoat))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnXemChiTiet)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnXemChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents

@@ -5,7 +5,9 @@
 package model;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 /**
  *
  * @author FPT SHOP
@@ -110,6 +112,7 @@ public class KhuyenMai {
             return "Đang khuyến mãi";
         }
     }
+   
 
     @Override
     public String toString() {

@@ -175,7 +175,8 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
         lblHinhAnh.setToolTipText("");
         lblHinhAnh.setOpaque(true);
 
-        btnSua.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnSua.setBackground(new java.awt.Color(255, 204, 0));
+        btnSua.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSua.setText("Sửa sản phẩm");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,7 +184,8 @@ public class PanelChiTietSanPham extends javax.swing.JPanel {
             }
         });
 
-        btnTrangThai.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnTrangThai.setBackground(new java.awt.Color(255, 204, 0));
+        btnTrangThai.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnTrangThai.setText("Set trạng thái");
         btnTrangThai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

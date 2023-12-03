@@ -17,7 +17,7 @@ import services.KhuyenMaiService;
  *
  * @author FPT SHOP
  */
-public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
+public class PanelQuanLyKhuyenMai1 extends javax.swing.JPanel {
 
     private KhuyenMaiService ser = new KhuyenMaiService();
     private DefaultTableModel model = new DefaultTableModel();
@@ -27,7 +27,7 @@ public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
     /**
      * Creates new form PanelQuanLyKhuyenMai
      */
-    public PanelQuanLyKhuyenMai() {
+    public PanelQuanLyKhuyenMai1() {
         initComponents();
         init();
     }

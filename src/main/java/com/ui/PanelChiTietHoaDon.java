@@ -143,7 +143,9 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
         txtTongTienGoc.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtTongTienGoc.setText("null");
 
-        btnThoat.setText("Thoát");
+        btnThoat.setBackground(new java.awt.Color(0, 255, 0));
+        btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnThoat.setText("Quay Lại");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThoatActionPerformed(evt);
@@ -163,7 +165,7 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelChiTietHoaDonLayout.createSequentialGroup()
                         .addGroup(panelChiTietHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelChiTietHoaDonLayout.createSequentialGroup()
-                                .addComponent(btnThoat)
+                                .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelChiTietHoaDonLayout.createSequentialGroup()
@@ -215,7 +217,7 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
                     .addComponent(jLabel18)
                     .addGroup(panelChiTietHoaDonLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnThoat)))
+                        .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelChiTietHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)

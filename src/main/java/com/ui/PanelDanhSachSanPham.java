@@ -75,7 +75,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Tìm kiếm", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 15))); // NOI18N
 
         txtSearch.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtSearch.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 5)));
+        txtSearch.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearchKeyReleased(evt);
@@ -112,11 +112,12 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnThem.setBackground(new java.awt.Color(255, 204, 0));
         btnThem.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +126,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             }
         });
 
+        btnChiTiet.setBackground(new java.awt.Color(255, 204, 0));
         btnChiTiet.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         btnChiTiet.setText("Chi tiết");
         btnChiTiet.addActionListener(new java.awt.event.ActionListener() {

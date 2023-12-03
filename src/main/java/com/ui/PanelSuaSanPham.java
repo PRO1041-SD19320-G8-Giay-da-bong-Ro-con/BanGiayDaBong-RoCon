@@ -277,7 +277,9 @@ public class PanelSuaSanPham extends javax.swing.JPanel {
         lblLoiTenSP.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiTenSP.setText("Trùng tên sản phẩm");
 
-        jButton1.setText("Thoát");
+        jButton1.setBackground(new java.awt.Color(0, 255, 0));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setText("Quay lại");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);

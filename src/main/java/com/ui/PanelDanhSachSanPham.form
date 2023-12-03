@@ -135,7 +135,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbTrangThai" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbTrangThai" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -155,8 +155,8 @@
                       <Border PropertyName="outside" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder thickness="2"/>
                       </Border>
-                      <Border PropertyName="inside" info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                        <EmptyBorder bottom="1" left="5" right="5" top="1"/>
+                      <Border PropertyName="inside" info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                        <BevelBorder/>
                       </Border>
                     </CompoundBorder>
                   </Border>
@@ -201,6 +201,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="btnThem">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="cc" red="ff" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="15" style="0"/>
             </Property>
@@ -212,6 +215,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnChiTiet">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="cc" red="ff" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="15" style="0"/>
             </Property>

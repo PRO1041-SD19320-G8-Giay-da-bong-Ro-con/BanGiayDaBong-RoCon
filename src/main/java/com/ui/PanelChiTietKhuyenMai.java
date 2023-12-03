@@ -86,6 +86,7 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        txtTimKM.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 153, 0), new java.awt.Color(255, 153, 0), new java.awt.Color(255, 153, 0), new java.awt.Color(255, 153, 0)));
         txtTimKM.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 txtTimKMAncestorAdded(evt);
@@ -107,6 +108,7 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
         });
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Tìm Khuyến Mãi: ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -116,9 +118,9 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTimKM, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtTimKM, javax.swing.GroupLayout.DEFAULT_SIZE, 879, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -597,7 +599,7 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
             return null;
         }
         String format = "dd/MM/yyyy";
-        if (!isStartDateBeforeEndDate(ngayBD, ngayKT, format)) {
+        if (!validateNgay(ngayBD, ngayKT, format)) {
             JOptionPane.showMessageDialog(this, "Ngày bắt đầu phải  lớn hơn ngày kết thúc");
             return null;
         }
@@ -606,7 +608,7 @@ public class PanelChiTietKhuyenMai extends javax.swing.JPanel {
         return km;
     }
 
-    public static boolean isStartDateBeforeEndDate(String startDateStr, String endDateStr, String format) {
+    public static boolean validateNgay(String startDateStr, String endDateStr, String format) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
             LocalDate startDate = LocalDate.parse(startDateStr, formatter);

@@ -129,7 +129,9 @@ public class DialogDangNhap extends javax.swing.JDialog {
         txt_matkhau.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), javax.swing.BorderFactory.createEmptyBorder(1, 8, 1, 8)));
         txt_matkhau.setMargin(new java.awt.Insets(2, 5, 2, 5));
 
+        btn_dangnhap.setBackground(new java.awt.Color(51, 51, 255));
         btn_dangnhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_dangnhap.setForeground(new java.awt.Color(255, 255, 255));
         btn_dangnhap.setText("Đăng Nhập");
         btn_dangnhap.setBorder(null);
         btn_dangnhap.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +148,7 @@ public class DialogDangNhap extends javax.swing.JDialog {
         });
 
         lblQuenMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblQuenMatKhau.setForeground(new java.awt.Color(255, 51, 0));
         lblQuenMatKhau.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblQuenMatKhau.setText("Quên mật khẩu?");
 
