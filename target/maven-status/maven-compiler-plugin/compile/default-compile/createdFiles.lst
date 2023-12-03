@@ -23,7 +23,6 @@ com\utils\SendEmail.class
 com\ui\DialogKhachHang$2.class
 com\ui\PanelBanHang$9.class
 model\HoaDon.class
-com\ui\PanelDoimatkhau$5.class
 com\component\Menu$2.class
 com\dao\KhachHangDAO.class
 com\ui\PanelBanHang$3.class
@@ -62,15 +61,14 @@ com\ui\PanelChiTietKhachHang.class
 com\dao\HoaDonDAO.class
 com\ui\PanelBanHang$11.class
 com\ui\PanelSuaSanPham$1.class
-com\ui\PanelDoimatkhau$4.class
 com\ui\PanelQuanLyKhuyenMai$1.class
 com\utils\FormatDate.class
 com\ui\PanelHoaDon$1.class
 com\ui\DialogKhachHang$1.class
 com\ui\PanelChiTietKhuyenMai$7.class
-com\ui\PanelDoimatkhau$1.class
 com\ui\PanelThemNhanVien$2.class
 com\ui\PanelThemSanPham.class
+com\ui\PanelDoiMatKhau$2.class
 com\ui\PanelChiTietHoaDon.class
 com\ui\PanelHoaDon.class
 com\ui\PanelChiTietKhuyenMai$10.class
@@ -94,8 +92,8 @@ com\ui\PanelThemSanPham$1.class
 com\ui\DialogQuenMatKhau$9$1.class
 com\ui\PanelChiTietKhuyenMai$8.class
 com\ui\DialogDangNhap$1.class
-com\ui\PanelDoimatkhau$3.class
 com\ui\PanelDanhSachSanPham.class
+com\ui\PanelDoiMatKhau$1.class
 com\ui\PanelThemKhachHang.class
 com\ui\PanelChiTietKhuyenMai.class
 responsitory\Giay_Interfacce.class
@@ -129,9 +127,9 @@ com\ui\PanelThemNhanVien$1.class
 com\ui\DialogQuenMatKhau$8.class
 model\ChiTietSanPham.class
 com\entity\KhachHang.class
-com\ui\PanelDoimatkhau$2.class
 model\KhuyenMai.class
 com\ui\PanelDanhSachSanPham$2.class
+com\ui\PanelDoiMatKhau$3.class
 model\ChiTietHoaDon.class
 com\entity\XuatXu.class
 com\dao\KhuyenMaiDAO.class
@@ -150,6 +148,7 @@ com\ui\PanelLichSuMuaHang$3.class
 com\ui\PanelQuanLyKhuyenMai$2.class
 model\XuatXu.class
 com\ui\PanelChiTietKhuyenMai$6.class
+com\ui\PanelDoiMatKhau$4.class
 com\ui\PanelDanhSachSanPham$1.class
 com\dao\ChatLieuDAO.class
 services\KhuyenMaiService.class
@@ -162,11 +161,12 @@ com\ui\DialogKhachHang$3$1.class
 com\ui\PanelThongKe$2.class
 com\ui\DialogQuenMatKhau$3.class
 services\ThongKe_Ser.class
-com\ui\PanelDoimatkhau.class
 com\entity\Size.class
 com\ui\PanelQLKhachHang$4.class
 com\ui\PanelThemKhachHang$5.class
 com\entity\MauSac.class
+com\ui\PanelDoiMatKhau.class
+com\ui\PanelDoiMatKhau$5.class
 db\JDBCHelper.class
 com\ui\PanelThemKhachHang$2.class
 com\ui\PanelBanHang$7.class
