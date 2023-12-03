@@ -11,6 +11,7 @@ import com.main.Main;
 import com.utils.TextUtil;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
@@ -28,9 +29,12 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
     DefaultTableModel model;
     ChiTietHoaDonDAO daoCTHD = new ChiTietHoaDonDAO();
     KhuyenMaiDAO daoKM = new KhuyenMaiDAO();
+    
+    JPanel parent;
 
-    public PanelChiTietHoaDon() {
+    public PanelChiTietHoaDon(JPanel parent) {
         initComponents();
+        this.parent = parent;
         model = (DefaultTableModel) tblChiTietHoaDon.getModel();
         model.setColumnIdentifiers(new String[]{"Mã CTSP", "Tên sản phẩm", "Số lượng", "Thành tiền"});
         TableColumnModel column = tblChiTietHoaDon.getColumnModel();
@@ -262,7 +266,7 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        Main.changeForm(new PanelHoaDon());
+        Main.changeForm(parent);
     }//GEN-LAST:event_btnThoatActionPerformed
 
 

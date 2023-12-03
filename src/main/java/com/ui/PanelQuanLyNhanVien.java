@@ -366,7 +366,7 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
-        Main.changeForm(new Panelthemnhanvien());
+        Main.changeForm(new PanelThemNhanVien());
     }//GEN-LAST:event_btn_themActionPerformed
 
     private void tbl_qlnvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_qlnvMouseClicked

@@ -9,7 +9,7 @@ import com.ui.PanelQuanLyKhuyenMai;
 import com.ui.PanelQuanLyNhanVien;
 import com.ui.PanelQuanLyThuocTinh;
 import com.ui.PanelThongKe;
-import com.ui.dangnhapJDialog;
+import com.ui.DialogDangNhap;
 import com.utils.Auth;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
@@ -283,12 +283,12 @@ public class Menu extends javax.swing.JPanel {
 
     private void DangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DangXuatMouseClicked
         Auth.clear();
-        new dangnhapJDialog(main, true).setVisible(true);
+        new DialogDangNhap(main, true).setVisible(true);
+        main.setUser();
     }//GEN-LAST:event_DangXuatMouseClicked
 
     private void ThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThongKeMouseClicked
         Main.changeForm(new PanelThongKe());
-        System.out.println("hello");
     }//GEN-LAST:event_ThongKeMouseClicked
 
 

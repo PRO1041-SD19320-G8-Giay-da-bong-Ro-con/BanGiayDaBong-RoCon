@@ -282,7 +282,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
             if (row != -1) {
                 String maHD = tblHoaDon.getValueAt(row, 0).toString();
                 PanelChiTietHoaDon.hoaDon = daoHD.selectByID(maHD);
-                Main.changeForm(new PanelChiTietHoaDon());
+                Main.changeForm(new PanelChiTietHoaDon(this));
             } else {
                 JOptionPane.showMessageDialog(this, "Vui lòng chọn");
             }

@@ -4,19 +4,31 @@
  */
 package com.ui;
 
+import com.dao.HoaDonDAO;
+import javax.swing.table.DefaultTableModel;
+import com.entity.HoaDon;
+import com.entity.KhachHang;
 import com.main.Main;
+import com.utils.FormatDate;
+import com.utils.TextUtil;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author FPT SHOP
- */
 public class PanelLichSuMuaHang extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelLichSuMuaHang
      */
+    DefaultTableModel model;
+    HoaDonDAO dao = new HoaDonDAO();
+
+    public static KhachHang khachHang;
+
     public PanelLichSuMuaHang() {
         initComponents();
+        model = (DefaultTableModel) tblLichSu.getModel();
+        showLichSu();
     }
 
     /**
@@ -28,69 +40,51 @@ public class PanelLichSuMuaHang extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnThoat = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblKH = new javax.swing.JTable();
-
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField1)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        tblLichSu = new javax.swing.JTable();
+        btnXemChiTiet = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Lịch Sử Mua Hàng ");
 
-        jButton1.setBackground(new java.awt.Color(51, 255, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("Quay Lại");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnThoat.setBackground(new java.awt.Color(51, 255, 51));
+        btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnThoat.setText("Quay Lại");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnThoatActionPerformed(evt);
             }
         });
 
-        tblKH.setModel(new javax.swing.table.DefaultTableModel(
+        tblLichSu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã KH", "Tên KH", "SDT", "Mã Hóa Đơn", "Mã Sản Phẩm", "Tổng Tiền", "Ngày Mua Hàng"
+                "Mã hóa đơn", "Ngày mua hàng", "Tổng tiền", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, true, true, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tblKH.setRowHeight(30);
-        tblKH.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblKHMouseClicked(evt);
+        tblLichSu.setRowHeight(30);
+        jScrollPane2.setViewportView(tblLichSu);
+
+        btnXemChiTiet.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnXemChiTiet.setText("Xem chi tiết");
+        btnXemChiTiet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXemChiTietActionPerformed(evt);
             }
         });
-        jScrollPane2.setViewportView(tblKH);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -99,13 +93,15 @@ public class PanelLichSuMuaHang extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(248, 248, 248)
+                        .addComponent(btnThoat)
+                        .addGap(207, 207, 207)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 255, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnXemChiTiet)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -114,30 +110,51 @@ public class PanelLichSuMuaHang extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnThoat))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnXemChiTiet)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKHMouseClicked
-       
-    }//GEN-LAST:event_tblKHMouseClicked
+    private void btnXemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemChiTietActionPerformed
+        xemChiTiet();
+    }//GEN-LAST:event_btnXemChiTietActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     Main.changeForm(new PanelQLKhachHang());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        Main.changeForm(new PanelQLKhachHang());
+    }//GEN-LAST:event_btnThoatActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnThoat;
+    private javax.swing.JButton btnXemChiTiet;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable tblKH;
+    private javax.swing.JTable tblLichSu;
     // End of variables declaration//GEN-END:variables
+
+    private void showLichSu() {
+        model.setRowCount(0);
+        try {
+            for (HoaDon dh : dao.selectLichSu(khachHang.getMaKH())) {
+                model.addRow(new Object[]{dh.getMaHD(), FormatDate.toString(dh.getThoiGianBan()), TextUtil.round(dh.getTongTienCuoi()), dh.getTrangThai()});
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelLichSuMuaHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void xemChiTiet() {
+        try {
+            int row = tblLichSu.getSelectedRow();
+            if (row != -1) {
+                PanelChiTietHoaDon.hoaDon = dao.selectByID(tblLichSu.getValueAt(row, 0).toString());
+                Main.changeForm(new PanelChiTietHoaDon(this));
+            }
+        } catch (Exception e) {
+        }
+    }
 }

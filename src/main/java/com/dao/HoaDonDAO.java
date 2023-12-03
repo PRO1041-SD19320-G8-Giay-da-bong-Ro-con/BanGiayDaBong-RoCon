@@ -21,6 +21,7 @@ public class HoaDonDAO implements DAOInterface<HoaDon, String> {
     String UPDATE_SQL = "UPDATE HOA_DON SET MAKH = ?, MaKM = ?, THOIGIANBAN = getdate(), TRANGTHAI = 1 WHERE MaHD = ?";
     String SELECT_ALL_SQL = "select * from vHoaDon order by thoiGianBan desc";
     String SELECT_BY_ID_SQL = "select * from vHoaDon where mahd = ?";
+    String SELECT_BY_KH_SQL = "select * from vHoaDon where maKH = ? order by thoiGianBan desc";
     String LOC = "select * from vHoaDon";
 
     @Override
@@ -75,6 +76,10 @@ public class HoaDonDAO implements DAOInterface<HoaDon, String> {
 
     public List<HoaDon> selectAll(String loc) throws SQLException {
         return selectBySQL(LOC + loc + " order by thoiGianBan desc");
+    }
+    
+    public List<HoaDon> selectLichSu(String maKH) throws SQLException {
+         return selectBySQL(SELECT_BY_KH_SQL, maKH);
     }
 
 }

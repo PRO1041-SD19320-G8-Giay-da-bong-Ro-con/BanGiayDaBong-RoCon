@@ -26,7 +26,7 @@ import javax.swing.text.PasswordView;
  *
  * @author DELL
  */
-public class quenmatkhauJDialog extends javax.swing.JDialog {
+public class DialogQuenMatKhau extends javax.swing.JDialog {
 
     /**
      * Creates new form quenmatkhauJDialog
@@ -37,7 +37,7 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
     SendEmail send = new SendEmail();
     private String maXacNhan = "";
 
-    public quenmatkhauJDialog(java.awt.Frame parent, boolean modal) {
+    public DialogQuenMatKhau(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -373,20 +373,21 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(quenmatkhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogQuenMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(quenmatkhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogQuenMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(quenmatkhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogQuenMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(quenmatkhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogQuenMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                quenmatkhauJDialog dialog = new quenmatkhauJDialog(new javax.swing.JFrame(), true);
+                DialogQuenMatKhau dialog = new DialogQuenMatKhau(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -432,7 +433,7 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
             }
             return taiKhoan;
         } catch (Exception ex) {
-            Logger.getLogger(quenmatkhauJDialog.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DialogQuenMatKhau.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -454,7 +455,7 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "Không tìm thấy tài khoản");
             }
         } catch (Exception e) {
-            Logger.getLogger(quenmatkhauJDialog.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DialogQuenMatKhau.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -500,7 +501,7 @@ public class quenmatkhauJDialog extends javax.swing.JDialog {
                 }
             }
         } catch (Exception e) {
-            Logger.getLogger(quenmatkhauJDialog.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DialogQuenMatKhau.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(this, "Đổi mật khẩu thất bại");
         }
     }

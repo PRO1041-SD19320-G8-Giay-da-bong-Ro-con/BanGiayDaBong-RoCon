@@ -4,6 +4,7 @@
  */
 package com.ui;
 
+import com.dao.KhachHangDAO;
 import com.main.Main;
 import com.utils.FormatDate;
 import java.sql.Array;
@@ -14,6 +15,9 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import com.entity.KhachHang;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import services.KhachHangService;
 
 /**
@@ -25,6 +29,7 @@ public class PanelQLKhachHang extends javax.swing.JPanel {
     private List<KhachHang> lstKH = new ArrayList<>();
     private DefaultTableModel model = new DefaultTableModel();
     private KhachHangService ser = new KhachHangService();
+    private KhachHangDAO dao = new KhachHangDAO();
     int id;
 
     public String getMaKH() {
@@ -302,7 +307,17 @@ public class PanelQLKhachHang extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        Main.changeForm(new PanelLichSuMuaHang());
+        try {
+            KhachHang khachHang = dao.selectByID(txtMa.getText());
+            if (khachHang != null) {
+                PanelLichSuMuaHang.khachHang = khachHang;
+                Main.changeForm(new PanelLichSuMuaHang());
+            }else{
+                JOptionPane.showMessageDialog(this, "Không tìm thấy khách hàng");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Không tìm thấy khách hàng");
+        }
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void btnThem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem1ActionPerformed

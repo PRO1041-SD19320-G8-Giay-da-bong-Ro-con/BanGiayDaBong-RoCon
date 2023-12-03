@@ -34,14 +34,14 @@ import javax.swing.border.LineBorder;
  *
  * @author DELL
  */
-public class dangnhapJDialog extends javax.swing.JDialog {
+public class DialogDangNhap extends javax.swing.JDialog {
     public static TaiKhoan taikhoan;
     TaiKhoanDAO DAO = new TaiKhoanDAO();
 
     /**
      * Creates new form dangnhapJDialog
      */
-    public dangnhapJDialog(java.awt.Frame parent, boolean modal) {
+    public DialogDangNhap(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         init();
@@ -252,20 +252,21 @@ public class dangnhapJDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dangnhapJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dangnhapJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dangnhapJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dangnhapJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dangnhapJDialog dialog = new dangnhapJDialog(new javax.swing.JFrame(), true);
+                DialogDangNhap dialog = new DialogDangNhap(new javax.swing.JFrame(), true);
                 dialog.setVisible(true);
             }
         });
@@ -313,7 +314,7 @@ public class dangnhapJDialog extends javax.swing.JDialog {
     }
 
     private void quenMatKhau() {
-        new quenmatkhauJDialog(null, true).setVisible(true);
+        new DialogQuenMatKhau(null, true).setVisible(true);
     }
 
     private void setupLblQuenMatKhau() {

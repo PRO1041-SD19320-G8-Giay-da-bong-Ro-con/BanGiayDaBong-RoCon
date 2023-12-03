@@ -5,7 +5,7 @@
 package com.dao;
 import java.sql.*;
 import com.entity.TaiKhoan;
-import com.ui.dangnhapJDialog;
+import com.ui.DialogDangNhap;
 import com.utils.DBConnect;
 import com.utils.JDBCHelper;
 import java.sql.Connection;
@@ -101,7 +101,7 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoan, String> {
                 String email = rs.getString(6);
                 String cccd = rs.getString(7);
                 boolean chucvu = rs.getBoolean(8);
-                dangnhapJDialog.taikhoan = new TaiKhoan(tk, mk, ten, ngaysinh, sdt, email, cccd, chucvu);
+                DialogDangNhap.taikhoan = new TaiKhoan(tk, mk, ten, ngaysinh, sdt, email, cccd, chucvu);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

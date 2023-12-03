@@ -6,8 +6,8 @@ package com.main;
 
 import com.component.Menu;
 import com.ui.PanelBanHang;
-import com.ui.dangnhapJDialog;
-import com.ui.panelQuanLyTaiKhoan;
+import com.ui.DialogDangNhap;
+import com.ui.PanelQuanLyTaiKhoan;
 import com.utils.Auth;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -38,6 +38,10 @@ public class Main extends javax.swing.JFrame {
     public Main getMain() {
         return this;
     }
+    
+    public void setUser(){
+        txtUser.setText(Auth.user.getTaikhoan());
+    }
 
     private static JPanel panel = new JPanel(new BorderLayout());
 
@@ -45,8 +49,8 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         panelMenu.setMain(this);
-        new dangnhapJDialog(this, true).setVisible(true);
-        txtUser.setText(Auth.user.getTaikhoan());
+        new DialogDangNhap(this, true).setVisible(true);
+        setUser();
         panelTong.setLayout(new FlowLayout());
         panelTong.add(panel);
         setupPanelPerson();
@@ -236,7 +240,7 @@ public class Main extends javax.swing.JFrame {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                changeForm(new panelQuanLyTaiKhoan());
+                changeForm(new PanelQuanLyTaiKhoan());
             }
         });
     }
