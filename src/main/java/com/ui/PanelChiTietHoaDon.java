@@ -77,22 +77,24 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
         txtTongTienGoc = new javax.swing.JLabel();
         btnThoat = new javax.swing.JButton();
 
+        panelChiTietHoaDon.setBackground(new java.awt.Color(204, 204, 255));
+
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("Chi tiết hóa đơn");
         jLabel18.setToolTipText("");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Mã hóa đơn");
+        jLabel1.setText("Mã hóa đơn: ");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Người bán");
+        jLabel2.setText("Người bán : ");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("Thời gian bán");
+        jLabel3.setText("Thời gian bán: ");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("Khách hàng");
+        jLabel4.setText("Khách hàng: ");
 
         tblChiTietHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -105,19 +107,20 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblChiTietHoaDon.setRowHeight(30);
         jScrollPane1.setViewportView(tblChiTietHoaDon);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setText("Tổng tiền gốc");
+        jLabel5.setText("Tổng tiền gốc: ");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setText("Tổng tiền cuối");
+        jLabel6.setText("Tổng tiền cuối: ");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setText("Trạng thái");
+        jLabel7.setText("Trạng thái: ");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setText("Khuyến mãi");
+        jLabel8.setText("Khuyến mãi: ");
 
         txtMaHD.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         txtMaHD.setText("null");
@@ -160,7 +163,7 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(panelChiTietHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelChiTietHoaDonLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelChiTietHoaDonLayout.createSequentialGroup()
                         .addGroup(panelChiTietHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,7 +186,7 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtKhachHang)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtThoiGian)
@@ -232,7 +235,7 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
                 .addGroup(panelChiTietHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtKhachHang))
-                .addGap(43, 43, 43)
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelChiTietHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

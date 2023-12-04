@@ -56,7 +56,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="com.ui.PanelQLKhachHang" name="panelKhachHang">
+    <Component class="com.ui.PanelQuanLyKhachHang" name="panelKhachHang">
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>

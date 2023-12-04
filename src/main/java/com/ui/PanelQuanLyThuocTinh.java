@@ -248,7 +248,7 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
 
         btn_sua.setBackground(new java.awt.Color(255, 204, 0));
         btn_sua.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_sua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/ct3.png"))); // NOI18N
+        btn_sua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sua.png"))); // NOI18N
         btn_sua.setText("Sửa Thuộc Tính");
         btn_sua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,9 +275,9 @@ public class PanelQuanLyThuocTinh extends javax.swing.JPanel {
                         .addGap(0, 48, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_sua)
-                            .addComponent(btn_add))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_sua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(69, 69, 69))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

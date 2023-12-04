@@ -125,7 +125,7 @@ public class PanelLichSuMuaHang extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXemChiTietActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        Main.changeForm(new PanelQLKhachHang());
+        Main.changeForm(new PanelQuanLyKhachHang());
     }//GEN-LAST:event_btnThoatActionPerformed
 
 

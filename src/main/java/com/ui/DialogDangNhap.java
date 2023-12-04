@@ -302,6 +302,7 @@ public class DialogDangNhap extends javax.swing.JDialog {
                     if (taiKhoan.getTaikhoan().equals(tk)) {
                         if (taiKhoan.getMatkhau().equals(mk)) {
                             Auth.user = taiKhoan;
+                             JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
                             this.dispose();
                             return;
                         } else {

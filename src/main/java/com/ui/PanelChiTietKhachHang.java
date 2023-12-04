@@ -296,7 +296,7 @@ public class PanelChiTietKhachHang extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        Main.changeForm(new PanelQLKhachHang());
+        Main.changeForm(new PanelQuanLyKhachHang());
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed

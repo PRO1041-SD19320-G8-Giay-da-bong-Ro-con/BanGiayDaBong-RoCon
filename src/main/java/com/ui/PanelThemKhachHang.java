@@ -342,7 +342,7 @@ public class PanelThemKhachHang extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        Main.changeForm(new PanelQLKhachHang());
+        Main.changeForm(new PanelQuanLyKhachHang());
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void tblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKHMouseClicked

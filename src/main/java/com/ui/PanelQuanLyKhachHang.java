@@ -24,7 +24,7 @@ import services.KhachHangService;
  *
  * @author FPT SHOP
  */
-public class PanelQLKhachHang extends javax.swing.JPanel {
+public class PanelQuanLyKhachHang extends javax.swing.JPanel {
 
     private List<KhachHang> lstKH = new ArrayList<>();
     private DefaultTableModel model = new DefaultTableModel();
@@ -36,7 +36,7 @@ public class PanelQLKhachHang extends javax.swing.JPanel {
         return this.txtMa.getText();
     }
 
-    public PanelQLKhachHang() {
+    public PanelQuanLyKhachHang() {
         initComponents();
         init();
     }
@@ -175,6 +175,7 @@ public class PanelQLKhachHang extends javax.swing.JPanel {
 
         btnThem.setBackground(new java.awt.Color(255, 204, 0));
         btnThem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add2.png"))); // NOI18N
         btnThem.setText("Thêm ");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +194,7 @@ public class PanelQLKhachHang extends javax.swing.JPanel {
 
         btnThem1.setBackground(new java.awt.Color(255, 204, 0));
         btnThem1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnThem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sua.png"))); // NOI18N
         btnThem1.setText("Sửa");
         btnThem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

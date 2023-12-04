@@ -36,7 +36,7 @@ public class DialogKhachHang extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelKhachHang = new com.ui.PanelQLKhachHang();
+        panelKhachHang = new com.ui.PanelQuanLyKhachHang();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -145,7 +145,7 @@ public class DialogKhachHang extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private com.ui.PanelQLKhachHang panelKhachHang;
+    private com.ui.PanelQuanLyKhachHang panelKhachHang;
     // End of variables declaration//GEN-END:variables
 
     public String chonMaKH() {
