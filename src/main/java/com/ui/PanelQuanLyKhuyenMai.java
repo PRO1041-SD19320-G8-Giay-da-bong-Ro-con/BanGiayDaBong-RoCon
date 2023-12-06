@@ -575,7 +575,7 @@ public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
         buttonGroup1.clearSelection();
         id = -1;
     }
-
+    String checkTen = "[0-9]+";
     private KhuyenMai readForm() {
         String maKM = txtMa.getText();
         String tenKM = txtTen.getText();
@@ -585,7 +585,7 @@ public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
         String ngayBD = txtNgayBatDau.getText();
         String ngayKT = txtNgayKetThuc.getText();
 
-        if (maKM.isEmpty() || tenKM.isEmpty() || noiDung.isEmpty() || ngayBD.isEmpty() || ngayKT.isEmpty()) {
+        if (maKM.trim().isEmpty() || tenKM.trim().isEmpty() || noiDung.trim().isEmpty() || ngayBD.trim().isEmpty() || ngayKT.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Phải nhập đầy đủ dữ liệu ");
             return null;
         }
@@ -611,6 +611,11 @@ public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
         String format = "dd/MM/yyyy";
         if (!validateNgay(ngayBD, ngayKT, format)) {
             JOptionPane.showMessageDialog(this, "Ngày bắt đầu phải  lớn hơn ngày kết thúc");
+            return null;
+        }
+         Matcher mtTen = Pattern.compile(checkTen).matcher(tenKM);
+         if (mtTen.matches()) {
+            JOptionPane.showMessageDialog(this, "Tên khuyến mãi phải có thêm nội dung");
             return null;
         }
 
