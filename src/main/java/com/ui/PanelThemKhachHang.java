@@ -66,7 +66,8 @@ public class PanelThemKhachHang extends javax.swing.JPanel {
         txtSDT.setText(kh.getSdt());
         tblKH.setRowSelectionInterval(id, id);
     }
-    String checkSDT = "[0-9]{10}";
+    String checkSDT = "^0[0-9]{9}$";
+    String checkTen = "^[A-Z][a-z]+$";
 
     private KhachHang readForm() {
         String maKH = txtMa.getText();
@@ -87,8 +88,14 @@ public class PanelThemKhachHang extends javax.swing.JPanel {
             return null;
         }
         Matcher mt = Pattern.compile(checkSDT).matcher(sdt);
+        Matcher mtTen = Pattern.compile(checkTen).matcher(tenKH);
+       
         if (!mt.matches()) {
-            JOptionPane.showMessageDialog(this, "SDT phải có 10 chữ số và phải là một số");
+            JOptionPane.showMessageDialog(this, "SDT phải có 10 chữ số và số đầu tiên phải là số 0");
+            return null;
+        }
+        if (!mtTen.matches()) {
+            JOptionPane.showMessageDialog(this, "Tên khách hàng phải là chữ");
             return null;
         }
 

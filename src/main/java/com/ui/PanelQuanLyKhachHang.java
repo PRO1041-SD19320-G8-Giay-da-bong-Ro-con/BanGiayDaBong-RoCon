@@ -124,10 +124,15 @@ public class PanelQuanLyKhachHang extends javax.swing.JPanel {
                         .addGap(1, 1, 1)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(57, 57, 57)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(57, 57, 57)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(9, 9, 9)))
                                 .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPane1)))
@@ -138,11 +143,6 @@ public class PanelQuanLyKhachHang extends javax.swing.JPanel {
                         .addGap(140, 140, 140)
                         .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                    .addContainerGap(314, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(286, 286, 286)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +151,8 @@ public class PanelQuanLyKhachHang extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,11 +164,6 @@ public class PanelQuanLyKhachHang extends javax.swing.JPanel {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(35, 35, 35)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(197, Short.MAX_VALUE)))
         );
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
@@ -314,7 +310,7 @@ public class PanelQuanLyKhachHang extends javax.swing.JPanel {
             if (khachHang != null) {
                 PanelLichSuMuaHang.khachHang = khachHang;
                 Main.changeForm(new PanelLichSuMuaHang());
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Không tìm thấy khách hàng");
             }
         } catch (SQLException ex) {
@@ -357,7 +353,8 @@ public class PanelQuanLyKhachHang extends javax.swing.JPanel {
         txtSDT.setText(kh.getSdt());
         tblKH.setRowSelectionInterval(id, id);
     }
-    String checkSDT = "[0-9]{10}";
+    String checkSDT = "^0[0-9]{9}$";
+    String checkTen = ".*[a-zA-Z]+.*";
 
     private KhachHang readForm() {
         String maKH = txtMa.getText();
@@ -366,7 +363,7 @@ public class PanelQuanLyKhachHang extends javax.swing.JPanel {
         String sdt = txtSDT.getText();
         String ngaySinh = txtNgaySinh.getText();
 
-        if (maKH.isEmpty() || tenKH.isEmpty() || diaChi.isEmpty() || sdt.isEmpty() || ngaySinh.isEmpty()) {
+        if (maKH.trim().isEmpty() || tenKH.trim().isEmpty() || diaChi.trim().isEmpty() || sdt.trim().isEmpty() || ngaySinh.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Hãy nhập dữ liệu đầy đủ ");
             return null;
         }
@@ -378,8 +375,14 @@ public class PanelQuanLyKhachHang extends javax.swing.JPanel {
             return null;
         }
         Matcher mt = Pattern.compile(checkSDT).matcher(sdt);
+        Matcher mtTen = Pattern.compile(checkTen).matcher(tenKH);
+
         if (!mt.matches()) {
-            JOptionPane.showMessageDialog(this, "SDT phải có 10 chữ số và phải là một số");
+            JOptionPane.showMessageDialog(this, "SDT phải có 10 chữ số và số đầu tiên phải là số 0");
+            return null;
+        }
+        if (!mtTen.matches()) {
+            JOptionPane.showMessageDialog(this, "Tên khách hàng phải là chữ");
             return null;
         }
 
