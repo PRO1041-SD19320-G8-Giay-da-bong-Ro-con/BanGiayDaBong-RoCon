@@ -14,6 +14,7 @@ import com.dao.LoaiGiayDAO;
 import com.dao.MauSacDAO;
 import com.dao.SanPhamDAO;
 import com.dao.SizeDAO;
+import com.dao.TaiKhoanDAO;
 import com.dao.ThuongHieuDAO;
 import com.dao.XuatXuDAO;
 import com.entity.ChiTietHoaDon;
@@ -21,10 +22,33 @@ import com.entity.ChiTietSanPham;
 import com.entity.HoaDon;
 import com.entity.KhachHang;
 import com.entity.KhuyenMai;
+import com.entity.TaiKhoan;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.colors.DeviceGray;
+import com.itextpdf.kernel.colors.DeviceRgb;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.borders.Border;
+import com.itextpdf.layout.borders.DashedBorder;
+import com.itextpdf.layout.borders.SolidBorder;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.properties.BorderRadius;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.UnitValue;
 import com.utils.Auth;
 import com.utils.FormatDate;
 import com.utils.TextUtil;
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -54,11 +78,10 @@ public class PanelBanHang extends javax.swing.JPanel {
     ChiTietHoaDonDAO daoCTHD = new ChiTietHoaDonDAO();
     KhuyenMaiDAO daoKM = new KhuyenMaiDAO();
     KhachHangDAO daoKH = new KhachHangDAO();
-
+    TaiKhoanDAO daoTK = new TaiKhoanDAO();
     DefaultTableModel modelSP = null;
     DefaultTableModel modelDH = null;
     DefaultTableModel modelHDC = null;
-
     Double tongTien = null;
 
     /**
@@ -265,22 +288,18 @@ public class PanelBanHang extends javax.swing.JPanel {
         jPanelĐonHangLayout.setHorizontalGroup(
             jPanelĐonHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelĐonHangLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelĐonHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
-                    .addGroup(jPanelĐonHangLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnXoaKhoiDonHang1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnXoaKhoiDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(285, Short.MAX_VALUE)
+                .addComponent(btnXoaKhoiDonHang1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnXoaKhoiDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
         );
         jPanelĐonHangLayout.setVerticalGroup(
             jPanelĐonHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelĐonHangLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addGroup(jPanelĐonHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXoaKhoiDonHang)
                     .addComponent(btnXoaKhoiDonHang1)))
@@ -363,6 +382,11 @@ public class PanelBanHang extends javax.swing.JPanel {
         btnThanhToan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnThanhToanMouseClicked(evt);
+            }
+        });
+        btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThanhToanActionPerformed(evt);
             }
         });
 
@@ -649,13 +673,232 @@ public class PanelBanHang extends javax.swing.JPanel {
     private void txtTienMatKhachTraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienMatKhachTraKeyReleased
         if (!TextUtil.isNAN(txtTienMatKhachTra.getText())) {
             Integer tienKhach = Integer.valueOf(txtTienMatKhachTra.getText());
-            lblTienThua.setText(TextUtil.round((tongTien - tienKhach)));
+            lblTienThua.setText(TextUtil.round((tienKhach - tongTien)));
         }
     }//GEN-LAST:event_txtTienMatKhachTraKeyReleased
 
+    private void xuatHoaDon() {
+
+        try {
+            PdfWriter pdfWriter = new PdfWriter(txtMaHD.getText() + ".pdf");
+            PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+            pdfDocument.setDefaultPageSize(PageSize.A4);
+            Document dcm = new Document(pdfDocument);
+
+            String path = "src\\main\\java\\img\\logo.png";
+            try {
+                ImageData imgData = ImageDataFactory.create(path);
+                Image img = new Image(imgData);
+                float x = pdfDocument.getDefaultPageSize().getWidth() / 2;
+                float y = pdfDocument.getDefaultPageSize().getHeight() / 2;
+                img.setFixedPosition(x - 220, y - 110);
+                img.setOpacity(0.2f);
+                dcm.add(img);
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            float twoCol = 285f;
+            float threeCol = 190f;
+            float twoCol150 = twoCol + 150f;
+            float twoColWidth[] = {twoCol150, twoCol};
+            float threeColWidth[] = {threeCol, threeCol, threeCol};
+            float fullWidth[] = {threeCol * 3};
+            Paragraph onesp = new Paragraph("\n");
+
+            Table table = new Table(twoColWidth);
+
+            Table table1 = new Table(new float[]{twoCol / 2, twoCol / 2});
+
+            Table twoColTable2 = new Table(twoColWidth);
+            table.addCell(new Cell().add(new Paragraph("Invoice")).setFontSize(25f).setBorder(Border.NO_BORDER).setBold());
+            table1.addCell(getHeaderTextCell("Ma HD: "));
+            table1.addCell(getHeaderTextCellValue(txtMaHD.getText()));
+            table1.addCell(getHeaderTextCell("Ngay tao: "));
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            table1.addCell(getHeaderTextCellValue(sdf.format(new Date())));
+            Border bd = new SolidBorder(new DeviceGray(0.7f), 2f);
+
+            Table tb = new Table(fullWidth);
+            tb.setBorder(bd);
+            table.addCell(new Cell().add(table1).setBorder(Border.NO_BORDER));
+
+            Table twoColTable = new Table(twoColWidth);
+            twoColTable.addCell(getBillingAndShippingCell("Thong tin hoa don"));
+            twoColTable.addCell(getBillingAndShippingCell("Thong tin khach hang"));
+            dcm.add(table);
+            dcm.add(onesp);
+            dcm.add(tb);
+            dcm.add(onesp);
+            dcm.add(twoColTable.setMarginBottom(12f));
+
+            Table twoColTable1 = new Table(twoColWidth);
+            twoColTable1.addCell(getCell10Left("Cua hang", true));
+            twoColTable1.addCell(getCell10Left("Ho ten KH", true));
+            twoColTable1.addCell(getCell10Left("Ban Giay Da Bong RoCon", false));
+
+            try {
+                KhachHang kh = daoKH.selectByID(lblKhachHang.getText());
+                twoColTable1.addCell(getCell10Left(kh.getTenKH(), false));
+
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            dcm.add(twoColTable1);
+            twoColTable2.addCell(getCell10Left("Nhan vien", true));
+            twoColTable2.addCell(getCell10Left("Dia chi", true));
+            try {
+                TaiKhoan tk = daoTK.selectByID(txtMaNV.getText().trim());
+                twoColTable2.addCell(getCell10Left(tk.getTen(), false));
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                KhachHang kh = daoKH.selectByID(lblKhachHang.getText());
+                twoColTable2.addCell(getCell10Left(kh.getDiaChi(), false));
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            dcm.add(twoColTable2);
+            float oneColumnWidth[] = {twoCol150};
+
+            Table oneColumnTable = new Table(oneColumnWidth);
+            oneColumnTable.addCell(getCell10Left("So DT", true));
+            try {
+                TaiKhoan tk = daoTK.selectByID(txtMaNV.getText().trim());
+                oneColumnTable.addCell(getCell10Left(tk.getSdt(), false));
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            oneColumnTable.addCell(getCell10Left("Email", true));
+            try {
+                TaiKhoan tk = daoTK.selectByID(txtMaNV.getText().trim());
+                oneColumnTable.addCell(getCell10Left(tk.getEmail(), false));
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            dcm.add(oneColumnTable.setMarginTop(10f));
+            dcm.add(onesp);
+
+            Table gachCham = new Table(fullWidth);
+            Border bd1 = new DashedBorder(new DeviceGray(0.7f), 0.5f);
+            dcm.add(gachCham.setBorder(bd1));
+            dcm.add(onesp);
+            dcm.add(new Paragraph("San pham").setBold().setFontSize(15f));
+            dcm.add(onesp);
+            Table threeColTable = new Table(threeColWidth);
+            threeColTable.setBackgroundColor(new DeviceRgb(0, 0, 0), 0.7f);
+            threeColTable.addCell(new Cell().add(new Paragraph("Ten SP")).setBold().setFontColor(new DeviceRgb(1.0f, 1.0f, 1.0f)).setBorder(Border.NO_BORDER));
+            threeColTable.addCell(new Cell().add(new Paragraph("So luong")).setBold().setFontColor(new DeviceRgb(1.0f, 1.0f, 1.0f)).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+            threeColTable.addCell(new Cell().add(new Paragraph("Gia (VND)")).setBold().setFontColor(new DeviceRgb(1.0f, 1.0f, 1.0f)).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT).setMarginRight(15f));
+            dcm.add(threeColTable);
+            dcm.add(onesp);
+
+            Table threeColTable1 = new Table(threeColWidth);
+            int row = tblDonHang.getRowCount();
+            for (int i = 0; i < row; i++) {
+                System.out.println("add đơn hàng thành công");
+                String tenSP = String.valueOf(tblDonHang.getValueAt(i, 1));
+                String soLuongSP = String.valueOf(tblDonHang.getValueAt(i, 2));
+                String gia = String.valueOf(tblDonHang.getValueAt(i, 3));
+                threeColTable1.addCell(new Cell().add(new Paragraph(tenSP)).setMarginLeft(10f).setBorder(Border.NO_BORDER));
+                threeColTable1.addCell(new Cell().add(new Paragraph(soLuongSP)).setTextAlignment(TextAlignment.CENTER).setBorder(Border.NO_BORDER));
+                threeColTable1.addCell(new Cell().add(new Paragraph(gia)).setMarginRight(15f).setTextAlignment(TextAlignment.RIGHT).setBorder(Border.NO_BORDER));
+            }
+            dcm.add(threeColTable1.setMarginBottom(20f));
+            float onetwo[] = {threeCol + 125f, threeCol * 2};
+
+            Table gachCham1 = new Table(onetwo);
+            gachCham1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            gachCham1.addCell(new Cell().add(gachCham).setBorder(Border.NO_BORDER));
+            dcm.add(gachCham1);
+            dcm.add(onesp);
+
+            Table tongTien = new Table(threeColWidth);
+            tongTien.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            tongTien.addCell(new Cell().add(new Paragraph("Tong tien thanh toan")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+            tongTien.addCell(new Cell().add(new Paragraph(lblTongTienThanhToan.getText())).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
+            dcm.add(tongTien);
+            dcm.add(onesp);
+
+            Table gachCham2 = new Table(onetwo);
+            gachCham2.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            gachCham2.addCell(new Cell().add(gachCham).setBorder(Border.NO_BORDER));
+            dcm.add(gachCham2);
+            dcm.add(onesp);
+
+            Table tongTienKHTraTable = new Table(threeColWidth);
+            tongTienKHTraTable.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            tongTienKHTraTable.addCell(new Cell().add(new Paragraph("Tong tien khach tra")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+            tongTienKHTraTable.addCell(new Cell().add(new Paragraph(txtTienMatKhachTra.getText())).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
+            dcm.add(tongTienKHTraTable);
+
+            Table tienThuaTable = new Table(threeColWidth);
+            tienThuaTable.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            tienThuaTable.addCell(new Cell().add(new Paragraph("Tien thua")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+            tienThuaTable.addCell(new Cell().add(new Paragraph(lblTienThua.getText())).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
+            dcm.add(tienThuaTable);
+            dcm.add(onesp);
+
+            Table gachCham3 = new Table(fullWidth);
+            dcm.add(gachCham3.setBorder(bd1));
+            dcm.add(onesp);
+            Border bd2 = new SolidBorder(new DeviceRgb(0, 0, 0), 2f);
+            Table tb1 = new Table(fullWidth);
+            tb1.setBorder(bd2);
+            dcm.add(tb1);
+
+            dcm.close();
+            JOptionPane.showMessageDialog(this, "Xuất hóa đơn thành công");
+        } catch (FileNotFoundException ex) {
+            return;
+        }
+    }
+
+    private static Cell getHeaderTextCell(String textValue) {
+        return new Cell().add(new Paragraph(textValue)).setBold().setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT);
+    }
+
+    private static Cell getHeaderTextCellValue(String textValue) {
+        return new Cell().add(new Paragraph(textValue)).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.LEFT);
+    }
+
+    private static Cell getBillingAndShippingCell(String textValue) {
+        return new Cell().add(new Paragraph(textValue)).setFontSize(12f).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.LEFT).setBold();
+    }
+
+    private static Cell getCell10Left(String textValue, Boolean isBold) {
+        Cell myCell = new Cell().add(new Paragraph(textValue)).setFontSize(10f).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.LEFT);
+        return isBold ? myCell.setBold() : myCell;
+    }
+
     private void btnThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanMouseClicked
+
+        if (txtTienMatKhachTra.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Chưa nhập số tiền khách trả");
+            return;
+        }
+        try {
+            Float tttoan = Float.parseFloat(txtTienMatKhachTra.getText());
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tiền thanh toán là 1 số dương");
+            return;
+        }
+
         if (checkTableDonHang()) {
             thanhToan();
+            int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn xuất hóa đơn không?");
+            if (hoi == JOptionPane.YES_OPTION) {
+                if (lblKhachHang.getText() == null || lblKhachHang.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Bạn cần bổ sung thông tin khách hàng trước khi xuất hóa đơn");
+                    return;
+                }
+                xuatHoaDon();
+            } else {
+                return;
+            }
+            btnTaoHoaDonMouseClicked(null);
         } else {
             JOptionPane.showMessageDialog(this, "Không có sản phẩm trong đơn hàng");
         }
@@ -672,7 +915,7 @@ public class PanelBanHang extends javax.swing.JPanel {
     }//GEN-LAST:event_btnChonKhachHangActionPerformed
 
     private void tblHoaDonChoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonChoMouseClicked
-        
+
     }//GEN-LAST:event_tblHoaDonChoMouseClicked
 
     private void btnTaoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonActionPerformed
@@ -681,12 +924,16 @@ public class PanelBanHang extends javax.swing.JPanel {
 
     private void btnXoaKhoiDonHang2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaKhoiDonHang2ActionPerformed
         int row = tblHoaDonCho.getSelectedRow();
-        if(row!=-1){
+        if (row != -1) {
             txtMaHD.setText(tblHoaDonCho.getValueAt(row, 0).toString());
             showTableDonHang();
             showHoaDonCho();
         }
     }//GEN-LAST:event_btnXoaKhoiDonHang2ActionPerformed
+
+    private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThanhToanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -993,7 +1240,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             hoaDon.setTrangThai(true);
             if (daoHD.update(hoaDon) > 0) {
                 JOptionPane.showMessageDialog(this, "Thanh toán thành công");
-                btnTaoHoaDonMouseClicked(null);
+                //btnTaoHoaDonMouseClicked(null);
             }
         } catch (SQLException ex) {
             Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
@@ -1009,10 +1256,10 @@ public class PanelBanHang extends javax.swing.JPanel {
             modelHDC.setRowCount(0);
             for (HoaDon hd : daoHD.selectHoaDonCho()) {
                 String tenKH = "";
-                if(hd.getMaKH()!=null){
+                if (hd.getMaKH() != null) {
                     tenKH = daoKH.selectByID(hd.getMaKH()).getTenKH();
                 }
-                modelHDC.addRow(new Object[]{hd.getMaHD(),FormatDate.toString(hd.getThoiGianBan()),TextUtil.round(hd.getTongTienCuoi()),tenKH});
+                modelHDC.addRow(new Object[]{hd.getMaHD(), FormatDate.toString(hd.getThoiGianBan()), TextUtil.round(hd.getTongTienCuoi()), tenKH});
             }
         } catch (Exception e) {
             e.printStackTrace();
