@@ -239,9 +239,10 @@ public class PanelBanHang extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnThemVaoDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnThemVaoDonHang)
+                .addContainerGap())
         );
 
         jPanelĐonHang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ĐƠN HÀNG", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
@@ -796,7 +797,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             Table threeColTable1 = new Table(threeColWidth);
             int row = tblDonHang.getRowCount();
             for (int i = 0; i < row; i++) {
-                System.out.println("add đơn hàng thành công");
+                System.out.println("add đon hàng thành công");
                 String tenSP = String.valueOf(tblDonHang.getValueAt(i, 1));
                 String soLuongSP = String.valueOf(tblDonHang.getValueAt(i, 2));
                 String gia = String.valueOf(tblDonHang.getValueAt(i, 3));
