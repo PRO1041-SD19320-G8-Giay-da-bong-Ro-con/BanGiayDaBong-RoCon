@@ -909,8 +909,6 @@ public class PanelBanHang extends javax.swing.JPanel {
                     return;
                 }
                 xuatHoaDon();
-            } else {
-                return;
             }
             btnTaoHoaDonMouseClicked(null);
         } else {
