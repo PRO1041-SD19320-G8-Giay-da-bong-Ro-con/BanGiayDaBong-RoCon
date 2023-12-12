@@ -689,14 +689,14 @@ public class PanelBanHang extends javax.swing.JPanel {
             PdfDocument pdfDocument = new PdfDocument(pdfWriter);
             pdfDocument.setDefaultPageSize(PageSize.A4);
             Document dcm = new Document(pdfDocument);
-            
+
             try {
                 PdfFont font = PdfFontFactory.createFont("src\\main\\java\\font\\arial.ttf", PdfEncodings.IDENTITY_H);
                 dcm.setFont(font);
             } catch (Exception ex) {
                 Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             String path = "src\\main\\java\\img\\logo.png";
             try {
                 ImageData imgData = ImageDataFactory.create(path);
@@ -709,7 +709,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             } catch (MalformedURLException ex) {
                 Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             float twoCol = 285f;
             float threeCol = 190f;
             float twoCol150 = twoCol + 150f;
@@ -720,9 +720,7 @@ public class PanelBanHang extends javax.swing.JPanel {
 
             Table table = new Table(twoColWidth);
 
-            Table table1 = new Table(new float[]{twoCol / 2, twoCol / 2});
-
-            Table twoColTable2 = new Table(twoColWidth);
+            Table table1 = new Table(new float[]{twoCol / 2, twoCol / 2});           
             table.addCell(new Cell().add(new Paragraph("Invoice")).setFontSize(25f).setBorder(Border.NO_BORDER).setBold());
             table1.addCell(getHeaderTextCell("Mã HD: "));
             table1.addCell(getHeaderTextCellValue(txtMaHD.getText()));
@@ -751,12 +749,18 @@ public class PanelBanHang extends javax.swing.JPanel {
 
             try {
                 KhachHang kh = daoKH.selectByID(lblKhachHang.getText());
-                twoColTable1.addCell(getCell10Left(kh.getTenKH(), false));
+                if (kh == null) {
+                    twoColTable1.addCell(getCell10Left("...................................................", false));
+                } else {
+                    twoColTable1.addCell(getCell10Left(kh.getTenKH(), false));
+                }
 
             } catch (SQLException ex) {
                 Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
             }
             dcm.add(twoColTable1);
+            
+            Table twoColTable2 = new Table(twoColWidth);
             twoColTable2.addCell(getCell10Left("Nhân viên", true));
             twoColTable2.addCell(getCell10Left("Địa chỉ", true));
             try {
@@ -767,7 +771,11 @@ public class PanelBanHang extends javax.swing.JPanel {
             }
             try {
                 KhachHang kh = daoKH.selectByID(lblKhachHang.getText());
-                twoColTable2.addCell(getCell10Left(kh.getDiaChi(), false));
+                if (kh == null) {
+                    twoColTable2.addCell(getCell10Left("...................................................", false));
+                } else {
+                    twoColTable2.addCell(getCell10Left(kh.getDiaChi(), false));
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -860,8 +868,6 @@ public class PanelBanHang extends javax.swing.JPanel {
             tb1.setBorder(bd2);
             dcm.add(tb1);
 
-            
-            
             dcm.close();
             JOptionPane.showMessageDialog(this, "Xuất hóa đơn thành công");
         } catch (FileNotFoundException ex) {
@@ -893,8 +899,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             return;
         }
         try {
-            Float tttoan = Float.parseFloat(txtTienMatKhachTra.getText());
-
+            Float tttoan = Float.parseFloat(txtTienMatKhachTra.getText().trim());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập tiền thanh toán là 1 số dương");
             return;
@@ -904,10 +909,10 @@ public class PanelBanHang extends javax.swing.JPanel {
             thanhToan();
             int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn xuất hóa đơn không?");
             if (hoi == JOptionPane.YES_OPTION) {
-                if (lblKhachHang.getText() == null || lblKhachHang.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(this, "Bạn cần bổ sung thông tin khách hàng trước khi xuất hóa đơn");
-                    return;
-                }
+//                if (lblKhachHang.getText() == null || lblKhachHang.getText().isEmpty()) {
+//                    JOptionPane.showMessageDialog(this, "Bạn cần bổ sung thông tin khách hàng trước khi xuất hóa đơn");
+//                    return;
+//                }
                 xuatHoaDon();
             }
             btnTaoHoaDonMouseClicked(null);
