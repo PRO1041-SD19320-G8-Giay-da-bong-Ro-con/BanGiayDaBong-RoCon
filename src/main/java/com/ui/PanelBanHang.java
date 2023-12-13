@@ -757,7 +757,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             try {
                 KhachHang kh = daoKH.selectByID(lblKhachHang.getText());
                 if (kh == null) {
-                    twoColTable1.addCell(getCell10Left("...................................................", false));
+                    twoColTable1.addCell(new Cell().add(new Paragraph("..........")).setBold().setBorder(Border.NO_BORDER));
                 } else {
                     twoColTable1.addCell(getCell10Left(kh.getTenKH(), false));
                 }
@@ -779,7 +779,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             try {
                 KhachHang kh = daoKH.selectByID(lblKhachHang.getText());
                 if (kh == null) {
-                    twoColTable2.addCell(getCell10Left("...................................................", false));
+                    twoColTable2.addCell(new Cell().add(new Paragraph("..........")).setBold().setBorder(Border.NO_BORDER));
                 } else {
                     twoColTable2.addCell(getCell10Left(kh.getDiaChi(), false));
                 }
@@ -856,12 +856,6 @@ public class PanelBanHang extends javax.swing.JPanel {
             giamGiaTable.addCell(new Cell().add(new Paragraph(TextUtil.round(hehe - hehe1))).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
             dcm.add(giamGiaTable);
 
-            Table tongTienThanhToan = new Table(threeColWidth);
-            tongTienThanhToan.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
-            tongTienThanhToan.addCell(new Cell().add(new Paragraph("Tổng tiền thanh toán")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
-            tongTienThanhToan.addCell(new Cell().add(new Paragraph(lblTongTienThanhToan.getText())).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
-            dcm.add(tongTienThanhToan);
-            dcm.add(onesp);
 
             Table gachCham2 = new Table(onetwo);
             gachCham2.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
@@ -869,19 +863,13 @@ public class PanelBanHang extends javax.swing.JPanel {
             dcm.add(gachCham2);
             dcm.add(onesp);
 
-            Table tongTienKHTraTable = new Table(threeColWidth);
-            tongTienKHTraTable.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
-            tongTienKHTraTable.addCell(new Cell().add(new Paragraph("Tổng tiền khách trả")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
-            tongTienKHTraTable.addCell(new Cell().add(new Paragraph(TextUtil.round(Double.parseDouble(txtTienMatKhachTra.getText())))).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
-            dcm.add(tongTienKHTraTable);
-
-            Table tienThuaTable = new Table(threeColWidth);
-            tienThuaTable.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
-            tienThuaTable.addCell(new Cell().add(new Paragraph("Tiền thừa")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
-            tienThuaTable.addCell(new Cell().add(new Paragraph(lblTienThua.getText())).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
-            dcm.add(tienThuaTable);
+            Table tongTienThanhToan = new Table(threeColWidth);
+            tongTienThanhToan.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            tongTienThanhToan.addCell(new Cell().add(new Paragraph("Tổng tiền thanh toán")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+            tongTienThanhToan.addCell(new Cell().add(new Paragraph(lblTongTienThanhToan.getText())).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
+            dcm.add(tongTienThanhToan);
             dcm.add(onesp);
-
+            
             Table gachCham3 = new Table(fullWidth);
             dcm.add(gachCham3.setBorder(bd1));
             dcm.add(onesp);
@@ -933,15 +921,10 @@ public class PanelBanHang extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập tiền thanh toán là 1 số dương");
             return;
         }
-
         if (checkTableDonHang()) {
             thanhToan();
             int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn xuất hóa đơn không?");
             if (hoi == JOptionPane.YES_OPTION) {
-//                if (lblKhachHang.getText() == null || lblKhachHang.getText().isEmpty()) {
-//                    JOptionPane.showMessageDialog(this, "Bạn cần bổ sung thông tin khách hàng trước khi xuất hóa đơn");
-//                    return;
-//                }
                 xuatHoaDon();
             }
             btnTaoHoaDonMouseClicked(null);
