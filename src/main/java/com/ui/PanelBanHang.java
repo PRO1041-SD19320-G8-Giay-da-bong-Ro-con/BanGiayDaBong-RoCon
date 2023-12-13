@@ -180,9 +180,12 @@ public class PanelBanHang extends javax.swing.JPanel {
         tblHoaDonCho = new javax.swing.JTable();
         btnXoaKhoiDonHang2 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 255));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel1.setText("BÁN HÀNG");
 
+        jPanelSanPham.setBackground(new java.awt.Color(255, 255, 255));
         jPanelSanPham.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "THÔNG TIN SẢN PHẨM", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
@@ -250,6 +253,7 @@ public class PanelBanHang extends javax.swing.JPanel {
                 .addComponent(btnThemVaoDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jPanelĐonHang.setBackground(new java.awt.Color(204, 204, 204));
         jPanelĐonHang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ĐƠN HÀNG", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         tblDonHang.setModel(new javax.swing.table.DefaultTableModel(
@@ -312,6 +316,9 @@ public class PanelBanHang extends javax.swing.JPanel {
                     .addComponent(btnXoaKhoiDonHang1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
+        jPanelĐonHangLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnXoaKhoiDonHang, btnXoaKhoiDonHang1});
+
+        jPanelQLHD.setBackground(new java.awt.Color(204, 204, 204));
         jPanelQLHD.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ĐƠN HÀNG", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         jLabel2.setText("Khách hàng");
@@ -367,7 +374,7 @@ public class PanelBanHang extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel20)
                     .addComponent(jLabel18))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,16 +493,16 @@ public class PanelBanHang extends javax.swing.JPanel {
                         .addComponent(jLabel6)
                         .addContainerGap())
                     .addGroup(jPanelQLHDLayout.createSequentialGroup()
-                        .addGroup(jPanelQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnThanhToan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnThanhToan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelQLHDLayout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
                                 .addComponent(lblTongTienThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel16))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel16)))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelQLHDLayout.setVerticalGroup(
             jPanelQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -540,6 +547,7 @@ public class PanelBanHang extends javax.swing.JPanel {
 
         jPanelQLHDLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblKhachHang, txtMaHD, txtMaNV});
 
+        jPanelHoaDonCho.setBackground(new java.awt.Color(204, 255, 255));
         jPanelHoaDonCho.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "HÓA ĐƠN CHỜ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         tblHoaDonCho.setModel(new javax.swing.table.DefaultTableModel(
