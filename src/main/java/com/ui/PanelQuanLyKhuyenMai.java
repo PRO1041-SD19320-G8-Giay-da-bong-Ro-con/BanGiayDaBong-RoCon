@@ -14,6 +14,8 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import com.entity.KhachHang;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import model.KhuyenMai;
@@ -194,9 +196,9 @@ public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addComponent(btnAdd)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
@@ -576,6 +578,7 @@ public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
         id = -1;
     }
     String checkTen = "[0-9]+";
+
     private KhuyenMai readForm() {
         String maKM = txtMa.getText();
         String tenKM = txtTen.getText();
@@ -584,17 +587,14 @@ public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
         String giamgia = txtGiamGia.getText();
         String ngayBD = txtNgayBatDau.getText();
         String ngayKT = txtNgayKetThuc.getText();
+        String format = "dd/MM/yyyy";
 
         if (maKM.trim().isEmpty() || tenKM.trim().isEmpty() || noiDung.trim().isEmpty() || ngayBD.trim().isEmpty() || ngayKT.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Phải nhập đầy đủ dữ liệu ");
             return null;
         }
-        try {
-            FormatDate.toDate(ngayBD);
-            FormatDate.toDate(ngayKT);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, " Sai định dạng năm sinh");
+        if (!FormatDate.isValidDate(ngayBD) || !FormatDate.isValidDate(ngayKT)) {
+            JOptionPane.showMessageDialog(this, "Sai định dạng ngày 'dd/MM/yyyy' ");
             return null;
         }
         float gia;
@@ -608,13 +608,13 @@ public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, " giảm giá là một số ");
             return null;
         }
-        String format = "dd/MM/yyyy";
+
         if (!validateNgay(ngayBD, ngayKT, format)) {
             JOptionPane.showMessageDialog(this, "Ngày bắt đầu phải  lớn hơn ngày kết thúc");
             return null;
         }
-         Matcher mtTen = Pattern.compile(checkTen).matcher(tenKM);
-         if (mtTen.matches()) {
+        Matcher mtTen = Pattern.compile(checkTen).matcher(tenKM);
+        if (mtTen.matches()) {
             JOptionPane.showMessageDialog(this, "Tên khuyến mãi phải có thêm nội dung");
             return null;
         }
@@ -637,4 +637,15 @@ public class PanelQuanLyKhuyenMai extends javax.swing.JPanel {
         }
     }
 
+//    public static boolean isValidDate(String dateText, String dateFormat) {
+//        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+//        sdf.setLenient(false);
+//
+//        try {
+//            Date date = sdf.parse(dateText);
+//            return true;
+//        } catch (ParseException e) {
+//            return false;
+//        }
+//    }
 }

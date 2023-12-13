@@ -76,7 +76,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Tìm kiếm", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 15))); // NOI18N
 
         txtSearch.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtSearch.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+        txtSearch.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(204, 204, 255), null, null)));
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearchKeyReleased(evt);
@@ -85,7 +85,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
 
         cbTrangThai.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cbTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang bán", "Ngừng bán", "Tất cả" }));
-        cbTrangThai.setBorder(null);
+        cbTrangThai.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255)));
         cbTrangThai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbTrangThaiActionPerformed(evt);
@@ -127,7 +127,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
 
         btnThem.setBackground(new java.awt.Color(255, 204, 0));
         btnThem.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        btnThem.setText("Thêm");
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add2.png"))); // NOI18N
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -135,7 +135,8 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
         });
 
         btnChiTiet.setBackground(new java.awt.Color(255, 204, 0));
-        btnChiTiet.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        btnChiTiet.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/chitiet.png"))); // NOI18N
         btnChiTiet.setText("Chi tiết");
         btnChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +144,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel8.setText("Danh sách sản phẩm");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N

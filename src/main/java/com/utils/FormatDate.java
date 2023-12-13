@@ -13,15 +13,30 @@ import java.util.Date;
  * @author Thai
  */
 public class FormatDate {
+
     static SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
-    public static String toString(Date date){
+
+    public static String toString(Date date) {
         return formater.format(date);
     }
-    public static Date toDate(String date){
+
+    public static Date toDate(String date) {
         try {
             return formater.parse(date);
         } catch (ParseException ex) {
             throw new Error("Lỗi format toDate");
+        }
+    }
+
+    public static boolean isValidDate(String dateText) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+
+        try {
+            Date date = sdf.parse(dateText);
+            return true;
+        } catch (ParseException e) {
+            return false;
         }
     }
 }

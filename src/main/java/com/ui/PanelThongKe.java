@@ -63,7 +63,7 @@ public class PanelThongKe extends javax.swing.JPanel {
         tblHangSapHet = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
-        jTabbedPane1.setBackground(new java.awt.Color(153, 255, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
 
         tblDoanhThu.setModel(new javax.swing.table.DefaultTableModel(

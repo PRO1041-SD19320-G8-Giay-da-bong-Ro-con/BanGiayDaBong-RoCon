@@ -46,12 +46,15 @@ public class PanelLichSuMuaHang extends javax.swing.JPanel {
         tblLichSu = new javax.swing.JTable();
         btnXemChiTiet = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 255));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Lịch Sử Mua Hàng ");
 
         btnThoat.setBackground(new java.awt.Color(51, 255, 51));
         btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/prev.png"))); // NOI18N
         btnThoat.setText("Quay Lại");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,8 +82,9 @@ public class PanelLichSuMuaHang extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tblLichSu);
 
         btnXemChiTiet.setBackground(new java.awt.Color(255, 204, 0));
-        btnXemChiTiet.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnXemChiTiet.setText("Xem chi tiết");
+        btnXemChiTiet.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        btnXemChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/chitiet.png"))); // NOI18N
+        btnXemChiTiet.setText("Chi tiết");
         btnXemChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXemChiTietActionPerformed(evt);
@@ -97,7 +101,7 @@ public class PanelLichSuMuaHang extends javax.swing.JPanel {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnThoat)
-                        .addGap(207, 207, 207)
+                        .addGap(188, 188, 188)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()

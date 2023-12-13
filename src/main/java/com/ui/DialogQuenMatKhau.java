@@ -102,6 +102,7 @@ public class DialogQuenMatKhau extends javax.swing.JDialog {
 
         btnXacNhanTaiKhoan.setBackground(new java.awt.Color(255, 204, 0));
         btnXacNhanTaiKhoan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnXacNhanTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/confirm.png"))); // NOI18N
         btnXacNhanTaiKhoan.setText("Xác Nhận");
         btnXacNhanTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +112,7 @@ public class DialogQuenMatKhau extends javax.swing.JDialog {
 
         btnHuyXacNhanTaiKhoan.setBackground(new java.awt.Color(255, 204, 0));
         btnHuyXacNhanTaiKhoan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnHuyXacNhanTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/xoa123.png"))); // NOI18N
         btnHuyXacNhanTaiKhoan.setText("Hủy");
         btnHuyXacNhanTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -250,6 +250,7 @@ public class PanelQuanLyKhachHang extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tblKH);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Quản Lý Khách Hàng");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -367,11 +368,8 @@ public class PanelQuanLyKhachHang extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Hãy nhập dữ liệu đầy đủ ");
             return null;
         }
-        try {
-            FormatDate.toDate(ngaySinh);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, " Sai định dạng ngày sinh");
+        if (!FormatDate.isValidDate(ngaySinh)) {
+            JOptionPane.showMessageDialog(this, "Sai định dạng ngày 'dd/MM/yyyy' ");
             return null;
         }
         Matcher mt = Pattern.compile(checkSDT).matcher(sdt);
