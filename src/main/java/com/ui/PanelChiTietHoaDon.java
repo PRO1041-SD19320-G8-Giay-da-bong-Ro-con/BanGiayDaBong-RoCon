@@ -5,12 +5,42 @@
 package com.ui;
 
 import com.dao.ChiTietHoaDonDAO;
+import com.dao.KhachHangDAO;
 import com.dao.KhuyenMaiDAO;
+import com.dao.TaiKhoanDAO;
 import com.entity.HoaDon;
+import com.entity.KhachHang;
+import com.entity.TaiKhoan;
+import com.itextpdf.io.font.PdfEncodings;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.colors.DeviceGray;
+import com.itextpdf.kernel.colors.DeviceRgb;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.borders.Border;
+import com.itextpdf.layout.borders.DashedBorder;
+import com.itextpdf.layout.borders.SolidBorder;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.properties.TextAlignment;
 import com.main.Main;
 import com.utils.TextUtil;
 import java.awt.Color;
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -29,6 +59,8 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
     DefaultTableModel model;
     ChiTietHoaDonDAO daoCTHD = new ChiTietHoaDonDAO();
     KhuyenMaiDAO daoKM = new KhuyenMaiDAO();
+    KhachHangDAO daoKH = new KhachHangDAO();
+    TaiKhoanDAO daoTK = new TaiKhoanDAO();
     
     JPanel parent;
 
@@ -76,6 +108,7 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
         txtTongTienCuoi = new javax.swing.JLabel();
         txtTongTienGoc = new javax.swing.JLabel();
         btnThoat = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         panelChiTietHoaDon.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -155,6 +188,13 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Xuất hóa đơn");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelChiTietHoaDonLayout = new javax.swing.GroupLayout(panelChiTietHoaDon);
         panelChiTietHoaDon.setLayout(panelChiTietHoaDonLayout);
         panelChiTietHoaDonLayout.setHorizontalGroup(
@@ -166,15 +206,9 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
                         .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelChiTietHoaDonLayout.createSequentialGroup()
-                        .addGroup(panelChiTietHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelChiTietHoaDonLayout.createSequentialGroup()
-                                .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelChiTietHoaDonLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtMaHD)))
+                        .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelChiTietHoaDonLayout.createSequentialGroup()
                         .addGroup(panelChiTietHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -211,21 +245,34 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtTongTienCuoi)))
-                        .addGap(241, 241, 241))))
+                        .addGap(241, 241, 241))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelChiTietHoaDonLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMaHD)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(112, 112, 112))))
         );
         panelChiTietHoaDonLayout.setVerticalGroup(
             panelChiTietHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelChiTietHoaDonLayout.createSequentialGroup()
                 .addGroup(panelChiTietHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18)
                     .addGroup(panelChiTietHoaDonLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelChiTietHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtMaHD))
-                .addGap(18, 18, 18)
+                        .addGroup(panelChiTietHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18)
+                            .addGroup(panelChiTietHoaDonLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelChiTietHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtMaHD))
+                        .addGap(18, 18, 18))
+                    .addGroup(panelChiTietHoaDonLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(panelChiTietHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtTaiKhoan)
@@ -274,9 +321,230 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
         Main.changeForm(parent);
     }//GEN-LAST:event_btnThoatActionPerformed
 
+    private void xuatHoaDon() {
+        if(txtTrangThai.getText().equalsIgnoreCase("Chưa thanh toán")){
+            JOptionPane.showMessageDialog(this, "Hóa đơn cần được thanh toán trước khi xuất hóa đơn");
+            return;
+        }
+        try {
+            PdfWriter pdfWriter = new PdfWriter(txtMaHD.getText() + ".pdf");
+            PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+            pdfDocument.setDefaultPageSize(PageSize.A4);
+            Document dcm = new Document(pdfDocument);
+
+            try {
+                PdfFont font = PdfFontFactory.createFont("src\\main\\java\\font\\arial.ttf", PdfEncodings.IDENTITY_H);
+                dcm.setFont(font);
+            } catch (Exception ex) {
+                Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            String path = "src\\main\\java\\img\\logo.png";
+            try {
+                ImageData imgData = ImageDataFactory.create(path);
+                Image img = new Image(imgData);
+                float x = pdfDocument.getDefaultPageSize().getWidth() / 2;
+                float y = pdfDocument.getDefaultPageSize().getHeight() / 2;
+                img.setFixedPosition(x - 220, y - 110);
+                img.setOpacity(0.2f);
+                dcm.add(img);
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            float twoCol = 285f;
+            float threeCol = 190f;
+            float twoCol150 = twoCol + 150f;
+            float twoColWidth[] = {twoCol150, twoCol};
+            float threeColWidth[] = {threeCol, threeCol, threeCol};
+            float fullWidth[] = {threeCol * 3};
+            Paragraph onesp = new Paragraph("\n");
+
+            Table table = new Table(twoColWidth);
+
+            Table table1 = new Table(new float[]{twoCol / 2, twoCol / 2});           
+            table.addCell(new Cell().add(new Paragraph("Invoice")).setFontSize(25f).setBorder(Border.NO_BORDER).setBold());
+            table1.addCell(getHeaderTextCell("Mã HD: "));
+            table1.addCell(getHeaderTextCellValue(txtMaHD.getText()));
+            table1.addCell(getHeaderTextCell("Ngày tạo: "));
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            table1.addCell(getHeaderTextCellValue(sdf.format(new Date())));
+            Border bd = new SolidBorder(new DeviceGray(0.7f), 2f);
+
+            Table tb = new Table(fullWidth);
+            tb.setBorder(bd);
+            table.addCell(new Cell().add(table1).setBorder(Border.NO_BORDER));
+
+            Table twoColTable = new Table(twoColWidth);
+            twoColTable.addCell(getBillingAndShippingCell("Thông tin hóa đơn"));
+            twoColTable.addCell(getBillingAndShippingCell("Thông tin khách hàng"));
+            dcm.add(table);
+            dcm.add(onesp);
+            dcm.add(tb);
+            dcm.add(onesp);
+            dcm.add(twoColTable.setMarginBottom(12f));
+
+            Table twoColTable1 = new Table(twoColWidth);
+            twoColTable1.addCell(getCell10Left("Cửa hàng", true));
+            twoColTable1.addCell(getCell10Left("Họ tên KH", true));
+            twoColTable1.addCell(getCell10Left("Bán giày đá bóng RoCon", false));
+
+            try {
+                KhachHang kh = daoKH.selectByID(txtKhachHang.getText());
+                if (kh == null) {
+                    twoColTable1.addCell(getCell10Left("...................................................", false));
+                } else {
+                    twoColTable1.addCell(getCell10Left(kh.getTenKH(), false));
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            dcm.add(twoColTable1);
+            
+            Table twoColTable2 = new Table(twoColWidth);
+            twoColTable2.addCell(getCell10Left("Nhân viên", true));
+            twoColTable2.addCell(getCell10Left("Địa chỉ", true));
+            try {
+                TaiKhoan tk = daoTK.selectByID(txtTaiKhoan.getText().trim());
+                twoColTable2.addCell(getCell10Left(tk.getTen(), false));
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                KhachHang kh = daoKH.selectByID(txtKhachHang.getText());
+                if (kh == null) {
+                    twoColTable2.addCell(getCell10Left("...................................................", false));
+                } else {
+                    twoColTable2.addCell(getCell10Left(kh.getDiaChi(), false));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            dcm.add(twoColTable2);
+            float oneColumnWidth[] = {twoCol150};
+
+            Table oneColumnTable = new Table(oneColumnWidth);
+            oneColumnTable.addCell(getCell10Left("Số DT", true));
+            try {
+                TaiKhoan tk = daoTK.selectByID(txtTaiKhoan.getText().trim());
+                oneColumnTable.addCell(getCell10Left(tk.getSdt(), false));
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            oneColumnTable.addCell(getCell10Left("Email", true));
+            try {
+                TaiKhoan tk = daoTK.selectByID(txtTaiKhoan.getText().trim());
+                oneColumnTable.addCell(getCell10Left(tk.getEmail(), false));
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            dcm.add(oneColumnTable.setMarginTop(10f));
+            dcm.add(onesp);
+
+            Table gachCham = new Table(fullWidth);
+            Border bd1 = new DashedBorder(new DeviceGray(0.7f), 0.5f);
+            dcm.add(gachCham.setBorder(bd1));
+            dcm.add(onesp);
+            dcm.add(new Paragraph("Sản phẩm").setBold().setFontSize(15f));
+            dcm.add(onesp);
+            Table threeColTable = new Table(threeColWidth);
+            threeColTable.setBackgroundColor(new DeviceRgb(0, 0, 0), 0.7f);
+            threeColTable.addCell(new Cell().add(new Paragraph("Tên SP")).setBold().setFontColor(new DeviceRgb(1.0f, 1.0f, 1.0f)).setBorder(Border.NO_BORDER));
+            threeColTable.addCell(new Cell().add(new Paragraph("Số lượng")).setBold().setFontColor(new DeviceRgb(1.0f, 1.0f, 1.0f)).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+            threeColTable.addCell(new Cell().add(new Paragraph("Giá (VND)")).setBold().setFontColor(new DeviceRgb(1.0f, 1.0f, 1.0f)).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT).setMarginRight(15f));
+            dcm.add(threeColTable);
+            dcm.add(onesp);
+
+            Table threeColTable1 = new Table(threeColWidth);
+            int row = tblChiTietHoaDon.getRowCount();
+            for (int i = 0; i < row; i++) {
+                System.out.println("add đon hàng thành công");
+                String tenSP = String.valueOf(tblChiTietHoaDon.getValueAt(i, 1));
+                String soLuongSP = String.valueOf(tblChiTietHoaDon.getValueAt(i, 2));
+                String gia = String.valueOf(tblChiTietHoaDon.getValueAt(i, 3));
+                threeColTable1.addCell(new Cell().add(new Paragraph(tenSP)).setMarginLeft(10f).setBorder(Border.NO_BORDER));
+                threeColTable1.addCell(new Cell().add(new Paragraph(soLuongSP)).setTextAlignment(TextAlignment.CENTER).setBorder(Border.NO_BORDER));
+                threeColTable1.addCell(new Cell().add(new Paragraph(gia)).setMarginRight(15f).setTextAlignment(TextAlignment.RIGHT).setBorder(Border.NO_BORDER));
+            }
+            dcm.add(threeColTable1.setMarginBottom(20f));
+            float onetwo[] = {threeCol + 125f, threeCol * 2};
+
+            Table gachCham1 = new Table(onetwo);
+            gachCham1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            gachCham1.addCell(new Cell().add(gachCham).setBorder(Border.NO_BORDER));
+            dcm.add(gachCham1);
+            dcm.add(onesp);
+
+            Table tongTienGoc = new Table(threeColWidth);
+            tongTienGoc.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            tongTienGoc.addCell(new Cell().add(new Paragraph("Tổng tiền gốc")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+            tongTienGoc.addCell(new Cell().add(new Paragraph(txtTongTienGoc.getText())).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
+            dcm.add(tongTienGoc);
+                        
+            Double hehe = Double.parseDouble(txtTongTienGoc.getText().replaceAll("\\.", ""));
+            Double hehe1 = Double.parseDouble(txtTongTienCuoi.getText().replaceAll("\\.", ""));
+            
+            Table giamGiaTable = new Table(threeColWidth);
+            giamGiaTable.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            giamGiaTable.addCell(new Cell().add(new Paragraph("Giảm giá")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+            giamGiaTable.addCell(new Cell().add(new Paragraph(TextUtil.round(hehe-hehe1))).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
+            dcm.add(giamGiaTable);
+            
+            Table gachCham2 = new Table(onetwo);
+            gachCham2.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            gachCham2.addCell(new Cell().add(gachCham).setBorder(Border.NO_BORDER));
+            dcm.add(gachCham2);
+            dcm.add(onesp);
+            
+            Table tongTienThanhToanTable = new Table(threeColWidth);
+            tongTienThanhToanTable.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            tongTienThanhToanTable.addCell(new Cell().add(new Paragraph("Tổng tiền thanh toán")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+            tongTienThanhToanTable.addCell(new Cell().add(new Paragraph(txtTongTienCuoi.getText())).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
+            dcm.add(tongTienThanhToanTable);
+            dcm.add(onesp);
+            
+            Table gachCham3 = new Table(fullWidth);
+            dcm.add(gachCham3.setBorder(bd1));
+            dcm.add(onesp);
+            Border bd2 = new SolidBorder(new DeviceRgb(0, 0, 0), 2f);
+            Table tb1 = new Table(fullWidth);
+            tb1.setBorder(bd2);
+            dcm.add(tb1);
+
+            dcm.close();
+            JOptionPane.showMessageDialog(this, "Xuất hóa đơn thành công");
+        } catch (FileNotFoundException ex) {
+            return;
+        }
+    }
+
+    private static Cell getHeaderTextCell(String textValue) {
+        return new Cell().add(new Paragraph(textValue)).setBold().setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT);
+    }
+
+    private static Cell getHeaderTextCellValue(String textValue) {
+        return new Cell().add(new Paragraph(textValue)).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.LEFT);
+    }
+
+    private static Cell getBillingAndShippingCell(String textValue) {
+        return new Cell().add(new Paragraph(textValue)).setFontSize(12f).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.LEFT).setBold();
+    }
+
+    private static Cell getCell10Left(String textValue, Boolean isBold) {
+        Cell myCell = new Cell().add(new Paragraph(textValue)).setFontSize(10f).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.LEFT);
+        return isBold ? myCell.setBold() : myCell;
+    }
+    
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        xuatHoaDon();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnThoat;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;

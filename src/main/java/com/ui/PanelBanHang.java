@@ -833,12 +833,27 @@ public class PanelBanHang extends javax.swing.JPanel {
             gachCham1.addCell(new Cell().add(gachCham).setBorder(Border.NO_BORDER));
             dcm.add(gachCham1);
             dcm.add(onesp);
+            
+            Table tongTienGoc = new Table(threeColWidth);
+            tongTienGoc.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            tongTienGoc.addCell(new Cell().add(new Paragraph("Tổng tiền gốc")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+            tongTienGoc.addCell(new Cell().add(new Paragraph(lblTongTien.getText())).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
+            dcm.add(tongTienGoc);
 
-            Table tongTien = new Table(threeColWidth);
-            tongTien.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
-            tongTien.addCell(new Cell().add(new Paragraph("Tổng tiền thanh toán")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
-            tongTien.addCell(new Cell().add(new Paragraph(lblTongTienThanhToan.getText())).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
-            dcm.add(tongTien);
+            Double hehe = Double.parseDouble(lblTongTien.getText().replaceAll("\\.", ""));
+            Double hehe1 = Double.parseDouble(lblTongTienThanhToan.getText().replaceAll("\\.", ""));
+            
+            Table giamGiaTable = new Table(threeColWidth);
+            giamGiaTable.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            giamGiaTable.addCell(new Cell().add(new Paragraph("Giảm giá")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+            giamGiaTable.addCell(new Cell().add(new Paragraph(TextUtil.round(hehe-hehe1))).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
+            dcm.add(giamGiaTable);
+            
+            Table tongTienThanhToan = new Table(threeColWidth);
+            tongTienThanhToan.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            tongTienThanhToan.addCell(new Cell().add(new Paragraph("Tổng tiền thanh toán")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+            tongTienThanhToan.addCell(new Cell().add(new Paragraph(lblTongTienThanhToan.getText())).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
+            dcm.add(tongTienThanhToan);
             dcm.add(onesp);
 
             Table gachCham2 = new Table(onetwo);
@@ -1199,7 +1214,10 @@ public class PanelBanHang extends javax.swing.JPanel {
             int row = tblDonHang.getSelectedRow();
             if (row != -1) {
                 String txt = JOptionPane.showInputDialog(this, "Nhập số lượng");
-                if (!TextUtil.isNAN(txt)) {
+                if(txt==null){
+                    return;
+                }
+                 if (!TextUtil.isNAN(txt)) {
                     try {
                         String id = tblDonHang.getValueAt(row, 0).toString();
                         int soLuong = Integer.valueOf(txt);

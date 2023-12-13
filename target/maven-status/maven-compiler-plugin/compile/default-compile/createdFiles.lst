@@ -4,6 +4,7 @@ com\ui\PanelBanHang$18.class
 com\ui\PanelQuanLyNhanVien$1.class
 com\ui\PanelQuanLyThuocTinh$2.class
 com\ui\PanelChiTietKhachHang$2.class
+com\ui\PanelChiTietHoaDon$2.class
 com\ui\PanelQuanLyTaiKhoan.class
 model\LoaiGiay.class
 services\SanPham_Ser.class
