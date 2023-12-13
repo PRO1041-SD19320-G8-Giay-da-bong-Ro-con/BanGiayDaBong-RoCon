@@ -720,7 +720,7 @@ public class PanelBanHang extends javax.swing.JPanel {
 
             Table table = new Table(twoColWidth);
 
-            Table table1 = new Table(new float[]{twoCol / 2, twoCol / 2});           
+            Table table1 = new Table(new float[]{twoCol / 2, twoCol / 2});
             table.addCell(new Cell().add(new Paragraph("Invoice")).setFontSize(25f).setBorder(Border.NO_BORDER).setBold());
             table1.addCell(getHeaderTextCell("Mã HD: "));
             table1.addCell(getHeaderTextCellValue(txtMaHD.getText()));
@@ -759,7 +759,7 @@ public class PanelBanHang extends javax.swing.JPanel {
                 Logger.getLogger(PanelBanHang.class.getName()).log(Level.SEVERE, null, ex);
             }
             dcm.add(twoColTable1);
-            
+
             Table twoColTable2 = new Table(twoColWidth);
             twoColTable2.addCell(getCell10Left("Nhân viên", true));
             twoColTable2.addCell(getCell10Left("Địa chỉ", true));
@@ -833,7 +833,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             gachCham1.addCell(new Cell().add(gachCham).setBorder(Border.NO_BORDER));
             dcm.add(gachCham1);
             dcm.add(onesp);
-            
+
             Table tongTienGoc = new Table(threeColWidth);
             tongTienGoc.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
             tongTienGoc.addCell(new Cell().add(new Paragraph("Tổng tiền gốc")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
@@ -842,13 +842,13 @@ public class PanelBanHang extends javax.swing.JPanel {
 
             Double hehe = Double.parseDouble(lblTongTien.getText().replaceAll("\\.", ""));
             Double hehe1 = Double.parseDouble(lblTongTienThanhToan.getText().replaceAll("\\.", ""));
-            
+
             Table giamGiaTable = new Table(threeColWidth);
             giamGiaTable.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
             giamGiaTable.addCell(new Cell().add(new Paragraph("Giảm giá")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
-            giamGiaTable.addCell(new Cell().add(new Paragraph(TextUtil.round(hehe-hehe1))).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
+            giamGiaTable.addCell(new Cell().add(new Paragraph(TextUtil.round(hehe - hehe1))).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
             dcm.add(giamGiaTable);
-            
+
             Table tongTienThanhToan = new Table(threeColWidth);
             tongTienThanhToan.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
             tongTienThanhToan.addCell(new Cell().add(new Paragraph("Tổng tiền thanh toán")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
@@ -919,15 +919,10 @@ public class PanelBanHang extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập tiền thanh toán là 1 số dương");
             return;
         }
-
         if (checkTableDonHang()) {
             thanhToan();
             int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn xuất hóa đơn không?");
             if (hoi == JOptionPane.YES_OPTION) {
-//                if (lblKhachHang.getText() == null || lblKhachHang.getText().isEmpty()) {
-//                    JOptionPane.showMessageDialog(this, "Bạn cần bổ sung thông tin khách hàng trước khi xuất hóa đơn");
-//                    return;
-//                }
                 xuatHoaDon();
             }
             btnTaoHoaDonMouseClicked(null);
@@ -1214,10 +1209,10 @@ public class PanelBanHang extends javax.swing.JPanel {
             int row = tblDonHang.getSelectedRow();
             if (row != -1) {
                 String txt = JOptionPane.showInputDialog(this, "Nhập số lượng");
-                if(txt==null){
+                if (txt == null) {
                     return;
                 }
-                 if (!TextUtil.isNAN(txt)) {
+                if (!TextUtil.isNAN(txt)) {
                     try {
                         String id = tblDonHang.getValueAt(row, 0).toString();
                         int soLuong = Integer.valueOf(txt);
