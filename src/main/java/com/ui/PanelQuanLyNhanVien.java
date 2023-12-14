@@ -187,7 +187,7 @@ public class PanelQuanLyNhanVien extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         tbl_qlnv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
