@@ -332,7 +332,7 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
             return;
         }
         try {
-            PdfWriter pdfWriter = new PdfWriter(txtMaHD.getText() + ".pdf");
+            PdfWriter pdfWriter = new PdfWriter(PanelChiTietHoaDon.class.getResource("/hoaDon/").getPath()+txtMaHD.getText() + ".pdf");
             PdfDocument pdfDocument = new PdfDocument(pdfWriter);
             pdfDocument.setDefaultPageSize(PageSize.A4);
             Document dcm = new Document(pdfDocument);
@@ -574,7 +574,7 @@ public class PanelChiTietHoaDon extends javax.swing.JPanel {
 
     private void showForm() {
         txtMaHD.setText(hoaDon.getMaHD());
-        txtKhachHang.setText(hoaDon.getMaHD());
+        txtKhachHang.setText(hoaDon.getMaKH());
         txtKhuyenMai.setText(daoKM.getDetailKhuyenMai(hoaDon.getMaKM()));
         txtTaiKhoan.setText(hoaDon.getTaiKhoan());
         txtThoiGian.setText(formater.format(hoaDon.getThoiGianBan()));

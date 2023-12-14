@@ -148,7 +148,6 @@ public class DialogDangNhap extends javax.swing.JDialog {
         });
 
         lblQuenMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblQuenMatKhau.setForeground(new java.awt.Color(255, 51, 0));
         lblQuenMatKhau.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblQuenMatKhau.setText("Quên mật khẩu?");
 
@@ -302,7 +301,6 @@ public class DialogDangNhap extends javax.swing.JDialog {
                     if (taiKhoan.getTaikhoan().equals(tk)) {
                         if (taiKhoan.getMatkhau().equals(mk)) {
                             Auth.user = taiKhoan;
-                             JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
                             this.dispose();
                             return;
                         } else {

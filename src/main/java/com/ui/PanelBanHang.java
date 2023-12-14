@@ -24,7 +24,6 @@ import com.entity.KhachHang;
 import com.entity.KhuyenMai;
 import com.entity.TaiKhoan;
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.DeviceGray;
@@ -42,15 +41,12 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.properties.BorderRadius;
 import com.itextpdf.layout.properties.TextAlignment;
-import com.itextpdf.layout.properties.UnitValue;
-import com.itextpdf.styledxmlparser.css.font.CssFontFace;
 import com.utils.Auth;
 import com.utils.FormatDate;
 import com.utils.TextUtil;
+import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -97,7 +93,6 @@ public class PanelBanHang extends javax.swing.JPanel {
         modelSP = (DefaultTableModel) tblSanPham.getModel();
         modelDH = (DefaultTableModel) tblDonHang.getModel();
         modelHDC = (DefaultTableModel) tblHoaDonCho.getModel();
-
         fillCombo();
         showTableThongTinSanPham();
         txtMaNV.setText(Auth.user.getTaikhoan());
@@ -391,11 +386,6 @@ public class PanelBanHang extends javax.swing.JPanel {
         btnThanhToan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnThanhToanMouseClicked(evt);
-            }
-        });
-        btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThanhToanActionPerformed(evt);
             }
         });
 
@@ -692,7 +682,8 @@ public class PanelBanHang extends javax.swing.JPanel {
     private void xuatHoaDon() {
 
         try {
-            PdfWriter pdfWriter = new PdfWriter(txtMaHD.getText() + ".pdf");
+
+            PdfWriter pdfWriter = new PdfWriter(PanelBanHang.class.getResource("/hoaDon/").getPath() + txtMaHD.getText() + ".pdf");
             PdfDocument pdfDocument = new PdfDocument(pdfWriter);
             pdfDocument.setDefaultPageSize(PageSize.A4);
             Document dcm = new Document(pdfDocument);
@@ -869,11 +860,17 @@ public class PanelBanHang extends javax.swing.JPanel {
             dcm.add(gachCham2);
             dcm.add(onesp);
 
-            Table tongTienKHTraTable = new Table(threeColWidth);
-            tongTienKHTraTable.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
-            tongTienKHTraTable.addCell(new Cell().add(new Paragraph("Tổng tiền khách trả")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
-            tongTienKHTraTable.addCell(new Cell().add(new Paragraph(TextUtil.round(Double.parseDouble(txtTienMatKhachTra.getText())))).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
-            dcm.add(tongTienKHTraTable);
+            if (!txtTienMatKhachTra.getText().trim().isEmpty()) {
+                Table tongTienKHTraTable = new Table(threeColWidth);
+                tongTienKHTraTable.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+                tongTienKHTraTable.addCell(new Cell().add(new Paragraph("Tổng tiền khách trả")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+                try {
+                    tongTienKHTraTable.addCell(new Cell().add(new Paragraph(TextUtil.round(Double.parseDouble(txtTienMatKhachTra.getText())))).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
+                } catch (Exception e) {
+                    tongTienKHTraTable.addCell(new Cell().add(new Paragraph("NaN")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
+                }
+                dcm.add(tongTienKHTraTable);
+            }
 
             Table tienThuaTable = new Table(threeColWidth);
             tienThuaTable.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
@@ -915,24 +912,24 @@ public class PanelBanHang extends javax.swing.JPanel {
     }
 
     private void btnThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanMouseClicked
-
-        if (txtTienMatKhachTra.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Chưa nhập số tiền khách trả");
-            return;
-        }
-        float tienKhachTra = Float.parseFloat(txtTienMatKhachTra.getText());
-        
-        if (tienKhachTra < tongTien) {
-            JOptionPane.showMessageDialog(this, "Nhập số tiền khách trả không đủ ");
-            return;
-        }
-
-        try {
-            Float tttoan = Float.parseFloat(txtTienMatKhachTra.getText().trim());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập tiền thanh toán là 1 số dương");
-            return;
-        }
+//
+//        if (txtTienMatKhachTra.getText().trim().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Chưa nhập số tiền khách trả");
+//            return;
+//        }
+//        float tienKhachTra = Float.parseFloat(txtTienMatKhachTra.getText());
+//        
+//        if (tienKhachTra < tongTien) {
+//            JOptionPane.showMessageDialog(this, "Nhập số tiền khách trả không đủ ");
+//            return;
+//        }
+//
+//        try {
+//            Float tttoan = Float.parseFloat(txtTienMatKhachTra.getText().trim());
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Vui lòng nhập tiền thanh toán là 1 số dương");
+//            return;
+//        }
 
         if (checkTableDonHang()) {
             thanhToan();
@@ -976,10 +973,6 @@ public class PanelBanHang extends javax.swing.JPanel {
             showHoaDonCho();
         }
     }//GEN-LAST:event_btnXoaKhoiDonHang2ActionPerformed
-
-    private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThanhToanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
