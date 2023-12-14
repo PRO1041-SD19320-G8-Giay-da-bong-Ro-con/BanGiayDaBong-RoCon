@@ -692,7 +692,7 @@ public class PanelBanHang extends javax.swing.JPanel {
 
         try {
 
-            PdfWriter pdfWriter = new PdfWriter(PanelBanHang.class.getResource("/hoaDon/").getPath() + txtMaHD.getText() + ".pdf");
+            PdfWriter pdfWriter = new PdfWriter("src\\main\\java\\HoaDon\\" + txtMaHD.getText() + ".pdf");
             PdfDocument pdfDocument = new PdfDocument(pdfWriter);
             pdfDocument.setDefaultPageSize(PageSize.A4);
             Document dcm = new Document(pdfDocument);
@@ -757,7 +757,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             try {
                 KhachHang kh = daoKH.selectByID(lblKhachHang.getText());
                 if (kh == null) {
-                    twoColTable1.addCell(getCell10Left("...................................................", false));
+                    twoColTable1.addCell(getCell10Left("...............", false));
                 } else {
                     twoColTable1.addCell(getCell10Left(kh.getTenKH(), false));
                 }
@@ -779,7 +779,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             try {
                 KhachHang kh = daoKH.selectByID(lblKhachHang.getText());
                 if (kh == null) {
-                    twoColTable2.addCell(getCell10Left("...................................................", false));
+                    twoColTable2.addCell(getCell10Left("...............", false));
                 } else {
                     twoColTable2.addCell(getCell10Left(kh.getDiaChi(), false));
                 }
@@ -863,16 +863,24 @@ public class PanelBanHang extends javax.swing.JPanel {
             dcm.add(tongTienThanhToan);
             dcm.add(onesp);
 
-            Table gachCham2 = new Table(onetwo);
-            gachCham2.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
-            gachCham2.addCell(new Cell().add(gachCham).setBorder(Border.NO_BORDER));
-            dcm.add(gachCham2);
-            dcm.add(onesp);
-
             if (!txtTienMatKhachTra.getText().trim().isEmpty()) {
+
+                Table gachCham2 = new Table(onetwo);
+                gachCham2.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+                gachCham2.addCell(new Cell().add(gachCham).setBorder(Border.NO_BORDER));
+                dcm.add(gachCham2);
+                dcm.add(onesp);
+
                 Table tongTienKHTraTable = new Table(threeColWidth);
                 tongTienKHTraTable.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
                 tongTienKHTraTable.addCell(new Cell().add(new Paragraph("Tổng tiền khách trả")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+
+                Table tienThuaTable = new Table(threeColWidth);
+                tienThuaTable.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+                tienThuaTable.addCell(new Cell().add(new Paragraph("Tiền thừa")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
+                tienThuaTable.addCell(new Cell().add(new Paragraph(lblTienThua.getText())).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
+                dcm.add(tienThuaTable);
+                dcm.add(onesp);
                 try {
                     tongTienKHTraTable.addCell(new Cell().add(new Paragraph(TextUtil.round(Double.parseDouble(txtTienMatKhachTra.getText())))).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
                 } catch (Exception e) {
@@ -880,13 +888,6 @@ public class PanelBanHang extends javax.swing.JPanel {
                 }
                 dcm.add(tongTienKHTraTable);
             }
-
-            Table tienThuaTable = new Table(threeColWidth);
-            tienThuaTable.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
-            tienThuaTable.addCell(new Cell().add(new Paragraph("Tiền thừa")).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.CENTER));
-            tienThuaTable.addCell(new Cell().add(new Paragraph(lblTienThua.getText())).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT));
-            dcm.add(tienThuaTable);
-            dcm.add(onesp);
 
             Table gachCham3 = new Table(fullWidth);
             dcm.add(gachCham3.setBorder(bd1));
