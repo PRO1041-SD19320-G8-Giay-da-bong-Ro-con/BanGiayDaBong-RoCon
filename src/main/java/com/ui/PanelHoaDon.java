@@ -69,6 +69,8 @@ public class PanelHoaDon extends javax.swing.JPanel {
         cbTinhTrang = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 204, 255));
+
         jPanelHoaDon.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "HÓA ĐƠN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(

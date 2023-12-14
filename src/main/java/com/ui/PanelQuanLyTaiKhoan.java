@@ -26,13 +26,13 @@ public class PanelQuanLyTaiKhoan extends javax.swing.JPanel {
      * Creates new form panelQuanLyTaiKhoan
      */
     TaiKhoanDAO DAO = new TaiKhoanDAO();
-    
-    
+
     public PanelQuanLyTaiKhoan() {
         initComponents();
-        
+
         showdata();
     }
+
     boolean checkdata() {
 
         if (txt_hovaten.getText().isEmpty()) {
@@ -52,12 +52,9 @@ public class PanelQuanLyTaiKhoan extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "SDT không được để trống !!");
             return false;
         }
-        if (txt_sdt.getText().length() != 12) {
-            JOptionPane.showMessageDialog(this, "SDT phải là 12 số");
-            return false;
-        }
-        if(!txt_sdt.getText().matches("[0-9]+") ){
-            JOptionPane.showMessageDialog(this, "sdt phải là số");
+
+        if (!txt_sdt.getText().matches("^0[0-9]{9}$")) {
+            JOptionPane.showMessageDialog(this, "SDT phải có 10 chữ số và số đầu tiên phải là số 0");
             return false;
         }
         if (txt_email.getText().isEmpty()) {
@@ -68,15 +65,16 @@ public class PanelQuanLyTaiKhoan extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Email phải từ 10 đến 50 ký tự");
             return false;
         }
-        if (!txt_email.getText().matches(".*[@].*")) {
-            JOptionPane.showMessageDialog(this, "Email phải chứa @");
+        if (!txt_email.getText().matches("\\w+@\\w+(\\.\\w+){1,5}")) {
+            JOptionPane.showMessageDialog(this, "Sai định dạng email");
             return false;
         }
 
         return true;
     }
+
     void showdata() {
-        
+
         TaiKhoan tk = Auth.user;
         txt_taikhoan.setText(tk.getTaikhoan());
         txt_cccd.setText(tk.getCCCD());
@@ -86,6 +84,7 @@ public class PanelQuanLyTaiKhoan extends javax.swing.JPanel {
         txt_email.setText(tk.getEmail());
         txt_sdt.setText(tk.getSdt());
     }
+
     TaiKhoan readfrom() {
 
         String tkhoan = txt_taikhoan.getText();
