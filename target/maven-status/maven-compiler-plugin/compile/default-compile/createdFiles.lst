@@ -1,6 +1,5 @@
 com\ui\PanelQuanLyKhuyenMai$15.class
 com\ui\DialogDangNhap$6.class
-com\ui\PanelBanHang$18.class
 com\ui\PanelQuanLyNhanVien$1.class
 com\ui\PanelQuanLyThuocTinh$2.class
 com\ui\PanelChiTietKhachHang$2.class
@@ -45,6 +44,7 @@ com\ui\PanelBanHang$2.class
 com\ui\PanelBanHang.class
 com\entity\ChiTietHoaDon.class
 com\ui\PanelThemNhanVien.class
+com\ui\PanelSuaSanPham$8.class
 com\entity\TaiKhoan.class
 com\ui\PanelQuanLyNhanVien.class
 com\ui\DialogDangNhap$5.class
