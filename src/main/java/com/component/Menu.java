@@ -130,7 +130,8 @@ public class Menu extends javax.swing.JPanel {
 
         QLKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         QLKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        QLKhachHang.setText("Quản Lý khách hàng");
+        QLKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/khachhang.png"))); // NOI18N
+        QLKhachHang.setText("Khách hàng");
         QLKhachHang.setPreferredSize(new java.awt.Dimension(50, 30));
         QLKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -141,6 +142,7 @@ public class Menu extends javax.swing.JPanel {
         banHang.setBackground(new java.awt.Color(255, 255, 255));
         banHang.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         banHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        banHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/banhang.png"))); // NOI18N
         banHang.setText("Bán hàng");
         banHang.setPreferredSize(new java.awt.Dimension(50, 30));
         banHang.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -151,7 +153,8 @@ public class Menu extends javax.swing.JPanel {
 
         QLSanPham.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         QLSanPham.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        QLSanPham.setText("Quản lý sản phẩm");
+        QLSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sanpham.png"))); // NOI18N
+        QLSanPham.setText("Sản phẩm");
         QLSanPham.setPreferredSize(new java.awt.Dimension(50, 30));
         QLSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -161,7 +164,8 @@ public class Menu extends javax.swing.JPanel {
 
         QLHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         QLHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        QLHoaDon.setText("Quản lý hóa đơn");
+        QLHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill.png"))); // NOI18N
+        QLHoaDon.setText("Hóa đơn");
         QLHoaDon.setPreferredSize(new java.awt.Dimension(50, 30));
         QLHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -171,7 +175,8 @@ public class Menu extends javax.swing.JPanel {
 
         QLKhuyenMai.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         QLKhuyenMai.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        QLKhuyenMai.setText("Quản lý khuyến mãi");
+        QLKhuyenMai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/khuyenmai.png"))); // NOI18N
+        QLKhuyenMai.setText("Khuyến mãi");
         QLKhuyenMai.setPreferredSize(new java.awt.Dimension(50, 30));
         QLKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -181,7 +186,8 @@ public class Menu extends javax.swing.JPanel {
 
         QLThuocTinh.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         QLThuocTinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        QLThuocTinh.setText("Quản lý thuộc tính");
+        QLThuocTinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/thuoctinh.png"))); // NOI18N
+        QLThuocTinh.setText("Thuộc tính");
         QLThuocTinh.setPreferredSize(new java.awt.Dimension(50, 30));
         QLThuocTinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -191,6 +197,7 @@ public class Menu extends javax.swing.JPanel {
 
         ThongKe.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         ThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/thongke.png"))); // NOI18N
         ThongKe.setText("Thống kê");
         ThongKe.setPreferredSize(new java.awt.Dimension(50, 30));
         ThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -201,7 +208,8 @@ public class Menu extends javax.swing.JPanel {
 
         QLNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         QLNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        QLNhanVien.setText("Quản lý nhân viên");
+        QLNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/nhanvien1.png"))); // NOI18N
+        QLNhanVien.setText("Nhân viên");
         QLNhanVien.setPreferredSize(new java.awt.Dimension(50, 30));
         QLNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -211,6 +219,7 @@ public class Menu extends javax.swing.JPanel {
 
         DangXuat.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         DangXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/out.png"))); // NOI18N
         DangXuat.setText("Đăng xuất");
         DangXuat.setPreferredSize(new java.awt.Dimension(50, 30));
         DangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
