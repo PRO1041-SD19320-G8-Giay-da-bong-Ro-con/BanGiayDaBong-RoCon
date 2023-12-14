@@ -761,7 +761,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             try {
                 KhachHang kh = daoKH.selectByID(lblKhachHang.getText());
                 if (kh == null) {
-                    twoColTable1.addCell(getCell10Left("...............", false));
+                    twoColTable1.addCell(getCell10Left("................", false));
                 } else {
                     twoColTable1.addCell(getCell10Left(kh.getTenKH(), false));
                 }
@@ -783,7 +783,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             try {
                 KhachHang kh = daoKH.selectByID(lblKhachHang.getText());
                 if (kh == null) {
-                    twoColTable2.addCell(getCell10Left("...............", false));
+                    twoColTable2.addCell(getCell10Left("................", false));
                 } else {
                     twoColTable2.addCell(getCell10Left(kh.getDiaChi(), false));
                 }
